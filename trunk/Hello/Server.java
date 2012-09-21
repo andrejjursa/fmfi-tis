@@ -8,6 +8,7 @@ import java.util.Set;
 
 public class Server {
 
+  int i = 9;
 	ServerSocketChannel ssc;
 	SocketChannel socketChannel;
 	ArrayList<SocketChannel> channels = new ArrayList<SocketChannel>();
