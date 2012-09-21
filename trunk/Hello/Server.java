@@ -15,7 +15,7 @@ public class Server {
 	private ByteBuffer buffer = ByteBuffer.allocate(1024);
 	
 	public void Test() {
-    System.out.println("TOTO JE SVN TEST!!!");
+    System.out.println("TOTO JE 'SVN' TEST!!!");
   }
 
 	public Server() throws IOException {
