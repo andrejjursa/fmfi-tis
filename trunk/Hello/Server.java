@@ -13,6 +13,10 @@ public class Server {
 	SocketChannel socketChannel;
 	ArrayList<SocketChannel> channels = new ArrayList<SocketChannel>();
 	private ByteBuffer buffer = ByteBuffer.allocate(1024);
+	
+	public void Test() {
+    System.out.println("TOTO JE SVN TEST!!!");
+  }
 
 	public Server() throws IOException {
 		ssc = ServerSocketChannel.open();
