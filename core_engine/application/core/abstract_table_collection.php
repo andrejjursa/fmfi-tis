@@ -17,11 +17,6 @@ class Abstract_table_collection {
     
     protected $query = NULL;
     
-    /**
-     * @var string known columns in table represented by this class
-     */
-    protected static $table_fields = NULL;
-    
     public function __construct() {
         $this->determineTableColumns();
         $this->reset();
@@ -51,7 +46,7 @@ class Abstract_table_collection {
     }
     
     public function orderBy($column, $direction) {
-        if (in_array($column, self::$table_fields)) {
+        if (in_array($column, $this->_getKnownFields())) {
             $this->query->order_by($column, $direction);
         } else if ($column == '' && $direction == 'random') {
             $this->query->order_by('', 'random');
@@ -97,10 +92,18 @@ class Abstract_table_collection {
     
     protected function determineTableColumns() {
         $this->determineTableName();
-        if (is_null(self::$table_fields)) {
+        if (is_null($this->_getKnownFields())) {
             $this->load->database();
-            self::$table_fields = $this->db->list_fields($this->table_name);    
+            $this->_setKnownFields($this->db->list_fields($this->table_name));    
         }
+    }
+    
+    protected function _getKnownFields() {
+        return isset($GLOBALS['TABLE_KNOWN_FIELDS'][get_class($this)]) ? $GLOBALS['TABLE_KNOWN_FIELDS'][get_class($this)] : NULL;
+    }
+    
+    protected function _setKnownFields($fields) {
+        $GLOBALS['TABLE_KNOWN_FIELDS'][get_class($this)] = $fields;
     }
     
     /**

@@ -22,11 +22,6 @@ class Abstract_table_row {
     protected $primary_field = 'id';
     
     /**
-     * @var string known columns in table represented by this class
-     */
-    protected static $table_fields = NULL;
-    
-    /**
      * @var array<mixed> currently unsaved pairs of column => value in one row of table represented by this class
      */
     protected $data = array();
@@ -40,6 +35,8 @@ class Abstract_table_row {
         if (!is_null($original_data)) { $this->original_data = $original_data; }
         
         $this->determineTableColumns();
+        
+        $this->init();
     }
     
     public function load($id) {
@@ -47,6 +44,7 @@ class Abstract_table_row {
         
         $this->data = array();
         $this->original_data = array();
+        $this->resetRelations();
         
         $query = $this->db->get_where($this->table_name, array($this->primary_field => $id), 1);
         $this->original_data = $query->row_array();
@@ -69,6 +67,7 @@ class Abstract_table_row {
             
             $this->data = array();
             $this->original_data = array();
+            $this->resetRelations();
             
             $replaces = func_get_args();
             unset($replaces[0]);
@@ -98,6 +97,7 @@ class Abstract_table_row {
             
             $this->data = array();
             $this->original_data = array();
+            $this->resetRelations();
             
             $query = $this->db->get();
             
@@ -119,11 +119,11 @@ class Abstract_table_row {
         
         $this->load->database();
         
-        if (in_array('tstamp', self::$table_fields)) {
+        if (in_array('tstamp', $this->_getKnownFields())) {
             $this->db->set('tstamp', 'CURRENT_TIMESTAMP', FALSE);    
         }
         
-        if (is_null($id) && in_array('crdate', self::$table_fields)) {
+        if (is_null($id) && in_array('crdate', $this->_getKnownFields())) {
             $this->db->set('crdate', 'CURRENT_TIMESTAMP', FALSE);
         }
         
@@ -180,7 +180,7 @@ class Abstract_table_row {
             }
         } else if (!is_null($column) && !is_null($new_value)) {
             if (is_string($column)) {
-                if (in_array($column, self::$table_fields)) { 
+                if (in_array($column, $this->_getKnownFields())) { 
                     if (is_string($new_value) || is_bool($new_value) || is_numeric($new_value) || $new_value instanceof Nonescape_data) {
                         if ($column == $this->primary_field && isset($this->original_data[$this->primary_field])) { 
                             throw new exception(get_class($this) . ': Can\'t change existing id from ' . $this->original_data[$this->primary_field] . ' to ' . $new_value . '!');
@@ -214,16 +214,38 @@ class Abstract_table_row {
     }
     
     public function __call($name, $arguments) {
-        if (substr($name, 0, 3) == 'get') {
-            $field = strtolower(substr($name, 3));
-            return $this->data($field);
-        } else if (substr($name, 0, 3) == 'set') {
-            $field = strtolower(substr($name, 3));
-            if (count($arguments) == 0) {
-                throw new exception(get_class($this) . ': Method ' . $name . '() must have one argument!');
+        if (!method_exists($this, $name)) {
+            if (substr($name, 0, 3) == 'get') {
+                $field = strtolower(substr($name, 3));
+                return $this->data($field);
+            } else if (substr($name, 0, 3) == 'set') {
+                $field = strtolower(substr($name, 3));
+                if (count($arguments) == 0) {
+                    throw new exception(get_class($this) . ': Method ' . $name . '() must have one argument!');
+                }
+                return $this->data($field, $arguments[0]);
             }
-            return $this->data($field, $arguments[0]);
         }
+    }
+    
+    public function getId() {
+        return $this->data($this->primary_field);
+    }
+    
+    public function setId($id) {
+        return $this->data($this->primary_field, $id);
+    }
+    
+    public function getTableName() {
+        return $this->table_name;
+    }
+    
+    protected function init() {
+        
+    }
+    
+    protected function resetRelations() {
+        
     }
     
     protected function determineTableName() {
@@ -235,10 +257,18 @@ class Abstract_table_row {
     
     protected function determineTableColumns() {
         $this->determineTableName();
-        if (is_null(self::$table_fields)) {
+        if (is_null($this->_getKnownFields())) {
             $this->load->database();
-            self::$table_fields = $this->db->list_fields($this->table_name);    
+            $this->_setKnownFields($this->db->list_fields($this->table_name));    
         }
+    }
+    
+    protected function _getKnownFields() {
+        return isset($GLOBALS['TABLE_KNOWN_FIELDS'][get_class($this)]) ? $GLOBALS['TABLE_KNOWN_FIELDS'][get_class($this)] : NULL;
+    }
+    
+    protected function _setKnownFields($fields) {
+        $GLOBALS['TABLE_KNOWN_FIELDS'][get_class($this)] = $fields;
     }
     
     /**
