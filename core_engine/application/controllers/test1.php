@@ -11,7 +11,7 @@ class Test1 extends Abstract_backend_controller {
         echo 'FUNGUJE!!!';
         
         $collection = $this->load->table_collection('blog_entries');
-        $collection->orderBy('title', 'asc')->orderBy('', 'random')->limit(100);
+        $collection->orderBy('title', 'asc')->orderBy('', 'random')->limit(100)->onlyNewEntries();
         
         echo '<pre>';
         print_r($collection->count());
