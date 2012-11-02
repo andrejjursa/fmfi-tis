@@ -121,13 +121,6 @@ class Abstract_table_collection {
     public function count() {
         $queryclone = clone $this->query;
         return $queryclone->count_all_results();
-        /*$queryclone->select('COUNT(*) as ' . $queryclone->protect_identifiers('count_of_rows'), FALSE);
-        
-        $query = $queryclone->get();
-        $row = $query->row();
-        $query->free_result();
-        
-        return $row->count_of_rows;*/
     }
     
     /**
