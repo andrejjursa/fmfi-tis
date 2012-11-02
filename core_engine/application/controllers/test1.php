@@ -11,12 +11,13 @@ class Test1 extends Abstract_backend_controller {
         echo 'FUNGUJE!!!';
         
         $collection = $this->load->table_collection('blog_entries');
+        $count = $collection->count();
         $collection->execute();
         
         echo '<pre>';
+        echo 'There are ' . $count . ' blog entries.<br /><br />';
         if (count($collection->get()) > 0) {
             foreach ($collection->get() as $entry) {
-                $entry->setTags(array(1, 5, 11, 4));
                 echo 'Title: ' . $entry->getTitle() . '<br />';
                 echo '<br />' . $entry->getBody() . '<br />';
                 if (count($entry->getImages()) > 0) {

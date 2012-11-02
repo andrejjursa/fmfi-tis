@@ -11,30 +11,58 @@
 
 class Abstract_table_relation {
     
-    protected $local_table_name = '';
-    
+    /**
+     * @var string name of foreign table.
+     */
     protected $foreign_table_name = '';
     
+    /**
+     * @var array<Abstract_table_row> array of foreign table rows.
+     */ 
     protected $rows = NULL;
     
+    /**
+     * @var bool switch to mm relation type.
+     */
     protected $relation_type_mm = FALSE;
     
+    /**
+     * @var string name of mm table.
+     */
     protected $mm_table_name = '';
     
+    /**
+     * @var string name of column with local index in mm table.
+     */
     protected $mm_local_id_field = '';
     
+    /**
+     * @var string name of column with foreign index in mm table.
+     */
     protected $mm_foreign_id_field = '';
     
+    /**
+     * @var string name of column with records sorting information in mm table.
+     */
     protected $mm_sorting_field = ''; 
     
+    /**
+     * @var string name of column with primary index in foreign table.
+     */
     protected $foreign_primary_field = 'id';
     
+    /**
+     * @var string name of column with reference index to local table in foreign table.
+     */
     protected $foreign_index_field = '';
     
-    public function __construct() {
-        
-    }
-    
+    /**
+     * Renew array of foreign table rows if it is NULL and returns it.
+     * 
+     * @param integer|Abstract_table_row primary index value of local table.
+     * @param array<integer|Abstract_table_row> array of primary index values of foreign table.
+     * @return array<Abstract_table_row> array of foreign table rows.
+     */
     public function get($local_id, $foreign_ids = NULL) {
         if (!is_numeric($local_id) && !($local_id instanceof Abstract_table_row)) {
             return array();
@@ -111,6 +139,17 @@ class Abstract_table_relation {
         return $this->rows;
     }
     
+    /**
+     * This function will add new relation to mm table.
+     * Optionaly can be sorted.
+     * 
+     * Returns FALSE if relation already exists.
+     * 
+     * @param integer|Abstract_table_row local table primary key value.
+     * @param integer|Abstract_table_row foreign table primary key value.
+     * @param integer|Abstract_table_row foreign table primary key value, which has to be before new inserted record in sorting order.
+     * @return bool TRUE, when record is inserted, FALSE otherwise.
+     */
     public function add($local_id, $foreign_id, $after_id = NULL) {
         if (!$this->relation_type_mm) { return FALSE; }
         if (!is_numeric($local_id) && !($local_id instanceof Abstract_table_row)) {
@@ -173,10 +212,19 @@ class Abstract_table_relation {
             $this->db->set($this->mm_foreign_id_field, $real_foreign_id);
             $this->db->insert($this->mm_table_name);
             
+            $this->reset();
+            
             return $this->db->trans_complete();
         }
     }
     
+    /**
+     * Deletes relation from mm table.
+     * 
+     * @param integer|Abstract_table_row local table primary key value.
+     * @param integer|Abstract_table_row foreign table primary key value.
+     * @return bool TRUE, when this relation is deleted, FALSE otherwise.
+     */
     public function delete($local_id, $foreign_id) {
         if (!$this->relation_type_mm) { return FALSE; }
         if (!is_numeric($local_id) && !($local_id instanceof Abstract_table_row)) {
@@ -218,6 +266,8 @@ class Abstract_table_relation {
             $this->db->where($this->mm_foreign_id_field, $real_foreign_id);
             $this->db->delete($this->mm_table_name);
             
+            $this->reset();
+            
             return $this->db->trans_complete();
         } else {
             $existence_check->free_result();
@@ -225,6 +275,13 @@ class Abstract_table_relation {
         }
     }
     
+    /**
+     * This function will delete all existing relations and add new relations between local table row and array of foreign table rows.
+     * 
+     * @param integer|Abstract_table_row local table primary key value.
+     * @param array<integer|Abstract_table_row> array of foreign table primary key values.
+     * @return bool TRUE, when new relations are established, FALSE otherwise.
+     */
     public function setTo($local_id, $foreign_ids) {
         if (!$this->relation_type_mm) { return FALSE; }
         if (!is_numeric($local_id) && !($local_id instanceof Abstract_table_row)) {
@@ -269,9 +326,16 @@ class Abstract_table_relation {
             $this->db->insert_batch($this->mm_table_name, $insert_data);
         }
         
+        $this->reset();
+        
         return $this->db->trans_complete();
     }
     
+    /**
+     * Deletes all relations between local and foreign tables from database mm table.
+     * 
+     * @return bool TRUE, if all relations are deleted, FALSE otherwise.
+     */
     public function deleteAll($local_id) {
         if (!$this->relation_type_mm) { return FALSE; }
         if (!is_numeric($local_id) && !($local_id instanceof Abstract_table_row)) {
@@ -280,12 +344,19 @@ class Abstract_table_relation {
         
         $real_local_id = is_numeric($local_id) ? $local_id : $local_id->getId();
         
+        $this->reset();
+        
         $this->load->database();
         
         $this->db->where($this->mm_local_id_field, $real_local_id);
         return $this->db->delete($this->mm_table_name);
     }
     
+    /**
+     * Empty rows array and set them to NULL, so it will be refilled after calling get() method.
+     * 
+     * @return void
+     */
     public function reset() {
         $this->rows = NULL;
     }

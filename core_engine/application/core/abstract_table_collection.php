@@ -11,17 +11,34 @@
 
 class Abstract_table_collection {
     
+    /**
+     * @var string name of table represented by this class.
+     */
     protected $table_name = NULL;
     
+    /**
+     * @var array<Abstract_table_row> array of table rows.
+     */
     protected $rows = array();
     
+    /**
+     * @var CI_DB_active_record active record class of codeigniter.
+     */
     protected $query = NULL;
     
+    /**
+     * Class constructor.
+     */
     public function __construct() {
         $this->determineTableColumns();
         $this->reset();
     }
     
+    /**
+     * Runs active record query and fills rows with table rows.
+     * 
+     * @return Abstract_table_collection reference to this object.
+     */
     public function execute() {
         $query = $this->query->get();
         
@@ -45,6 +62,13 @@ class Abstract_table_collection {
         return $this;
     }
     
+    /**
+     * Add sorting into query.
+     * 
+     * @param string column, by which will be result set sorted.
+     * @param string direction of sorting, can be asc, desc or random.
+     * @return Abstract_table_collection reference to this object.
+     */
     public function orderBy($column, $direction) {
         if (in_array($column, $this->_getKnownFields())) {
             $this->query->order_by($column, $direction);
@@ -54,6 +78,13 @@ class Abstract_table_collection {
         return $this;
     }
     
+    /**
+     * Sets limits for result set.
+     * 
+     * @param integer count of rows in result set.
+     * @param integer offset of rows, count from 0.
+     * @return Abstract_table_collection reference to this object.
+     */
     public function limit($value, $offset = 0) {
         if (is_integer($value) && is_integer($offset)) {
             $this->query->limit($value, $offset);
@@ -61,6 +92,11 @@ class Abstract_table_collection {
         return $this;
     }
     
+    /**
+     * This function will reset query to default.
+     * 
+     * @return Abstract_table_collection reference to this object.
+     */
     public function reset() {
         $this->query = $this->load->database('', TRUE);
         $this->query->from($this->table_name);
@@ -68,21 +104,38 @@ class Abstract_table_collection {
         return $this;
     }
     
+    /**
+     * Returns array of table rows as instance of extended Abstract_table_row class.
+     * 
+     * @return array<Abstract_table_row> table rows.
+     */
     public function get() {
         return $this->rows;
     }
     
+    /**
+     * Returns count of table rows.
+     * 
+     * @return integer count of table rows.
+     */
     public function count() {
         $queryclone = clone $this->query;
-        $queryclone->select('COUNT(*) as ' . $queryclone->protect_identifiers('count_of_rows'), FALSE);
+        return $queryclone->count_all_results();
+        /*$queryclone->select('COUNT(*) as ' . $queryclone->protect_identifiers('count_of_rows'), FALSE);
         
         $query = $queryclone->get();
         $row = $query->row();
         $query->free_result();
         
-        return $row->count_of_rows;
+        return $row->count_of_rows;*/
     }
     
+    /**
+     * This function reads name of database table from name of class, but only
+     * when table_name is set to NULL.
+     * 
+     * @return void
+     */
     protected function determineTableName() {
         if (is_null($this->table_name)) {
             $class_name = get_class($this);
@@ -90,6 +143,12 @@ class Abstract_table_collection {
         }
     }
     
+    /**
+     * This function will read table columns from database table, bot only
+     * when this columns are not known.
+     * 
+     * @return void
+     */
     protected function determineTableColumns() {
         $this->determineTableName();
         if (is_null($this->_getKnownFields())) {
@@ -98,12 +157,24 @@ class Abstract_table_collection {
         }
     }
     
+    /**
+     * This function will return array of known table columns for this table, or NULL when
+     * they are not read from database.
+     * 
+     * @return array<string>|NULL table column or NULL.
+     */
     protected function _getKnownFields() {
-        return isset($GLOBALS['TABLE_KNOWN_FIELDS'][get_class($this)]) ? $GLOBALS['TABLE_KNOWN_FIELDS'][get_class($this)] : NULL;
+        return isset($GLOBALS['TABLE_KNOWN_FIELDS'][$this->table_name]) ? $GLOBALS['TABLE_KNOWN_FIELDS'][$this->table_name] : NULL;
     }
     
+    /**
+     * This function will save array of known table columns to global memory.
+     * 
+     * @param array<string> array of known table columns.
+     * @return void
+     */
     protected function _setKnownFields($fields) {
-        $GLOBALS['TABLE_KNOWN_FIELDS'][get_class($this)] = $fields;
+        $GLOBALS['TABLE_KNOWN_FIELDS'][$this->table_name] = $fields;
     }
     
     /**

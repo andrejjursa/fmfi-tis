@@ -12,25 +12,30 @@
 class Abstract_table_row {
     
     /**
-     * @var string name of table represented by this class
+     * @var string name of table represented by this class.
      */
     protected $table_name = NULL;
     
     /**
-     * @var string name of column in table, which is primary key
+     * @var string name of column in table, which is primary key.
      */
     protected $primary_field = 'id';
     
     /**
-     * @var array<mixed> currently unsaved pairs of column => value in one row of table represented by this class
+     * @var array<mixed> currently unsaved pairs of column => value in one row of table represented by this class.
      */
     protected $data = array();
     
     /**
-     * @var array<mixed> current pairs of column => value in one row of table represented by this class
+     * @var array<mixed> current pairs of column => value in one row of table represented by this class.
      */
     protected $original_data = array();
     
+    /**
+     * Constructor of _table_row classes.
+     * 
+     * @param array<mixed> array of original values or NULL for leaving original values blank.
+     */
     public function __construct($original_data = NULL) {
         if (!is_null($original_data)) { $this->original_data = $original_data; }
         
@@ -39,6 +44,12 @@ class Abstract_table_row {
         $this->init();
     }
     
+    /**
+     * This function loads one row of database table by given value of primary key (primary index).
+     * 
+     * @param integer integer value of primary index in table, should be positive value.
+     * @return bool return TRUE when table row is found and loaded, FALSE otherwise.
+     */
     public function load($id) {
         $this->load->database();
         
@@ -54,6 +65,18 @@ class Abstract_table_row {
         return count($this->original_data) > 0;
     }
     
+    /**
+     * This function loads one row of database table by given condition.
+     * 
+     * Condition can be string of WHERE clause in SQL query, or array of values column => value,
+     * this array is applied each row to active record where method: $this->db->where(column, value).
+     * 
+     * Function can have more than one parameter, these parameters are replacements of question marks
+     * in WHERE clause, they must be correct order.
+     * 
+     * @param string|array<mixed> where clause.
+     * @return bool return TRUE when only one table row matches condition and is loaded, FALSE otherwise.
+     */
     public function loadBy() {
         if (func_num_args() == 0) {
             throw new exception(get_class($this) . ': Method loadBy() require at least one argument!');
@@ -112,6 +135,16 @@ class Abstract_table_row {
         }
     }
     
+    /**
+     * Saves assigned data to database table.
+     * 
+     * If there is not any data from original load(), loadBy() or setId() call, new record will be inserted to table,
+     * otherwise existing record will be updated.
+     * 
+     * After save is completed, data from table will be loaded again.
+     * 
+     * @return bool TRUE, if new or existing record is inserted / updated, FALSE otherwise.
+     */
     public function save() {
         if (count($this->data) == 0) { return FALSE; }
         
@@ -153,6 +186,12 @@ class Abstract_table_row {
         return TRUE;
     }
     
+    /**
+     * This function deletes table row, but only if there is valid primary index.
+     * You must first call load(), loadBy() or setId() methods.
+     * 
+     * @return bool TRUE, when table row is deleted, FALSE otherwise.
+     */
     public function delete() {
         if (isset($this->original_data[$this->primary_field])) {
             $this->load->database();
@@ -165,6 +204,22 @@ class Abstract_table_row {
         return FALSE;
     }
     
+    /**
+     * Multipurpose function, based on given arguments.
+     * 
+     * If you omit both arguments, this function returns array of original data from table row.
+     * If you specify first argument as string and leaves second intact, you will receive value of given column from table row.
+     * If you specify first argument as array of string => string | bool | numeric | Nonescape_data and leaves second intact,
+     * you will set new values of table column from given array and function returns reference to this object.
+     * If you specify both arguments, first must be string and second can be string | bool | numeric | Nonescape_data, you will
+     * set new value of table column for given column and value, and you will receive reference to this object.
+     * 
+     * Any other combination of arguments can trigger error or do nothing, just return reference to this object.
+     * 
+     * @param NULL|string|array<mixed> nothing, column name or array of new column values.
+     * @param NULL|string|bool|numeric|Nonescape_data nothing or new value of column.
+     * @return mixed can return array of original data, value of column, NULL or reference to this object.
+     */
     public function data($column = NULL, $new_value = NULL) {
         if (is_null($column) && is_null($new_value)) {
             return $this->original_data;
@@ -213,6 +268,14 @@ class Abstract_table_row {
         return $this;
     }
     
+    /**
+     * Makes virtual set<Column>($value) and get<Column>() public method for
+     * accessing and changing table row data.
+     * 
+     * @param string method name.
+     * @param array<mixed> method arguments.
+     * @return mixed can return column value or reference to this object.
+     */ 
     public function __call($name, $arguments) {
         if (!method_exists($this, $name)) {
             if (substr($name, 0, 3) == 'get') {
@@ -228,26 +291,61 @@ class Abstract_table_row {
         }
     }
     
+    /**
+     * Returns value of primary key (primary index).
+     * 
+     * @return integer primary key value.
+     */
     public function getId() {
         return $this->data($this->primary_field);
     }
     
+    /**
+     * Sets new value of primary key (primary index).
+     * 
+     * @return Abstract_table_row reference to this object.
+     */
     public function setId($id) {
         return $this->data($this->primary_field, $id);
     }
     
+    /**
+     * Returns name of this table.
+     * 
+     * @return string table name.
+     */
     public function getTableName() {
         return $this->table_name;
     }
     
+    /**
+     * Function which can initialize relations.
+     * 
+     * Called automatically in class constructor.
+     * 
+     * @return void
+     */
     protected function init() {
         
     }
     
+    /**
+     * Function which can reset relations data.
+     * 
+     * Called automatically in load() and loadBy() methods.
+     * 
+     * @return void
+     */
     protected function resetRelations() {
         
     }
     
+    /**
+     * This function reads name of database table from name of class, but only
+     * when table_name is set to NULL.
+     * 
+     * @return void
+     */
     protected function determineTableName() {
         if (is_null($this->table_name)) {
             $class_name = get_class($this);
@@ -255,6 +353,12 @@ class Abstract_table_row {
         }
     }
     
+    /**
+     * This function will read table columns from database table, bot only
+     * when this columns are not known.
+     * 
+     * @return void
+     */
     protected function determineTableColumns() {
         $this->determineTableName();
         if (is_null($this->_getKnownFields())) {
@@ -263,12 +367,24 @@ class Abstract_table_row {
         }
     }
     
+    /**
+     * This function will return array of known table columns for this table, or NULL when
+     * they are not read from database.
+     * 
+     * @return array<string>|NULL table column or NULL.
+     */
     protected function _getKnownFields() {
-        return isset($GLOBALS['TABLE_KNOWN_FIELDS'][get_class($this)]) ? $GLOBALS['TABLE_KNOWN_FIELDS'][get_class($this)] : NULL;
+        return isset($GLOBALS['TABLE_KNOWN_FIELDS'][$this->table_name]) ? $GLOBALS['TABLE_KNOWN_FIELDS'][$this->table_name] : NULL;
     }
     
+    /**
+     * This function will save array of known table columns to global memory.
+     * 
+     * @param array<string> array of known table columns.
+     * @return void
+     */
     protected function _setKnownFields($fields) {
-        $GLOBALS['TABLE_KNOWN_FIELDS'][get_class($this)] = $fields;
+        $GLOBALS['TABLE_KNOWN_FIELDS'][$this->table_name] = $fields;
     }
     
     /**
@@ -287,16 +403,36 @@ class Abstract_table_row {
 	}
 }
 
+/**
+ * This class serves as encapsulation for non escaped data, i.e. for SET column = column + 1, which
+ * without use of this class will produce SET `column` = 'column + 1'.
+ * 
+ * @author Andrej Jursa
+ * @version 1.0
+ */
 class Nonescape_data {
     
+    /**
+     * @var string expression to be used as column value
+     */
     private $expression = NULL;
     
+    /**
+     * Constructor of class with expession.
+     * 
+     * @param string expression.
+     */
     public function __construct($expression) {
         if (is_string($expression) || is_bool($expression) || is_numeric($expression)) {
             $this->expression = $expression;
         }
     }
     
+    /**
+     * Returns expression string.
+     * 
+     * @return string expression.
+     */
     public function __toString() {
         return $this->expression;
     }
