@@ -225,6 +225,53 @@ class Abstract_table_relation {
         }
     }
     
+    public function setTo($local_id, $foreign_ids) {
+        if (!$this->relation_type_mm) { return FALSE; }
+        if (!is_numeric($local_id) && !($local_id instanceof Abstract_table_row)) {
+            return FALSE;
+        }
+        if (!is_array($foreign_ids)) { return FALSE; }
+        
+        $real_local_id = is_numeric($local_id) ? $local_id : $local_id->getId();
+        
+        $this->load->database();
+        
+        $insert_data = array();
+        
+        if (count($foreign_ids) > 0) {
+            $sorting = 1;
+            foreach($foreign_ids as $foreign_id) {
+                if (!is_numeric($foreign_id) && !($foreign_id instanceof Abstract_table_row)) {
+                    return FALSE;
+                }
+                $real_foreign_id = is_numeric($foreign_id) ? $foreign_id : $foreign_id->getId();
+                
+                $row = array(
+                    $this->mm_local_id_field => $real_local_id,
+                    $this->mm_foreign_id_field => $real_foreign_id,
+                );
+                
+                if ($this->mm_sorting_field != '') {
+                    $row[$this->mm_sorting_field] = $sorting;
+                }
+                
+                $insert_data[] = $row;
+                
+                $sorting++;
+            }
+        }
+        
+        $this->db->trans_start();
+        
+        $this->deleteAll($real_local_id);
+        
+        if (count($insert_data) > 0) {
+            $this->db->insert_batch($this->mm_table_name, $insert_data);
+        }
+        
+        return $this->db->trans_complete();
+    }
+    
     public function deleteAll($local_id) {
         if (!$this->relation_type_mm) { return FALSE; }
         if (!is_numeric($local_id) && !($local_id instanceof Abstract_table_row)) {

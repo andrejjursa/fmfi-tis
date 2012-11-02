@@ -16,6 +16,7 @@ class Test1 extends Abstract_backend_controller {
         echo '<pre>';
         if (count($collection->get()) > 0) {
             foreach ($collection->get() as $entry) {
+                $entry->setTags(array(1, 5, 11, 4));
                 echo 'Title: ' . $entry->getTitle() . '<br />';
                 echo '<br />' . $entry->getBody() . '<br />';
                 if (count($entry->getImages()) > 0) {

@@ -43,6 +43,10 @@ class Blog_entries_table_row extends Abstract_table_row {
     public function removeAllTags() {
         return $this->relation_tags->deleteAll($this->getId());
     }
+    
+    public function setTags($tags) {
+        return $this->relation_tags->setTo($this->getId(), $tags);
+    }
 }
 
 ?>
