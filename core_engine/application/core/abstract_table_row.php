@@ -8,8 +8,10 @@
  * @copyright FMFI Comenius University in Bratislava 2012
  * 
  */
+ 
+require_once APPPATH . 'core/abstract_table_core.php';
 
-class Abstract_table_row {
+class Abstract_table_row extends Abstract_table_core {
     
     /**
      * @var string name of table represented by this class.
@@ -47,10 +49,13 @@ class Abstract_table_row {
     /**
      * This function loads one row of database table by given value of primary key (primary index).
      * 
-     * @param integer integer value of primary index in table, should be positive value.
+     * @param integer $id integer value of primary index in table, should be positive value.
      * @return bool return TRUE when table row is found and loaded, FALSE otherwise.
      */
     public function load($id) {
+        if ($this->isInsideTemplate()) {
+            throw new exception(get_class($this) . ': Can\'t load table row inside template view!');
+        }
         $this->load->database();
         
         $this->data = array();
@@ -78,6 +83,9 @@ class Abstract_table_row {
      * @return bool return TRUE when only one table row matches condition and is loaded, FALSE otherwise.
      */
     public function loadBy() {
+        if ($this->isInsideTemplate()) {
+            throw new exception(get_class($this) . ': Can\'t load table row inside template view!');
+        }
         if (func_num_args() == 0) {
             throw new exception(get_class($this) . ': Method loadBy() require at least one argument!');
         }
@@ -146,6 +154,9 @@ class Abstract_table_row {
      * @return bool TRUE, if new or existing record is inserted / updated, FALSE otherwise.
      */
     public function save() {
+        if ($this->isInsideTemplate()) {
+            throw new exception(get_class($this) . ': Can\'t save table row inside template view!');
+        }
         if (count($this->data) == 0) { return FALSE; }
         
         $id = isset($this->original_data[$this->primary_field]) ? $this->original_data[$this->primary_field] : NULL;
@@ -193,6 +204,9 @@ class Abstract_table_row {
      * @return bool TRUE, when table row is deleted, FALSE otherwise.
      */
     public function delete() {
+        if ($this->isInsideTemplate()) {
+            throw new exception(get_class($this) . ': Can\'t delete table row inside template view!');
+        }
         if (isset($this->original_data[$this->primary_field])) {
             $this->load->database();
             if ($this->db->delete($this->table_name, array($this->primary_field => $this->original_data[$this->primary_field]))) {
@@ -216,8 +230,8 @@ class Abstract_table_row {
      * 
      * Any other combination of arguments can trigger error or do nothing, just return reference to this object.
      * 
-     * @param NULL|string|array<mixed> nothing, column name or array of new column values.
-     * @param NULL|string|bool|numeric|Nonescape_data nothing or new value of column.
+     * @param NULL|string|array<mixed> $column nothing, column name or array of new column values.
+     * @param NULL|string|bool|numeric|Nonescape_data $new_value nothing or new value of column.
      * @return mixed can return array of original data, value of column, NULL or reference to this object.
      */
     public function data($column = NULL, $new_value = NULL) {
@@ -237,6 +251,9 @@ class Abstract_table_row {
             if (is_string($column)) {
                 if (in_array($column, $this->_getKnownFields())) { 
                     if (is_string($new_value) || is_bool($new_value) || is_numeric($new_value) || $new_value instanceof Nonescape_data) {
+                        if ($this->isInsideTemplate()) {
+                            throw new exception(get_class($this) . ': Can\'t set table row column value inside template view!');
+                        }
                         if ($column == $this->primary_field && isset($this->original_data[$this->primary_field])) { 
                             throw new exception(get_class($this) . ': Can\'t change existing id from ' . $this->original_data[$this->primary_field] . ' to ' . $new_value . '!');
                         } else if ($column == 'tstamp') {
@@ -272,8 +289,8 @@ class Abstract_table_row {
      * Makes virtual set<Column>($value) and get<Column>() public method for
      * accessing and changing table row data.
      * 
-     * @param string method name.
-     * @param array<mixed> method arguments.
+     * @param string $name method name.
+     * @param array<mixed> $arguments method arguments.
      * @return mixed can return column value or reference to this object.
      */ 
     public function __call($name, $arguments) {
@@ -303,6 +320,7 @@ class Abstract_table_row {
     /**
      * Sets new value of primary key (primary index).
      * 
+     * @param integer $id new id for this table.
      * @return Abstract_table_row reference to this object.
      */
     public function setId($id) {
@@ -380,27 +398,12 @@ class Abstract_table_row {
     /**
      * This function will save array of known table columns to global memory.
      * 
-     * @param array<string> array of known table columns.
+     * @param array<string> $fields array of known table columns.
      * @return void
      */
     protected function _setKnownFields($fields) {
         $GLOBALS['TABLE_KNOWN_FIELDS'][$this->table_name] = $fields;
     }
-    
-    /**
-	 * __get
-	 *
-	 * Allows table models to access CI's loaded classes using the same
-	 * syntax as controllers.
-	 *
-	 * @param string
-	 * @access private
-	 */
-	function __get($key)
-	{
-		$CI =& get_instance();
-		return $CI->$key;
-	}
 }
 
 /**
@@ -420,7 +423,7 @@ class Nonescape_data {
     /**
      * Constructor of class with expession.
      * 
-     * @param string expression.
+     * @param string $expression expression.
      */
     public function __construct($expression) {
         if (is_string($expression) || is_bool($expression) || is_numeric($expression)) {

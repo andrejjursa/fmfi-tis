@@ -4,6 +4,8 @@ class Test1 extends Abstract_backend_controller {
     
     public function __construct() {
         parent::__construct();
+        
+        $this->load->library('parser');
     }
     
     public function index() {
@@ -46,6 +48,17 @@ class Test1 extends Abstract_backend_controller {
         echo '</pre>';
     }
     
+    public function test() {
+        $row = $this->load->table_row('blog_entries')->setId(1);
+        
+        $this->parser->parse('test1_test.tpl', array('row' => $row));
+    }
+    
+    public function test2() {
+        $row = $this->load->table_row('blog_entries')->setId(1);
+        
+        $this->load->view('test1_test2', array('row' => $row));
+    }
 }
 
 ?>

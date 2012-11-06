@@ -9,7 +9,9 @@
  * 
  */
 
-class Abstract_table_collection {
+require_once APPPATH . 'core/abstract_table_core.php';
+
+class Abstract_table_collection extends Abstract_table_core {
     
     /**
      * @var string name of table represented by this class.
@@ -65,8 +67,8 @@ class Abstract_table_collection {
     /**
      * Add sorting into query.
      * 
-     * @param string column, by which will be result set sorted.
-     * @param string direction of sorting, can be asc, desc or random.
+     * @param string $column column, by which will be result set sorted.
+     * @param string $direction direction of sorting, can be asc, desc or random.
      * @return Abstract_table_collection reference to this object.
      */
     public function orderBy($column, $direction) {
@@ -81,8 +83,8 @@ class Abstract_table_collection {
     /**
      * Sets limits for result set.
      * 
-     * @param integer count of rows in result set.
-     * @param integer offset of rows, count from 0.
+     * @param integer $value count of rows in result set.
+     * @param integer $offset offset of rows, count from 0.
      * @return Abstract_table_collection reference to this object.
      */
     public function limit($value, $offset = 0) {
@@ -163,27 +165,12 @@ class Abstract_table_collection {
     /**
      * This function will save array of known table columns to global memory.
      * 
-     * @param array<string> array of known table columns.
+     * @param array<string> $fields array of known table columns.
      * @return void
      */
     protected function _setKnownFields($fields) {
         $GLOBALS['TABLE_KNOWN_FIELDS'][$this->table_name] = $fields;
     }
-    
-    /**
-	 * __get
-	 *
-	 * Allows table models to access CI's loaded classes using the same
-	 * syntax as controllers.
-	 *
-	 * @param string
-	 * @access private
-	 */
-	function __get($key)
-	{
-		$CI =& get_instance();
-		return $CI->$key;
-	}
 }
 
 ?>

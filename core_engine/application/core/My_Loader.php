@@ -21,6 +21,13 @@ class My_Loader extends CI_Loader {
         parent::__construct();
     }
     
+    /**
+     * Create and return new instance of table_row class.
+     * 
+     * @param string $table table name.
+     * @param array<mixed> $original_data original data passed to object.
+     * @return Abstract_table_row instance of table_row class.
+     */
     public function table_row($table, $original_data = NULL) {
         if ($table == '') { return NULL; }
         $class_name = strtoupper($table[0]) . strtolower(substr($table, 1)) . '_table_row';
@@ -37,6 +44,12 @@ class My_Loader extends CI_Loader {
         return NULL;
     }
     
+    /**
+     * Create and return new instance of table_collection class.
+     * 
+     * @param string $table table name.
+     * @return Abstract_table_collection instance of table_collection class.
+     */
     public function table_collection($table) {
         if ($table == '') { return NULL; }
         $class_name = strtoupper($table[0]) . strtolower(substr($table, 1)) . '_table_collection';
@@ -53,6 +66,13 @@ class My_Loader extends CI_Loader {
         return NULL;
     }
     
+    /**
+     * Create and return new instance of table_relation class.
+     * 
+     * @param string $from_table table name of local table.
+     * @param string $to_table table name of foreign table.
+     * @return Abstract_table_relation instance of table_relation class.
+     */
     public function table_relation($from_table, $to_table) {
         if ($from_table == '' || $to_table == '') { return NULL; }
         $class_name = strtoupper($from_table[0]) . strtolower(substr($from_table, 1)) . '_to_' . strtolower($to_table) . '_table_relation';

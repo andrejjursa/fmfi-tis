@@ -9,7 +9,9 @@
  * 
  */
 
-class Abstract_table_relation {
+require_once APPPATH . 'core/abstract_table_core.php';
+
+class Abstract_table_relation extends Abstract_table_core {
     
     /**
      * @var string name of foreign table.
@@ -71,7 +73,7 @@ class Abstract_table_relation {
     /**
      * This function will set new ordre by clause to select, it resets selected rows.
      * 
-     * @param string $new_order_by order by clause for select.
+     * @param string $new_order_by $new_order_by order by clause for select.
      * @return Abstract_table_relation reference to this object.
      */
     public function setOrderBy($new_order_by = NULL) {
@@ -85,8 +87,8 @@ class Abstract_table_relation {
     /**
      * Returns count of rows in relation.
      * 
-     * @param integer|Abstract_table_row primary index value of local table.
-     * @param array<integer|Abstract_table_row> array of primary index values of foreign table.
+     * @param integer|Abstract_table_row $local_id primary index value of local table.
+     * @param array<integer|Abstract_table_row> $foreign_ids array of primary index values of foreign table.
      * @return integer count of rows.
      */
     public function count($local_id, $foreign_ids = NULL) {
@@ -134,8 +136,8 @@ class Abstract_table_relation {
     /**
      * Renew array of foreign table rows if it is NULL and returns it.
      * 
-     * @param integer|Abstract_table_row primary index value of local table.
-     * @param array<integer|Abstract_table_row> array of primary index values of foreign table.
+     * @param integer|Abstract_table_row $local_id primary index value of local table.
+     * @param array<integer|Abstract_table_row> $foreign_ids array of primary index values of foreign table.
      * @return array<Abstract_table_row> array of foreign table rows.
      */
     public function get($local_id, $foreign_ids = NULL) {
@@ -230,9 +232,9 @@ class Abstract_table_relation {
      * 
      * Returns FALSE if relation already exists.
      * 
-     * @param integer|Abstract_table_row local table primary key value.
-     * @param integer|Abstract_table_row foreign table primary key value.
-     * @param integer|Abstract_table_row foreign table primary key value, which has to be before new inserted record in sorting order.
+     * @param integer|Abstract_table_row $local_id local table primary key value.
+     * @param integer|Abstract_table_row $foreign_id foreign table primary key value.
+     * @param integer|Abstract_table_row $after_id foreign table primary key value, which has to be before new inserted record in sorting order.
      * @return bool TRUE, when record is inserted, FALSE otherwise.
      */
     public function add($local_id, $foreign_id, $after_id = NULL) {
@@ -306,8 +308,8 @@ class Abstract_table_relation {
     /**
      * Deletes relation from mm table.
      * 
-     * @param integer|Abstract_table_row local table primary key value.
-     * @param integer|Abstract_table_row foreign table primary key value.
+     * @param integer|Abstract_table_row $local_id local table primary key value.
+     * @param integer|Abstract_table_row $foreign_id foreign table primary key value.
      * @return bool TRUE, when this relation is deleted, FALSE otherwise.
      */
     public function delete($local_id, $foreign_id) {
@@ -363,8 +365,8 @@ class Abstract_table_relation {
     /**
      * This function will delete all existing relations and add new relations between local table row and array of foreign table rows.
      * 
-     * @param integer|Abstract_table_row local table primary key value.
-     * @param array<integer|Abstract_table_row> array of foreign table primary key values.
+     * @param integer|Abstract_table_row $local_id local table primary key value.
+     * @param array<integer|Abstract_table_row> $foreign_ids array of foreign table primary key values.
      * @return bool TRUE, when new relations are established, FALSE otherwise.
      */
     public function setTo($local_id, $foreign_ids) {
@@ -419,6 +421,7 @@ class Abstract_table_relation {
     /**
      * Deletes all relations between local and foreign tables from database mm table.
      * 
+     * @param integer|Abstact_table_row $local_id id of local table, from which have to be deleted all relations to foreign table.
      * @return bool TRUE, if all relations are deleted, FALSE otherwise.
      */
     public function deleteAll($local_id) {
@@ -446,21 +449,6 @@ class Abstract_table_relation {
         $this->rows = NULL;
         $this->count = NULL;
     }
-    
-    /**
-	 * __get
-	 *
-	 * Allows table models to access CI's loaded classes using the same
-	 * syntax as controllers.
-	 *
-	 * @param string
-	 * @access private
-	 */
-	function __get($key)
-	{
-		$CI =& get_instance();
-		return $CI->$key;
-	}
 }
 
 ?>
