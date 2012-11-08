@@ -29,7 +29,7 @@ class Blog_entries_table_row extends Abstract_table_row {
     }
     
     public function getTags() {
-        return $this->relation_tags->get($this->getId());
+        return $this->relation_tags->setOrderBy('random')->get($this->getId());
     }
     
     public function addTag($tag_id, $after_id = NULL) {
