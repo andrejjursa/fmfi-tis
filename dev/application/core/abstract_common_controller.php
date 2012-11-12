@@ -13,6 +13,8 @@ class Abstract_common_controller extends My_Controller {
     
     public function __construct() {
         parent::__construct();
+        
+        $this->load->library('parser');
     }
     
 }

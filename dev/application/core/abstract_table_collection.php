@@ -24,6 +24,11 @@ class Abstract_table_collection extends Abstract_table_core {
     protected $rows = array();
     
     /**
+     * @var array<integer> array of table rows primary indexes.
+     */
+    protected $ids = array();
+    
+    /**
      * @var CI_DB_active_record active record class of codeigniter.
      */
     protected $query = NULL;
@@ -48,6 +53,7 @@ class Abstract_table_collection extends Abstract_table_core {
         $query->free_result();
         
         $this->rows = array();
+        $this->ids = array();
         
         if (count($rows) > 0) {
             foreach($rows as $row) {
@@ -56,6 +62,7 @@ class Abstract_table_collection extends Abstract_table_core {
                     return $this;
                 }
                 $this->rows[] = $object;
+                $this->ids[] = $object->getId();
             }
         }
         
@@ -113,6 +120,15 @@ class Abstract_table_collection extends Abstract_table_core {
      */
     public function get() {
         return $this->rows;
+    }
+    
+    /**
+     * Returns array of table rows primary indexes as array of integers.
+     * 
+     * @return array<integer> array of table rows primary indexes.
+     */
+    public function allIds() {
+       return $this->ids; 
     }
     
     /**

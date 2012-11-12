@@ -89,6 +89,76 @@ class Abstract_table_relation extends Abstract_table_core {
     }
     
     /**
+     * Returns all foreign rows in relation to list of local ids using.
+     * Works only for mm relations.
+     * 
+     * @param array<integer|Abstract_table_row> $local_ids array of local indexex.
+     * @return array<Abstract_table_row> array of foreign rows.
+     */
+    public function getMultiple($local_ids) {
+        if ($this->getRowsAndIdsMultiple($local_ids)) {
+            return $this->rows;
+        }
+        return array();
+    }
+    
+    /**
+     * Returns all primary indexes of foreign rows in relation to list of local ids using.
+     * Works only for mm relations.
+     * 
+     * @param array<integer|Abstract_table_row> $local_ids array of local indexex.
+     * @return array<integer> array of primary indexes of foreign rows.
+     */
+    public function allIdsMultiple($local_ids) {
+        if ($this->getRowsAndIdsMultiple($local_ids)) {
+            return $this->ids;
+        }
+        return array();
+    }
+    
+    /**
+     * Return count of all rows in relation with multiple local rows.
+     * Works only for mm relations.
+     * 
+     * @param array<integer|Abstract_table_row> $local_ids array of local indexes.
+     * @return integer count of foreignt rows.
+     */
+    public function countMultiple($local_ids) {
+        if (!is_array($local_ids) || count($local_ids) == 0 || $this->relation_type_mm == FALSE) { return 0; }
+        
+        if (!is_null($this->count)) { return $this->count; }
+        
+        $local_ids_array = array();
+        
+        $this->rows = array();
+        $this->ids = array();
+        
+        foreach ($local_ids as $row_id) {
+            if (is_numeric($row_id)) {
+                $local_ids_array[] = $row_id;
+            } elseif ($row_id instanceof Abstract_table_row && !is_null($row_id->getId())) {
+                $local_ids_array[] = $row_id->getId();
+            } else {
+                return 0;
+            }
+        }
+        
+        $this->db->select($this->foreign_table_name . '.*');
+        $this->db->from($this->foreign_table_name);
+        $this->db->join($this->mm_table_name, $this->foreign_table_name . '.' . $this->foreign_primary_field . ' = ' . $this->mm_table_name . '.' . $this->mm_foreign_id_field);
+        $this->db->where_in($this->mm_table_name . '.' . $this->mm_local_id_field, $local_ids_array);
+        $this->db->group_by($this->mm_table_name . '.' . $this->mm_foreign_id_field);
+        if (!$this->insertOrderByAndNotification($this->db)) {
+            if ($this->mm_sorting_field != '') {
+                $this->db->order_by($this->mm_table_name . '.' . $this->mm_sorting_field, 'asc');
+            }
+        }
+        $this->count = $this->db->count_all_results();
+        
+        return $this->count;
+    }
+    
+    /**
      * Returns count of rows in relation.
      * 
      * @param integer|Abstract_table_row $local_id primary index value of local table.
@@ -474,6 +544,58 @@ class Abstract_table_relation extends Abstract_table_core {
                 }
             }
         }
+    }
+    
+    /**
+     * Loads foreign table rows related to list of local ids, only works for mm relations.
+     * 
+     * @param array<integer|Abstract_table_row> $local_ids array of local indexes.
+     * @return boolean TRUE, if everything is ok and query were executed, FALSE otherwise.
+     */ 
+    protected function getRowsAndIdsMultiple($local_ids) {
+        if (!is_array($local_ids) || count($local_ids) == 0 || $this->relation_type_mm == FALSE) { return FALSE; }
+        
+        if (!is_null($this->rows) && !is_null($this->ids)) { return TRUE; }
+        
+        $local_ids_array = array();
+        
+        $this->rows = array();
+        $this->ids = array();
+        
+        foreach ($local_ids as $row_id) {
+            if (is_numeric($row_id)) {
+                $local_ids_array[] = $row_id;
+            } elseif ($row_id instanceof Abstract_table_row && !is_null($row_id->getId())) {
+                $local_ids_array[] = $row_id->getId();
+            } else {
+                return FALSE;
+            }
+        }
+        
+        $this->db->select($this->foreign_table_name . '.*');
+        $this->db->from($this->foreign_table_name);
+        $this->db->join($this->mm_table_name, $this->foreign_table_name . '.' . $this->foreign_primary_field . ' = ' . $this->mm_table_name . '.' . $this->mm_foreign_id_field);
+        $this->db->where_in($this->mm_table_name . '.' . $this->mm_local_id_field, $local_ids_array);
+        $this->db->group_by($this->mm_table_name . '.' . $this->mm_foreign_id_field);
+        if (!$this->insertOrderByAndNotification($this->db)) {
+            if ($this->mm_sorting_field != '') {
+                $this->db->order_by($this->mm_table_name . '.' . $this->mm_sorting_field, 'asc');
+            }
+        }
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            foreach($query->result_array() as $row) {
+                $object = $this->load->table_row($this->foreign_table_name, $row);
+                if (is_null($object)) { return $this->rows; }
+                $this->rows[] = $object;
+                $this->ids[] = $object->getId();
+            }
+        }
+        
+        $query->free_result();
+        
+        return TRUE;
     }
     
     /**

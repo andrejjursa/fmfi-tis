@@ -1,1 +1,0 @@
-{$row->getTitle() nocache}

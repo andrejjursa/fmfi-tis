@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'tis_core_engine';
-$db['default']['password'] = 'tis';
-$db['default']['database'] = 'tis_core_engine';
+$db['default']['hostname'] = 'priso.no-ip.org:3306';
+$db['default']['username'] = 'tis';
+$db['default']['password'] = 'Fmf1-t1s';
+$db['default']['database'] = 'tis';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
