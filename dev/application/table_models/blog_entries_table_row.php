@@ -4,34 +4,29 @@ class Blog_entries_table_row extends Abstract_table_row {
     
     protected $relation_comments = '';
     
-    //protected $relation_images = '';
+    protected $relation_images = '';
     
     protected $relation_tags = '';
     
     protected function init() {
         $this->relation_comments = $this->load->table_relation('blog_entries', 'blog_comments');
-        //$this->relation_images = $this->load->table_relation('blog_entries', 'blog_images');
+        $this->relation_images = $this->load->table_relation('blog_entries', 'blog_images');
         $this->relation_tags = $this->load->table_relation('blog_entries', 'blog_tags');
     }
     
     protected function resetRelations() {
         $this->relation_comments->reset();
-        //$this->relation_images->reset();
+        $this->relation_images->reset();
         $this->relation_tags->reset();
     }
     
     public function getComments() {
-        $this->relation_comments->setOrderBy('crdate desc');
         return $this->relation_comments->get($this->getId());
     }
     
-    public function getCommentsCount() {
-        return $this->relation_comments->count($this->getId());
-    }
-    
-    /*public function getImages() {
+    public function getImages() {
         return $this->relation_images->get($this->getId(), $this->data('images'));
-    }*/
+    }
     
     public function getTags() {
         return $this->relation_tags->get($this->getId());
