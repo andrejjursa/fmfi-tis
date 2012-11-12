@@ -9,29 +9,36 @@ class Timeline extends Abstract_frontend_controller {
         
         $this->parser->assign('min_year', $min_year);
         
-        $physicists->reset()->filterOnlyDisplayed()->filterLivedInYear($min_year)->execute();
-        $default_physicists = $physicists->get();
-        $default_physicists_ids = $physicists->allIds();
+        $data = $this->_getPhysicistsAndInventions($min_year);
         
-        $this->parser->assign('default_physicists', $default_physicists);
-        
-        $physicists_to_inventions = $this->load->table_relation('physicists', 'inventions');
-        
-        $default_inventions = $physicists_to_inventions->setOrderBy('year ASC')->getMultiple($default_physicists_ids);
-        
-        $this->parser->assign('default_inventions', $default_inventions);
+        $this->parser->assign($data);
         
         $this->parser->parse('frontend/timeline.index.tpl');
     }
     
     public function ajaxUpdateList($year = NULL) {
-        echo json_encode(array('test' => '<test>tst</test>'), JSON_FORCE_OBJECT | JSON_PRETTY_PRINT);
-        $physicists_objects = $this->load->table_collection('physicists')->execute()->get();
-        $physicists_arrays = array();
-        foreach ($physicists_objects as $physicist) {
-            $physicists_arrays[] = $physicist->data();
-        }
-        echo json_encode(array('collection' => $physicists_arrays), JSON_PRETTY_PRINT);
+        $data = $this->_getPhysicistsAndInventions($year);
+        
+        $output_data = array('physicists' => '', 'inventions' => '');
+        
+        $output_data['physicists'] = trim($this->parser->parse('partials/timeline.index.physicists.tpl', $data, TRUE));
+        $output_data['inventions'] = trim($this->parser->parse('partials/timeline.index.inventions.tpl', $data, TRUE));
+        
+        $this->output->set_content_type('application/json');
+        $this->output->set_output(json_encode($output_data, JSON_PRETTY_PRINT));
+    }
+    
+    public function _getPhysicistsAndInventions($year = NULL) {
+        $physicists = $this->load->table_collection('physicists');
+        
+        $physicists->reset()->filterOnlyDisplayed()->filterLivedInYear(intval($year))->execute();
+        $physicists = $physicists->get();
+        
+        $physicists_to_inventions = $this->load->table_relation('physicists', 'inventions');
+        
+        $inventions = $physicists_to_inventions->setOrderBy('year ASC')->getMultiple($physicists);
+        
+        return array('physicists' => $physicists, 'inventions' => $inventions);
     }
 
 }
