@@ -2,6 +2,10 @@
 
 class Timeline extends Abstract_frontend_controller {
 
+    /**
+     * Displays page with timeline. Year on timeline will be set to its minimum as well
+     * as list of physicists and inventions from this minimum year.
+     */
     public function index() {      
         $physicists = $this->load->table_collection('physicists');
         $physicists->filterOnlyDisplayed()->filterMinYear()->execute();
@@ -16,6 +20,12 @@ class Timeline extends Abstract_frontend_controller {
         $this->parser->parse('frontend/timeline.index.tpl');
     }
     
+    /**
+     * Takes year as parameter and returns JSON representation of rendered partials for
+     * physicists and inventions.
+     * 
+     * @param integer $year year for which data have to be fetched from database.
+     */
     public function ajaxUpdateList($year = NULL) {
         $data = $this->_getPhysicistsAndInventions($year);
         
@@ -28,6 +38,12 @@ class Timeline extends Abstract_frontend_controller {
         $this->output->set_output(json_encode($output_data, JSON_PRETTY_PRINT));
     }
     
+    /**
+     * Returns physicists and inventions from database for given year.
+     * 
+     * @param integer $year year, again ...
+     * @return array<mixed> physicists and inventions.
+     */
     public function _getPhysicistsAndInventions($year = NULL) {
         $physicists = $this->load->table_collection('physicists');
         
