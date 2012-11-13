@@ -9,13 +9,19 @@ class Timeline extends Abstract_frontend_controller {
     public function index() {      
         $physicists = $this->load->table_collection('physicists');
         $physicists->filterOnlyDisplayed()->filterMinYear()->execute();
-        $min_year = count($physicists->get()) ? $physicists->get()[0]->getBirth_year() : 0; 
+        $year = count($physicists->get()) ? $physicists->get()[0]->getBirth_year() : 0; 
         
-        $this->parser->assign('min_year', $min_year);
+        $this->parser->assign('year', intval($year));
         
-        $data = $this->_getPhysicistsAndInventions($min_year);
+        $data = $this->_getPhysicistsAndInventions($year);
         
         $this->parser->assign($data);
+        
+        $this->_addTemplateDynamicJs('timeline', array(
+            'start_year' => $year,
+            'end_year' => date('Y')
+        ));
+        $this->_assignTemplateAdditionals();
         
         $this->parser->parse('frontend/timeline.index.tpl');
     }
@@ -28,6 +34,7 @@ class Timeline extends Abstract_frontend_controller {
      */
     public function ajaxUpdateList($year = NULL) {
         $data = $this->_getPhysicistsAndInventions($year);
+        $data['year'] = $year;
         
         $output_data = array('physicists' => '', 'inventions' => '');
         
