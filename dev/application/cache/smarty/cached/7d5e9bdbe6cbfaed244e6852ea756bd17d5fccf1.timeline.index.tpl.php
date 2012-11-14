@@ -23,14 +23,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '367e781d2b31269f5aa2e772b5cafa6dcfde5413' => 
     array (
       0 => 'application\\views\\partials\\timeline.index.inventions.tpl',
-      1 => 1352754312,
+      1 => 1352907034,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '416750a20c20b1e309-53745688',
   'cache_lifetime' => 3600,
   'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_50a3b63a89f096_68396799',
+  'unifunc' => 'content_50a3b91d51e519_50293136',
   'variables' => 
   array (
     'site_base_url' => 0,
@@ -41,7 +41,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => true,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_50a3b63a89f096_68396799')) {function content_50a3b63a89f096_68396799($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_50a3b91d51e519_50293136')) {function content_50a3b91d51e519_50293136($_smarty_tpl) {?><!DOCTYPE html>
 <html>
 <head>
     <title></title>
@@ -102,6 +102,10 @@ $_smarty_tpl->tpl_vars['invention']->_loop = true;
         <p><strong><?php echo $_smarty_tpl->tpl_vars['invention']->value->getName();?>
 </strong> (<?php echo $_smarty_tpl->tpl_vars['invention']->value->getYear();?>
 )</p>
+        <?php echo $_smarty_tpl->tpl_vars['invention']->value->getShort_description();?>
+
+        <p><a href="<?php echo smartyCreateUri(array('controller'=>'inventions','action'=>'index','params'=>array($_smarty_tpl->tpl_vars['invention']->value->getId())),$_smarty_tpl);?>
+">Viac informácií</a></p>
     </div>
 <?php }
 if (!$_smarty_tpl->tpl_vars['invention']->_loop) {
