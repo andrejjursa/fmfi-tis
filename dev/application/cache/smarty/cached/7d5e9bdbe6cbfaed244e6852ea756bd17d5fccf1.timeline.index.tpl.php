@@ -5,32 +5,32 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7d5e9bdbe6cbfaed244e6852ea756bd17d5fccf1' => 
     array (
       0 => 'application\\views\\frontend\\timeline.index.tpl',
-      1 => 1352824434,
+      1 => 1352906290,
       2 => 'file',
     ),
     'ddc67b91e8ebcb0b468a0a19d1f48e5f3f8b178d' => 
     array (
       0 => 'application\\views\\layouts\\frontend.tpl',
-      1 => 1352822449,
+      1 => 1352825990,
       2 => 'file',
     ),
     '2c3fb2e9c52a84cfa2b4bbce325e96965a6346e9' => 
     array (
       0 => 'application\\views\\partials\\timeline.index.physicists.tpl',
-      1 => 1352796710,
+      1 => 1352754316,
       2 => 'file',
     ),
     '367e781d2b31269f5aa2e772b5cafa6dcfde5413' => 
     array (
       0 => 'application\\views\\partials\\timeline.index.inventions.tpl',
-      1 => 1352796710,
+      1 => 1352754312,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '416750a20c20b1e309-53745688',
   'cache_lifetime' => 3600,
   'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_50a2781e7f3135_35805886',
+  'unifunc' => 'content_50a3b63a89f096_68396799',
   'variables' => 
   array (
     'site_base_url' => 0,
@@ -41,7 +41,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => true,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_50a2781e7f3135_35805886')) {function content_50a2781e7f3135_35805886($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_50a3b63a89f096_68396799')) {function content_50a3b63a89f096_68396799($_smarty_tpl) {?><!DOCTYPE html>
 <html>
 <head>
     <title></title>
@@ -68,7 +68,7 @@ $_smarty_tpl->tpl_vars['js_file']->_loop = true;
 <table>
     <tbody>
         <tr>
-            <td style="vertical-align: top;"><div id="timeline"></div></td>
+            <td style="vertical-align: top;">2012<div id="timeline" style="height: 200px;"></div>950</td>
             <td style="vertical-align: top;">
                 <h2>Fyzici</h2>
                 <div id="physicists_container">

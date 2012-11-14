@@ -12,6 +12,7 @@ class Timeline extends Abstract_frontend_controller {
         $year = count($physicists->get()) ? $physicists->get()[0]->getBirth_year() : 0; 
         
         $this->parser->assign('year', intval($year));
+        $this->parser->assign('max_year', date('Y'));
         
         $data = $this->_getPhysicistsAndInventions($year);
         
@@ -63,7 +64,31 @@ class Timeline extends Abstract_frontend_controller {
         
         return array('physicists' => $physicists, 'inventions' => $inventions);
     }
-
+    
+    /**
+     * Creates and return JSON array of object representing each physicist name and both birth and
+     * death year in chronological order.
+     */
+    public function ajaxTimelineInfoData() {
+        $physicists = $this->load->table_collection('physicists');
+        $physicists->filterOnlyDisplayed()->orderBy('birth_year', 'asc')->execute();
+        
+        $list = $physicists->get();
+        $data = array();
+        
+        if (count($list)) {
+            foreach($list as $item) {
+                $row = array();
+                $row['name'] = $item->getName();
+                $row['birth_year'] = $item->getBirth_year();
+                $row['death_year'] = $item->getDeath_year();
+                $data[] = $row;
+            }
+        }
+        
+        $this->output->set_content_type('application/json');
+        $this->output->set_output(json_encode($data, JSON_PRETTY_PRINT));
+    }
 }
 
 ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2012-11-13 17:41:02
+<?php /* Smarty version Smarty-3.1.11, created on 2012-11-14 16:18:18
          compiled from "application\views\frontend\timeline.index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:416750a20c20b1e309-53745688%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,25 +7,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7d5e9bdbe6cbfaed244e6852ea756bd17d5fccf1' => 
     array (
       0 => 'application\\views\\frontend\\timeline.index.tpl',
-      1 => 1352824434,
+      1 => 1352906290,
       2 => 'file',
     ),
     'ddc67b91e8ebcb0b468a0a19d1f48e5f3f8b178d' => 
     array (
       0 => 'application\\views\\layouts\\frontend.tpl',
-      1 => 1352822449,
+      1 => 1352825990,
       2 => 'file',
     ),
     '2c3fb2e9c52a84cfa2b4bbce325e96965a6346e9' => 
     array (
       0 => 'application\\views\\partials\\timeline.index.physicists.tpl',
-      1 => 1352796710,
+      1 => 1352754316,
       2 => 'file',
     ),
     '367e781d2b31269f5aa2e772b5cafa6dcfde5413' => 
     array (
       0 => 'application\\views\\partials\\timeline.index.inventions.tpl',
-      1 => 1352796710,
+      1 => 1352754312,
       2 => 'file',
     ),
   ),
@@ -83,14 +83,16 @@ $_smarty_tpl->tpl_vars[\'js_file\']->_loop = true;
 <table>
     <tbody>
         <tr>
-            <td style="vertical-align: top;"><div id="timeline"></div></td>
+            <td style="vertical-align: top;"><?php echo $_smarty_tpl->tpl_vars['max_year']->value;?>
+<div id="timeline" style="height: 200px;"></div><?php echo $_smarty_tpl->tpl_vars['year']->value;?>
+</td>
             <td style="vertical-align: top;">
                 <h2>Fyzici</h2>
                 <div id="physicists_container">
                 <?php /*  Call merged included template "partials/timeline.index.physicists.tpl" */
 $_tpl_stack[] = $_smarty_tpl;
  $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('partials/timeline.index.physicists.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, null, array('physicists'=>$_smarty_tpl->tpl_vars['physicists']->value,'year'=>$_smarty_tpl->tpl_vars['year']->value), 0, '416750a20c20b1e309-53745688');
-content_50a2781e71e551_47428538($_smarty_tpl);
+content_50a3b63a833548_30214755($_smarty_tpl);
 $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "partials/timeline.index.physicists.tpl" */?>
                 </div>
                 <h2>Objavy fyzikov</h2>
@@ -98,7 +100,7 @@ $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "partials/ti
                 <?php /*  Call merged included template "partials/timeline.index.inventions.tpl" */
 $_tpl_stack[] = $_smarty_tpl;
  $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('partials/timeline.index.inventions.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, null, array('inventions'=>$_smarty_tpl->tpl_vars['inventions']->value,'year'=>$_smarty_tpl->tpl_vars['year']->value), 0, '416750a20c20b1e309-53745688');
-content_50a2781e756d79_32621756($_smarty_tpl);
+content_50a3b63a86abd1_46434730($_smarty_tpl);
 $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "partials/timeline.index.inventions.tpl" */?>
                 </div>
             </td>
@@ -108,9 +110,9 @@ $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "partials/ti
                 
 
 </body>
-</html><?php }} ?><?php /* Smarty version Smarty-3.1.11, created on 2012-11-13 17:41:02
+</html><?php }} ?><?php /* Smarty version Smarty-3.1.11, created on 2012-11-14 16:18:18
          compiled from "application\views\partials\timeline.index.physicists.tpl" */ ?>
-<?php if ($_valid && !is_callable('content_50a2781e71e551_47428538')) {function content_50a2781e71e551_47428538($_smarty_tpl) {?><?php echo '/*%%SmartyNocache:416750a20c20b1e309-53745688%%*/<?php  $_smarty_tpl->tpl_vars[\'physicist\'] = new Smarty_Variable; $_smarty_tpl->tpl_vars[\'physicist\']->_loop = false;
+<?php if ($_valid && !is_callable('content_50a3b63a833548_30214755')) {function content_50a3b63a833548_30214755($_smarty_tpl) {?><?php echo '/*%%SmartyNocache:416750a20c20b1e309-53745688%%*/<?php  $_smarty_tpl->tpl_vars[\'physicist\'] = new Smarty_Variable; $_smarty_tpl->tpl_vars[\'physicist\']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars[\'physicists\']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, \'array\');}
 foreach ($_from as $_smarty_tpl->tpl_vars[\'physicist\']->key => $_smarty_tpl->tpl_vars[\'physicist\']->value){
 $_smarty_tpl->tpl_vars[\'physicist\']->_loop = true;
@@ -139,9 +141,9 @@ if (!$_smarty_tpl->tpl_vars[\'physicist\']->_loop) {
 /*/%%SmartyNocache:416750a20c20b1e309-53745688%%*/';?>
 .</p>
 <?php echo '/*%%SmartyNocache:416750a20c20b1e309-53745688%%*/<?php } ?>/*/%%SmartyNocache:416750a20c20b1e309-53745688%%*/';?>
-<?php }} ?><?php /* Smarty version Smarty-3.1.11, created on 2012-11-13 17:41:02
+<?php }} ?><?php /* Smarty version Smarty-3.1.11, created on 2012-11-14 16:18:18
          compiled from "application\views\partials\timeline.index.inventions.tpl" */ ?>
-<?php if ($_valid && !is_callable('content_50a2781e756d79_32621756')) {function content_50a2781e756d79_32621756($_smarty_tpl) {?><?php echo '/*%%SmartyNocache:416750a20c20b1e309-53745688%%*/<?php  $_smarty_tpl->tpl_vars[\'invention\'] = new Smarty_Variable; $_smarty_tpl->tpl_vars[\'invention\']->_loop = false;
+<?php if ($_valid && !is_callable('content_50a3b63a86abd1_46434730')) {function content_50a3b63a86abd1_46434730($_smarty_tpl) {?><?php echo '/*%%SmartyNocache:416750a20c20b1e309-53745688%%*/<?php  $_smarty_tpl->tpl_vars[\'invention\'] = new Smarty_Variable; $_smarty_tpl->tpl_vars[\'invention\']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars[\'inventions\']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, \'array\');}
 foreach ($_from as $_smarty_tpl->tpl_vars[\'invention\']->key => $_smarty_tpl->tpl_vars[\'invention\']->value){
 $_smarty_tpl->tpl_vars[\'invention\']->_loop = true;

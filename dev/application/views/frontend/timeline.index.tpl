@@ -4,15 +4,15 @@
 <table>
     <tbody>
         <tr>
-            <td style="vertical-align: top;"><div id="timeline"></div></td>
+            <td style="vertical-align: top;">{$max_year}<div id="timeline" style="height: 200px;"></div>{$year}</td>
             <td style="vertical-align: top;">
                 <h2>Fyzici</h2>
                 <div id="physicists_container">
-                {include file='partials/timeline.index.physicists.tpl' physicists=$physicists year=$year}
+                {include file='partials/timeline.index.physicists.tpl' physicists=$physicists year=$year inline}
                 </div>
                 <h2>Objavy fyzikov</h2>
                 <div id="inventions_container">
-                {include file='partials/timeline.index.inventions.tpl' inventions=$inventions year=$year}
+                {include file='partials/timeline.index.inventions.tpl' inventions=$inventions year=$year inline}
                 </div>
             </td>
         </tr>

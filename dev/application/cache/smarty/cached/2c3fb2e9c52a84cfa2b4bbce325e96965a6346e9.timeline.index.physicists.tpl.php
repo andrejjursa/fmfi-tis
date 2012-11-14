@@ -10,18 +10,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     ),
   ),
   'nocache_hash' => '54850a2755da62408-83738607',
-  'variables' => 
-  array (
-    'physicists' => 0,
-    'physicist' => 1,
-    'year' => 1,
-  ),
-  'has_nocache_code' => true,
   'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_50a2755db42638_48205948',
+  'unifunc' => 'content_50a3a888b0d116_46066442',
+  'has_nocache_code' => true,
   'cache_lifetime' => 3600,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_50a2755db42638_48205948')) {function content_50a2755db42638_48205948($_smarty_tpl) {?><?php  $_smarty_tpl->tpl_vars['physicist'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['physicist']->_loop = false;
+<?php if ($_valid && !is_callable('content_50a3a888b0d116_46066442')) {function content_50a3a888b0d116_46066442($_smarty_tpl) {?><?php  $_smarty_tpl->tpl_vars['physicist'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['physicist']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['physicists']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['physicist']->key => $_smarty_tpl->tpl_vars['physicist']->value){
 $_smarty_tpl->tpl_vars['physicist']->_loop = true;
