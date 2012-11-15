@@ -2,15 +2,22 @@
 
 class Answers extends Abstract_frontend_controller {
 
+    
+    /*
+     * Checks value of column 'correct' in database of question by its ID
+     * 
+     * @param int $answer
+     * @retrun boolean (type: json)
+     */
     public function ajaxCheckAnswer($answer_id = NULL) {
         $this->output->set_content_type('application/json');
-        if ($answer_id = NULL) {
+        if ($answer_id === NULL) {
             $this->output->set_output(json_encode(false));
         }
         
         $answer = $this->load->table_row("answers");
         if ($answer->load($answer_id)) {
-            $odpoved = $answer->getCorrect();
+            $odpoved = (int)$answer->getCorrect();
         } else {
             $this->output->set_output(json_encode(false));
         }
@@ -21,5 +28,5 @@ class Answers extends Abstract_frontend_controller {
             $this->output->set_output(json_encode(false));
         }
     }	
-	
+    
 }
