@@ -1,8 +1,9 @@
 {foreach $questions as $question nocache}
     <div>
         {$question->getQuestion()}
-        {foreach $question->getAnswersRandom() as $answer}
-            
+		<br />
+        {foreach $question->getAnswersRandom() as $answer nocache}
+            {$answer->getAnswer()} <br />
         {/foreach}
     </div>
 {foreachelse}
