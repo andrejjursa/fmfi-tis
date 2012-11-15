@@ -10,11 +10,11 @@
     </head>
 	
     <body>	
-	{function name="pocetBodov"}{$body} {if $body eq 1}bod{elseif $body ge 2 and $body le 4}body{else}bodov{/if}{/function}
+	{function name="points"}{$points} {if $points eq 1}bod{elseif $points ge 2 and pointsbody le 4}body{else}bodov{/if}{/function}
 		{foreach $questions as $question nocache}
 	
 		<div class="question" id="question_id_{$question->getId()}" question_id="{$question->getId()}" question_value="{$question->getValue()}"> <!-- DIV pre otazku a odpovede -->		
-        <h3>{$question->getQuestion()} ({pocetBodov body=$question->getValue()})</h3>
+        <h3>{$question->getQuestion()} ({points points=$question->getValue()})</h3>
 
 			{foreach $question->getAnswersRandom() as $answer nocache}
 				{$answer->getAnswer()}  <button onclick="checkAnswer({$question->getId()},{$answer->getId()})">Odpovedať...</button><br />
