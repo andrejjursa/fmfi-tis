@@ -16,9 +16,10 @@ class Answers extends Abstract_frontend_controller {
             return;
         }
         
+        $odpoved = -1;
         $answer = $this->load->table_row("answers");
         if ($answer->load($answer_id)) {
-            $odpoved = (int)$answer->getCorrect();
+            $odpoved = intval($answer->getCorrect());
         } else {
             $this->output->set_output(json_encode(false));
             return;
