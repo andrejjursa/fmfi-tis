@@ -9,7 +9,7 @@
 	
 		{foreach $questions as $question nocache}
 	
-		<div id="question_id_"> <!-- DIV pre otazku a odpovede -->		
+		<div id="question_id_{$question->getId()}"> <!-- DIV pre otazku a odpovede -->		
         <h3>{$question->getQuestion()}</h3>
 
 			{foreach $question->getAnswersRandom() as $answer nocache}
