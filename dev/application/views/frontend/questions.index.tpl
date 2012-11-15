@@ -23,7 +23,9 @@
 	{foreachelse}
 		<p>Nenaši sa žadne otázky k fyzikovi.</p>
 	{/foreach}
-        
+			
+			
+		<br /><br /><br /><br />	
         <div id="testprogress" style="width: 200px;"></div>
 	
     </body>
