@@ -3,11 +3,11 @@
 class Questions extends Abstract_frontend_controller {
 	
 	public function index($id = 0){
-		$id = (int) $id;
 		
 		$questions = $this->load->table_collection('questions');
-		$questions->filterForPhysicist($id)->execute();
-		$questions->parser->parse('frontend/questions.index.tpl');
+		$q = $questions->filterForPhysicist(intval($id))->execute()->get();
+		
+		$this->parser->parse('frontend/questions.index.tpl', array('questions' => $q));
 		
 	}
 	
