@@ -1,23 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+Ôªø<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-      <title> Ot·zky... </title>
+      <title> Ot√°zky... </title>
     </head>
 	
     <body>	
 	
 		{foreach $questions as $question nocache}
 	
-		<div id="#question_id_"> <!-- DIV pre otazku a odpovede -->		
+		<div id="question_id_"> <!-- DIV pre otazku a odpovede -->		
         <h3>{$question->getQuestion()}</h3>
 
 			{foreach $question->getAnswersRandom() as $answer nocache}
-				<p>{$answer->getAnswer()}<p/>
+				{$answer->getAnswer()}<br />
 			{/foreach}
 		</div>
 	{foreachelse}
-		<p>Nenaöli sa ûiadne ot·zky k fyzikovi.</p>
+		<p>Nena≈°i sa ≈æadne ot√°zky k fyzikovi.</p>
 	{/foreach}
 	
     </body>
