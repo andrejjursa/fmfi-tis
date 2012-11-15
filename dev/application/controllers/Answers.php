@@ -13,6 +13,7 @@ class Answers extends Abstract_frontend_controller {
         $this->output->set_content_type('application/json');
         if ($answer_id === NULL) {
             $this->output->set_output(json_encode(false));
+            return;
         }
         
         $answer = $this->load->table_row("answers");
@@ -20,6 +21,7 @@ class Answers extends Abstract_frontend_controller {
             $odpoved = (int)$answer->getCorrect();
         } else {
             $this->output->set_output(json_encode(false));
+            return;
         }
         
         if ($odpoved === 1) {
@@ -27,6 +29,7 @@ class Answers extends Abstract_frontend_controller {
         } else {
             $this->output->set_output(json_encode(false));
         }
+        return;
     }	
     
 }
