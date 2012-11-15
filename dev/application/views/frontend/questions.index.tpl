@@ -3,6 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
       <title> Otázky... </title>
+      <link type="text/css" media="screen,print" rel="stylesheet" href="{$site_base_url}public/css/smoothness/jquery-ui.css">
       <script type="text/javascript" src="{$site_base_url}public/js/jquery.js"></script>
       <script type="text/javascript" src="{$site_base_url}public/js/jquery-ui.js"></script>
       <script type="text/javascript" src="{createUri controller="dynamicLoad" action="loadJS" params=["testhandling"]}"></script>
@@ -12,7 +13,7 @@
 	
 		{foreach $questions as $question nocache}
 	
-		<div id="question_id_{$question->getId()}" question_id="{$question->getId()}" question_value="{$question->getValue()}"> <!-- DIV pre otazku a odpovede -->		
+		<div class="question" id="question_id_{$question->getId()}" question_id="{$question->getId()}" question_value="{$question->getValue()}"> <!-- DIV pre otazku a odpovede -->		
         <h3>{$question->getQuestion()}</h3>
 
 			{foreach $question->getAnswersRandom() as $answer nocache}
@@ -22,6 +23,8 @@
 	{foreachelse}
 		<p>Nenaši sa žadne otázky k fyzikovi.</p>
 	{/foreach}
+        
+        <div id="testprogress" style="width: 200px;"></div>
 	
     </body>
 </html>
