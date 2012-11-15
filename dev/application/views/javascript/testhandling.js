@@ -1,5 +1,7 @@
 $(document).ready(function(){
     
+    var allQuestionsValues = {};
+    
     checkAnswer = function(question_id, answer_id) {
         disableQuestionAnswers(question_id);
         

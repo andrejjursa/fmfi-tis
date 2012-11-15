@@ -3,6 +3,9 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
       <title> Otázky... </title>
+      <script type="text/javascript" src="{$site_base_url}public/js/jquery.js"></script>
+      <script type="text/javascript" src="{$site_base_url}public/js/jquery-ui.js"></script>
+      <script type="text/javascript" src="{createUri controller="dynamicLoad" action="loadJS" params=["testhandling"]}"></script>
     </head>
 	
     <body>	
