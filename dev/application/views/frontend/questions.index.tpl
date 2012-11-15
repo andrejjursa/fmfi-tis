@@ -13,7 +13,7 @@
         <h3>{$question->getQuestion()}</h3>
 
 			{foreach $question->getAnswersRandom() as $answer nocache}
-				{$answer->getAnswer()}<br />
+				{$answer->getAnswer()}  <button onclick="checkAnswer({$question->getId()},{$answer->getId()})">Odpovedať...</button><br />
 			{/foreach}
 		</div>
 	{foreachelse}
