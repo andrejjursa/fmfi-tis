@@ -15,6 +15,7 @@ $(document).ready(function(){
             success: function(valid) {
                 if (valid) {
                     currentTestScore += getQuestionValue(question_id);
+                    changeProgressBarValue();
                 }
             },
             error: function() {
@@ -59,7 +60,14 @@ $(document).ready(function(){
     
     createProgressBar = function() {
         $('#testprogress').progressbar({
-            value: 0
+            value: 0,
+            max: sumOfAllQuestionsValues
+        });
+    }
+    
+    changeProgressBarValue = function() {
+        $('#testprogress').progressbar({
+            value: currentTestScore
         });
     }
     
