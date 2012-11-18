@@ -1,6 +1,9 @@
 {foreach $physicists as $physicist nocache} 
     <div>
-        <p><strong>{$physicist->getName()}</strong> ({$physicist->getBirth_year()} - {if $physicist->getDeath_year() gte 99999}...{else}{$physicist->getDeath_year()}{/if})</p>
+        <p><a href="{createUri controller='physicist' action='index' params=[$physicist->getId()]}">
+            <strong>{$physicist->getName()}</strong>
+            ({$physicist->getBirth_year()} - {if $physicist->getDeath_year() gte 99999}...{else}{$physicist->getDeath_year()}{/if})
+        </a></p>
         {$physicist->getShort_description()}
     </div>
 {foreachelse}

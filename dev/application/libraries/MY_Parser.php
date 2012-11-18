@@ -26,6 +26,8 @@ class MY_Parser extends CI_Parser {
     // The name of the theme in use
     protected $_theme_name = '';
     
+    protected $_next_cache_id = '';
+    
     public function __construct()
     {
         // Codeigniter instance and other required libraries/files
@@ -48,6 +50,14 @@ class MY_Parser extends CI_Parser {
 
         // Update theme paths
         $this->_update_theme_paths();
+    }
+    
+    /**
+     * Sets cache id for next parse command
+     * @param string $cache_id cache id
+     */
+    public function setCacheId($cache_id) {
+        $this->_next_cache_id = $cache_id;
     }
     
     /**
@@ -183,7 +193,8 @@ class MY_Parser extends CI_Parser {
         }
         
         // Load our template into our string for judgement
-        $template_string = $this->CI->smarty->fetch($template);
+        $template_string = $this->CI->smarty->fetch($template, $this->_next_cache_id);
+        $this->_next_cache_id = '';
         
         // If we're returning the templates contents, we're displaying the template
         if ($return === FALSE)
