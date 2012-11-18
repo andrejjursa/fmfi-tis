@@ -3,10 +3,9 @@
 class Physicist extends Abstract_frontend_controller {
     
     public function index($id = 1){
-      $id = (int) $id;
-		
+      		
 		  $physicist = $this->load->table_row('physicists');
-		  $physicist->load($id);
+		  $physicist->load(intval($id));
 		  		
 		  $this->parser->parse("frontend/physicist.index.tpl", array('phys' => $physicist));
     
