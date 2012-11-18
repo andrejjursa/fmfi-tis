@@ -7,8 +7,8 @@ class Physicist extends Abstract_frontend_controller {
 		
 		  $physicist = $this->load->table_row('physicists');
 		  $physicist->load($id);
-		
-		  $this->parser->parse("frontend/physicist.index.tpl", $physicist );
+		  		
+		  $this->parser->parse("frontend/physicist.index.tpl", array('phys' => $physicist));
     
     }  
 

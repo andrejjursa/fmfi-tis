@@ -2,17 +2,17 @@
 
 {block name="content"}
 <h1>
-{$$physicist->getName()}
+{$phys->getName()}
 </h1>
 <div>
   <p>
-    Rok narodenia: {$physicist->getName()}
+    Rok narodenia: {$phys->getBirth_year()}
   </p>
   <p>
-    Rok smrti: {$physicist->getName()}
+    Rok smrti: {$phys->getDeath_Year()}
   </p>
   <p>
-    {$physicist->getName()}
+    {$phys->getDescription()}
   </p>
 </div>
 {/block}
