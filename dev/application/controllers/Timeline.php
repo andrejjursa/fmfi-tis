@@ -9,7 +9,8 @@ class Timeline extends Abstract_frontend_controller {
     public function index() {      
         $physicists = $this->load->table_collection('physicists');
         $physicists->filterOnlyDisplayed()->filterMinYear()->execute();
-        $year = count($physicists->get()) ? $physicists->get()[0]->getBirth_year() : 0; 
+        $phisicists_list = $physicists->get();
+        $year = count($phisicists_list) ? $phisicists_list[0]->getBirth_year() : 0; 
         
         $this->parser->assign('year', intval($year));
         $this->parser->assign('max_year', date('Y'));
