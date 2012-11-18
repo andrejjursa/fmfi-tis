@@ -10,6 +10,9 @@ $(document).ready(function(){
             type: 'ajax',
             width: 800,
             height: 600,
+            autoScale: false,
+            autoDimensions: false,
+            hideOnOverlayClick: false,
             ajax: {
                 url: dotest_url.replace('-ID-', physicist_id),
                 cache: false
