@@ -1,10 +1,10 @@
 {extends file="layouts/frontend.tpl"}
 
 {block name="content"}
-{if $phys->getPhoto() gt 0}
-  <img src="{imageThumb path_to_image=$phys->getPhotoObject()->getFile()}" />
+{if !is_null($phys->getPhotoObject()) and !is_null($phys->getPhotoObject()->getFile())}
+  <img src="{imageThumb image=$phys->getPhotoObject()->getFile() width=120 height=120}" />
 {/if}
-<h1 id="physicist_name" physicist_id="{$phys->getId()}" linkToDoTest="{createUri controller='questions' action='index' params=['-ID-'] nocache}">
+<h1 id="physicist_name">
 {$phys->getName()}
 </h1>
 <div>
@@ -16,11 +16,18 @@
     Rok smrti: {$phys->getDeath_Year()}       
   </p>
 {/if}
-
-
   <p>
-    {$phys->getDescription()}
+    {$phys->getDescription()} 
   </p>
-    <p><button id="doTest">Pokúsiť sa urobiť test ...</button></p>
+  <p><a id="doTestLink" href="{createUri controller='questions' action='index' params=[$phys->getId()]}">Pokúsiť sa urobiť test ...</a></p>
 </div>
+{if count($phys->getImages())}
+<div id="images">
+    {foreach $phys->getImages() as $image}{if !is_null($image->getFile())}
+    <a href="{imageThumb image=$image->getFile()}" rel="fancybox" title="{$image->getDescription()|escape:'html'}">
+    <img src="{imageThumb image=$image->getFile() width=90 height=90}" title="{$image->getDescription()|escape:'html'}" alt="{$image->getDescription()|escape:'html'}" />
+    </a>
+    {/if}{/foreach}
+</div>
+{/if}
 {/block}

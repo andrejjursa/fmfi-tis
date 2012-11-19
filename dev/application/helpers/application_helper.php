@@ -70,8 +70,11 @@ function smartyImageThumb($params, $smarty) {
     return '';
 }
 
-function imageThumb($path_to_image, $max_width = NULL, $max_height = NULL) {
-    if (trim($path_to_image) == '' || !file_exists($path_to_image)) { return ''; }
+function imageThumb($image, $max_width = NULL, $max_height = NULL) {
+    if (trim($image) == '') { return ''; }
+    $path_to_image = $image[0] == '/' || $image[0] == '\\' ? substr($image, 1) : $image;
+    if (!file_exists($path_to_image)) { return ''; }
+    
     $CI =& get_instance();
     
     $base_url = Abstract_common_controller::getBaseUrl();

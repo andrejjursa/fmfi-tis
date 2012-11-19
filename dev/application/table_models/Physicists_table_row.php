@@ -3,15 +3,19 @@
 class Physicists_table_row extends Abstract_table_row {
     
     /**
-     * var Abstract_table_relation relation to questions for this physicist.
+     * @var Abstract_table_relation relation to questions for this physicist.
      */
     protected $questions;
     
     /**
-     *
      * @var Abstract_table_relation relation to one photo image.
      */
     protected $photo;
+    
+    /**
+     * @var Abstract_table_relation relation to images for this physicist.
+     */
+    protected $images;
     
     /**
      * Relation initialisations.
@@ -19,6 +23,7 @@ class Physicists_table_row extends Abstract_table_row {
     protected function init() {
         $this->questions = $this->load->table_relation('physicists', 'questions');
         $this->photo = $this->load->table_relation('physicists', 'one_image');
+        $this->images = $this->load->table_relation('physicists', 'images');
     }
     
     /**
@@ -27,6 +32,7 @@ class Physicists_table_row extends Abstract_table_row {
     protected function resetRelations() {
         $this->questions->reset();
         $this->photo->reset();
+        $this->images->Reset();
     }
     
     /**
@@ -56,6 +62,15 @@ class Physicists_table_row extends Abstract_table_row {
         $photos = $this->photo->get($this->getId(), $this->getPhoto());
         if (count($photos)) { return $photos[0]; }
         return $this->load->table_row('images');
+    }
+    
+    /**
+     * Get all related images for this physicist.
+     * 
+     * @return array<Abstract_table_row> related images.
+     */
+    public function getImages() {
+        return $this->images->get($this->getId());
     }
     
 }

@@ -10,7 +10,7 @@
     </head>
 	
     <body>	
-	{function name="points"}{$points} {if $points eq 1}bod{elseif $points ge 2 and $points le 4}body{else}bodov{/if}{/function}
+	{nocache}{function name="points"}{$points} {if $points eq 1}bod{elseif $points ge 2 and $points le 4}body{else}bodov{/if}{/function}{/nocache}
 		{foreach $questions as $question nocache}
 	
 		<div class="question" id="question_id_{$question->getId()}" question_id="{$question->getId()}" question_value="{$question->getValue()}"> <!-- DIV pre otazku a odpovede -->		

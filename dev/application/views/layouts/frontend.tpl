@@ -9,7 +9,7 @@
     <script type="text/javascript" src="{$site_base_url nocache}public/js/jquery.js"></script>
     <script type="text/javascript" src="{$site_base_url nocache}public/js/jquery-ui.js"></script>
     <script type="text/javascript" src="{$site_base_url nocache}public/js/jquery.mousewheel.pack.js"></script>
-	<script type="text/javascript" src="{$site_base_url nocache}public/js/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="{$site_base_url nocache}public/js/jquery.fancybox.pack.js"></script>
     {foreach $additional_js_files as $js_file nocache}<script type="text/javascript" src="{$js_file->src}"></script>{/foreach}
 </head>
 <body>
