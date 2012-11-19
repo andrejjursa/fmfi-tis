@@ -8,9 +8,13 @@
   <p>
     Rok narodenia: {$phys->getBirth_year()}
   </p>
+{if $phys->getDeath_Year() lt 9999}
   <p>
-    Rok smrti: {$phys->getDeath_Year()}
+    Rok smrti: {$phys->getDeath_Year()}       
   </p>
+{/if}
+
+
   <p>
     {$phys->getDescription()}
   </p>
