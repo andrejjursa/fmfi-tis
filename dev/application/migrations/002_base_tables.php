@@ -4,7 +4,7 @@ class Migration_Base_tables extends CI_Migration {
     
     public function up() {
         /**
-         * Add physicists table begin.
+         * Add inventions_physicists_mm table begin.
          */
         $this->dbforge->add_field(array(
             'invention_id' => array(
@@ -29,6 +29,9 @@ class Migration_Base_tables extends CI_Migration {
         $this->dbforge->add_key('physicist_id');
         
         $this->dbforge->create_table('inventions_physicists_mm');
+        /**
+         * Add inventions_physicists_mm table end.
+         */
     }
     
     public function down() {
