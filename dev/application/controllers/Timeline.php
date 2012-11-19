@@ -44,7 +44,7 @@ class Timeline extends Abstract_frontend_controller {
         $output_data['inventions'] = trim($this->parser->parse('partials/timeline.index.inventions.tpl', $data, TRUE));
         
         $this->output->set_content_type('application/json');
-        $this->output->set_output(json_encode($output_data, JSON_PRETTY_PRINT));
+        $this->output->set_output(json_encode($output_data));
     }
     
     /**
@@ -88,7 +88,7 @@ class Timeline extends Abstract_frontend_controller {
         }
         
         $this->output->set_content_type('application/json');
-        $this->output->set_output(json_encode($data, JSON_PRETTY_PRINT));
+        $this->output->set_output(json_encode($data));
     }
 }
 
