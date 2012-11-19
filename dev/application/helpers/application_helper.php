@@ -59,4 +59,55 @@ function smartyCreateUri($params, $smarty) {
     return '';
 }
 
+function smartyImageThumb($params, $smarty) {
+    if (isset($params['image'])) {
+        $image = $params['image'];
+        $width = isset($params['width']) ? intval($params['width']) : NULL;
+        $height = isset($params['height']) ? intval($params['height']) : NULL;
+        
+        return imageThumb($image, $width, $height);
+    }
+    return '';
+}
+
+function imageThumb($path_to_image, $max_width = NULL, $max_height = NULL) {
+    if (trim($path_to_image) == '' || !file_exists($path_to_image)) { return ''; }
+    $CI =& get_instance();
+    
+    $base_url = Abstract_common_controller::getBaseUrl();
+    
+    $original_full_path = $base_url . ($path_to_image[0] == '/' ? substr($path_to_image, 1) : $path_to_image);
+    
+    if (is_null($max_width) && is_null($max_height)) {
+        return $original_full_path;
+    }
+    
+    $path_info = pathinfo($path_to_image);
+    
+    $cache_dir = $path_info['dirname'];
+    $cache_dir = substr($cache_dir, -1) == '/' ? $cache_dir . 'cache' : $cache_dir . '/cache';
+    $new_image_name = $path_info['filename'] . '_w' . (is_null($max_width) ? 'NULL' : $max_width) . '_h' . (is_null($max_height) ? 'NULL' : $max_height) . '.' . $path_info['extension'];
+    $new_image_path = $path_info['dirname'];
+    $new_image_path = $cache_dir . '/' . $new_image_name;
+    if (!file_exists($new_image_path) || filemtime($new_image_path) < filemtime($path_to_image)) {    
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $path_to_image;
+        $config['create_thumb'] = FALSE;
+        $config['maintain_ratio'] = TRUE;
+        $config['new_image'] = $new_image_path;
+        if (!is_null($max_width)) { $config['width'] = $max_width; }
+        if (!is_null($max_height)) { $config['height'] = $max_height; }
+
+        $CI->load->library('image_lib');
+
+        $CI->image_lib->initialize($config);
+
+        $CI->image_lib->resize();
+    }
+    
+    $new_image_basepath = $base_url . ($new_image_path[0] == '/' ? substr($new_image_path, 1) : $new_image_path);
+    
+    return $new_image_basepath;
+}
+
 ?>

@@ -35,6 +35,7 @@ class Abstract_common_controller extends My_Controller {
         
         $this->parser->assign('site_base_url', self::getBaseUrl());
         $this->parser->registerPlugin('function', 'createUri', 'smartyCreateUri');
+        $this->parser->registerPlugin('function', 'imageThumb', 'smartyImageThumb');
     }
     
     /**
