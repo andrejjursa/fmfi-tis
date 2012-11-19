@@ -1,6 +1,8 @@
 {foreach $inventions as $invention nocache}
     <div>
-        <p><strong>{$invention->getName()}</strong> ({$invention->getYear()})</p>
+        <p><a href="{createUri controller='inventions' action='index' params=[$invention->getId()]}">
+            <strong>{$invention->getName()}</strong> ({$invention->getYear()})
+        </a></p>
         {$invention->getShort_description()}
         <p><a href="{createUri controller='inventions' action='index' params=[$invention->getId()]}">Viac informácií</a></p>
     </div>

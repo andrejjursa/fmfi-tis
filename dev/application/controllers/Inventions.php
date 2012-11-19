@@ -2,13 +2,15 @@
 
 class Inventions extends Abstract_frontend_controller {
 	
-	public function index($id = 0){
-		$id = (int) $id;
-		
-		$this->parser->parse("frontend/inventions.index.tpl", array(
-			"inventions" => $this->load->table_collection("inventions")->filterOnlyDisplayed()->execute()->get(),
-			"id" => $id
-		));
+	public function index($id = 0) {
+            if (!$this->parser->isCached('frontend/inventions.index.tpl', 'invention_detail_' . intval($id))) {
+                $invention = $this->load->table_row('inventions');
+                $invention->load(intval($id));
+                $this->parser->assign('invention', $invention);
+            }
+            
+            $this->parser->setCacheId('invention_detail_' . intval($id));
+            $this->parser->parse('frontend/inventions.index.tpl');
 	}
 	
 }
