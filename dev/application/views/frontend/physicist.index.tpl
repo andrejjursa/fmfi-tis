@@ -1,6 +1,9 @@
 {extends file="layouts/frontend.tpl"}
 
 {block name="content"}
+{if $phys->getPhoto() gt 0}
+  <img src="{imageThumb path_to_image=$phys->getPhotoObject()->getFile()}" />
+{/if}
 <h1 id="physicist_name" physicist_id="{$phys->getId()}" linkToDoTest="{createUri controller='questions' action='index' params=['-ID-'] nocache}">
 {$phys->getName()}
 </h1>
