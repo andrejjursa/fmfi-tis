@@ -70,6 +70,7 @@ class Migration_Base_tables extends CI_Migration {
         ));
         
         $this->dbforge->add_key('id', TRUE);
+        $this->dbforge->add_key('miniapp_id');
         
         $this->dbforge->create_table('miniapp_files');
         /**
