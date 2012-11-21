@@ -38,7 +38,7 @@ class Migration_Base_tables extends CI_Migration {
          */
         
         /**
-         * Add physicist_image_mm table begin.
+         * Add physicists_images_mm table begin.
          */
         $this->dbforge->add_field(array(
             'image_id' => array(
@@ -62,13 +62,13 @@ class Migration_Base_tables extends CI_Migration {
         $this->dbforge->add_key('image_id');
         $this->dbforge->add_key('physicist_id');
         
-        $this->dbforge->create_table('physicist_image_mm');
+        $this->dbforge->create_table('physicists_images_mm');
         /**
-         * Add physicist_image_mm table end.
+         * Add physicists_images_mm table end.
          */
         
         /**
-         * Add invention_image_mm table begin.
+         * Add inventions_images_mm table begin.
          */
         $this->dbforge->add_field(array(
             'image_id' => array(
@@ -92,9 +92,9 @@ class Migration_Base_tables extends CI_Migration {
         $this->dbforge->add_key('image_id');
         $this->dbforge->add_key('invention_id');
         
-        $this->dbforge->create_table('invention_image_mm');
+        $this->dbforge->create_table('inventions_images_mm');
         /**
-         * Add invention_image_mm table end.
+         * Add inventions_images_mm table end.
          */
     }
     
@@ -104,13 +104,13 @@ class Migration_Base_tables extends CI_Migration {
          */
         $this->dbforge->drop_table('images');
         /**
-         * Drop physicist_image_mm table.
+         * Drop physicists_images_mm table.
          */
-        $this->dbforge->drop_table('physicist_image_mm');
+        $this->dbforge->drop_table('physicists_images_mm');
         /**
-         * Drop invention_image_mm table.
+         * Drop inventions_images_mm table.
          */
-        $this->dbforge->drop_table('invention_image_mm');
+        $this->dbforge->drop_table('inventions_images_mm');
     }
     
 }

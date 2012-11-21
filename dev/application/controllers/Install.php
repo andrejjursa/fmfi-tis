@@ -19,9 +19,23 @@ class Install extends CI_Controller {
             show_error($this->migration->error_string());
         }
     }
+    
+    public function updateToMigration($level = NULL) {
+        $this->load->database();
+        
+        if (!$this->_doUpdateMigrations($level)) {
+            show_error($this->migration->error_string());
+        }
+    }
 
-    public function _doUpdateMigrations() {
-        return $this->migration->latest();
+    public function _doUpdateMigrations($level = NULL) {
+        if (is_null($level)) {
+            return $this->migration->latest();
+        }
+        if (is_numeric($level)) {
+            return $this->migration->version(intval($level));
+        }
+        return false;
     }
 }
 
