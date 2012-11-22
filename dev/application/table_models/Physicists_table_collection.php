@@ -37,6 +37,21 @@ class Physicists_table_collection extends Abstract_table_collection {
         
         return $this;
     }
+    
+    /**
+     * Settings for editing grid of admin panel.
+     * 
+     * @return void
+     */
+    protected function gridSettings() {
+        $name = gridField::newGridField();
+        $name->setField('name')->setName('Meno')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_TEXT);
+        $this->addGridField($name);
+        
+        $short_description = gridField::newGridField();
+        $short_description->setField('short_description')->setName('Krátky popis')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_HTML);
+        $this->addGridField($short_description);
+    }
 }
 
 ?>

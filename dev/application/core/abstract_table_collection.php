@@ -10,6 +10,7 @@
  */
 
 require_once APPPATH . 'core/abstract_table_core.php';
+require_once APPPATH . 'core/abstract_editor_classes.php';
 
 class Abstract_table_collection extends Abstract_table_core {
     
@@ -34,11 +35,23 @@ class Abstract_table_collection extends Abstract_table_core {
     protected $query = NULL;
     
     /**
+     * @var string name of primary key field.
+     */
+    protected $primary_id = 'id';
+    
+    /**
+     * @var array<mixed> settings for editing grid.
+     */
+    private $grid_settings = array();
+    
+    /**
      * Class constructor.
      */
     public function __construct() {
         $this->determineTableColumns();
         $this->reset();
+        $this->defaultEditingGrid();
+        $this->gridSettings();
     }
     
     /**
@@ -142,6 +155,68 @@ class Abstract_table_collection extends Abstract_table_core {
     }
     
     /**
+     * Returns total number of pages.
+     * 
+     * @param integer $rows_per_page number of rows displayed on one page.
+     * @return integer number of pages.
+     */
+    public function getPagesCount($rows_per_page) {
+        if (intval($rows_per_page) == 0) { return 1; }
+        
+        $count_of_rows = $this->count();
+        
+        return ceil($count_of_rows / intval($rows_per_page));
+    }
+    
+    /**
+     * Set appropriate limits to the query by arguments.
+     * 
+     * @param integer $page number of page.
+     * @param integer $rows_per_page number of rows displayed on one page.
+     * @return Abstract_table_collection reference to this object.
+     */
+    public function paginate($page, $rows_per_page) {
+        if (intval($rows_per_page) == 0) { return $this; } 
+        $pages_count = $this->getPagesCount();
+        
+        $_page = (intval($page) >= 1 && intval($page) <= $pages_count) ? intval($page) : 1;
+        
+        $this->limit(intval($rows_per_page), ($_page - 1) * intval($rows_per_page));
+        
+        return $this;
+    }
+    
+    final public function getGridSettings() {
+        return $this->grid_settings;
+    }
+    
+    protected function gridSettings() {
+        
+    }
+    
+    protected function setGridTableName($name) {
+        if (is_string($name)) {
+            $this->grid_settings['table_name'] = $name;
+        }
+    }
+    
+    /**
+     * Add gridField class to list of field of grid view in editor.
+     * 
+     * @param gridField $field definition of field.
+     * @return Abstract_table_collection reference to this object.
+     */
+    protected function addGridField(gridField $field) {
+        $field_index = $field->getField();
+        
+        if (!isset($this->grid_settings['fields'][$field_index])) {
+            $this->grid_settings['fields'][$field_index] = $field;
+        }
+        
+        return $this;
+    }
+    
+    /**
      * This function reads name of database table from name of class, but only
      * when table_name is set to NULL.
      * 
@@ -186,6 +261,22 @@ class Abstract_table_collection extends Abstract_table_core {
      */
     protected function _setKnownFields($fields) {
         $GLOBALS['TABLE_KNOWN_FIELDS'][$this->table_name] = $fields;
+    }
+    
+    private function defaultEditingGrid() {
+        $id = gridField::newGridField();
+        $id->setField($this->primary_id)->setName('ID')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_TEXT);
+        $this->addGridField($id);
+        
+        $crdate = gridField::newGridField();
+        $crdate->setField('crdate')->setName('Vytvorené')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_DATETIME);
+        $this->addGridField($crdate);
+        
+        $tstamp = gridField::newGridField();
+        $tstamp->setField('tstamp')->setName('Posledná zmena')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_DATETIME);
+        $this->addGridField($tstamp);
+        
+        $this->setGridTableName($this->table_name);
     }
 }
 

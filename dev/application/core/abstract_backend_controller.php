@@ -13,7 +13,7 @@ require_once APPPATH . 'core/abstract_common_controller.php';
 
 class Abstract_backend_controller extends Abstract_common_controller {
     
-    public function __construct() {
+    public function __construct($validate_login = TRUE) {
         parent::__construct();
     }
        
