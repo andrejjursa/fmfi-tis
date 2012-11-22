@@ -3,6 +3,10 @@
 define('GRID_FIELD_TYPE_TEXT', 'text');
 define('GRID_FIELD_TYPE_DATETIME', 'datetime');
 define('GRID_FIELD_TYPE_HTML', 'html');
+define('GRID_FIELD_TYPE_IMAGE', 'image');
+define('GRID_FIELD_TYPE_FILE', 'file');
+define('GRID_FIELD_TYPE_NUMBER', 'number');
+define('GRID_FIELD_TYPE_BOOL', 'bool');
 
 class gridField {
     
@@ -13,6 +17,8 @@ class gridField {
     private $sortable = TRUE;
     
     private $type = GRID_FIELD_TYPE_TEXT;
+    
+    private $sub_field = NULL;
     
     /**
      * Creates new instance of this class.
@@ -63,6 +69,16 @@ class gridField {
         return $this;
     }
     
+    public function setSubField($sub_field) {
+        if (is_object($sub_field) && $sub_field instanceof gridField) {
+            $this->sub_field = $sub_field;
+        } else {
+            throw new exception('gridField::setSubField argument must be gridField object');
+        }
+        
+        return $this;
+    }
+    
     public function getField() {
         return $this->field;
     }
@@ -77,6 +93,10 @@ class gridField {
     
     public function getType() {
         return $this->type;
+    }
+    
+    public function getSubField() {
+        return $this->sub_field;
     }
 }
 

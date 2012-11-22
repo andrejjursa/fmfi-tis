@@ -48,9 +48,20 @@ class Physicists_table_collection extends Abstract_table_collection {
         $name->setField('name')->setName('Meno')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_TEXT);
         $this->addGridField($name);
         
+        $displayed = gridField::newGridField();
+        $displayed->setField('displayed')->setName('Je zobraziteľný?')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_BOOL);
+        $this->addGridField($displayed);
+        
         $short_description = gridField::newGridField();
         $short_description->setField('short_description')->setName('Krátky popis')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_HTML);
         $this->addGridField($short_description);
+        
+        $photo = gridField::newGridField();
+        $photo->setField('PhotoObject')->setName('Fotografia')->setSortable(FALSE)->setType(GRID_FIELD_TYPE_IMAGE);
+        $photo_subfield = gridField::newGridField();
+        $photo_subfield->setField('file');
+        $photo->setSubField($photo_subfield);
+        $this->addGridField($photo);
     }
 }
 

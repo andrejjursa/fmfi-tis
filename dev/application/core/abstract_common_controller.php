@@ -117,14 +117,24 @@ class Abstract_common_controller extends My_Controller {
      * @return string base url.
      */
     public static function getBaseUrl() {
-        $CI =& get_instance();
-        $CI->config->load('config', TRUE);
-        $base_url = $CI->config->item('base_url', 'config');
+        $base_url = self::getConfigItem('config', 'base_url');
         $base_url = $base_url[strlen($base_url) - 1] == '/' ? $base_url : $base_url . '/';
         
         return $base_url;
     }
     
+    /**
+     * Returns config item value from given file.
+     * 
+     * @param string $config_file configuration file name without extension.
+     * @param string $item name of item to fetch from config file.
+     * @return mixed value of config file item.
+     */
+    public static function getConfigItem($config_file, $item) {
+        $CI =& get_instance();
+        $CI->config->load($config_file, TRUE);
+        return $CI->config->item($item, $config_file);
+    }
 }
 
 ?>

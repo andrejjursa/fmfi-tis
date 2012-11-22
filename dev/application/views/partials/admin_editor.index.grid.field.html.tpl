@@ -1,0 +1,1 @@
+<div class="html_field" style="owerflow: auto; width: 100%; height: 100%;">{$row->data($gridField->getField())}</div>

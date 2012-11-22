@@ -160,7 +160,7 @@ class Abstract_table_collection extends Abstract_table_core {
      * @param integer $rows_per_page number of rows displayed on one page.
      * @return integer number of pages.
      */
-    public function getPagesCount($rows_per_page) {
+    public function getPagesCount($rows_per_page = 20) {
         if (intval($rows_per_page) == 0) { return 1; }
         
         $count_of_rows = $this->count();
@@ -175,7 +175,7 @@ class Abstract_table_collection extends Abstract_table_core {
      * @param integer $rows_per_page number of rows displayed on one page.
      * @return Abstract_table_collection reference to this object.
      */
-    public function paginate($page, $rows_per_page) {
+    public function paginate($page, $rows_per_page = 20) {
         if (intval($rows_per_page) == 0) { return $this; } 
         $pages_count = $this->getPagesCount();
         
@@ -265,7 +265,7 @@ class Abstract_table_collection extends Abstract_table_core {
     
     private function defaultEditingGrid() {
         $id = gridField::newGridField();
-        $id->setField($this->primary_id)->setName('ID')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_TEXT);
+        $id->setField($this->primary_id)->setName('ID')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_NUMBER);
         $this->addGridField($id);
         
         $crdate = gridField::newGridField();
