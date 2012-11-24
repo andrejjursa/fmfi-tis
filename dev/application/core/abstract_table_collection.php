@@ -45,13 +45,16 @@ class Abstract_table_collection extends Abstract_table_core {
     private $grid_settings = array();
     
     /**
+     * @var array<mixed> settings for record editor (new/edit actions).
+     */
+    private $editor_settings = array();
+    
+    /**
      * Class constructor.
      */
     public function __construct() {
         $this->determineTableColumns();
         $this->reset();
-        $this->defaultEditingGrid();
-        $this->gridSettings();
     }
     
     /**
@@ -187,11 +190,28 @@ class Abstract_table_collection extends Abstract_table_core {
     }
     
     final public function getGridSettings() {
+        $this->defaultEditingGrid();
+        $this->gridSettings();
         return $this->grid_settings;
+    }
+    
+    final public function getEditorSettings() {
+        $this->defaultEditorSettings();
+        $this->editorSettings();
+        return $this->editor_settings;
     }
     
     protected function gridSettings() {
         
+    }
+    
+    protected function editorSettings() {
+        
+    }
+    
+    protected function addEditorTab(editorTab $tab) {
+        $this->editor_settings['tabs'][] = $tab;
+        return $this;
     }
     
     protected function setGridTableName($name) {
@@ -213,6 +233,41 @@ class Abstract_table_collection extends Abstract_table_core {
             $this->grid_settings['fields'][$field_index] = $field;
         }
         
+        return $this;
+    }
+    
+    /**
+     * Enable or disable grid view for derived table collection.
+     * 
+     * @param boolean $status TRUE for enable grid view, FALSE for disable.
+     * @return Abstract_table_collection reference to this object.
+     */
+    protected function enableGrid($status = TRUE) {
+        $this->grid_settings['enabled'] = is_bool($status) ? $status : FALSE;
+        return $this;
+    }
+    
+    protected function enableNewRecord($status = TRUE, $title = 'Nový záznam') {
+        $this->grid_settings['operations']['new_record'] = is_bool($status) ? $status : FALSE;
+        $this->grid_settings['operations']['new_record_title'] = $title;
+        return $this;
+    }
+    
+    protected function enableEditRecord($status = TRUE, $title = 'Upraviť') {
+        $this->grid_settings['operations']['edit_record'] = is_bool($status) ? $status : FALSE;
+        $this->grid_settings['operations']['edit_record_title'] = $title;
+        return $this;
+    }
+    
+    protected function enableDeleteRecord($status = TRUE, $title = 'Vymazať') {
+        $this->grid_settings['operations']['delete_record'] = is_bool($status) ? $status : FALSE;
+        $this->grid_settings['operations']['delete_record_title'] = $title;
+        return $this;
+    }
+    
+    protected function enablePreviewRecord($status = TRUE, $title = 'Náhlad') {
+        $this->grid_settings['operations']['preview_record'] = is_bool($status) ? $status : FALSE;
+        $this->grid_settings['operations']['preview_record_title'] = $title;
         return $this;
     }
     
@@ -264,6 +319,8 @@ class Abstract_table_collection extends Abstract_table_core {
     }
     
     private function defaultEditingGrid() {
+        $this->grid_settings = array();
+        
         $id = gridField::newGridField();
         $id->setField($this->primary_id)->setName('ID')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_NUMBER);
         $this->addGridField($id);
@@ -277,6 +334,15 @@ class Abstract_table_collection extends Abstract_table_core {
         $this->addGridField($tstamp);
         
         $this->setGridTableName($this->table_name);
+        $this->enableGrid(FALSE);
+        $this->enableNewRecord(FALSE);
+        $this->enableEditRecord(FALSE);
+        $this->enableDeleteRecord(FALSE);
+        $this->enablePreviewRecord(FALSE);
+    }
+    
+    private function defaultEditorSettings() {
+        $this->editor_settings = array();
     }
 }
 

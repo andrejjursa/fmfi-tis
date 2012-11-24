@@ -62,6 +62,77 @@ class Physicists_table_collection extends Abstract_table_collection {
         $photo_subfield->setField('file');
         $photo->setSubField($photo_subfield);
         $this->addGridField($photo);
+        
+        $this->enableGrid();
+        $this->setGridTableName('Fyzici');
+        $this->enableNewRecord(TRUE, 'Pridať fyzika');
+        $this->enableEditRecord(TRUE);
+        $this->enableDeleteRecord(TRUE);
+        $this->enablePreviewRecord(TRUE);
+    }
+    
+    protected function editorSettings() {
+        $about = editorTab::getNewEditorTab();
+        $about->setName('Všeobecné informácie');
+        
+        $field_displayed = new editorFieldSingleCheckbox();
+        $field_displayed->setField('displayed')->setFieldLabel('Zobraziteľný')->setFieldHint('Zaškrtnite, ak má byť fyzik zobrazený na stránke.')
+            ->setDefaultChecked(FALSE)->setDefaultValue(TRUE);
+        $about->addField($field_displayed);
+        
+        $field_name = new editorFieldText();
+        $field_name->setField('name')->setFieldLabel('Meno')->setFieldHint('Zadajte celé meno fyzika.')->setRules(array(
+            'required' => TRUE,
+            'messages' => array(
+                'required' => 'Meno fyzika je vyžadované.',
+            ),
+        ));
+        $about->addField($field_name);
+        
+        $field_birth_year = new editorFieldText();
+        $field_birth_year->setField('birth_year')->setFieldLabel('Rok narodenia')->setFieldHint('Zadajte rok narodenia fyzika.')->setRules(array(
+            'required' => true,
+            'minlength' => 4,
+            'maxlength' => 4,
+            'digits' => true,
+            'messages' => array(
+                'required' => 'Rok narodenia je vyžadovaný.',
+                'minlength' => 'Rok musí byť 4 číslicový.',
+                'maxlength' => 'Rok musí byť 4 číslicový.',
+                'digits' => 'Rok musí byť zadaný číselne.',
+            ),
+        ));
+        $about->addField($field_birth_year);
+        
+        $field_is_dead = new editorFieldSingleCheckbox();
+        $field_is_dead->setField('_is_dead')->setFieldLabel('Fyzik už zomrel')->setFieldHint('Označte, ak fyzik už zomrel.')->setDefaultChecked(FALSE)
+            ->setCheckboxText('Áno')->setDefaultValue(1);
+        $about->addField($field_is_dead);
+        
+        $field_death_year = new editorFieldText();
+        $field_death_year->setField('death_year')->setFieldLabel('Rok úmrtia')->setFieldHint('Zadajte rok úmrtia fyzika.')->setRules(array(
+            'required' => '#' . $field_is_dead->getFieldHtmlID() . ':checked',
+            'minlength' => 4,
+            'maxlength' => 4,
+            'digits' => true,
+            'greater_than' => '#' . $field_birth_year->getFieldHtmlID(),
+            'messages' => array(
+                'required' => 'Ak fyzik už zomrel, je treba vyplniť rok jeho úmrtia.',
+                'minlength' => 'Rok musí byť 4 číslicový.',
+                'maxlength' => 'Rok musí byť 4 číslicový.',
+                'digits' => 'Rok musí byť zadaný číselne.',
+                'greater_than' => 'Rok úmrtia musí byť väčšie číslo ako rok narodenia.',
+            ),
+        ));
+        $about->addField($field_death_year);
+        
+        $this->addEditorTab($about);
+        
+        $texts = editorTab::getNewEditorTab();
+        $texts->setName('Informácie');
+        
+        $this->addEditorTab($texts);
+        
     }
 }
 
