@@ -55,9 +55,14 @@ class Admin_editor extends Abstract_backend_controller {
         $this->_addTemplateJs('admin_editor/editor.js');
         $this->_addTemplateJs('jquery.validate.js');
         $this->_addTemplateJs('jquery.validate.new_rules.js');
+        $this->_addTemplateJs('tinymce/jquery.tinymce.js');
         $this->_assignTemplateAdditionals();
         
         $this->parser->parse('backend/admin_editor.newRecord.tpl');
+    }
+    
+    public function saveRecord($table) {
+        print_r($this->input->post('data'));
     }
     
     public function editRecord($table = NULL, $id = NULL) {

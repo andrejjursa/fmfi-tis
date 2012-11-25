@@ -1,5 +1,5 @@
 <div id="editor_tabs">
-    <ul>
+    <ul id="editor_tabs_labels">
     {$i = 1}
     {foreach $editor_settings.tabs as $tab}
         <li><a href="#editor_tabs-tab{$i}">{$tab->getName()}</a></li>{$i = $i + 1}

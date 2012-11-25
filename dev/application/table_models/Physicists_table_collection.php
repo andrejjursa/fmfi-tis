@@ -92,13 +92,13 @@ class Physicists_table_collection extends Abstract_table_collection {
         $field_birth_year = new editorFieldText();
         $field_birth_year->setField('birth_year')->setFieldLabel('Rok narodenia')->setFieldHint('Zadajte rok narodenia fyzika.')->setRules(array(
             'required' => true,
-            'minlength' => 4,
+            'minlength' => 1,
             'maxlength' => 4,
             'digits' => true,
             'messages' => array(
                 'required' => 'Rok narodenia je vyžadovaný.',
-                'minlength' => 'Rok musí byť 4 číslicový.',
-                'maxlength' => 'Rok musí byť 4 číslicový.',
+                'minlength' => 'Rok musí byť minimálne 1 číslicový.',
+                'maxlength' => 'Rok musí byť maximálne 4 číslicový.',
                 'digits' => 'Rok musí byť zadaný číselne.',
             ),
         ));
@@ -112,14 +112,14 @@ class Physicists_table_collection extends Abstract_table_collection {
         $field_death_year = new editorFieldText();
         $field_death_year->setField('death_year')->setFieldLabel('Rok úmrtia')->setFieldHint('Zadajte rok úmrtia fyzika.')->setRules(array(
             'required' => '#' . $field_is_dead->getFieldHtmlID() . ':checked',
-            'minlength' => 4,
+            'minlength' => 1,
             'maxlength' => 4,
             'digits' => true,
             'greater_than' => '#' . $field_birth_year->getFieldHtmlID(),
             'messages' => array(
                 'required' => 'Ak fyzik už zomrel, je treba vyplniť rok jeho úmrtia.',
-                'minlength' => 'Rok musí byť 4 číslicový.',
-                'maxlength' => 'Rok musí byť 4 číslicový.',
+                'minlength' => 'Rok musí byť minimálne 1 číslicový.',
+                'maxlength' => 'Rok musí byť maximálne 4 číslicový.',
                 'digits' => 'Rok musí byť zadaný číselne.',
                 'greater_than' => 'Rok úmrtia musí byť väčšie číslo ako rok narodenia.',
             ),
@@ -130,6 +130,16 @@ class Physicists_table_collection extends Abstract_table_collection {
         
         $texts = editorTab::getNewEditorTab();
         $texts->setName('Informácie');
+        
+        $field_description = new editorFieldTinymce();
+        $field_description->setField('description')->setFieldLabel('Detailný text o fyzikovi')->setFieldHint('Sem vložte text popisujúci fyzikov život a prácu.')
+            ->setRules(array('required' => true, 'messages' => array('required' => 'Je potrebné vyplniť túto položku.')));
+        $texts->addField($field_description);
+        
+        $field_short_description = new editorFieldTinymce();
+        $field_short_description->setField('short_description')->setFieldLabel('Skrátený text o fyzikovi')->setFieldHint('Sem vložte skrátený popis fyzika (bude na časovej osi).')
+            ->setRules(array('required' => true, 'messages' => array('required' => 'Je potrebné vyplniť túto položku.')));
+        $texts->addField($field_short_description);
         
         $this->addEditorTab($texts);
         

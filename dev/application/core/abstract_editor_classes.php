@@ -229,6 +229,18 @@ class editorFieldText extends editorField {
     
 }
 
+class editorFieldTinymce extends editorField {
+    
+    public function getFieldType() {
+        return 'tinymce_field';
+    }
+    
+    public function getFieldHtmlID() {
+        return 'tinymce_field_' . $this->getField() . '_id';
+    }
+    
+}
+
 class editorFieldSingleCheckbox extends editorField {
     
     private $default = FALSE;
