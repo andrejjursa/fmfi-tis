@@ -56,6 +56,8 @@ class Admin_editor extends Abstract_backend_controller {
         $this->_addTemplateJs('jquery.validate.js');
         $this->_addTemplateJs('jquery.validate.new_rules.js');
         $this->_addTemplateJs('tinymce/jquery.tinymce.js');
+        $this->_addTemplateJs('jquery.uploadify.min.js');
+        $this->_addTemplateCss('uploadify.css');
         $this->_assignTemplateAdditionals();
         
         $this->parser->parse('backend/admin_editor.newRecord.tpl');
@@ -75,6 +77,23 @@ class Admin_editor extends Abstract_backend_controller {
     
     public function previewRecord($table = NULL, $id = NULL) {
         
+    }
+    
+    public function file_upload($table = NULL) {
+        $table_collection = $this->load->table_collection($table);
+        
+        $this->output->set_content_type('Content-type: text/plain');
+        
+        if ($table_collection == NULL) {
+            $this->output->set_output('Nie je možné urèi cie¾ovú tabu¾ku.');
+        } else {
+            $editor_settings = $table_collection->getEditorSettings();
+            
+            $field_name = $this->input->post('field');
+            $old_file = $this->input->post('oldfile');
+            
+            $this->output->set_output($field_name . ' ' . $old_file);
+        }
     }
     
     private function _numberOfRowsPerPage() {

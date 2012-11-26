@@ -128,7 +128,7 @@ class editorTab {
     
     public function addField($field = NULL) {
         if (is_object($field) && $field instanceof editorField) {
-            $this->tab_fields[] = $field;
+            $this->tab_fields[$field->getField()] = $field;
         } else {
             throw new exception('editorTab::addField argument must be instance of editorField class');
         }
@@ -253,6 +253,10 @@ class editorFieldSingleCheckbox extends editorField {
         return 'single_checkbox';
     }
     
+    public function getFieldHtmlID() {
+        return 'single_checkbox_field_' . $this->getField() . '_id';
+    }
+    
     public function setDefaultChecked($default) {
         if (is_bool($default)) {
             $this->default = $default;
@@ -292,8 +296,65 @@ class editorFieldSingleCheckbox extends editorField {
         return $this->value;
     }
     
+}
+
+class editorFieldFileUpload extends editorField {
+    
+    private $upload_path = '';
+    
+    private $allowed_types = '*.*';
+    
+    private $max_size = '2MB';
+    
+    public function getFieldType() {
+        return 'file_upload_field';
+    }
+    
     public function getFieldHtmlID() {
-        return 'single_checkbox_field_' . $this->getField() . '_id';
+        return 'file_upload_field_' . $this->getField() . '_id';
+    }
+    
+    public function setUploadPath($path) {
+        if (is_string($path)) {
+            if (substr(ltrim($path, '/'), 0, 14) == 'public/uploads') {
+                $this->upload_path = $path;    
+            } else {
+                throw new exception(get_class($this) . '::setUploadPath argument value must begin with public/uploads');
+            }
+        } else {
+            throw new exception(get_class($this) . '::setUploadPath argument must be string');
+        }
+        return $this;
+    }
+    
+    public function setAllowedTypes($types) {
+        if (is_string($types)) {
+            $this->allowed_types = $types;
+        } else {
+            throw new exception(get_class($this) . '::setAllowedTypes argument must be string');
+        }
+        return $this;
+    }
+    
+    public function setMaxSize($size) {
+        if (is_string($size) || is_integer($size)) {
+            $this->max_size = $size;
+        } else {
+            throw new exception(get_class($this) . '::setMaxSize argument must be string or integer');
+        }
+        return $this;
+    }
+    
+    public function getUploadPath() {
+        return $this->upload_path;
+    }
+    
+    public function getAllowedTypes() {
+        return $this->allowed_types;
+    }
+    
+    public function getMaxSize() {
+        return $this->max_size;
     }
     
 }
