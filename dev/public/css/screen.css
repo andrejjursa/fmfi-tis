@@ -1,0 +1,56 @@
+body{
+	font-family: tahoma, sans-serif;
+	font-size: 14px;
+	margin: 10px;
+}
+
+#wrapper{
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#header{
+	clear: both;
+	margin: 0 auto;
+	height: 200px;
+	background: red;
+}
+
+#timelineWrap{
+	float: left;
+	width: 40px;
+	margin-left: 5px;
+	text-align: center;	
+}
+
+#timeline{
+	margin: 20px 0 20px 12px;
+}
+
+#physicists{
+	width: 455px;
+	padding: 10px;
+	float: left;
+	background: #eee;
+}
+
+#inventions{
+	width: 455px;
+	padding: 10px;
+	float: right;
+	background: #ddd;
+}
+
+#content div h1{
+	text-align: center;
+}
+
+#breadcrumbs{
+	padding: 3px;
+}
+
+#footer{
+	clear: both;
+	text-align: center;
+	height: 60px;
+}

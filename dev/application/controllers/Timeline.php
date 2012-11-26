@@ -6,21 +6,31 @@ class Timeline extends Abstract_frontend_controller {
      * Displays page with timeline. Year on timeline will be set to its minimum as well
      * as list of physicists and inventions from this minimum year.
      */
-    public function index() {      
+    public function index($year = NULL) {
+		
         $physicists = $this->load->table_collection('physicists');
-        $physicists->filterOnlyDisplayed()->filterMinYear()->execute();
-        $phisicists_list = $physicists->get();
-        $year = count($phisicists_list) ? $phisicists_list[0]->getBirth_year() : 0; 
+		$physicists->filterOnlyDisplayed()->filterMinYear()->execute();
+		$phisicists_list = $physicists->get();
+		$minYear = count($phisicists_list) ? $phisicists_list[0]->getBirth_year() : 0;
         
-        $this->parser->assign('year', intval($year));
+		if($year === NULL){
+			$year = $minYear;
+		}
+		$year = (int) $year;
+		
+        $this->parser->assign('year', $year);
         $this->parser->assign('max_year', date('Y'));
+		$this->parser->assign('min_year', $minYear);
         
+		$this->parser->disable_caching();
+		
         $data = $this->_getPhysicistsAndInventions($year);
         
         $this->parser->assign($data);
         
         $this->_addTemplateDynamicJs('timeline', array(
-            'start_year' => $year,
+            'start_year' => $minYear,
+			'year' => $year,
             'end_year' => date('Y')
         ));
         $this->_assignTemplateAdditionals();

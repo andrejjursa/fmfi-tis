@@ -1,3 +1,4 @@
+{nocache}
 $(document).ready(function(){
     
     var knownPhysicists = new Array();
@@ -61,6 +62,7 @@ $(document).ready(function(){
             min: {$start_year nocache},
             max: {$end_year nocache},
             stop: sliderOnStop,
+			value: {$year},
             slide: updateHandleInfo
         }).after('<div id="timeline-info" style="display: none; position: absolute; width: 200px; min-height: 200px; border: 1px solid black; background-color: white; z-index: 1000;"><p>Rok: <span class="year"></span></p><div class="physicists"></div></div>').mouseover(updateHandleInfo).mouseout(function(){
             $('#timeline-info').css('display', 'none');
@@ -79,3 +81,4 @@ $(document).ready(function(){
     insertTimeline();
     
 });
+{/nocache}
