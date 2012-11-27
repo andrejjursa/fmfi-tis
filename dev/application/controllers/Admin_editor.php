@@ -50,6 +50,9 @@ class Admin_editor extends Abstract_backend_controller {
             $editor_settings = $table_collection->getEditorSettings();
             $this->parser->assign('sql_table', $table);
             $this->parser->assign('editor_settings', $editor_settings);
+            
+            $this->parser->assign('id', NULL);
+            $this->parser->assign('parent_id', 0);
         }
         
         $this->_addTemplateJs('admin_editor/editor.js');
@@ -65,6 +68,35 @@ class Admin_editor extends Abstract_backend_controller {
     
     public function saveRecord($table) {
         print_r($this->input->post('data'));
+        
+        $table_collection = $this->load->table_collection($table);
+        if ($table_collection == NULL) {
+            $this->parser->assign('error', 'no_table');
+            $this->parser->parse('backend/admin_editor.saveRecord.tpl');
+        } else {
+            $table_row = $this->load->table_row($table);
+            if ($table_row == NULL) {
+                $this->parser->assign('error', 'no_table');
+                $this->parser->parse('backend/admin_editor.saveRecord.tpl');
+            } else {
+                $id = $this->input->post('row_id');
+                $table_row->load($id);
+                
+                $table_row->prepareEditorSave($this->input->post('data'));
+                if ($table_row->save()) {
+                    $this->_deleteUnusedFiles();
+                    $this->load->helper('url');
+                    if ($this->input->post('save_and_edit')) {
+                        redirect(createUri('admin_editor', 'editRecord', array($table, $table_row->getId())));
+                    } else {
+                        redirect(createUri('admin_editor', 'index', array($table)));
+                    }
+                } else {
+                    $this->parser->assign('error', 'cannot_save_data');
+                    $this->parser->parse('backend/admin_editor.saveRecord.tpl');
+                }
+            }
+        }
     }
     
     public function editRecord($table = NULL, $id = NULL) {
@@ -90,10 +122,70 @@ class Admin_editor extends Abstract_backend_controller {
             $editor_settings = $table_collection->getEditorSettings();
             
             $field_name = $this->input->post('field');
-            $old_file = $this->input->post('oldfile');
+            $parent_id = $this->input->post('parent_id');
             
-            $this->output->set_output($field_name . ' ' . $old_file);
+            $field_config = $this->_findUploadField($editor_settings, $field_name);
+            
+            if (is_null($field_config)) {
+                $this->output->set_output('Chyba konfigurácie vstupného pola.');
+                return;    
+            }
+            
+            $config = array(
+                'upload_path' => trim(str_replace('{$parent_id}', $parent_id, $field_config->getUploadPath()), '/') . '/',
+                'allowed_types' => '*',
+            );
+ 
+            $this->_makeUploadPath($config['upload_path']);
+            
+            $this->load->library('upload', $config);
+                
+            if ($this->upload->do_upload('Filedata')) {
+                $data = $this->upload->data();
+                $this->output->set_output('!OK!' . $config['upload_path'] . $data['file_name']);
+                return;
+            }  
+            
+            $this->output->set_output($this->upload->display_errors('', '') . ' (Typ súboru je ' . $_FILES['Filedata']['type'] . ')');
+            return;
         }
+    }
+    
+    private function _deleteUnusedFiles() {
+        $files_fields = $this->input->post('delete_files');
+        if (count($files_fields)) {
+            foreach($files_fields as $files_field) {
+                if (count($files_field)) {
+                    foreach($files_field as $files_list) {
+                        $files = explode('|', $files_list);
+                        if (count($files)) {
+                            foreach($files as $file) {
+                                $trimedfile = ltrim($file, '/');
+                                if (substr($trimedfile, 0, 14) == 'public/uploads' && file_exists($trimedfile)) {
+                                    unlink($trimedfile);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private function _findUploadField($editor_settings, $field) {
+        if (isset($editor_settings['tabs']) && count($editor_settings['tabs'])) {
+            foreach ($editor_settings['tabs'] as $tab) {
+                $fields = $tab->getFields();
+                if (isset($fields[$field]) && $fields[$field] instanceof editorFieldFileUpload) {
+                    return $fields[$field];
+                }
+            }
+        }
+        return NULL;
+    }
+    
+    private function _makeUploadPath($path) {
+        @mkdir($path, 0777, TRUE);
     }
     
     private function _numberOfRowsPerPage() {

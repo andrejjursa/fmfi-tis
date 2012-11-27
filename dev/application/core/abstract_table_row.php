@@ -336,6 +336,14 @@ class Abstract_table_row extends Abstract_table_core {
         return $this->table_name;
     }
     
+    public function getDataForEditor() {
+        return $this->data();
+    }
+    
+    public function prepareEditorSave($formdata) {
+        $this->data($formdata);
+    }
+    
     /**
      * Function which can initialize relations.
      * 
