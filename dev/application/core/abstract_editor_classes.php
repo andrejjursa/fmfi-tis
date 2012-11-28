@@ -27,6 +27,8 @@ class gridField {
     
     private $sub_field = NULL;
     
+    private $width = 'auto';
+    
     /**
      * Creates new instance of this class.
      * 
@@ -86,6 +88,16 @@ class gridField {
         return $this;
     }
     
+    public function setWidth($width) {
+        if (is_string($width)) {
+            $this->width = $width;
+        } else {
+            throw new exception('gridField::setWidth argument must be string');
+        }
+        
+        return $this;
+    }
+    
     public function getField() {
         return $this->field;
     }
@@ -104,6 +116,10 @@ class gridField {
     
     public function getSubField() {
         return $this->sub_field;
+    }
+    
+    public function getWidth() {
+        return $this->width;
     }
 }
 
@@ -355,6 +371,87 @@ class editorFieldFileUpload extends editorField {
     
     public function getMaxSize() {
         return $this->max_size;
+    }
+    
+}
+
+class editorFieldMMRelation extends editorField {
+    
+    private $foreign_table = '';
+    
+    private $filter_in_fields = NULL;
+    
+    private $grid_fields = array();
+    
+    private $edit_only = TRUE;
+    
+    public function getFieldType() {
+        return 'mm_relation_field';
+    }
+    
+    public function getFieldHtmlID() {
+        return 'mm_relation_field_' . $this->getField() . '_id';
+    }
+    
+    public function setForeignTable($table) {
+        if (is_string($table)) {
+            $this->foreign_table = $table;
+        } else {
+            throw new exception(get_class($this) . '::setForeignTable argument must be string');
+        }
+        return $this;
+    }
+    
+    public function setFilterInFields($fields) {
+        if (is_null($fields)) {
+            $this->filter_in_fields = NULL;
+        } else if (is_array($fields)) {
+            $setTo = array();
+            if (count($fields)) {
+                foreach ($fields as $field) {
+                    if (is_string($field)) {
+                        $setTo[] = $field;
+                    } else {
+                        throw new exception(get_class($this) . '::setFilterInFields argument must be array of strings or null');
+                    }
+                }
+            }
+            $this->filter_in_fields = $setTo;
+        } else {
+            throw new exception(get_class($this) . '::setFilterInFields argument must be array of strings or null');
+        }
+        return $this;
+    }
+    
+    public function addGridField(gridField $field) {
+        $fname = $field->getField();
+        if (in_array($fname, $this->grid_fields)) { return; }
+        $this->grid_fields[] = $field;
+    }
+    
+    public function setEditOnly($status) {
+        if (is_bool($status)) {
+            $this->edit_only = $status;
+        } else {
+            throw new exception(get_class($this) . '::setEditOnly argument must be boolean');
+        }
+        return $this;
+    }
+    
+    public function getForeignTable() {
+        return $this->foreign_table;
+    }
+    
+    public function getFilterInFields() {
+        return $this->filter_in_fields;
+    }
+    
+    public function getGridFields() {
+        return $this->grid_fields;
+    }
+    
+    public function getEditOnly() {
+        return $this->edit_only;
     }
     
 }

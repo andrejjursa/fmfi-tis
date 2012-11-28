@@ -239,7 +239,7 @@ class Abstract_table_row extends Abstract_table_core {
             return $this->original_data;
         } else if (!is_null($column) && is_null($new_value)) {
             if (is_string($column)) {
-                return isset($this->original_data[$column]) ? $this->original_data[$column] : (method_exists($this, 'get' . $column) ? call_user_func(array($this, 'get' . $column)) : NULL);    
+                return isset($this->original_data[$column]) ? $this->original_data[$column] : (!in_array($column, $this->_getKnownFields()) && method_exists($this, 'get' . $column) ? call_user_func(array($this, 'get' . $column)) : NULL);    
             } else if (is_array($column)) {
                 if (count($column)) {
                     foreach ($column as $field => $value) {

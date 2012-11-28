@@ -6,7 +6,7 @@
     <thead>
         <tr>
         {foreach $gridFields as $gridField}
-            <th style="text-align: left;">
+            <th style="text-align: left; width: {$gridField->getWidth()};">
                 {include file='partials/admin_editor.index.grid.headerField.tpl' gridField=$gridField inline}
             </th>
         {/foreach}
@@ -17,7 +17,7 @@
         {foreach $rows as $row}
         <tr class="{cycle values='grid_row_light,grid_row_dark'}">
             {foreach $gridFields as $gridField}
-            <td>
+            <td style="width: {$gridField->getWidth()};">
                 {include file='partials/admin_editor.index.grid.field.tpl' row=$row gridField=$gridField inline}    
             </td>
             {/foreach}

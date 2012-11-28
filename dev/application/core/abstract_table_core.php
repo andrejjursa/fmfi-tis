@@ -47,6 +47,20 @@ class Abstract_table_core {
         }
         return FALSE;
     }
+    
+    protected function isCalledFrom($method_name) {
+        $class_name = get_class($this);
+        $debug_array = debug_backtrace();
+        
+        if (count($debug_array)) {
+            foreach($debug_array as $debug_item) {
+                if (isset($debug_item['function']) && isset($debug_item['object']) && strtolower($debug_item['function']) == strtolower($method_name) && get_class($debug_item['object']) == $class_name) {
+                    return TRUE;
+                }
+            }
+        }
+        return FALSE;
+    }
 }
 
 ?>

@@ -50,6 +50,11 @@ class Abstract_table_collection extends Abstract_table_core {
     private $editor_settings = array();
     
     /**
+     * @var string last executed query.
+     */
+    private $last_query = '';
+    
+    /**
      * Class constructor.
      */
     public function __construct() {
@@ -64,6 +69,7 @@ class Abstract_table_collection extends Abstract_table_core {
      */
     public function execute() {
         $query = $this->query->get();
+        $this->last_query = $this->query->last_query();
         
         $rows = $query->result_array();
         $query->free_result();
@@ -115,6 +121,53 @@ class Abstract_table_collection extends Abstract_table_core {
             $this->query->limit($value, $offset);
         }
         return $this;
+    }
+    
+    public function filterIs($field, $value, $operator = '', $use_or = FALSE) {
+        if (in_array($field, $this->_getKnownFields())) {
+            if ($use_or) {
+                $this->query->or_where($field . ' ' . $operator, $value);
+            } else {
+                $this->query->where($field . ' ' . $operator, $value);    
+            }
+        }
+        return $this;
+    }
+    
+    public function filterLike($field, $value, $escape = 'both', $use_or = FALSE) {
+        if (in_array($field, $this->_getKnownFields())) {
+            if ($use_or) {
+                $this->query->or_like($field, $value, $escape);
+            } else {
+                $this->query->like($field, $value, $escape);   
+            }
+        }
+        return $this;
+    }
+    
+    public function filterIn($field, $values, $not = FALSE, $use_or = FALSE) {
+        if (in_array($field, $this->_getKnownFields()) && is_array($values)) {
+            if ($use_or) {
+                if ($not) {
+                    $this->query->or_where_not_in($field, $values);
+                } else {
+                    $this->query->or_where_in($field, $values);       
+                }
+            } else {
+                if ($not) {
+                    $this->query->where_not_in($field, $values);
+                } else {
+                    $this->query->where_in($field, $values);       
+                }
+            }
+        }
+        return $this;
+    }
+    
+    public function filterCustomWhere($where) {
+        if (trim($where) != '') {
+            $this->query->where(trim($where));
+        }
     }
     
     /**
@@ -189,6 +242,10 @@ class Abstract_table_collection extends Abstract_table_core {
         return $this;
     }
     
+    public function primaryIdField() {
+        return $this->primary_id;
+    }
+    
     final public function getGridSettings() {
         $this->defaultEditingGrid();
         $this->gridSettings();
@@ -201,19 +258,35 @@ class Abstract_table_collection extends Abstract_table_core {
         return $this->editor_settings;
     }
     
+    /**
+     * Definitions for grid in admin editor.
+     */
     protected function gridSettings() {
         
     }
     
+    /**
+     * Definitions for record form in admin editor.
+     */
     protected function editorSettings() {
         
     }
     
+    /**
+     * Adds new tab for record editor in admin editor.
+     * 
+     * @param editorTab $tab editor tab.
+     */
     protected function addEditorTab(editorTab $tab) {
         $this->editor_settings['tabs'][] = $tab;
         return $this;
     }
     
+    /**
+     * Set name of table in admin editor.
+     *
+     * @param string $name name of table.
+     */
     protected function setGridTableName($name) {
         if (is_string($name)) {
             $this->grid_settings['table_name'] = $name;
@@ -247,28 +320,76 @@ class Abstract_table_collection extends Abstract_table_core {
         return $this;
     }
     
+    /**
+     * Enable or disable new record tool.
+     * 
+     * @param boolean $status TRUE or FALSE for enabled or disabled state.
+     * @param string $title button title.
+     * @return Abstract_table_collection reference to this object.
+     */
     protected function enableNewRecord($status = TRUE, $title = 'Nový záznam') {
         $this->grid_settings['operations']['new_record'] = is_bool($status) ? $status : FALSE;
         $this->grid_settings['operations']['new_record_title'] = $title;
         return $this;
     }
     
+    /**
+     * Enable or disable edit record tool.
+     * 
+     * @param boolean $status TRUE or FALSE for enabled or disabled state.
+     * @param string $title button title.
+     * @return Abstract_table_collection reference to this object.
+     */
     protected function enableEditRecord($status = TRUE, $title = 'Upraviť') {
         $this->grid_settings['operations']['edit_record'] = is_bool($status) ? $status : FALSE;
         $this->grid_settings['operations']['edit_record_title'] = $title;
         return $this;
     }
     
+    /**
+     * Enable or disable delete record tool.
+     * 
+     * @param boolean $status TRUE or FALSE for enabled or disabled state.
+     * @param string $title button title.
+     * @return Abstract_table_collection reference to this object.
+     */
     protected function enableDeleteRecord($status = TRUE, $title = 'Vymazať') {
         $this->grid_settings['operations']['delete_record'] = is_bool($status) ? $status : FALSE;
         $this->grid_settings['operations']['delete_record_title'] = $title;
         return $this;
     }
     
+    /**
+     * Enable or disable preview record tool.
+     * 
+     * @param boolean $status TRUE or FALSE for enabled or disabled state.
+     * @param string $title button title.
+     * @return Abstract_table_collection reference to this object.
+     */
     protected function enablePreviewRecord($status = TRUE, $title = 'Náhlad') {
         $this->grid_settings['operations']['preview_record'] = is_bool($status) ? $status : FALSE;
         $this->grid_settings['operations']['preview_record_title'] = $title;
         return $this;
+    }
+    
+    public function isNewRecordEnabled() {
+        return isset($this->grid_settings['operations']['new_record']) ? $this->grid_settings['operations']['new_record'] : FALSE;
+    }
+    
+    public function isEditRecordEnabled() {
+        return isset($this->grid_settings['operations']['edit_record']) ? $this->grid_settings['operations']['edit_record'] : FALSE;
+    }
+    
+    public function isDeleteRecordEnabled() {
+        return isset($this->grid_settings['operations']['delete_record']) ? $this->grid_settings['operations']['delete_record'] : FALSE;
+    }
+    
+    public function isPreviewRecordEnabled() {
+        return isset($this->grid_settings['operations']['preview_record']) ? $this->grid_settings['operations']['preview_record'] : FALSE;
+    }
+    
+    public function lastQuery() {
+        return $this->last_query;
     }
     
     /**

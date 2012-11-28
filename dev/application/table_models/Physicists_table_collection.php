@@ -143,6 +143,58 @@ class Physicists_table_collection extends Abstract_table_collection {
         
         $this->addEditorTab($texts);
         
+        $photo_images = editorTab::getNewEditorTab();
+        $photo_images->setName('Fotka a obrázky');
+        
+        $field_photo = new editorFieldMMRelation();
+        $field_photo->setField('photo')->setFieldLabel('Fotografia')->setFieldHint('Vyberte jeden obrázok ako fotografiu tohoto fyzika.');
+        $field_photo->setFilterInFields(array('description', 'file'))->setForeignTable('images');
+            $photo_field_file = gridField::newGridField();
+            $photo_field_file->setField('file')->setType(GRID_FIELD_TYPE_IMAGE)->setName('Obrázok')->setWidth('100px');
+        $field_photo->addGridField($photo_field_file);
+            $photo_field_description = gridField::newGridField();
+            $photo_field_description->setField('description')->setType(GRID_FIELD_TYPE_TEXT)->setName('Popis');
+        $field_photo->addGridField($photo_field_description);
+        $field_photo->setRules(array(
+            'min_mm_items' => 1,
+            'max_mm_items' => 1,
+        ));
+        $field_photo->setEditOnly(FALSE);
+        $photo_images->addField($field_photo);
+        
+        $field_images = new editorFieldMMRelation();
+        $field_images->setField('images')->setFieldLabel('Obrázky')->setFieldHint('Vyberte obrázky pre tohoto fyzika.');
+        $field_images->setFilterInFields(array('description', 'file'))->setForeignTable('images');
+            $images_field_file = gridField::newGridField();
+            $images_field_file->setField('file')->setType(GRID_FIELD_TYPE_IMAGE)->setName('Obrázok')->setWidth('100px');
+        $field_images->addGridField($images_field_file);
+            $images_field_description = gridField::newGridField();
+            $images_field_description->setField('description')->setType(GRID_FIELD_TYPE_TEXT)->setName('Popis');
+        $field_images->addGridField($images_field_description);
+        $photo_images->addField($field_images);
+        
+        $this->addEditorTab($photo_images);
+        
+        $inventions = editorTab::getNewEditorTab();
+        $inventions->setName('Objavy');
+        
+        $field_inventions = new editorFieldMMRelation();
+        $field_inventions->setField('inventions')->setFieldLabel('Objavy')->setFieldHint('Vyberte objavy, na ktorých sa tento fyzik podielal.');
+        $field_inventions->setFilterInFields(array('name', 'short_description'));
+        $field_inventions->setForeignTable('inventions');
+            $inentions_field_name = gridField::newGridField();
+            $inentions_field_name->setField('name')->setType(GRID_FIELD_TYPE_TEXT)->setName('Názov')->setWidth('20%');
+        $field_inventions->addGridField($inentions_field_name);
+            $inentions_field_short_description = gridField::newGridField();
+            $inentions_field_short_description->setField('short_description')->setType(GRID_FIELD_TYPE_HTML)->setName('Krátky popis');
+        $field_inventions->addGridField($inentions_field_short_description);
+            $inentions_field_year = gridField::newGridField();
+            $inentions_field_year->setField('year')->setType(GRID_FIELD_TYPE_NUMBER)->setName('Rok')->setWidth('5%');
+        $field_inventions->addGridField($inentions_field_year);
+        $inventions->addField($field_inventions);
+        
+        $this->addEditorTab($inventions);
+        
     }
 }
 

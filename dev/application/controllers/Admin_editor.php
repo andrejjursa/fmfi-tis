@@ -47,12 +47,17 @@ class Admin_editor extends Abstract_backend_controller {
         if ($table_collection == NULL) {
             $this->parser->assign('error', 'no_table');
         } else {
-            $editor_settings = $table_collection->getEditorSettings();
-            $this->parser->assign('sql_table', $table);
-            $this->parser->assign('editor_settings', $editor_settings);
-            
-            $this->parser->assign('id', NULL);
-            $this->parser->assign('parent_id', 0);
+            $table_collection->getGridSettings();
+            if ($table_collection->isNewRecordEnabled()) {
+                $editor_settings = $table_collection->getEditorSettings();
+                $this->parser->assign('sql_table', $table);
+                $this->parser->assign('editor_settings', $editor_settings);
+                
+                $this->parser->assign('id', NULL);
+                $this->parser->assign('parent_id', 0);
+            } else {
+                $this->parser->assign('error', 'no_new_record');
+            }
         }
         
         $this->_addTemplateJs('admin_editor/editor.js');
@@ -67,13 +72,12 @@ class Admin_editor extends Abstract_backend_controller {
     }
     
     public function saveRecord($table) {
-        print_r($this->input->post('data'));
-        
         $table_collection = $this->load->table_collection($table);
         if ($table_collection == NULL) {
             $this->parser->assign('error', 'no_table');
             $this->parser->parse('backend/admin_editor.saveRecord.tpl');
         } else {
+            $table_collection->getGridSettings();
             $table_row = $this->load->table_row($table);
             if ($table_row == NULL) {
                 $this->parser->assign('error', 'no_table');
@@ -82,25 +86,66 @@ class Admin_editor extends Abstract_backend_controller {
                 $id = $this->input->post('row_id');
                 $table_row->load($id);
                 
-                $table_row->prepareEditorSave($this->input->post('data'));
-                if ($table_row->save()) {
-                    $this->_deleteUnusedFiles();
-                    $this->load->helper('url');
-                    if ($this->input->post('save_and_edit')) {
-                        redirect(createUri('admin_editor', 'editRecord', array($table, $table_row->getId())));
-                    } else {
-                        redirect(createUri('admin_editor', 'index', array($table)));
-                    }
-                } else {
-                    $this->parser->assign('error', 'cannot_save_data');
+                if ($table_row->getId() === NULL && !$table_collection->isNewRecordEnabled()) {
+                    $this->parser->assign('error', 'no_new_record');
                     $this->parser->parse('backend/admin_editor.saveRecord.tpl');
+                } else if ($table_row->getId() !== NULL && !$table_collection->isEditRecordEnabled()) {
+                    $this->parser->assign('error', 'no_edit_record');
+                    $this->parser->parse('backend/admin_editor.saveRecord.tpl');
+                } else {
+                    $table_row->prepareEditorSave($this->input->post('data'));
+                    if ($table_row->save()) {
+                        $this->_deleteUnusedFiles();
+                        $this->load->helper('url');
+                        if ($this->input->post('save_and_edit')) {
+                            redirect(createUri('admin_editor', 'editRecord', array($table, $table_row->getId())));
+                        } else {
+                            redirect(createUri('admin_editor', 'index', array($table)));
+                        }
+                    } else {
+                        $this->parser->assign('error', 'cannot_save_data');
+                        $this->parser->parse('backend/admin_editor.saveRecord.tpl');
+                    }
                 }
             }
         }
     }
     
     public function editRecord($table = NULL, $id = NULL) {
+        $table_collection = $this->load->table_collection($table);
         
+        if ($table_collection == NULL) {
+            $this->parser->assign('error', 'no_table');
+        } else {
+            $table_collection->getGridSettings();
+            if ($table_collection->isEditRecordEnabled()) {
+                $table_row = $this->load->table_row($table);
+                $table_row->load($id);
+                if (!is_null($table_row->getId())) {
+                    $editor_settings = $table_collection->getEditorSettings();
+                    $this->parser->assign('sql_table', $table);
+                    $this->parser->assign('editor_settings', $editor_settings);
+                    
+                    $this->parser->assign('id', $table_row->getId());
+                    $this->parser->assign('parent_id', 0);
+                    $this->parser->assign('data', $table_row->getDataForEditor());
+                } else {
+                    $this->parser->assign('error', 'unknown_record');
+                }
+            } else {
+                $this->parser->assign('error', 'no_edit_record');
+            }
+        }
+        
+        $this->_addTemplateJs('admin_editor/editor.js');
+        $this->_addTemplateJs('jquery.validate.js');
+        $this->_addTemplateJs('jquery.validate.new_rules.js');
+        $this->_addTemplateJs('tinymce/jquery.tinymce.js');
+        $this->_addTemplateJs('jquery.uploadify.min.js');
+        $this->_addTemplateCss('uploadify.css');
+        $this->_assignTemplateAdditionals();
+        
+        $this->parser->parse('backend/admin_editor.editRecord.tpl');
     }
     
     public function deleteRecord($table = NULL, $id = NULL) {
@@ -151,6 +196,58 @@ class Admin_editor extends Abstract_backend_controller {
         }
     }
     
+    public function mm_relation_field($table = NULL, $field = NULL, $excludeIds = '', $like = '') {
+        $table_collection = $this->load->table_collection($table);
+        
+        $excludeIds = $this->input->post('excludeIds');
+        $like = $this->input->post('like');
+        $onlyIds = $this->input->post('onlyIds');
+        
+        if (is_null($table_collection)) {
+            $this->parser->assign('error', 'no_table');
+        } else {
+            $editor_settings = $table_collection->getEditorSettings();
+            $editor_field = $this->_findMMRelationField($editor_settings, $field);
+            if (is_null($editor_field)) {
+                $this->parser->assign('error', 'no_field');
+            } else {
+                $foreign_table_collection = $this->load->table_collection($editor_field->getForeignTable());
+                if (is_null($foreign_table_collection)) {
+                    $this->parser->assign('error', 'no_table');
+                } else {
+                    $this->load->database();
+                    $custom_where = '';
+                    if (!empty($like)) {
+                        $filtered_fields = $editor_field->getFilterInFields();
+                        if (count($filtered_fields)) {
+                            $or_like = array();
+                            foreach ($filtered_fields as $filtered_field) {
+                                $or_like[] = $this->db->protect_identifiers($filtered_field) . ' LIKE "%' . $this->db->escape_like_str($like) . '%"';       
+                            }
+                            if (count($or_like)) {
+                                $custom_where .= '(' . implode(' OR ', $or_like) . ')';
+                            }
+                        }
+                    }
+                    if ($excludeIds != '') {
+                        $custom_where .= empty($custom_where) ? '' : ' AND ';
+                        $custom_where .= $this->db->protect_identifiers($foreign_table_collection->primaryIdField()) . ' NOT IN (' . $excludeIds . ')';
+                    }
+                    if ($onlyIds != '') {
+                        $custom_where = $this->db->protect_identifiers($foreign_table_collection->primaryIdField()) . ' IN (' . $onlyIds . ')';
+                    }
+                    $foreign_table_collection->filterCustomWhere($custom_where);
+                    $rows = $foreign_table_collection->execute()->get();
+                    
+                    $this->parser->assign('gridFields', $editor_field->getGridFields());
+                    $this->parser->assign('rows', $rows);
+                }
+            }
+        }
+        
+        $this->parser->parse('partials/admin_editor.mm_relation.list.tpl');
+    }
+    
     private function _deleteUnusedFiles() {
         $files_fields = $this->input->post('delete_files');
         if (count($files_fields)) {
@@ -177,6 +274,18 @@ class Admin_editor extends Abstract_backend_controller {
             foreach ($editor_settings['tabs'] as $tab) {
                 $fields = $tab->getFields();
                 if (isset($fields[$field]) && $fields[$field] instanceof editorFieldFileUpload) {
+                    return $fields[$field];
+                }
+            }
+        }
+        return NULL;
+    }
+    
+    private function _findMMRelationField($editor_settings, $field) {
+        if (isset($editor_settings['tabs']) && count($editor_settings['tabs'])) {
+            foreach ($editor_settings['tabs'] as $tab) {
+                $fields = $tab->getFields();
+                if (isset($fields[$field]) && $fields[$field] instanceof editorFieldMMRelation) {
                     return $fields[$field];
                 }
             }

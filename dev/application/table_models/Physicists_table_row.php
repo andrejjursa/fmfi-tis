@@ -18,12 +18,18 @@ class Physicists_table_row extends Abstract_table_row {
     protected $images;
     
     /**
+     * @var Abstract_table_relation relation to inventions.
+     */
+    protected $inventions;
+    
+    /**
      * Relation initialisations.
      */
     protected function init() {
         $this->questions = $this->load->table_relation('physicists', 'questions');
         $this->photo = $this->load->table_relation('physicists', 'one_image');
         $this->images = $this->load->table_relation('physicists', 'images');
+        $this->inventions = $this->load->table_relation('physicists', 'inventions');
     }
     
     /**
@@ -73,6 +79,51 @@ class Physicists_table_row extends Abstract_table_row {
         return $this->images->get($this->getId());
     }
     
+    /**
+     * Get all related inventions for this physicist.
+     * 
+     * @return array<Abstract_table_row> related inventions.
+     */
+    public function getInventions() {
+        return $this->inventions->get($this->getId());
+    }
+    
+    public function prepareEditorSave($formdata) {
+        if (!isset($formdata['displayed'])) { $formdata['displayed'] = '0'; }
+        if (!isset($formdata['_is_dead'])) { $formdata['death_year'] = '9999'; }
+        
+        unset($formdata['_is_dead']);
+        
+        if (isset($formdata['inventions']) && $formdata['inventions'] != '0') {
+            $inventions = explode(',', $formdata['inventions']);
+            $this->inventions->setTo($this->getId(), $inventions);
+        }
+        unset($formdata['inventions']);
+        
+        if (isset($formdata['images']) && $formdata['images'] != '0') {
+            $images = explode(',', $formdata['images']);
+            $this->images->setTo($this->getId(), $images);
+        }
+        unset($formdata['images']);
+        
+        $this->data($formdata);
+    }
+    
+    public function getDataForEditor() {
+        $data = $this->data();
+        
+        if (isset($data['death_year']) && intval($data['death_year']) < 9999) {
+            $data['_is_dead'] = TRUE;
+        } else if (isset($data['death_year']) && intval($data['death_year']) >= 9999) {
+            $data['_is_dead'] = FALSE;
+            unset($data['death_year']);
+        }
+        
+        $data['inventions'] = implode(',', $this->inventions->allIds($this->getId()));
+        $data['images'] = implode(',', $this->images->allIds($this->getId()));
+        
+        return $data;
+    }
 }
 
 ?>
