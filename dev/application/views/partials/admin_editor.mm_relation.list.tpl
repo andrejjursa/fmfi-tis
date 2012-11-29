@@ -1,5 +1,5 @@
 {if !isset($error)}
-    <ul style="min-height: 20px; padding: 10px; border: 1px solid black; list-style-type: none;">
+    <ul style="min-height: 20px; padding: 10px; border: 1px solid black; list-style-type: none; background-color: white; border-radius: 4px;">
         {foreach $rows as $row}
         <li row_id="{$row->getId()}">
             <table style="width: 100%; border-collapse: collapse;">

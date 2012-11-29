@@ -5,6 +5,18 @@
     {else}
         <input type="hidden" name="data[{$field->getField()}]" value="{$smarty.post.data[$field->getField()]|default:$data[$field->getField()]|default:'0'|escape:'html'}" id="{$field->getFieldHtmlID()}" />
         <div class="error_container"></div>
+        {capture assign="items_header"}
+        <ul style="min-height: 20px; padding: 10px; border: 1px solid black; list-style-type: none; background-color: white; border-radius: 4px;">
+            <li>
+                <table style="width: 100%; border-collapse: collapse;">
+                <tbody><tr>
+                    {foreach $field->getGridFields() as $gridField}
+                        <td style="width: {$gridField->getWidth()};"><strong>{$gridField->getName()}</strong></td>
+                    {/foreach}
+                </tr></tbody>
+                </table>
+            </li>
+        </ul>{/capture}
         <table id="{$field->getFieldHtmlID()}_relations_table" class="mm_relation_table" style="width: 100%; border-collapse: collapse;">
             <tbody>
                 {if $field->getFilterInFields()}
@@ -13,8 +25,16 @@
                 </tr>
                 {/if}
                 <tr>
-                    <td id="{$field->getFieldHtmlID()}_relations_selected" style="width: 50%; vertical-align: top;" class="mm_relation_container connect_with_{$field->getField()}"></td>
-                    <td id="{$field->getFieldHtmlID()}_relations_available" style="width: 50%; vertical-align: top;" class="mm_relation_container connect_with_{$field->getField()}"></td>
+                    <td>{$items_header}</td>
+                    <td>{$items_header}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%; vertical-align: top; border: 1px solid black;">
+                        <div id="{$field->getFieldHtmlID()}_relations_selected" class="mm_relation_container connect_with_{$field->getField()}" style="max-height: 500px; width: 100%; overflow-y: auto;"></div>
+                    </td>
+                    <td style="width: 50%; vertical-align: top; border: 1px solid black;">
+                        <div id="{$field->getFieldHtmlID()}_relations_available" class="mm_relation_container connect_with_{$field->getField()}" style="max-height: 500px; width: 100%; overflow-y: auto;"></div>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -25,7 +45,7 @@
                 function make_sortable_for_{$field->getFieldHtmlID()}() {
                     $('#{$field->getFieldHtmlID()}_relations_selected ul').sortable({
                         connectWith: '.connect_with_{$field->getField()} ul',
-                        placeholder: 'ui-state-highlight',
+                        placeholder: 'sortable-highlight',
                         update: function(event, ui) {
                             var row_ids = '';
                             $('#{$field->getFieldHtmlID()}_relations_selected ul li').each(function() {
@@ -39,7 +59,7 @@
                     
                     $('#{$field->getFieldHtmlID()}_relations_available ul').sortable({
                         connectWith: '.connect_with_{$field->getField()} ul',
-                        placeholder: 'ui-state-highlight'
+                        placeholder: 'sortable-highlight'
                     }).disableSelection();
                 }
                 
@@ -51,6 +71,11 @@
                     success: function(data) {
                         $('#{$field->getFieldHtmlID()}_relations_selected').html(data);
                         make_sortable_for_{$field->getFieldHtmlID()}();
+                        $('#{$field->getFieldHtmlID()}_relations_selected a[rel=fancybox]').fancybox({
+                            transitionIn: 'elastic',
+                            transitionOut: 'elastic',
+                            showNavArrows: false
+                        });
                     } 
                 });
                 
@@ -63,6 +88,11 @@
                         success: function(data) {
                             $('#{$field->getFieldHtmlID()}_relations_available').html(data);
                             make_sortable_for_{$field->getFieldHtmlID()}();
+                            $('#{$field->getFieldHtmlID()}_relations_available a[rel=fancybox]').fancybox({
+                                transitionIn: 'elastic',
+                                transitionOut: 'elastic',
+                                showNavArrows: false
+                            });
                         } 
                     });
                 }

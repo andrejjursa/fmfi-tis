@@ -3,6 +3,8 @@
 {block content}
     <style type="text/css">{literal}
         label.error { color: red; }
+        .mm_relation_container ul li { background-color: white; border: 1px solid silver; padding: 2px; margin: 1px 0; border-radius: 4px; }
+        .mm_relation_container ul li.sortable-highlight { height: 20px; background-color: #D0FFA8; border: 2px solid black; }
     {/literal}</style>
     <div id="site_base_url" rel="{$site_base_url}"></div>
     {if !isset($error)}
@@ -15,9 +17,6 @@
         {include file='partials/admin_editor.editor.tabs.tpl' inline}
         <input type="hidden" name="row_id" value="{$id}" />
         </form>
-        <pre>
-            {$data|print_r:TRUE}
-        </pre>
     {else}
         {include file='partials/admin_editor.index.errors.tpl' error=$error inline}
     {/if}
