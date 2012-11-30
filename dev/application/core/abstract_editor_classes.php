@@ -456,4 +456,67 @@ class editorFieldMMRelation extends editorField {
     
 }
 
+class editorFieldIframeForeignRelation extends editorField {
+    
+    private $foreign_table = '';
+    
+    public function getFieldType() {
+        return 'iframe_foreign_relation';
+    }
+    
+    public function getFieldHtmlID() {
+        return 'iframe_foreign_relation_' . $this->getField() . '_id';
+    }
+    
+    public function setForeignTable($table) {
+        if (is_string($table)) {
+            $this->foreign_table = $table;
+        } else {
+            throw new exception(get_class($this) . '::setForeignTable argument must be string');
+        }
+        return $this;
+    }
+    
+    public function getForeignTable() {
+        return $this->foreign_table;
+    }
+    
+}
+
+class editorFieldParentIdRecord extends editorField {
+    
+    private $parent_table = '';
+    
+    private $else_field = NULL;
+    
+    public function getFieldType() {
+        return 'parent_id_record';
+    }
+    
+    public function getFieldHtmlID() {
+        return 'parent_id_record_' . $this->getField() . '_id';
+    }
+    
+    public function setParentTable($table) {
+        if (is_string($table)) {
+            $this->parent_table = $table;
+        } else {
+            throw new exception(get_class($this) . '::setParentTable argument must be string');
+        }
+        return $this;
+    }
+    
+    public function setElseField(editorField $field) {
+        $this->else_field = $field;
+    }
+    
+    public function getParentTable() {
+        return $this->parent_table;
+    }
+    
+    public function getElseField() {
+        return $this->else_field;
+    }
+}
+
 ?>

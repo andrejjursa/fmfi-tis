@@ -195,6 +195,16 @@ class Physicists_table_collection extends Abstract_table_collection {
         
         $this->addEditorTab($inventions);
         
+        $questions = editorTab::getNewEditorTab();
+        $questions->setName('Otázky');
+        
+        $field_questions = new editorFieldIframeForeignRelation();
+        $field_questions->setField('questions')->setFieldLabel('Otázky')->setFieldHint('Vytvorte otázky pre test k tomuto fyzikovi.');
+        $field_questions->setForeignTable('questions');
+        $questions->addField($field_questions);
+        
+        $this->addEditorTab($questions);
+        
     }
 }
 

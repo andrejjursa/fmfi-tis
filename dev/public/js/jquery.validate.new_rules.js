@@ -57,3 +57,9 @@ jQuery.validator.addMethod('max_mm_items', function(value, element, param) {
     var valarray = value.split(',');
     return valarray.length <= param;
 }, jQuery.validator.format('You must select maximum of {0} items.'));
+
+jQuery.validator.addMethod('required_html', function(value, element, param) {
+    var plain_text = value.replace(/(<([^>]+)>)/ig,'').replace(/\&nbsp;/ig, '');
+    var trimed_plain_text = jQuery.trim(plain_text);
+    return trimed_plain_text != '';
+}, 'This field is required.');

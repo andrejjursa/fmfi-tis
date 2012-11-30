@@ -121,6 +121,7 @@ class Physicists_table_row extends Abstract_table_row {
         
         $data['inventions'] = implode(',', $this->inventions->allIds($this->getId()));
         $data['images'] = implode(',', $this->images->allIds($this->getId()));
+        $data['questions'] = $this->questions->allIds($this->getId());
         
         return $data;
     }

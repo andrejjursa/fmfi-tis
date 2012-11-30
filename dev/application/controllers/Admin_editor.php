@@ -54,6 +54,7 @@ class Admin_editor extends Abstract_backend_controller {
                 $this->parser->assign('editor_settings', $editor_settings);
                 
                 $this->parser->assign('id', NULL);
+                $this->parser->assign('parent_table', '');
                 $this->parser->assign('parent_id', 0);
             } else {
                 $this->parser->assign('error', 'no_new_record');
@@ -65,10 +66,43 @@ class Admin_editor extends Abstract_backend_controller {
         $this->_addTemplateJs('jquery.validate.new_rules.js');
         $this->_addTemplateJs('tinymce/jquery.tinymce.js');
         $this->_addTemplateJs('jquery.uploadify.min.js');
+        $this->_addTemplateJs('jquery.iframe-auto-height.js');
         $this->_addTemplateCss('uploadify.css');
         $this->_assignTemplateAdditionals();
         
         $this->parser->parse('backend/admin_editor.newRecord.tpl');
+    }
+    
+    public function newRecordIframe($table = NULL, $parent_id = 0, $parent_table = '') {
+        $table_collection = $this->load->table_collection($table);
+        
+        if ($table_collection == NULL) {
+            $this->parser->assign('error', 'no_table');
+        } else {
+            $table_collection->getGridSettings();
+            if ($table_collection->isNewRecordEnabled()) {
+                $editor_settings = $table_collection->getEditorSettings();
+                $this->parser->assign('sql_table', $table);
+                $this->parser->assign('editor_settings', $editor_settings);
+                
+                $this->parser->assign('id', NULL);
+                $this->parser->assign('parent_table', $parent_table);
+                $this->parser->assign('parent_id', $parent_id);
+            } else {
+                $this->parser->assign('error', 'no_new_record');
+            }
+        }
+        
+        $this->_addTemplateJs('admin_editor/editor.js');
+        $this->_addTemplateJs('jquery.validate.js');
+        $this->_addTemplateJs('jquery.validate.new_rules.js');
+        $this->_addTemplateJs('tinymce/jquery.tinymce.js');
+        $this->_addTemplateJs('jquery.uploadify.min.js');
+        $this->_addTemplateJs('jquery.iframe-auto-height.js');
+        $this->_addTemplateCss('uploadify.css');
+        $this->_assignTemplateAdditionals();
+        
+        $this->parser->parse('backend/admin_editor.newRecordIframe.tpl');
     }
     
     public function saveRecord($table) {
@@ -99,6 +133,10 @@ class Admin_editor extends Abstract_backend_controller {
                         $this->load->helper('url');
                         if ($this->input->post('save_and_edit')) {
                             redirect(createUri('admin_editor', 'editRecord', array($table, $table_row->getId())));
+                        } else if ($this->input->post('save_and_iframe')) {
+                            $parent_id = $this->input->post('parent_id');
+                            $parent_table = $this->input->post('parent_table');
+                            redirect(createUri('admin_editor', 'editRecordIframe', array($table, $table_row->getId(), $parent_id, $parent_table)));
                         } else {
                             redirect(createUri('admin_editor', 'index', array($table)));
                         }
@@ -128,6 +166,7 @@ class Admin_editor extends Abstract_backend_controller {
                     
                     $this->parser->assign('id', $table_row->getId());
                     $this->parser->assign('parent_id', 0);
+                    $this->parser->assign('parent_table', $table);
                     $this->parser->assign('data', $table_row->getDataForEditor());
                 } else {
                     $this->parser->assign('error', 'unknown_record');
@@ -142,10 +181,50 @@ class Admin_editor extends Abstract_backend_controller {
         $this->_addTemplateJs('jquery.validate.new_rules.js');
         $this->_addTemplateJs('tinymce/jquery.tinymce.js');
         $this->_addTemplateJs('jquery.uploadify.min.js');
+        $this->_addTemplateJs('jquery.iframe-auto-height.js');
         $this->_addTemplateCss('uploadify.css');
         $this->_assignTemplateAdditionals();
         
         $this->parser->parse('backend/admin_editor.editRecord.tpl');
+    }
+    
+    public function editRecordIframe($table = NULL, $id = NULL, $parent_id = NULL, $parent_table = NULL) {
+        $table_collection = $this->load->table_collection($table);
+        
+        if ($table_collection == NULL) {
+            $this->parser->assign('error', 'no_table');
+        } else {
+            $table_collection->getGridSettings();
+            if ($table_collection->isEditRecordEnabled()) {
+                $table_row = $this->load->table_row($table);
+                $table_row->load($id);
+                if (!is_null($table_row->getId())) {
+                    $editor_settings = $table_collection->getEditorSettings();
+                    $this->parser->assign('sql_table', $table);
+                    $this->parser->assign('editor_settings', $editor_settings);
+                    
+                    $this->parser->assign('id', $table_row->getId());
+                    $this->parser->assign('parent_id', $parent_id);
+                    $this->parser->assign('parent_table', $parent_table);
+                    $this->parser->assign('data', $table_row->getDataForEditor());
+                } else {
+                    $this->parser->assign('error', 'unknown_record');
+                }
+            } else {
+                $this->parser->assign('error', 'no_edit_record');
+            }
+        }
+        
+        $this->_addTemplateJs('admin_editor/editor.js');
+        $this->_addTemplateJs('jquery.validate.js');
+        $this->_addTemplateJs('jquery.validate.new_rules.js');
+        $this->_addTemplateJs('tinymce/jquery.tinymce.js');
+        $this->_addTemplateJs('jquery.uploadify.min.js');
+        $this->_addTemplateJs('jquery.iframe-auto-height.js');
+        $this->_addTemplateCss('uploadify.css');
+        $this->_assignTemplateAdditionals();
+        
+        $this->parser->parse('backend/admin_editor.editRecordIframe.tpl');
     }
     
     public function deleteRecord($table = NULL, $id = NULL) {
@@ -275,6 +354,14 @@ class Admin_editor extends Abstract_backend_controller {
                 $fields = $tab->getFields();
                 if (isset($fields[$field]) && $fields[$field] instanceof editorFieldFileUpload) {
                     return $fields[$field];
+                } else if (isset($fields[$field])) {
+                    $fld = $fields[$field];
+                    while (!is_null($fld) && $fld instanceof editorFieldParentIdRecord) {
+                        $fld = $fld->getElseField();
+                        if ($fld instanceof editorFieldFileUpload && $fld->getField() == $field) {
+                            return $fld;
+                        }
+                    }
                 }
             }
         }
@@ -287,6 +374,14 @@ class Admin_editor extends Abstract_backend_controller {
                 $fields = $tab->getFields();
                 if (isset($fields[$field]) && $fields[$field] instanceof editorFieldMMRelation) {
                     return $fields[$field];
+                } else if (isset($fields[$field])) {
+                    $fld = $fields[$field];
+                    while (!is_null($fld) && $fld instanceof editorFieldParentIdRecord) {
+                        $fld = $fld->getElseField();
+                        if ($fld instanceof editorFieldMMRelation && $fld->getField() == $field) {
+                            return $fld;
+                        }
+                    }
                 }
             }
         }

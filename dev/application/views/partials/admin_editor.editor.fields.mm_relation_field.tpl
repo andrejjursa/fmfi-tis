@@ -1,7 +1,7 @@
 <div id="text_field_{$field->getField()}" class="highlight_field editor_field_line">
     <label for="{$field->getFieldHtmlID()}" title="{$field->getFieldHint()}">{$field->getFieldLabel()}:</label>
     {if $field->getEditOnly() and !$id}
-        Táto položka sa dá upravovať až po uložení záznamu.
+        <p>Táto položka sa dá upravovať až po uložení záznamu.</p>
     {else}
         <input type="hidden" name="data[{$field->getField()}]" value="{$smarty.post.data[$field->getField()]|default:$data[$field->getField()]|default:'0'|escape:'html'}" id="{$field->getFieldHtmlID()}" />
         <div class="error_container"></div>
