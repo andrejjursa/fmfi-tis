@@ -41,6 +41,7 @@
                 $('#{$field->getFieldHtmlID()}_hidden').val('');
                 $('#{$field->getFieldHtmlID()}_download').html('');
                 $('#{$field->getFieldHtmlID()}_delete button').css('display', 'none');
+                alert('Súbor bude vymazaný až po uložení záznamu.');
             });
         });
     </script>

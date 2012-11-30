@@ -330,17 +330,13 @@ class Admin_editor extends Abstract_backend_controller {
     private function _deleteUnusedFiles() {
         $files_fields = $this->input->post('delete_files');
         if (count($files_fields)) {
-            foreach($files_fields as $files_field) {
-                if (count($files_field)) {
-                    foreach($files_field as $files_list) {
-                        $files = explode('|', $files_list);
-                        if (count($files)) {
-                            foreach($files as $file) {
-                                $trimedfile = ltrim($file, '/');
-                                if (substr($trimedfile, 0, 14) == 'public/uploads' && file_exists($trimedfile)) {
-                                    unlink($trimedfile);
-                                }
-                            }
+            foreach($files_fields as $files_list) {
+                $files = explode('|', $files_list);
+                if (count($files)) {
+                    foreach($files as $file) {
+                        $trimedfile = ltrim($file, '/');
+                        if (substr($trimedfile, 0, 14) == 'public/uploads' && file_exists($trimedfile)) {
+                            unlink($trimedfile);
                         }
                     }
                 }
