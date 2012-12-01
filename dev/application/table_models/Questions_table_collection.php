@@ -55,17 +55,22 @@ class Questions_table_collection extends Abstract_table_collection {
             'min_mm_items' => 1,
             'max_mm_items' => 1,
             'messages' => array(
-                'min_mm_items' => 'Je nutné zvolit jedného fyzika.',
-                'max_mm_items' => 'Je nutné zvolit jedného fyzika.',
+                'min_mm_items' => 'Je nutné zvoliť jedného fyzika.',
+                'max_mm_items' => 'Je nutné zvoliť jedného fyzika.',
             ),
         ));
         $field_physicist_id_else->setEditOnly(FALSE);
             $field_physicist_id_else_field_name = gridField::newGridField();
-            $field_physicist_id_else_field_name->setField('name')->setName('Meno');
+            $field_physicist_id_else_field_name->setField('name')->setName('Meno')->setType(GRID_FIELD_TYPE_TEXT);
         $field_physicist_id_else->addGridField($field_physicist_id_else_field_name);
         $field_physicist_id->setElseField($field_physicist_id_else);
         
         $question->addField($field_physicist_id);
+        
+        $field_answers = new editorFieldIframeForeignRelation();
+        $field_answers->setField('answers')->setFieldLabel('Odpovede')->setFieldHint('Vytvorte či upravde odpovede pre túto otázku.');
+        $field_answers->setForeignTable('answers');
+        $question->addField($field_answers);
         
         $this->addEditorTab($question);
     }

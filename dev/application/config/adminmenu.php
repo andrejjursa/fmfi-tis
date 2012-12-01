@@ -15,6 +15,15 @@ $config['menu'] = array(
                 'sub' => NULL,
             ),
             array(
+                'title' => 'Objavy',
+                'link' => array(
+                    'controller' => 'admin_editor',
+                    'action' => 'index',
+                    'params' => array('inventions'),
+                ),
+                'sub' => NULL,
+            ),
+            array(
                 'title' => 'Obrázky',
                 'link' => array(
                     'controller' => 'admin_editor',

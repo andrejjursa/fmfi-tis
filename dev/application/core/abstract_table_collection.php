@@ -233,7 +233,7 @@ class Abstract_table_collection extends Abstract_table_core {
      */
     public function paginate($page, $rows_per_page = 20) {
         if (intval($rows_per_page) == 0) { return $this; } 
-        $pages_count = $this->getPagesCount();
+        $pages_count = $this->getPagesCount($rows_per_page);
         
         $_page = (intval($page) >= 1 && intval($page) <= $pages_count) ? intval($page) : 1;
         

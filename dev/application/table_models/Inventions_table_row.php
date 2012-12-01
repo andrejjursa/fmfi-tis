@@ -64,6 +64,26 @@ class Inventions_table_row extends Abstract_table_row {
     public function getImages() {
         return $this->images->get($this->getId());
     }
+    
+    public function getDataForEditor() {
+        $data = $this->data();
+        
+        $data['images'] = implode(',', $this->images->allIds($this->getId()));
+        
+        return $data;
+    }
+    
+    public function prepareEditorSave($formdata) {
+        if (!isset($formdata['displayed'])) { $formdata['displayed'] = '0'; }
+        
+        if (isset($formdata['images']) && $formdata['images'] != '0') {
+            $images = explode(',', $formdata['images']);
+            $this->images->setTo($this->getId(), $images);
+        }
+        unset($formdata['images']);
+        
+        $this->data($formdata);
+    }
 }
 
 ?>

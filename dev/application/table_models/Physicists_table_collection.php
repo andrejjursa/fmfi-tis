@@ -72,13 +72,13 @@ class Physicists_table_collection extends Abstract_table_collection {
     }
     
     protected function editorSettings() {
-        $about = editorTab::getNewEditorTab();
-        $about->setName('Všeobecné informácie');
+        $general = editorTab::getNewEditorTab();
+        $general->setName('Všeobecné informácie');
         
         $field_displayed = new editorFieldSingleCheckbox();
         $field_displayed->setField('displayed')->setFieldLabel('Zobraziteľný')->setFieldHint('Zaškrtnite, ak má byť fyzik zobrazený na stránke.')
             ->setDefaultChecked(FALSE)->setDefaultValue(TRUE);
-        $about->addField($field_displayed);
+        $general->addField($field_displayed);
         
         $field_name = new editorFieldText();
         $field_name->setField('name')->setFieldLabel('Meno')->setFieldHint('Zadajte celé meno fyzika.')->setRules(array(
@@ -87,46 +87,38 @@ class Physicists_table_collection extends Abstract_table_collection {
                 'required' => 'Meno fyzika je vyžadované.',
             ),
         ));
-        $about->addField($field_name);
+        $general->addField($field_name);
         
         $field_birth_year = new editorFieldText();
         $field_birth_year->setField('birth_year')->setFieldLabel('Rok narodenia')->setFieldHint('Zadajte rok narodenia fyzika.')->setRules(array(
             'required' => true,
-            'minlength' => 1,
-            'maxlength' => 4,
-            'digits' => true,
+            'range' => array(-9999, 9999),
             'messages' => array(
                 'required' => 'Rok narodenia je vyžadovaný.',
-                'minlength' => 'Rok musí byť minimálne 1 číslicový.',
-                'maxlength' => 'Rok musí byť maximálne 4 číslicový.',
-                'digits' => 'Rok musí byť zadaný číselne.',
+                'range' => 'Rok musí byť číselná hodnota od {0} do {1}.',
             ),
         ));
-        $about->addField($field_birth_year);
+        $general->addField($field_birth_year);
         
         $field_is_dead = new editorFieldSingleCheckbox();
         $field_is_dead->setField('_is_dead')->setFieldLabel('Fyzik už zomrel')->setFieldHint('Označte, ak fyzik už zomrel.')->setDefaultChecked(FALSE)
             ->setCheckboxText('Áno')->setDefaultValue(1);
-        $about->addField($field_is_dead);
+        $general->addField($field_is_dead);
         
         $field_death_year = new editorFieldText();
         $field_death_year->setField('death_year')->setFieldLabel('Rok úmrtia')->setFieldHint('Zadajte rok úmrtia fyzika.')->setRules(array(
             'required' => '#' . $field_is_dead->getFieldHtmlID() . ':checked',
-            'minlength' => 1,
-            'maxlength' => 4,
-            'digits' => true,
+            'range' => array(-9999, 9998),
             'greater_than' => '#' . $field_birth_year->getFieldHtmlID(),
             'messages' => array(
                 'required' => 'Ak fyzik už zomrel, je treba vyplniť rok jeho úmrtia.',
-                'minlength' => 'Rok musí byť minimálne 1 číslicový.',
-                'maxlength' => 'Rok musí byť maximálne 4 číslicový.',
-                'digits' => 'Rok musí byť zadaný číselne.',
+                'range' => 'Rok musí byť číselná hodnota od {0} do {1}.',
                 'greater_than' => 'Rok úmrtia musí byť väčšie číslo ako rok narodenia.',
             ),
         ));
-        $about->addField($field_death_year);
+        $general->addField($field_death_year);
         
-        $this->addEditorTab($about);
+        $this->addEditorTab($general);
         
         $texts = editorTab::getNewEditorTab();
         $texts->setName('Informácie');
@@ -158,6 +150,10 @@ class Physicists_table_collection extends Abstract_table_collection {
         $field_photo->setRules(array(
             'min_mm_items' => 1,
             'max_mm_items' => 1,
+            'messages' => array(
+                'min_mm_items' => 'Je potrebné vybrať jednu fotografiu.',
+                'max_mm_items' => 'Je potrebné vybrať jednu fotografiu.',
+            ),
         ));
         $field_photo->setEditOnly(FALSE);
         $photo_images->addField($field_photo);

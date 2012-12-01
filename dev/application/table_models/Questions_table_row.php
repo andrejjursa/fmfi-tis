@@ -38,6 +38,14 @@ class Questions_table_row extends Abstract_table_row {
     public function getAnswersRandom() {
         return $this->answers->setOrderBy('random')->get($this->getId());
     }
+    
+    public function getDataForEditor() {
+        $data = $this->data();
+        
+        $data['answers'] = $this->answers->setOrderBy(NULL)->allIds($this->getId());
+        
+        return $data;
+    }
 }
 
 ?>

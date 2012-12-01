@@ -14,7 +14,7 @@
             <input type="submit" name="save_and_edit" value="Uložiť a ďalej upravovať" class="button" />
             <input type="button" onclick="window.location='{createUri controller='admin_editor' action='index' params=[$sql_table]}'" class="button" value="Naspäť" />
         </div>
-        {include file='partials/admin_editor.editor.tabs.tpl' inline}
+        {include file='partials/admin_editor.editor.tabs.tpl' notabs=0 inline}
         </form>
         {*<pre>{$editor_settings|print_r:true}</pre>*}
     {else}
