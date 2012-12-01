@@ -66,13 +66,17 @@ class Questions_table_collection extends Abstract_table_collection {
         $field_physicist_id->setElseField($field_physicist_id_else);
         
         $question->addField($field_physicist_id);
+        $this->addEditorTab($question);
+        
+        $answers = editorTab::getNewEditorTab();
+        $answers->setName('Odpovede');
         
         $field_answers = new editorFieldIframeForeignRelation();
         $field_answers->setField('answers')->setFieldLabel('Odpovede')->setFieldHint('Vytvorte či upravde odpovede pre túto otázku.');
         $field_answers->setForeignTable('answers');
-        $question->addField($field_answers);
+        $answers->addField($field_answers);
         
-        $this->addEditorTab($question);
+        $this->addEditorTab($answers);
     }
     
 }
