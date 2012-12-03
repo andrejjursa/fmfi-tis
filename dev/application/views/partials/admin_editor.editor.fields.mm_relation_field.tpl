@@ -21,7 +21,7 @@
             <tbody>
                 {if $field->getFilterInFields()}
                 <tr>
-                    <td colspan="2">Súčasný filter: <span id="{$field->getFieldHtmlID()}_relations_table_filter"></span> <button id="filter_mm_relation_button_{$field->getFieldHtmlID()}" type="button">Filtrovať</button></td>
+                    <td colspan="2">Súčasný filter: <span id="{$field->getFieldHtmlID()}_relations_table_filter"></span> <button id="filter_mm_relation_button_{$field->getFieldHtmlID()}" type="button">Filtrovať</button> <a href="{createUri controller='admin_editor' action='newRecordIframe' params=[$field->getForeignTable()]}" id="add_new_relate_item_{$field->getFieldHtmlID()}">Vytvoriť nový záznam</a></td>
                 </tr>
                 {/if}
                 <tr>
@@ -97,13 +97,28 @@
                     });
                 }
                 
-                $('#filter_mm_relation_button_{$field->getFieldHtmlID()}').click(function() {
+                function reload_with_filter_{$field->getFieldHtmlID()}() {
                     var filter = prompt('Zadaj filtrovací text:', $('#{$field->getFieldHtmlID()}_relations_table_filter').text());
                     if (filter != null) {
                         $('#{$field->getFieldHtmlID()}_relations_table_filter').text(filter);
                         
                         load_list_for_{$field->getFieldHtmlID()}(filter);
                     }   
+                };
+                
+                $('#filter_mm_relation_button_{$field->getFieldHtmlID()}').click(reload_with_filter_{$field->getFieldHtmlID()});
+                
+                $('#add_new_relate_item_{$field->getFieldHtmlID()}').click(function(event) {
+                    event.preventDefault();
+                    var href = $(this).attr('href');
+                    var wnd = window.open(href, '', 'width=800, height=600');
+                    if (wnd) {
+                        wnd.onunload = function() {
+                            var filter = $('#{$field->getFieldHtmlID()}_relations_table_filter').text();
+                            
+                            load_list_for_{$field->getFieldHtmlID()}(filter);
+                        }
+                    }
                 });
                 
                 load_list_for_{$field->getFieldHtmlID()}('');

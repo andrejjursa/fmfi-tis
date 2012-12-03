@@ -30,6 +30,7 @@
                         var download_link = '<a href="{$site_base_url}' + trimeddata.substring(4) + '" target="_blank">Stiahnuť</a>';
                         $('#{$field->getFieldHtmlID()}_download').html(download_link);
                         $('#{$field->getFieldHtmlID()}_delete button').css('display', '');
+                        update_link_{$field->getFieldHtmlID()}();
                     } else {
                         alert('Chyba: ' + trimeddata);
                     }
@@ -44,6 +45,18 @@
                 $('#{$field->getFieldHtmlID()}_delete button').css('display', 'none');
                 alert('Súbor bude vymazaný až po uložení záznamu.');
             });
+            
+            function update_link_{$field->getFieldHtmlID()}() {
+                {if $field->getUseFancybox()}
+                    $('#{$field->getFieldHtmlID()}_download a').fancybox({
+                        transitionIn: 'elastic',
+                        transitionOut: 'elastic',
+                        showNavArrows: false
+                    }).text('Zobraziť');
+                {/if}
+            }
+            
+            update_link_{$field->getFieldHtmlID()}();
         });
     </script>
 </div>

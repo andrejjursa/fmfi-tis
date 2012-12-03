@@ -13,6 +13,8 @@ class Images_table_collection extends Abstract_table_collection {
         
         $this->enableGrid(TRUE);
         $this->enableNewRecord(TRUE, 'Nový obrázok');
+        $this->enableEditRecord(TRUE);
+        $this->enableDeleteRecord(TRUE);
         $this->setGridTableName('Obrázky');
     }
     
@@ -35,6 +37,7 @@ class Images_table_collection extends Abstract_table_collection {
                 'required' => 'Je nutné vybrať nejaký súbor s obrázkom.',
             ),
         ));
+        $field_file->setUseFancybox(TRUE);
         $image->addField($field_file);
         
         $this->addEditorTab($image);

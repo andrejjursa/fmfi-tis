@@ -322,6 +322,8 @@ class editorFieldFileUpload extends editorField {
     
     private $max_size = '2MB';
     
+    private $use_fancybox = false;
+    
     public function getFieldType() {
         return 'file_upload_field';
     }
@@ -361,6 +363,15 @@ class editorFieldFileUpload extends editorField {
         return $this;
     }
     
+    public function setUseFancybox($state) {
+        if (is_bool($state)) {
+            $this->use_fancybox = $state;
+        } else{
+            throw new exception(get_class($this) . '::setUseFancybox argument must be boolean');
+        }
+        return $this;
+    }
+    
     public function getUploadPath() {
         return $this->upload_path;
     }
@@ -371,6 +382,10 @@ class editorFieldFileUpload extends editorField {
     
     public function getMaxSize() {
         return $this->max_size;
+    }
+    
+    public function getUseFancybox() {
+        return $this->use_fancybox;
     }
     
 }
