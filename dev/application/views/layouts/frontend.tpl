@@ -20,11 +20,10 @@
 {block name="content"}
 {/block}
 
-		<div id="footer">
-			&copy; Fyzika {date("Y")}
-		</div>
-
+		<div style="clear: both;"></div>
 	</div>
-	
+	<div id="footer">
+		&copy; Fyzika {date("Y")}
+	</div>
 </body>
 </html>

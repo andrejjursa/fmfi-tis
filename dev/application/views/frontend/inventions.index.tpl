@@ -12,7 +12,7 @@
         <p><strong>Fyzici podieľajúci sa na tomto objave:</strong></p>
         {foreach $invention->getPhysicists() as $physicist}{if $physicist->getDisplayed() eq 1}
             <div>
-                <p><a href="{createUri controller='physicist' action='index' params=[$physicist->getId()]}">
+                <p><a href="{createUri controller='physicist' action='index' params=[$physicist->getId(), $year]}">
                     <strong>{$physicist->getName()}</strong>
                 </a></p>
             </div>

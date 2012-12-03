@@ -2,43 +2,54 @@ body{
 	font-family: tahoma, sans-serif;
 	font-size: 14px;
 	margin: 10px;
+	background: #f9f9f9;
+}
+
+a{
+	color: red;
+}
+a:visited{
+	color: darkred;
 }
 
 #wrapper{
-	width: 1000px;
+	width: 990px;
+	padding: 0 5px 5px 5px;
+	border: 10px solid #fff;
 	margin: 0 auto;
+	background: #efefef;
 }
 
 #header{
 	clear: both;
 	margin: 0 auto;
 	height: 200px;
-	background: red;
 }
 
 #timelineWrap{
 	float: left;
-	width: 40px;
+	width: 48px;
 	margin-left: 5px;
-	text-align: center;	
+	text-align: center;
+	background: #fff;
 }
 
 #timeline{
-	margin: 20px 0 20px 12px;
+	margin: 10px auto;
 }
 
 #physicists{
-	width: 455px;
+	width: 446px;
 	padding: 10px;
 	float: left;
-	background: #eee;
+	background: #fff;
 }
 
 #inventions{
-	width: 455px;
+	width: 446px;
 	padding: 10px;
 	float: right;
-	background: #ddd;
+	background: #fff;
 }
 
 #content div h1{
@@ -50,7 +61,6 @@ body{
 }
 
 #footer{
-	clear: both;
 	text-align: center;
-	height: 60px;
+	margin-top: 20px;
 }
