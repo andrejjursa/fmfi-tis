@@ -13,3 +13,4 @@ class Questions extends Abstract_frontend_controller {
 	}
 	
 }
+?>
