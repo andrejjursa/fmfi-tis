@@ -32,6 +32,15 @@ $config['menu'] = array(
                 ),
                 'sub' => NULL,
             ),
+            array(
+                'title' => 'Obdobia',
+                'link' => array(
+                    'controller' => 'admin_editor',
+                    'action' => 'index',
+                    'params' => array('periods'),
+                ),
+                'sub' => NULL,
+            ),			
         ),
     ),
 );
