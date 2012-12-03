@@ -3,3 +3,26 @@ body{
 	background-color: #D7E6F7;
 	color: #0900AD;
 }
+
+#userChangeForm {
+    width: 100%;
+    float: left;
+    text-align: center;
+    color: black;
+}
+
+.userChangeForm-row {
+    width: 100%;
+    clear: both;
+}
+
+.userChangeForm-row-text {
+    width: 190px;
+    padding-right: 10px;
+    text-align: right;
+    display: inline;
+}
+
+.userChangeForm-row-input {
+    display: inline;
+}
