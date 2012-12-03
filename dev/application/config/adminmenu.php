@@ -15,6 +15,15 @@ $config['menu'] = array(
                 'sub' => NULL,
             ),
             array(
+                'title' => 'Obdobia',
+                'link' => array(
+                    'controller' => 'admin_editor',
+                    'action' => 'index',
+                    'params' => array('periods'),
+                ),
+                'sub' => NULL,
+            ),				
+            array(
                 'title' => 'Objavy',
                 'link' => array(
                     'controller' => 'admin_editor',
@@ -31,16 +40,7 @@ $config['menu'] = array(
                     'params' => array('images'),
                 ),
                 'sub' => NULL,
-            ),
-            array(
-                'title' => 'Obdobia',
-                'link' => array(
-                    'controller' => 'admin_editor',
-                    'action' => 'index',
-                    'params' => array('periods'),
-                ),
-                'sub' => NULL,
-            ),			
+            ),		
         ),
     ),
 );
