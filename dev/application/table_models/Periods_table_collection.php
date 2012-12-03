@@ -86,9 +86,8 @@ class Periods_table_collection extends Abstract_table_collection {
                 
         $this->addEditorTab($texts);
         
-        $image = editorTab::getNewEditorTab();
-        $image->setName('Obrázok');
-
+        $img = editorTab::getNewEditorTab();
+        $img->setName('Obrázok');
         
         $field_image = new editorFieldFileUpload();
         $field_image->setField('image')->setFieldLabel('Obrázok')->setFieldHint('Vyberte súbor s obrázkom a nahrajte ho na server.');
@@ -101,9 +100,9 @@ class Periods_table_collection extends Abstract_table_collection {
                 'required' => 'Je nutné vybrať nejaký súbor s obrázkom.',
             ),
         ));
-        $image->addField($field_image);
+        $img->addField($field_image);
                 
-        $this->addEditorTab($image);
+        $this->addEditorTab($img);
 
 		}
     
