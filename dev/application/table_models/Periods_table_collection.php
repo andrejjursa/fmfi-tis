@@ -80,7 +80,7 @@ class Periods_table_collection extends Abstract_table_collection {
         $texts->setName('Informácie');
         
         $field_description = new editorFieldTinymce();
-        $field_description->setField('description')->setFieldLabel('Detailný text o obdobií')->setFieldHint('Sem vložte text popisujúci obdobie.')
+        $field_description->setField('description')->setFieldLabel('Detailný text o období')->setFieldHint('Sem vložte text popisujúci obdobie.')
             ->setRules(array('required' => true, 'messages' => array('required' => 'Je potrebné vyplniť túto položku.')));
         $texts->addField($field_description);
                 
