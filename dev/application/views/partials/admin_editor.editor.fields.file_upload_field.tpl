@@ -21,16 +21,17 @@
                 'fileSizeLimit': '{$field->getMaxSize()}',
                 'fileTypeExts': '{$field->getAllowedTypes()}',
                 'onUploadSuccess': function(file, data, response) {
-                    if (data.substring(0, 4) == '!OK!') {
+                    var trimeddata = $.trim(data);
+                    if (trimeddata.substring(0, 4) == '!OK!') {
                         if ($('#{$field->getFieldHtmlID()}_hidden').val() != '') {
                             $('#{$field->getFieldHtmlID()}_delete_files').val($('#{$field->getFieldHtmlID()}_delete_files').val() + '|' + $('#{$field->getFieldHtmlID()}_hidden').val());
                         }
-                        $('#{$field->getFieldHtmlID()}_hidden').val(data.substring(4));
-                        var download_link = '<a href="{$site_base_url}' + data.substring(4) + '" target="_blank">Stiahnuť</a>';
+                        $('#{$field->getFieldHtmlID()}_hidden').val(trimeddata.substring(4));
+                        var download_link = '<a href="{$site_base_url}' + trimeddata.substring(4) + '" target="_blank">Stiahnuť</a>';
                         $('#{$field->getFieldHtmlID()}_download').html(download_link);
                         $('#{$field->getFieldHtmlID()}_delete button').css('display', '');
                     } else {
-                        alert('Chyba: ' + data);
+                        alert('Chyba: ' + trimeddata);
                     }
                 }
             });
