@@ -30,10 +30,9 @@ class Migration_Base_tables extends CI_Migration {
 				'default' => '',
                 'null' => TRUE,
             ),
-            'photo' => array(
-                'type' => 'INT',
-                'constraint' => '11',
-                'default' => '0',
+            'image' => array(
+                'type' => 'text',
+                'null' => FALSE,
             ),
             'start_year' => array(
                 'type' => 'int',
