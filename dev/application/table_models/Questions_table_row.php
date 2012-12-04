@@ -46,6 +46,19 @@ class Questions_table_row extends Abstract_table_row {
         
         return $data;
     }
+    
+    protected function onDelete() {
+        $answers = $this->answers->setOrderBy(NULL)->get($this->getId());
+        if (count($answers)) {
+            foreach($answers as $answer) {
+                $answer->delete();
+            }
+        }
+        if ($this->getImage()) {
+            $this->load->helper('application');
+            deleteImageAndThumbs($this->getImage());
+        }
+    }
 }
 
 ?>

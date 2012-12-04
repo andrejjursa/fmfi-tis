@@ -26,7 +26,7 @@
                 <a href="{createUri controller='admin_editor' action='editRecord' params=[$sql_table, $row->getId()]}" class="button">{$gridOperations.edit_record_title|default:'Upraviť'}</a>
                 {/if}
                 {if $gridOperations.delete_record}
-                <a href="{createUri controller='admin_editor' action='deleteRecord' params=[$sql_table, $row->getId()]}" class="button">{$gridOperations.delete_record_title|default:'Vymazať'}</a>
+                <a href="{createUri controller='admin_editor' action='deleteRecord' params=[$sql_table, $row->getId()]}" class="button deleteRecord">{$gridOperations.delete_record_title|default:'Vymazať'}</a>
                 {/if}
                 {if $gridOperations.preview_record}
                 <a href="{createUri controller='admin_editor' action='previewRecord' params=[$sql_table, $row->getId()]}" class="button" target="_blank" rel="fancybox_ajax">{$gridOperations.preview_record_title|default:'Náhlad'}</a>

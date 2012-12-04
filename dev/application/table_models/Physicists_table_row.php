@@ -125,6 +125,18 @@ class Physicists_table_row extends Abstract_table_row {
         
         return $data;
     }
+    
+    protected function onDelete() {
+        $this->inventions->deleteAll($this->getId());
+        $this->images->deleteAll($this->getId());
+        
+        $questions = $this->questions->setOrderBy()->get($this->getId());
+        if (count($questions)) {
+            foreach($questions as $question) {
+                $question->delete();
+            }
+        }
+    }
 }
 
 ?>

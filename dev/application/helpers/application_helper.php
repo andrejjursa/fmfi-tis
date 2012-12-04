@@ -59,6 +59,12 @@ function smartyCreateUri($params, $smarty) {
     return '';
 }
 
+/**
+ * Mask for imageThumb for smarty (can be registered as a template function).
+ * 
+ * @param array<mixed> $params parameters from smarty tag.
+ * @param Smarty_Internal_TemplateBase $smarty smarty reference.
+ */
 function smartyImageThumb($params, $smarty) {
     if (isset($params['image'])) {
         $image = $params['image'];
@@ -70,6 +76,15 @@ function smartyImageThumb($params, $smarty) {
     return '';
 }
 
+/**
+ * Creates thumbnail of image.
+ * It does not create thumbnail if max width and height are NULL.
+ * 
+ * @param string $image path to image.
+ * @param integer @max_width maximum width of thumbnail or NULL.
+ * @param integer $max_height maximum height of thumbnail or NULL.
+ * @return string path to thumbnail.
+ */
 function imageThumb($image, $max_width = NULL, $max_height = NULL) {
     if (trim($image) == '') { return ''; }
     $path_to_image = $image[0] == '/' || $image[0] == '\\' ? substr($image, 1) : $image;
@@ -111,6 +126,37 @@ function imageThumb($image, $max_width = NULL, $max_height = NULL) {
     $new_image_basepath = $base_url . ($new_image_path[0] == '/' ? substr($new_image_path, 1) : $new_image_path);
     
     return $new_image_basepath;
+}
+
+/**
+ * Deletes image file and all thumbnails this image has cached.
+ * Deletes only image file located inside public/uploads directory, for security reasons.
+ * 
+ * @param string $image path to image.
+ * @return void
+ */
+function deleteImageAndThumbs($image) {
+    if (trim($image) == '') { return; }
+    $path_to_image = trim($image, '\\/');
+    if (!file_exists($path_to_image)) { return; }
+    if (substr($path_to_image, 0, 14) != 'public/uploads') { return; }
+    
+    $path_info = pathinfo($path_to_image);
+    
+    $cachedir = trim($path_info['dirname'], '/\\') . '/cache';
+    
+    @unlink($path_to_image);
+    
+    $filename_regexp = '/' . str_replace('.', '\\.', $path_info['filename']) . '_w([0-9]+|NULL)_h([0-9]+|NULL)\\.' . $path_info['extension'] . '/'; 
+    
+    if (is_dir($cachedir) && !empty($cachedir)) {
+        $files_in_cache = scandir($cachedir);    
+        foreach ($files_in_cache as $file) {
+            if (preg_match($filename_regexp, $file)) {
+                @unlink($cachedir . '/' . $file);
+            }
+        }
+    }
 }
 
 ?>

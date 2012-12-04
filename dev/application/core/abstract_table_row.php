@@ -210,6 +210,7 @@ class Abstract_table_row extends Abstract_table_core {
         if (isset($this->original_data[$this->primary_field])) {
             $this->load->database();
             if ($this->db->delete($this->table_name, array($this->primary_field => $this->original_data[$this->primary_field]))) {
+                @$this->onDelete();
                 $this->data = array();
                 $this->original_data = array();
                 return TRUE;
@@ -343,6 +344,13 @@ class Abstract_table_row extends Abstract_table_core {
     public function prepareEditorSave($formdata) {
         $this->data($formdata);
     }
+    
+    /**
+     * Simple function called after delete of this table row record.
+     * 
+     * @return void
+     */
+    protected function onDelete() {}
     
     /**
      * Function which can initialize relations.

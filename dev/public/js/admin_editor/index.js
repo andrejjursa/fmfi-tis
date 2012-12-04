@@ -13,4 +13,11 @@ jQuery(document).ready(function($){
     
     $('a.button').button();
     
+    $('a.deleteRecord').click(function(event) {
+        var odpoved = confirm('Naozaj chcete zmazať tento záznam?');
+        if (!odpoved) {
+            event.preventDefault();
+        }
+    });
+    
 });

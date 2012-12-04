@@ -14,6 +14,7 @@
         <form action="{createUri controller='admin_editor' action='saveRecord' params=[$sql_table]}" method="post" class="editor">
         <div id="top_line">
             <input type="submit" name="save_and_iframe" value="Uložiť" class="button" />
+            {*$gridSettings|print_r:true*}
         </div>
         {include file='partials/admin_editor.editor.tabs.tpl' notabs=1 inline}
         <input type="hidden" name="row_id" value="{$id}" />
