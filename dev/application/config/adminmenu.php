@@ -40,7 +40,7 @@ $config['menu'] = array(
                     'params' => array('images'),
                 ),
                 'sub' => NULL,
-            ),		
+            ),            
         ),
     ),
 );
