@@ -30,6 +30,8 @@ $config['grid_default_rows_per_page'] = 20;
 */
 $config['grid_rows_per_page_possibilities'] = array(20, 50, 100);
 
+$config['admin_login_controller'] = 'admin';
+$config['admin_login_action'] = 'login';
 
 /* End of file application.php */
 /* Location: ./application/config/application.php */

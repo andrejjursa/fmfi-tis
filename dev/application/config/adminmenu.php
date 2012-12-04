@@ -2,7 +2,7 @@
 
 $config['menu'] = array(
     array(
-        'title' => 'Správa záznamov',
+        'title' => 'Správa obsahu',
         'link' => 'javascript:void(0)',
         'sub' => array(
             array(
@@ -42,6 +42,26 @@ $config['menu'] = array(
                 'sub' => NULL,
             ),            
         ),
+        
+    ),
+    array(
+        'title' => 'Záznamy udalostí',
+        'link' => array(
+            'controller' => 'admin_editor',
+            'action' => 'index',
+            'params' => array('logs'),
+        ),
+        'sub' => NULL,
+    ),
+    array(
+        'title' => 'Odhlásiť sa',
+        'link' => array(
+            'controller' => 'admin',
+            'action' => 'logout',
+            'params' => array(),
+        ),
+        'class' => 'logout_menu_button',
+        'sub' => NULL,
     ),
 );
 

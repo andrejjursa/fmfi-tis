@@ -21,4 +21,11 @@ jQuery(document).ready(function($){
             paddingLeft: 1
         });
     }
+    
+    $('#jMenu a.logout_menu_button').click(function(event) {
+        var answer = confirm('Naozaj sa chcete odhlásiť?');
+        if (!answer) {
+            event.preventDefault();
+        }
+    });
 });

@@ -159,4 +159,16 @@ function deleteImageAndThumbs($image) {
     }
 }
 
+function smartyFormError($params, $smarty) {
+    $CI =& get_instance();
+    $CI->load->library('form_validation');
+    $CI->load->helper('form');
+    $default = array('field'=>'', 'prewrap' => '', 'postwrap' => '');
+    $params = array_merge($default, $params);
+    $error_message = (form_error(@$params['field'], ' ', ' '));
+    if (!empty($error_message)) {
+        echo $params['prewrap'] . $error_message . $params['postwrap'];
+    }
+}
+
 ?>

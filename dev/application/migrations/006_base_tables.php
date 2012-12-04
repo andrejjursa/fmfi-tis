@@ -53,6 +53,39 @@ class Migration_Base_tables extends CI_Migration {
          * Add periods table end.
          */
 
+        /**
+         * Add admins table start.
+         */
+        $this->dbforge->add_field(array(
+            'id' => array(
+                'type' => 'INT',
+                'constraint' => '11',
+                'unsigned' => TRUE,
+                'auto_increment' => TRUE,
+            ),              
+            'tstamp' => array(
+                'type' => 'timestamp',
+            ),
+            'crdate' => array(
+                'type' => 'timestamp',
+            ),
+            'email' => array(
+                'type' => 'text',
+                'null' => FALSE,
+            ),
+            'password' => array(
+                'type' => 'varchar',
+                'constraint' => '32',
+                'default' => '',
+            ),
+        ));
+        
+        $this->dbforge->add_key('id', TRUE);
+        
+        $this->dbforge->create_table('admins');
+        /**
+         * Add admins table end.
+         */
     }
     
     public function down() {
@@ -60,7 +93,10 @@ class Migration_Base_tables extends CI_Migration {
          * Drop periods table.
          */
         $this->dbforge->drop_table('periods');
-
+        /**
+         * Drop admins table.
+         */
+        $this->dbforge->drop_table('admins');
     }
     
 }

@@ -77,7 +77,7 @@ class Abstract_table_row extends Abstract_table_core {
      * this array is applied each row to active record where method: $this->db->where(column, value).
      * 
      * Function can have more than one parameter, these parameters are replacements of question marks
-     * in WHERE clause, they must be correct order.
+     * in WHERE clause, they must be in correct order.
      * 
      * @param string|array<mixed> where clause.
      * @return bool return TRUE when only one table row matches condition and is loaded, FALSE otherwise.

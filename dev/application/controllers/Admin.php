@@ -3,55 +3,65 @@
 require_once APPPATH . 'core/abstract_common_controller.php';
 
 class Admin extends Abstract_backend_controller {
-
-//        $this->parser->assign('error','');
-
+    
+    public function __construct() {
+        $this->_doNotValidateLoginAtAction('login');
+        $this->_doNotValidateLoginAtAction('do_login');
+        $this->_doNotValidateLoginAtAction('forgotten_password');
+        parent::__construct();
+        $this->parser->disable_caching();
+    }
+    
+    public function index() {
+        $this->load->helper(array('url', 'application'));
+        redirect(createUri('admin', 'dashboard'));
+    }
   
-  public function index(){
-      $this->dashboard();
-  }
+    public function login() { 
+        $this->parser->parse("backend/admin.login.tpl");
+    }
   
-  public function login(){ 
-
-      $this->parser->parse("backend/admin.Login.tpl");
-      
-  }
+    public function dashboard() {
+        $this->parser->parse('backend/admin.dashboard.tpl');
+    }
   
-  public function dashboard(){
-    $this->parser->parse('backend/admin.Dashboard.tpl');
-  }
-  
-  public function do_login(){
-      $this->load->database();  
-      $this->load->helper('form');
-      $this->load->library('form_validation');
-      $this->form_validation->set_rules('meno','Email','required|valid_email');
-      $this->form_validation->set_rules('pass','Heslo','required');
-      if($this->form_validation->run() == FALSE){
-        $this->parser->parse("backend/admin.Login.tpl");
-      }      
-      else{
-        $query = $this->db->query("SELECT * FROM admins WHERE email='".$this->input->post('meno')."' AND password=MD5('".$this->input->post('pass')."')");
-        if($query->num_rows() > 0){
-          $this->session->set_userdata(array(
-                                      'logged' => $this->input->post('meno') ));
-          $this->dashboard();
+    public function do_login() {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('email','Email','required|valid_email');
+        $this->form_validation->set_rules('password','Heslo','required|min_length[6]|max_length[20]');
+        $this->form_validation->set_message('required', '<strong>%s</strong> musí byť vyplnené.');
+        $this->form_validation->set_message('valid_email', '<strong>%s</strong> musí byť e-mailová adresa.');
+        $this->form_validation->set_message('min_length', '<strong>%s</strong> musí byť dlhé najmenej <strong>%s</strong> znakov.');
+        $this->form_validation->set_message('max_length', '<strong>%s</strong> môže byť dlhé najviac <strong>%s</strong> znakov.');
+        if ($this->form_validation->run()) {
+            $admin = $this->load->table_row('admins');
+            $admin->loadByLoginData($this->input->post('emal'), $this->input->post('password'));
+            if (!is_null($admin->getId())) {
+                $this->load->library('session');
+                $this->session->set_userdata('logged_in_user', array(
+                    'id' => $admin->getId(),
+                    'email' => $admin->getEmail(),
+                ));
+                $this->load->helper(array('url', 'application'));
+                redirect(createUri('admin', 'dashboard'));
+            } else {
+                $this->parser->assign('login_error', TRUE);
+                $this->parser->parse('backend/admin.login.tpl');
+            }
+        } else {
+            $this->parser->parse('backend/admin.login.tpl');
         }
-        else{
-          $this->parser->assign('error','Zadali ste zly email alebo heslo.');
-          $this->parser->parse("backend/admin.Login.tpl");
-        }
-      }
-  }
+    }
   
-  public function logout(){
-    $this->session->unset_userdata('logged');
-    redirect('/Admin/login');  
-  }
-  
-  public function forgotten_password(){
-  
-  }
+    public function logout() {
+        $this->session->unset_userdata('logged_in_user');
+        $this->load->helper(array('url', 'application'));
+        redirect(createUri('admin', 'login'));  
+    }
+    
+    public function forgotten_password(){
+    
+    }
 
 }
 

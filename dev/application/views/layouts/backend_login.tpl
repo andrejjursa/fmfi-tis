@@ -13,18 +13,7 @@
     <script type="text/javascript" src="{$site_base_url nocache}public/js/jquery.fancybox.pack.js"></script>
     {foreach $additional_js_files as $js_file nocache}<script type="text/javascript" src="{$js_file->src}"></script>{/foreach}
 </head>
-{function name='adminmenu' menu=[] level=0}
-{if is_array($menu) and count($menu)}
-<ul{if $level eq 0} id="jMenu"{/if}>{$first = 1}
-    {foreach $menu as $item}
-    <li><a href="{if is_array($item.link)}{createUri controller=$item.link.controller action=$item.link.action params=$item.link.params}{else}{$item.link}{/if}" class="{$item.class}{if $level eq 0 and $first} fNiv{$first = 0}{/if}">{$item.title}</a>{adminmenu menu=$item.sub level=$level+1}</li>
-    {/foreach}
-</ul>
-{/if}
-{/function}
 <body>
-<h1>A D M I N I S T R Á C I A</h1>
-{adminmenu menu=$adminmenu}
 {block name="content"}
 {/block}
 </body>
