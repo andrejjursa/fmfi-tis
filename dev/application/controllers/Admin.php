@@ -10,14 +10,17 @@ class Admin extends Abstract_backend_controller {
         $this->_doNotValidateLoginAtAction('forgotten_password');
         parent::__construct();
         $this->parser->disable_caching();
+        $this->load->helper(array('url', 'application'));
     }
     
     public function index() {
-        $this->load->helper(array('url', 'application'));
         redirect(createUri('admin', 'dashboard'));
     }
   
     public function login() { 
+        if ($this->Admins->isAdminLogedIn()) {
+            redirect(createUri('admin', 'dashboard'));
+        }
         $this->parser->parse("backend/admin.login.tpl");
     }
   
@@ -26,6 +29,9 @@ class Admin extends Abstract_backend_controller {
     }
   
     public function do_login() {
+        if ($this->Admins->isAdminLogedIn()) {
+            redirect(createUri('admin', 'dashboard'));
+        }
         $this->load->library('form_validation');
         $this->form_validation->set_rules('email','Email','required|valid_email');
         $this->form_validation->set_rules('password','Heslo','required|min_length[6]|max_length[20]');
@@ -34,15 +40,7 @@ class Admin extends Abstract_backend_controller {
         $this->form_validation->set_message('min_length', '<strong>%s</strong> musí byť dlhé najmenej <strong>%s</strong> znakov.');
         $this->form_validation->set_message('max_length', '<strong>%s</strong> môže byť dlhé najviac <strong>%s</strong> znakov.');
         if ($this->form_validation->run()) {
-            $admin = $this->load->table_row('admins');
-            $admin->loadByLoginData($this->input->post('emal'), $this->input->post('password'));
-            if (!is_null($admin->getId())) {
-                $this->load->library('session');
-                $this->session->set_userdata('logged_in_user', array(
-                    'id' => $admin->getId(),
-                    'email' => $admin->getEmail(),
-                ));
-                $this->load->helper(array('url', 'application'));
+            if ($this->Admins->loginAdmin($this->input->post('email'), $this->input->post('password'))) {
                 redirect(createUri('admin', 'dashboard'));
             } else {
                 $this->parser->assign('login_error', TRUE);
@@ -54,8 +52,7 @@ class Admin extends Abstract_backend_controller {
     }
   
     public function logout() {
-        $this->session->unset_userdata('logged_in_user');
-        $this->load->helper(array('url', 'application'));
+        $this->Admins->logoutAdmin();
         redirect(createUri('admin', 'login'));  
     }
     

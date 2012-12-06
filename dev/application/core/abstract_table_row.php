@@ -179,6 +179,8 @@ class Abstract_table_row extends Abstract_table_core {
             }
         }
         
+        $old_id = $id;
+        
         if (is_null($id)) {
             if ($this->db->insert($this->table_name)) {
                 $id = $this->db->insert_id();
@@ -190,6 +192,13 @@ class Abstract_table_row extends Abstract_table_core {
             if (!$this->db->update($this->table_name)) {
                 return FALSE;
             }
+        }
+        
+        $this->load->model('Logs');
+        if (is_null($old_id)) {
+            $this->Logs->addLog('New record in table "' . $this->table_name . '".', array('type' => 'insert', 'new_data' => $this->data, 'new_id' => $id, 'sql' => $this->db->last_query()));
+        } else {
+            $this->Logs->addLog('Changed record in table "' . $this->table_name . '" with id ' . $old_id . '.', array('type' => 'update', 'original_data' => $this->original_data, 'new_data' => $this->data, 'sql' => $this->db->last_query()));
         }
         
         $this->load($id);
@@ -210,6 +219,8 @@ class Abstract_table_row extends Abstract_table_core {
         if (isset($this->original_data[$this->primary_field])) {
             $this->load->database();
             if ($this->db->delete($this->table_name, array($this->primary_field => $this->original_data[$this->primary_field]))) {
+                $this->load->model('Logs');
+                $this->Logs->addLog('Deleted record from table "' . $this->table_name . '" with id ' . $this->getId() .  '.', array('type' => 'delete', 'original_data' => $this->original_data, 'sql' => $this->db->last_query()));
                 @$this->onDelete();
                 $this->data = array();
                 $this->original_data = array();

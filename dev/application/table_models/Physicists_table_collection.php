@@ -48,6 +48,15 @@ class Physicists_table_collection extends Abstract_table_collection {
         $name->setField('name')->setName('Meno')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_TEXT);
         $this->addGridField($name);
         
+        $birth_year = gridField::newGridField();
+        $birth_year->setField('birth_year')->setName('Rok narodenia')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_TEXT);
+        $this->addGridField($birth_year);
+        
+        $death_year = gridField::newGridField();
+        $death_year->setField('death_year')->setName('Rok úmrtia')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_SMARTY);
+        $death_year->setSmarty('{if $row->getDeath_year() ge 9999}Nezomrel{else}{$row->getDeath_year()}{/if}');
+        $this->addGridField($death_year);
+        
         $displayed = gridField::newGridField();
         $displayed->setField('displayed')->setName('Je zobraziteľný?')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_BOOL);
         $this->addGridField($displayed);

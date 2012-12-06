@@ -17,6 +17,8 @@ class Abstract_backend_controller extends Abstract_common_controller {
     
     public function __construct() {
         parent::__construct();
+        $this->load->model('Admins');
+        $this->parser->assign('Admins_model', $this->Admins);
         $this->_validateLogin();
         $this->_adminMenu();  
     }
@@ -47,10 +49,7 @@ class Abstract_backend_controller extends Abstract_common_controller {
     }
     
     private function _validateLogin() {
-        $this->load->library('session');
-        $loged_in_user = $this->session->userdata('logged_in_user');
-        
-        if (!isset($loged_in_user['id']) || $loged_in_user['id'] === NULL) {
+        if (!$this->Admins->isAdminLogedIn()) {
             if ($this->_validateLoginCheck()) {
                 $controller = self::getConfigItem('application', 'admin_login_controller');
                 $action = self::getConfigItem('application', 'admin_login_action');

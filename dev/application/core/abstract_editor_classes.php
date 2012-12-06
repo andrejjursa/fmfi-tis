@@ -7,13 +7,14 @@ define('GRID_FIELD_TYPE_IMAGE', 'image');
 define('GRID_FIELD_TYPE_FILE', 'file');
 define('GRID_FIELD_TYPE_NUMBER', 'number');
 define('GRID_FIELD_TYPE_BOOL', 'bool');
+define('GRID_FIELD_TYPE_SMARTY', 'smarty');
 
-define('EDITOR_FIELD_TYPE_TEXT', 'text');
+/*define('EDITOR_FIELD_TYPE_TEXT', 'text');
 define('EDITOR_FIELD_TYPE_DATETIME', 'datetime');
 define('EDITOR_FIELD_TYPE_HTML', 'html');
 define('EDITOR_FIELD_TYPE_SELECT', 'select');
 define('EDITOR_FIELD_TYPE_FILE', 'file');
-define('EDITOR_FIELD_TYPE_BOOL', 'bool');
+define('EDITOR_FIELD_TYPE_BOOL', 'bool');*/
 
 class gridField {
     
@@ -28,6 +29,8 @@ class gridField {
     private $sub_field = NULL;
     
     private $width = 'auto';
+    
+    private $smarty = '';
     
     /**
      * Creates new instance of this class.
@@ -98,6 +101,16 @@ class gridField {
         return $this;
     }
     
+    public function setSmarty($smarty) {
+        if (is_string($smarty)) {
+            $this->smarty = $smarty;
+        } else {
+            throw new exception('gridField::setSmarty argument must be string');
+        }
+        
+        return $this;
+    }
+    
     public function getField() {
         return $this->field;
     }
@@ -120,6 +133,13 @@ class gridField {
     
     public function getWidth() {
         return $this->width;
+    }
+    
+    public function getSmarty($smarty) {
+        $CI =& get_instance();
+        $CI->load->library('parser');
+        $data = $smarty->getTemplateVars();
+        return $CI->parser->parse_string($this->smarty, $data);
     }
 }
 
