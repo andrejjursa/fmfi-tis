@@ -11,7 +11,7 @@
     {/literal}</style>
     <div id="site_base_url" rel="{$site_base_url}"></div>
     {if !isset($error)}
-        <form action="{createUri controller='admin_editor' action='saveRecord' params=[$sql_table]}" method="post" class="editor">
+        <form action="{createUri controller='admin_editor' action='saveRecord' params=[$sql_table]}" method="post" class="editor displayErrors">
         <div id="top_line">
             <input type="submit" name="save_and_iframe" value="Uložiť" class="button" />
         </div>

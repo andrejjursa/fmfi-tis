@@ -1,4 +1,4 @@
-{extends file='layouts/backend.tpl'}
+{extends file='layouts/backend_iframe.tpl'}
 
 {block content}
     {if $error}

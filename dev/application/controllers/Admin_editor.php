@@ -155,7 +155,7 @@ class Admin_editor extends Abstract_backend_controller {
         if ($table_collection == NULL) {
             $this->parser->assign('error', 'no_table');
         } else {
-            $table_collection->getGridSettings();
+            $gridsettings = $table_collection->getGridSettings();
             if ($table_collection->isEditRecordEnabled()) {
                 $table_row = $this->load->table_row($table);
                 $table_row->load($id);
@@ -168,6 +168,7 @@ class Admin_editor extends Abstract_backend_controller {
                     $this->parser->assign('parent_id', 0);
                     $this->parser->assign('parent_table', $table);
                     $this->parser->assign('data', $table_row->getDataForEditor());
+                    $this->parser->assign('gridSettings', $gridsettings);
                 } else {
                     $this->parser->assign('error', 'unknown_record');
                 }
@@ -264,27 +265,27 @@ class Admin_editor extends Abstract_backend_controller {
         
         if (is_null($table_collection)) {
             $this->parser->assign('error', 'no_table');
-            $this->parser->parse('backend/admin_editor.deleteRecord.tpl');
+            $this->parser->parse('backend/admin_editor.deleteRecordIframe.tpl');
         } else {
             $table_collection->getGridSettings();
             $table_row = $this->load->table_row($table);
             if ($table_row == NULL) {
                 $this->parser->assign('error', 'no_table');
-                $this->parser->parse('backend/admin_editor.deleteRecord.tpl');
+                $this->parser->parse('backend/admin_editor.deleteRecordIframe.tpl');
             } else {
                 if ($table_collection->isDeleteRecordEnabled()) {
                     $table_row->load($id);
                     if (!is_null($table_row->getId())) {
                         $table_row->delete();
                         $this->parser->assign('success', true);
-                        $this->parser->parse('backend/admin_editor.deleteRecord.tpl');
+                        $this->parser->parse('backend/admin_editor.deleteRecordIframe.tpl');
                     } else {
                         $this->parser->assign('error', 'cant_delete_data');
-                        $this->parser->parse('backend/admin_editor.deleteRecord.tpl');
+                        $this->parser->parse('backend/admin_editor.deleteRecordIframe.tpl');
                     }
                 } else {
                     $this->parser->assign('error', 'no_delete_record');
-                    $this->parser->parse('backend/admin_editor.deleteRecord.tpl');
+                    $this->parser->parse('backend/admin_editor.deleteRecordIframe.tpl');
                 }
             }
         }
@@ -300,7 +301,7 @@ class Admin_editor extends Abstract_backend_controller {
         $this->output->set_content_type('Content-type: text/plain');
         
         if ($table_collection == NULL) {
-            $this->output->set_output('Nie je moûnÈ urei? cie3ov˙ tabu3ku.');
+            $this->output->set_output('Nie je mo≈æn√© urei? cie3ov√∫ tabu3ku.');
         } else {
             $editor_settings = $table_collection->getEditorSettings();
             
@@ -310,7 +311,7 @@ class Admin_editor extends Abstract_backend_controller {
             $field_config = $this->_findUploadField($editor_settings, $field_name);
             
             if (is_null($field_config)) {
-                $this->output->set_output('Chyba konfigur·cie vstupnÈho pola.');
+                $this->output->set_output('Chyba konfigur√°cie vstupn√©ho pola.');
                 return;    
             }
             
@@ -329,7 +330,7 @@ class Admin_editor extends Abstract_backend_controller {
                 return;
             }  
             
-            $this->output->set_output($this->upload->display_errors('', '') . ' (Typ s˙boru je ' . $_FILES['Filedata']['type'] . ')');
+            $this->output->set_output($this->upload->display_errors('', '') . ' (Typ s√∫boru je ' . $_FILES['Filedata']['type'] . ')');
             return;
         }
     }

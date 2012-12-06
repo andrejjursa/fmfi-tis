@@ -235,12 +235,27 @@ abstract class editorField {
 
 class editorFieldText extends editorField {
     
+    private $default_text = '';
+    
     public function getFieldType() {
         return 'text_field';
     }
     
     public function getFieldHtmlID() {
         return 'text_field_' . $this->getField() . '_id';
+    }
+    
+    public function setDefaultText($default) {
+        if (is_string($default)) {
+            $this->default_text = $default;
+        } else {
+            throw new exception(get_class($this) . '::setDefaultText argument must be string');
+        }
+        return $this;
+    }
+    
+    public function getDefaultText() {
+        return $this->default_text;
     }
     
 }

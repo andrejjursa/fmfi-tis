@@ -21,6 +21,12 @@ jQuery(document).ready(function($){
         }
     });
     
+    $('form.displayErrors').submit(function(){
+        if (!$(this).valid()) {
+            alert('Vo formulári sú chyby, opravte ich.');
+        }
+    });
+    
     $.extend($.validator.messages, {
         required: "Táto položka je vyžadovaná.",
         remote: "Prosím opravte toto pole.",
@@ -65,6 +71,13 @@ jQuery(document).ready(function($){
         transitionIn: 'elastic',
         transitionOut: 'elastic',
         showNavArrows: false
+    });
+    
+    $('input.deleteRecord').click(function(event) {
+        var odpoved = confirm('Naozaj chcete zmazať tento záznam?');
+        if (odpoved) {
+            window.location = $(this).attr('rel');
+        }
     });
     
 });
