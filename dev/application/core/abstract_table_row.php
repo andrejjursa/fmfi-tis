@@ -456,6 +456,9 @@ class Abstract_table_row extends Abstract_table_core {
  * 
  * @author Andrej Jursa
  * @version 1.0
+ * @package Abstract
+ * @subpackage Core
+ * 
  */
 class Nonescape_data {
     
