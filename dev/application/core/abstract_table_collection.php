@@ -6,6 +6,8 @@
  * @author Andrej Jursa
  * @version 1.0
  * @copyright FMFI Comenius University in Bratislava 2012
+ * @package Abstract
+ * @subpackage Core
  * 
  */
 
@@ -123,6 +125,15 @@ class Abstract_table_collection extends Abstract_table_core {
         return $this;
     }
     
+    /**
+     * Adds one equality condition to where clause.
+     * 
+     * @param string $field field to check.
+     * @param mixed $value value to check against.
+     * @param string $operator operator used, valid are '', '!=', '<', '>', '<=', '>='.
+     * @param boolean $use_or OR logical operator flag, if set, this condition will begin with OR operator, instead of AND.
+     * @return Abstract_table_collection reference to this object.
+     */
     public function filterIs($field, $value, $operator = '', $use_or = FALSE) {
         if (in_array($field, $this->_getKnownFields())) {
             if ($use_or) {
@@ -134,6 +145,15 @@ class Abstract_table_collection extends Abstract_table_core {
         return $this;
     }
     
+    /**
+     * Adds one LIKE condition to the where clause.
+     * 
+     * @param string $field field to check.
+     * @param mixed $value value to check against.
+     * @param string $escape escape of the value, can be 'both', 'before', 'after' (it adds % symbol to the corresponding ends of value string).
+     * @param boolean $use_or OR logical operator flag, if set, this condition will begin with OR operator, instead of AND.
+     * @return Abstract_table_collection reference to this object.
+     */
     public function filterLike($field, $value, $escape = 'both', $use_or = FALSE) {
         if (in_array($field, $this->_getKnownFields())) {
             if ($use_or) {
@@ -145,6 +165,15 @@ class Abstract_table_collection extends Abstract_table_core {
         return $this;
     }
     
+    /**
+     * Adds IN condition to the where clause.
+     * 
+     * @param string $field field to check.
+     * @param array<mixed> $value value to check against.
+     * @param boolean $not if set to TRUE, it will produce NOT IN condition.
+     * @param boolean $use_or OR logical operator flag, if set, this condition will begin with OR operator, instead of AND.
+     * @return Abstract_table_collection reference to this object.
+     */ 
     public function filterIn($field, $values, $not = FALSE, $use_or = FALSE) {
         if (in_array($field, $this->_getKnownFields()) && is_array($values)) {
             if ($use_or) {
@@ -164,6 +193,11 @@ class Abstract_table_collection extends Abstract_table_core {
         return $this;
     }
     
+    /**
+     * Adds custom where clause to the query.
+     * 
+     * @param string $where where clause.
+     */
     public function filterCustomWhere($where) {
         if (trim($where) != '') {
             $this->query->where(trim($where));
@@ -242,16 +276,31 @@ class Abstract_table_collection extends Abstract_table_core {
         return $this;
     }
     
+    /**
+     * Returns field name for primary id.
+     * 
+     * @return string primary id field name.
+     */
     public function primaryIdField() {
         return $this->primary_id;
     }
     
+    /**
+     * Returns the settings for grid view.
+     * 
+     * @param array<mixed> grid settings.
+     */
     final public function getGridSettings() {
         $this->defaultEditingGrid();
         $this->gridSettings();
         return $this->grid_settings;
     }
     
+    /**
+     * Returns the settings for record editor view.
+     * 
+     * @param array<mixed> editor settings.
+     */
     final public function getEditorSettings() {
         $this->defaultEditorSettings();
         $this->editorSettings();
@@ -372,22 +421,47 @@ class Abstract_table_collection extends Abstract_table_core {
         return $this;
     }
     
+    /**
+     * Check if new record creation is enabled.
+     * 
+     * @return boolean state of flag.
+     */
     public function isNewRecordEnabled() {
         return isset($this->grid_settings['operations']['new_record']) ? $this->grid_settings['operations']['new_record'] : FALSE;
     }
     
+    /**
+     * Check if record editing is enabled.
+     * 
+     * @return boolean state of flag.
+     */
     public function isEditRecordEnabled() {
         return isset($this->grid_settings['operations']['edit_record']) ? $this->grid_settings['operations']['edit_record'] : FALSE;
     }
     
+    /**
+     * Check if is enabled delete operation.
+     * 
+     * @return boolean state of flag.
+     */
     public function isDeleteRecordEnabled() {
         return isset($this->grid_settings['operations']['delete_record']) ? $this->grid_settings['operations']['delete_record'] : FALSE;
     }
     
+    /**
+     * Check if record preview is enabled.
+     * 
+     * @return boolean state of flag.
+     */
     public function isPreviewRecordEnabled() {
         return isset($this->grid_settings['operations']['preview_record']) ? $this->grid_settings['operations']['preview_record'] : FALSE;
     }
     
+    /**
+     * Return last executed sql query.
+     * 
+     * @return string sql query.
+     */
     public function lastQuery() {
         return $this->last_query;
     }
@@ -439,6 +513,9 @@ class Abstract_table_collection extends Abstract_table_core {
         $GLOBALS['TABLE_KNOWN_FIELDS'][$this->table_name] = $fields;
     }
     
+    /**
+     * Default grid settings.
+     */
     private function defaultEditingGrid() {
         $this->grid_settings = array();
         
@@ -462,6 +539,9 @@ class Abstract_table_collection extends Abstract_table_core {
         $this->enablePreviewRecord(FALSE);
     }
     
+    /**
+     * Default editor settings.
+     */
     private function defaultEditorSettings() {
         $this->editor_settings = array();
     }

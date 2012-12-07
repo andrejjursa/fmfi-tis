@@ -1,6 +1,10 @@
 <?php if (!defined('APPPATH')) { die('No direct access allowed ...'); }
 
 /**
+ * @package AppHelpers
+ */
+
+/**
  * Returns url for navigation between controllers and actions.
  * 
  * @param string $controller name of controller.

@@ -1,7 +1,10 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-require_once APPPATH . 'core/abstract_common_controller.php';
+//require_once APPPATH . 'core/abstract_common_controller.php';
 
+/**
+ * @package AppControllers
+ */
 class Admin extends Abstract_backend_controller {
     
     public function __construct() {

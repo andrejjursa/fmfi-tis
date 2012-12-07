@@ -1,5 +1,8 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * @package TableModels
+ */
 class Logs_table_collection extends Abstract_table_collection {
     
     protected function gridSettings() {

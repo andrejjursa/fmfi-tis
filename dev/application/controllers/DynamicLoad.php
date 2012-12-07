@@ -1,5 +1,8 @@
 <?php if (!defined('APPPATH')) { die('No direct access allowed ...'); }
 
+/**
+ * @package AppControllers
+ */
 class DynamicLoad extends Abstract_common_controller {
 
     /**

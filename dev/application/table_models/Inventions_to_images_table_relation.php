@@ -1,5 +1,8 @@
 <?php if (!defined('APPPATH')) { die('No direct access allowed ...'); }
     
+/**
+ * @package TableModels
+ */    
 class Inventions_to_images_table_relation extends Abstract_table_relation {
     
     public function __construct() {

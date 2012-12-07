@@ -1,5 +1,8 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * @package AppModels
+ */
 class Admins extends CI_Model {
     
     const USER_DATA_STRING = 'logged_in_admin'; 

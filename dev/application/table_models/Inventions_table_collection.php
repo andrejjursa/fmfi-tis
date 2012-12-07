@@ -1,5 +1,8 @@
 <?php if (!defined('APPPATH')) { die('No direct access allowed ...'); }
 
+/**
+ * @package TableModels
+ */
 class Inventions_table_collection extends Abstract_table_collection {
 
 	/**

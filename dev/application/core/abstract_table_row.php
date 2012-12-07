@@ -1,4 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+ 
+require_once APPPATH . 'core/abstract_table_core.php';
 
 /**
  * Abstract class for table rows.
@@ -6,11 +8,10 @@
  * @author Andrej Jursa
  * @version 1.0
  * @copyright FMFI Comenius University in Bratislava 2012
+ * @package Abstract
+ * @subpackage Core
  * 
  */
- 
-require_once APPPATH . 'core/abstract_table_core.php';
-
 class Abstract_table_row extends Abstract_table_core {
     
     /**
@@ -348,12 +349,28 @@ class Abstract_table_row extends Abstract_table_core {
         return $this->table_name;
     }
     
+    /**
+     * Returns all available data data to editor.
+     * This method does not returns data from relations!
+     * For relation specified data to be fetched, this method must be overriden.
+     * 
+     * @return array<mixed> data.
+     */
     public function getDataForEditor() {
         return $this->data();
     }
     
+    /**
+     * Sets the date to be saved after editing in editor.
+     * This method does not manipulate with relation.
+     * If you need to manipulate with relations, this method must be overriden.
+     * 
+     * @param array<mixed> $formdata data from editing form.
+     * @return Abstract_table_row reference to this object.
+     */
     public function prepareEditorSave($formdata) {
         $this->data($formdata);
+        return $this;
     }
     
     /**

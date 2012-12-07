@@ -6,9 +6,10 @@
  * @author Andrej Jursa
  * @version 1.0
  * @copyright FMFI Comenius University in Bratislava 2012
+ * @package Abstract
+ * @subpackage Core
  * 
  */
-
 class Abstract_common_controller extends My_Controller {
     
     /**

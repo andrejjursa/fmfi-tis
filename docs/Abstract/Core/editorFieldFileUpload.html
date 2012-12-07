@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class editorFieldFileUpload</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class editorFieldFileUpload</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Editor field for Uploadify file uploader.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Andrej Jursa</li>
+				<li><span class="field">version:</span> 1.0</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_core---abstract_editor_classes.php.html">/core/abstract_editor_classes.php</a> (line <span class="field">690</span>)
+		</p>
+		
+				
+		<pre><a href="../../Abstract/Core/editorField.html">editorField</a>
+   |
+   --editorFieldFileUpload</pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$allowed_types" title="details" class="var-name">$allowed_types</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string|integer</span>
+					<a href="#$max_size" title="details" class="var-name">$max_size</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$upload_path" title="details" class="var-name">$upload_path</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">boolean</span>
+					<a href="#$use_fancybox" title="details" class="var-name">$use_fancybox</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																				
+												<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getAllowedTypes" title="details" class="method-name">getAllowedTypes</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getFieldHtmlID" title="details" class="method-name">getFieldHtmlID</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getFieldType" title="details" class="method-name">getFieldType</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string|integer</span>
+										<a href="#getMaxSize" title="details" class="method-name">getMaxSize</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getUploadPath" title="details" class="method-name">getUploadPath</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#getUseFancybox" title="details" class="method-name">getUseFancybox</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/editorFieldFileUpload.html">editorFieldFileUpload</a></span>
+										<a href="#setAllowedTypes" title="details" class="method-name">setAllowedTypes</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$types</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/editorFieldFileUpload.html">editorFieldFileUpload</a></span>
+										<a href="#setMaxSize" title="details" class="method-name">setMaxSize</a>
+											(<span class="var-type">string|integer</span>&nbsp;<span class="var-name">$size</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/editorFieldFileUpload.html">editorFieldFileUpload</a></span>
+										<a href="#setUploadPath" title="details" class="method-name">setUploadPath</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/editorFieldFileUpload.html">editorFieldFileUpload</a></span>
+										<a href="#setUseFancybox" title="details" class="method-name">setUseFancybox</a>
+											(<span class="var-type">boolean</span>&nbsp;<span class="var-name">$state</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$allowed_types" id="$allowed_types"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$allowed_types</span>
+			 = <span class="var-default"> '*.*'</span>			(line <span class="line-number">700</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> semicolon separated list of allowed file types (list of extensions, as: *.extension).</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$max_size" id="$max_size"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string|integer</span>
+			<span class="var-name">$max_size</span>
+			 = <span class="var-default"> '2MB'</span>			(line <span class="line-number">705</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> maximum size of file to be uploaded.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$upload_path" id="$upload_path"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$upload_path</span>
+			 = <span class="var-default"> ''</span>			(line <span class="line-number">695</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> upload path for files.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$use_fancybox" id="$use_fancybox"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">boolean</span>
+			<span class="var-name">$use_fancybox</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">710</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> fancybox flag, for images upload.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+							<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../../Abstract/Core/editorField.html">editorField</a></span></p>
+					<blockquote>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Abstract/Core/editorField.html#var$field">editorField::$field</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Abstract/Core/editorField.html#var$field_hint">editorField::$field_hint</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Abstract/Core/editorField.html#var$field_label">editorField::$field_label</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Abstract/Core/editorField.html#var$rules">editorField::$rules</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="methodgetAllowedTypes" id="getAllowedTypes"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getAllowedTypes</span> (line <span class="line-number">808</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns allowed file types.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> allowed file types.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getAllowedTypes
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetFieldHtmlID" id="getFieldHtmlID"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getFieldHtmlID</span> (line <span class="line-number">726</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns field unique id.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> field unique id for editor form.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getFieldHtmlID
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Abstract/Core/editorField.html#methodgetFieldHtmlID">editorField::getFieldHtmlID()</a></dt>
+						<dd>Returns field id in editor form.</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetFieldType" id="getFieldType"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getFieldType</span> (line <span class="line-number">717</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns field type.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> field type.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getFieldType
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Abstract/Core/editorField.html#methodgetFieldType">editorField::getFieldType()</a></dt>
+						<dd>Returns field type.</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetMaxSize" id="getMaxSize"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getMaxSize</span> (line <span class="line-number">817</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns maximum file size.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> maximum file size.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string|integer</span>
+		<span class="method-name">
+			getMaxSize
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUploadPath" id="getUploadPath"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getUploadPath</span> (line <span class="line-number">799</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns file upload path.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> file upload path.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getUploadPath
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUseFancybox" id="getUseFancybox"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getUseFancybox</span> (line <span class="line-number">826</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns fancybox flag.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> fancybox flag.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			getUseFancybox
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsetAllowedTypes" id="setAllowedTypes"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setAllowedTypes</span> (line <span class="line-number">755</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set the allowed file types.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/editorFieldFileUpload.html">editorFieldFileUpload</a></span>
+		<span class="method-name">
+			setAllowedTypes
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$types</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$types</span><span class="var-description">: allowed file types.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetMaxSize" id="setMaxSize"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setMaxSize</span> (line <span class="line-number">770</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set the maximum allowed file size.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/editorFieldFileUpload.html">editorFieldFileUpload</a></span>
+		<span class="method-name">
+			setMaxSize
+		</span>
+					(<span class="var-type">string|integer</span>&nbsp;<span class="var-name">$size</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string|integer</span>
+				<span class="var-name">$size</span><span class="var-description">: maximum size of file.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetUploadPath" id="setUploadPath"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setUploadPath</span> (line <span class="line-number">736</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set the upload path for the file.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/editorFieldFileUpload.html">editorFieldFileUpload</a></span>
+		<span class="method-name">
+			setUploadPath
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: upload path.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetUseFancybox" id="setUseFancybox"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setUseFancybox</span> (line <span class="line-number">785</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set fancybox flag for image uploads.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/editorFieldFileUpload.html">editorFieldFileUpload</a></span>
+		<span class="method-name">
+			setUseFancybox
+		</span>
+					(<span class="var-type">boolean</span>&nbsp;<span class="var-name">$state</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$state</span><span class="var-description">: TRUE for use of fancybox for images instead of download them.</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../Abstract/Core/editorField.html">editorField</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../../Abstract/Core/editorField.html#methodgetField">editorField::getField()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorField.html#methodgetFieldHint">editorField::getFieldHint()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorField.html#methodgetFieldHtmlID">editorField::getFieldHtmlID()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorField.html#methodgetFieldLabel">editorField::getFieldLabel()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorField.html#methodgetFieldType">editorField::getFieldType()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorField.html#methodgetRules">editorField::getRules()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorField.html#methodgetRulesJSON">editorField::getRulesJSON()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorField.html#methodsetField">editorField::setField()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorField.html#methodsetFieldHint">editorField::setFieldHint()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorField.html#methodsetFieldLabel">editorField::setFieldLabel()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorField.html#methodsetRules">editorField::setRules()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 07 Dec 2012 16:18:33 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</p>
+	</div></body>
+</html>

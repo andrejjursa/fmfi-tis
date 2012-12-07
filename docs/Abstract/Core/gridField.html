@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class gridField</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class gridField</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Grid field class, which is responsible for configuration of single table column design in editor grid view.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Andrej Jursa</li>
+				<li><span class="field">version:</span> 1.0</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_core---abstract_editor_classes.php.html">/core/abstract_editor_classes.php</a> (line <span class="field">29</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																																																								<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$field" title="details" class="var-name">$field</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$name" title="details" class="var-name">$name</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$smarty" title="details" class="var-name">$smarty</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">boolean</span>
+					<a href="#$sortable" title="details" class="var-name">$sortable</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+					<a href="#$sub_field" title="details" class="var-name">$sub_field</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">boolean</span>
+					<a href="#$type" title="details" class="var-name">$type</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$width" title="details" class="var-name">$width</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																				<div class="method-definition">
+					static 						<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+										<a href="#newGridField" title="details" class="method-name">newGridField</a>
+										()
+									</div>
+																																																																
+												<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getField" title="details" class="method-name">getField</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getName" title="details" class="method-name">getName</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getSmarty" title="details" class="method-name">getSmarty</a>
+											(<span class="var-type">Smarty_internal_template</span>&nbsp;<span class="var-name">$smarty</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#getSortable" title="details" class="method-name">getSortable</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+										<a href="#getSubField" title="details" class="method-name">getSubField</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getType" title="details" class="method-name">getType</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getWidth" title="details" class="method-name">getWidth</a>
+										()
+									</div>
+																								<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+										<a href="#setField" title="details" class="method-name">setField</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$field</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+										<a href="#setName" title="details" class="method-name">setName</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+										<a href="#setSmarty" title="details" class="method-name">setSmarty</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$smarty</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+										<a href="#setSortable" title="details" class="method-name">setSortable</a>
+											(<span class="var-type">boolean</span>&nbsp;<span class="var-name">$sortable</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+										<a href="#setSubField" title="details" class="method-name">setSubField</a>
+											(<span class="var-type"><a href="../../Abstract/Core/gridField.html">gridField</a></span>&nbsp;<span class="var-name">$sub_field</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+										<a href="#setType" title="details" class="method-name">setType</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+										<a href="#setWidth" title="details" class="method-name">setWidth</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$width</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$field" id="$field"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$field</span>
+			 = <span class="var-default"> 'id'</span>			(line <span class="line-number">34</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> name of field in table.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$name" id="$name"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$name</span>
+			 = <span class="var-default"> 'Index'</span>			(line <span class="line-number">39</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> name of table column.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$smarty" id="$smarty"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$smarty</span>
+			 = <span class="var-default"> ''</span>			(line <span class="line-number">64</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> inline smarty template code.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$sortable" id="$sortable"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">boolean</span>
+			<span class="var-name">$sortable</span>
+			 = <span class="var-default"> TRUE</span>			(line <span class="line-number">44</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> sortable flag for column defined by this object.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$sub_field" id="$sub_field"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+			<span class="var-name">$sub_field</span>
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number">54</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> subfield or NULL.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$type" id="$type"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">boolean</span>
+			<span class="var-name">$type</span>
+			 = <span class="var-default"> GRID_FIELD_TYPE_TEXT</span>			(line <span class="line-number">49</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> type of table column, can be one of GRID_FIELD_TYPE_*.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$width" id="$width"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$width</span>
+			 = <span class="var-default"> 'auto'</span>			(line <span class="line-number">59</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> width information for table column styling.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodnewGridField" id="newGridField"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method newGridField</span> (line <span class="line-number">71</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Creates new instance of this class.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance of gridField class.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+		<span class="method-name">
+			newGridField
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+
+<a name="methodgetField" id="getField"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getField</span> (line <span class="line-number">192</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns table field.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> table field in sql table.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getField
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetName" id="getName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getName</span> (line <span class="line-number">201</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns header name for table column in grid view.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> name of table column.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getName
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetSmarty" id="getSmarty"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getSmarty</span> (line <span class="line-number">247</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns parsed smarty inline template. Takes one argument, which is smarty interpreter.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> parsed inline smarty template.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getSmarty
+		</span>
+					(<span class="var-type">Smarty_internal_template</span>&nbsp;<span class="var-name">$smarty</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">Smarty_internal_template</span>
+				<span class="var-name">$smarty</span><span class="var-description">: smarty internal template interpreter class.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetSortable" id="getSortable"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getSortable</span> (line <span class="line-number">210</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns sortable flag.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> sortable flag.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			getSortable
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetSubField" id="getSubField"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getSubField</span> (line <span class="line-number">228</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns sub field.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> sub field or NULL.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+		<span class="method-name">
+			getSubField
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetType" id="getType"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getType</span> (line <span class="line-number">219</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns type of field.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> type of field.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getType
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetWidth" id="getWidth"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getWidth</span> (line <span class="line-number">237</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns table column width.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> table column width.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getWidth
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsetField" id="setField"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setField</span> (line <span class="line-number">81</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set the table column field.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+		<span class="method-name">
+			setField
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$field</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$field</span><span class="var-description">: name of field in talbe.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetName" id="setName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setName</span> (line <span class="line-number">97</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set the table column name.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+		<span class="method-name">
+			setName
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$name</span><span class="var-description">: name of table column in table header.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetSmarty" id="setSmarty"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setSmarty</span> (line <span class="line-number">177</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set inline template code for smarty parser (ie: used for type GRID_FIELD_TYPE_SMARTY).</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+		<span class="method-name">
+			setSmarty
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$smarty</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$smarty</span><span class="var-description">: inline template code.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetSortable" id="setSortable"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setSortable</span> (line <span class="line-number">113</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set the sortable flag for this table column.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+		<span class="method-name">
+			setSortable
+		</span>
+					(<span class="var-type">boolean</span>&nbsp;<span class="var-name">$sortable</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$sortable</span><span class="var-description">: TRUE for sortable, FALSE otherwise.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetSubField" id="setSubField"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setSubField</span> (line <span class="line-number">145</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set the subfield for this field (ie: for image rendering).</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+		<span class="method-name">
+			setSubField
+		</span>
+					(<span class="var-type"><a href="../../Abstract/Core/gridField.html">gridField</a></span>&nbsp;<span class="var-name">$sub_field</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+				<span class="var-name">$sub_field</span><span class="var-description">: sub field.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetType" id="setType"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setType</span> (line <span class="line-number">129</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set the content type for this table column.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+		<span class="method-name">
+			setType
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$type</span><span class="var-description">: type of content, usualy one of GRID_FIELD_TYPE_* constant.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetWidth" id="setWidth"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setWidth</span> (line <span class="line-number">161</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set the width information for style tag, which set the width of this table column.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/gridField.html">gridField</a></span>
+		<span class="method-name">
+			setWidth
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$width</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$width</span><span class="var-description">: width of table column.</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 07 Dec 2012 16:18:33 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</p>
+	</div></body>
+</html>

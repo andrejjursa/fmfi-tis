@@ -2,6 +2,10 @@
     
     if (!defined('APPPATH')) { die('No direct access allowed ...'); }
 
+/**
+ * @package AppControllers
+ */
+
     class User extends Abstract_backend_controller {
         
         /*

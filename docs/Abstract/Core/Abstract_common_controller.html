@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Abstract_common_controller</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Abstract_common_controller</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+							<a href="#sec-descendents">Descendents</a>
+			|											<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Common controller for frontend and backend.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Andrej Jursa</li>
+				<li><span class="field">version:</span> 1.0</li>
+				<li><span class="field">copyright:</span> FMFI Comenius University in Bratislava 2012</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_core---abstract_common_controller.php.html">/core/abstract_common_controller.php</a> (line <span class="field"><a href="../../__filesource/fsource_Abstract_Core_coreabstract_common_controller.php.html#a13">13</a></span>)
+		</p>
+		
+				
+		<pre>CI_Controller
+   |
+   --<a href="../../Abstract/Core/My_Controller.html">My_Controller</a>
+      |
+      --Abstract_common_controller</pre>
+	
+			</div>
+</div>
+
+	<a name="sec-descendents"></a>
+	<div class="info-box">
+		<div class="info-box-title">Direct descendents</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+			<span class="disabled">Descendents</span>
+			|												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+								|															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header">Class</th>
+					<th class="class-table-header">Description</th>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em"><a href="../../AppControllers/DynamicLoad.html">DynamicLoad</a></td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em"><a href="../../Abstract/Core/Abstract_backend_controller.html">Abstract_backend_controller</a></td>
+					<td>
+											Base controller class for all backend controllers.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em"><a href="../../Abstract/Core/Abstract_frontend_controller.html">Abstract_frontend_controller</a></td>
+					<td>
+											Common controller for frontend and backend.
+										</td>
+				</tr>
+							</table>
+		</div>
+	</div>
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																<div class="var-title">
+					<span class="var-type">array<stdClass></span>
+					<a href="#$template_css_files" title="details" class="var-name">$template_css_files</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">array<stdClass></span>
+					<a href="#$template_js_files" title="details" class="var-name">$template_js_files</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																				<div class="method-definition">
+					static 						<span class="method-result">string</span>
+										<a href="#getBaseUrl" title="details" class="method-name">getBaseUrl</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">mixed</span>
+										<a href="#getConfigItem" title="details" class="method-name">getConfigItem</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$config_file</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$item</span>)
+									</div>
+																																																								
+												<div class="method-definition">
+											<span class="method-result">Abstract_common_controller</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+										()
+									</div>
+																																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_addTemplateCss" title="details" class="method-name">_addTemplateCss</a>
+											(<span class="var-type">type</span>&nbsp;<span class="var-name">$filename</span>, [<span class="var-type">type</span>&nbsp;<span class="var-name">$media</span> = <span class="var-default">'screen'</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_addTemplateDynamicJs" title="details" class="method-name">_addTemplateDynamicJs</a>
+											(<span class="var-type">type</span>&nbsp;<span class="var-name">$filename</span>, [<span class="var-type">type</span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">array()</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_addTemplateJs" title="details" class="method-name">_addTemplateJs</a>
+											(<span class="var-type">type</span>&nbsp;<span class="var-name">$filename</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_assignTemplateAdditionals" title="details" class="method-name">_assignTemplateAdditionals</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_resetTemplateCss" title="details" class="method-name">_resetTemplateCss</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_resetTemplateJs" title="details" class="method-name">_resetTemplateJs</a>
+										()
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$template_css_files" id="$template_css_files"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array<stdClass></span>
+			<span class="var-name">$template_css_files</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Abstract_Core_coreabstract_common_controller.php.html#a22">22</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> array of additional css files.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$template_js_files" id="$template_js_files"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array<stdClass></span>
+			<span class="var-name">$template_js_files</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Abstract_Core_coreabstract_common_controller.php.html#a18">18</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> array of additional js files.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodgetBaseUrl" id="getBaseUrl"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method getBaseUrl</span> (line <span class="line-number"><a href="../../__filesource/fsource_Abstract_Core_coreabstract_common_controller.php.html#a121">121</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns base url from config file.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> base url.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getBaseUrl
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetConfigItem" id="getConfigItem"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method getConfigItem</span> (line <span class="line-number"><a href="../../__filesource/fsource_Abstract_Core_coreabstract_common_controller.php.html#a135">135</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns config item value from given file.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> value of config file item.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			getConfigItem
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$config_file</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$item</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$config_file</span><span class="var-description">: configuration file name without extension.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$item</span><span class="var-description">: name of item to fetch from config file.</span>			</li>
+				</ul>
+		
+			
+	</div>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../../__filesource/fsource_Abstract_Core_coreabstract_common_controller.php.html#a27">27</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Main constructor of common controller with initialisations.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Abstract_common_controller</span>
+		<span class="method-name">
+			__construct
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Abstract/Core/My_Controller.html#method__construct">My_Controller::__construct()</a></dt>
+					</dl>
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../../Abstract/Core/Abstract_backend_controller.html#method__construct">Abstract_backend_controller::__construct()</a>
+								: Main constructor, executes login  check.
+							</li>
+					<li>
+				<a href="../../AppControllers/Admin.html#method__construct">Admin::__construct()</a>
+							</li>
+					<li>
+				<a href="../../AppControllers/Admin_editor.html#method__construct">Admin_editor::__construct()</a>
+							</li>
+					<li>
+				<a href="../../Abstract/Core/Abstract_frontend_controller.html#method__construct">Abstract_frontend_controller::__construct()</a>
+							</li>
+				</ul>
+	</div>
+<a name="method_addTemplateCss" id="_addTemplateCss"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_addTemplateCss</span> (line <span class="line-number"><a href="../../__filesource/fsource_Abstract_Core_coreabstract_common_controller.php.html#a49">49</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Add additional css file to list of additional css files.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_addTemplateCss
+		</span>
+					(<span class="var-type">type</span>&nbsp;<span class="var-name">$filename</span>, [<span class="var-type">type</span>&nbsp;<span class="var-name">$media</span> = <span class="var-default">'screen'</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$filename</span><span class="var-description">: path and name of css file.</span>			</li>
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$media</span><span class="var-description">: media parameter value of link tag.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_addTemplateDynamicJs" id="_addTemplateDynamicJs"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_addTemplateDynamicJs</span> (line <span class="line-number"><a href="../../__filesource/fsource_Abstract_Core_coreabstract_common_controller.php.html#a89">89</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Add additional js file to list of additional js files.</p>
+<p class="description"><p>This is special call of js file through smarty parser.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_addTemplateDynamicJs
+		</span>
+					(<span class="var-type">type</span>&nbsp;<span class="var-name">$filename</span>, [<span class="var-type">type</span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$filename</span><span class="var-description">: path and file name, without extension.</span>			</li>
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$params</span><span class="var-description">: smarty template vars definition array, it will be part of url!.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_addTemplateJs" id="_addTemplateJs"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_addTemplateJs</span> (line <span class="line-number"><a href="../../__filesource/fsource_Abstract_Core_coreabstract_common_controller.php.html#a72">72</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Add additional js file to list of additional js files.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_addTemplateJs
+		</span>
+					(<span class="var-type">type</span>&nbsp;<span class="var-name">$filename</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$filename</span><span class="var-description">: path and name of css file.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_assignTemplateAdditionals" id="_assignTemplateAdditionals"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_assignTemplateAdditionals</span> (line <span class="line-number"><a href="../../__filesource/fsource_Abstract_Core_coreabstract_common_controller.php.html#a111">111</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Assigns both css and js lists to smarty template.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_assignTemplateAdditionals
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_resetTemplateCss" id="_resetTemplateCss"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_resetTemplateCss</span> (line <span class="line-number"><a href="../../__filesource/fsource_Abstract_Core_coreabstract_common_controller.php.html#a63">63</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Resets additional css files list to empty.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_resetTemplateCss
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_resetTemplateJs" id="_resetTemplateJs"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_resetTemplateJs</span> (line <span class="line-number"><a href="../../__filesource/fsource_Abstract_Core_coreabstract_common_controller.php.html#a104">104</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Resets additional js files list to empty.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_resetTemplateJs
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../Abstract/Core/My_Controller.html">My_Controller</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../../Abstract/Core/My_Controller.html#method__construct">My_Controller::__construct()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 07 Dec 2012 16:18:32 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</p>
+	</div></body>
+</html>

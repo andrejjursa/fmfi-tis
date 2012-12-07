@@ -1,5 +1,8 @@
 <?php if (!defined('APPPATH')) { die('No direct access allowed ...'); }
 
+/**
+ * @package AppControllers
+ */
 class Inventions extends Abstract_frontend_controller {
 	
 	public function index($id = 0, $returnYear = 0) {

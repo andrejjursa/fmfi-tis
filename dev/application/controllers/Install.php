@@ -1,5 +1,8 @@
 <?php if (!defined('APPPATH')) { die('No direct access allowed ...'); }
 
+/**
+ * @package AppControllers
+ */
 class Install extends CI_Controller {
 
     public function __construct() {

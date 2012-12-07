@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs for page application_helper.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="file-name">/helpers/application_helper.php</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+		
+			</div>
+</div>
+		
+
+	
+	
+	
+	<a name="sec-functions"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">	
+			<a name="functioncreateUri" id="functioncreateUri"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">createUri</span> (line <span class="line-number">15</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns url for navigation between controllers and actions.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> full internet address.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			createUri
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$controller</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$action</span> = <span class="var-default">&#039;index&#039;</span>], [<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">array()</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$controller</span><span class="var-description">: name of controller.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$action</span><span class="var-description">: name of action.</span>			</li>
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$params</span><span class="var-description">: array of parameters.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functiondeleteImageAndThumbs" id="functiondeleteImageAndThumbs"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">deleteImageAndThumbs</span> (line <span class="line-number">142</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Deletes image file and all thumbnails this image has cached.</p>
+<p class="description"><p>Deletes only image file located inside public/uploads directory, for security reasons.</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			deleteImageAndThumbs
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$image</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$image</span><span class="var-description">: path to image.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionimageThumb" id="functionimageThumb"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">imageThumb</span> (line <span class="line-number">92</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Creates thumbnail of image.</p>
+<p class="description"><p>It does not create thumbnail if max width and height are NULL.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> path to thumbnail.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			imageThumb
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$image</span>, [<span class="var-type">integer</span>&nbsp;<span class="var-name">$max_width</span> = <span class="var-default">NULL</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$max_height</span> = <span class="var-default">NULL</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$image</span><span class="var-description">: path to image.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$max_height</span><span class="var-description">: maximum height of thumbnail or NULL.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$max_width</span><span class="var-description">: @max_width maximum width of thumbnail or NULL.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionsmartyCreateUri" id="functionsmartyCreateUri"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">smartyCreateUri</span> (line <span class="line-number">55</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Masks createUri function for registering it as a smarty plugin.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> full internet address.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			smartyCreateUri
+		</span>
+					(<span class="var-type">type</span>&nbsp;<span class="var-name">$params</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$smarty</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$params</span><span class="var-description">: params from smarty code.</span>			</li>
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$smarty</span><span class="var-description">: reference to smarty object.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionsmartyFormError" id="functionsmartyFormError"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">smartyFormError</span> (line <span class="line-number">166</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			smartyFormError
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$smarty</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$smarty</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionsmartyImageThumb" id="functionsmartyImageThumb"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">smartyImageThumb</span> (line <span class="line-number">72</span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Mask for imageThumb for smarty (can be registered as a template function).</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			smartyImageThumb
+		</span>
+					(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$params</span>, <span class="var-type">Smarty_Internal_TemplateBase</span>&nbsp;<span class="var-name">$smarty</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$params</span><span class="var-description">: parameters from smarty tag.</span>			</li>
+					<li>
+				<span class="var-type">Smarty_Internal_TemplateBase</span>
+				<span class="var-name">$smarty</span><span class="var-description">: smarty reference.</span>			</li>
+				</ul>
+		
+	
+</div>
+		</div>
+	</div>
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 07 Dec 2012 16:18:37 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</p>
+	</div></body>
+</html>

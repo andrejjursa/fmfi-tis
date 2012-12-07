@@ -1,5 +1,8 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * @package AppModels
+ */
 class Logs extends CI_Model {
     
     public function __construct() {

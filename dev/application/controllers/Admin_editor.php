@@ -1,5 +1,8 @@
 <?php if (!defined('APPPATH')) { die('No direct access allowed ...'); }
 
+/**
+ * @package AppControllers
+ */
 class Admin_editor extends Abstract_backend_controller {
     
     public function __construct() {

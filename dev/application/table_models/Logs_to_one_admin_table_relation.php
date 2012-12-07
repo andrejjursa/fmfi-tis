@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package TableModels
+ */
 class Logs_to_one_admin_table_relation extends Abstract_table_relation {
     
     public function __construct() {

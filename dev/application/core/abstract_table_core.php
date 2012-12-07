@@ -6,9 +6,10 @@
  * @author Andrej Jursa
  * @version 1.0
  * @copyright FMFI Comenius University in Bratislava 2012
+ * @package Abstract
+ * @subpackage Core
  * 
  */
-
 class Abstract_table_core {
     /**
 	 * __get
@@ -48,6 +49,12 @@ class Abstract_table_core {
         return FALSE;
     }
     
+    /**
+     * Determines, if current call is from within some method of this class.
+     * 
+     * @param string $method_name name of method.
+     * @return boolean TRUE or FALSE if not called from method.
+     */
     protected function isCalledFrom($method_name) {
         $class_name = get_class($this);
         $debug_array = debug_backtrace();
