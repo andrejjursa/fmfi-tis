@@ -23,8 +23,13 @@
 			</div>
 	<div class="info-box-body">
         		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Administrator log in/out handling model.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Andrej Jursa, Michal Palenik</li>
+				<li><span class="field">version:</span> 1.0</li>
+			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_models---admins.php.html">/models/admins.php</a> (line <span class="field"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a6">6</a></span>)
+			Located in <a class="field" href="_models---admins.php.html">/models/admins.php</a> (line <span class="field"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a10">10</a></span>)
 		</p>
 		
 				
@@ -75,27 +80,27 @@
 										()
 									</div>
 																<div class="method-definition">
-											<span class="method-result">void</span>
+											<span class="method-result">string</span>
 										<a href="#getAdminEmail" title="details" class="method-name">getAdminEmail</a>
 										()
 									</div>
 																<div class="method-definition">
-											<span class="method-result">void</span>
+											<span class="method-result">integer</span>
 										<a href="#getAdminId" title="details" class="method-name">getAdminId</a>
 										()
 									</div>
 																<div class="method-definition">
-											<span class="method-result">void</span>
+											<span class="method-result">boolean</span>
 										<a href="#isAdminLogedIn" title="details" class="method-name">isAdminLogedIn</a>
 										()
 									</div>
 																<div class="method-definition">
-											<span class="method-result">void</span>
+											<span class="method-result">boolean</span>
 										<a href="#loginAdmin" title="details" class="method-name">loginAdmin</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$email</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$password</span>)
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$email</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$password</span>)
 									</div>
 																<div class="method-definition">
-											<span class="method-result">void</span>
+											<span class="method-result">boolean</span>
 										<a href="#logoutAdmin" title="details" class="method-name">logoutAdmin</a>
 										()
 									</div>
@@ -121,7 +126,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a10">10</a></span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a17">17</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -144,16 +149,18 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">getAdminEmail</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a46">46</a></span>)
+		<span class="method-title">getAdminEmail</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a76">76</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns administrator e-mail or NULL if no administrator is loged in.</p>
 	<ul class="tags">
+				<li><span class="field">return:</span> administrator e-mail.</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
 	
 	<div class="method-signature">
-		<span class="method-result">void</span>
+		<span class="method-result">string</span>
 		<span class="method-name">
 			getAdminEmail
 		</span>
@@ -167,16 +174,18 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getAdminId</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a38">38</a></span>)
+		<span class="method-title">getAdminId</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a63">63</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns administrator id or NULL if no administrator is loged in.</p>
 	<ul class="tags">
+				<li><span class="field">return:</span> administrator id.</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
 	
 	<div class="method-signature">
-		<span class="method-result">void</span>
+		<span class="method-result">integer</span>
 		<span class="method-name">
 			getAdminId
 		</span>
@@ -190,16 +199,18 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">isAdminLogedIn</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a32">32</a></span>)
+		<span class="method-title">isAdminLogedIn</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a52">52</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Verifies if administrator is loged in.</p>
 	<ul class="tags">
+				<li><span class="field">return:</span> returns TRUE if there is valid login, FALSE otherwise.</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
 	
 	<div class="method-signature">
-		<span class="method-result">void</span>
+		<span class="method-result">boolean</span>
 		<span class="method-name">
 			isAdminLogedIn
 		</span>
@@ -213,29 +224,32 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">loginAdmin</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a15">15</a></span>)
+		<span class="method-title">loginAdmin</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a30">30</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Performs admin login and set up session information.</p>
+<p class="description"><p>Does nothing and return FALSE when administrator is already loged in.</p></p>
 	<ul class="tags">
+				<li><span class="field">return:</span> TRUE, when login attempt were successful, FALSE otherwise or when administrator is already loged in.</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
 	
 	<div class="method-signature">
-		<span class="method-result">void</span>
+		<span class="method-result">boolean</span>
 		<span class="method-name">
 			loginAdmin
 		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$email</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$password</span>)
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$email</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$password</span>)
 			</div>
 	
 			<ul class="parameters">
 					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$email</span>			</li>
+				<span class="var-type">string</span>
+				<span class="var-name">$email</span><span class="var-description">: administrator e-mail.</span>			</li>
 					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$password</span>			</li>
+				<span class="var-type">string</span>
+				<span class="var-name">$password</span><span class="var-description">: administrator password.</span>			</li>
 				</ul>
 		
 			
@@ -244,16 +258,18 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">logoutAdmin</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a54">54</a></span>)
+		<span class="method-title">logoutAdmin</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a89">89</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Log out administrator.</p>
 	<ul class="tags">
+				<li><span class="field">return:</span> TRUE on success, FALSE when no administrator is loged in.</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
 	
 	<div class="method-signature">
-		<span class="method-result">void</span>
+		<span class="method-result">boolean</span>
 		<span class="method-name">
 			logoutAdmin
 		</span>
@@ -287,11 +303,14 @@
 		<span class="const-title">
 			<span class="const-name">USER_DATA_STRING</span>
 			 = <span class="const-default"> 'logged_in_admin'</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a8">8</a></span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a15">15</a></span>)
 		</span>
 	</div>
 
 	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> key in session user data.</li>
+			</ul>
 	
 	
 </div>
@@ -300,7 +319,7 @@
 	</div>
 
 	<p class="notes" id="credit">
-		Documentation generated on Fri, 07 Dec 2012 22:09:15 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Sat, 08 Dec 2012 11:40:18 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>

@@ -1,6 +1,10 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
+ * Logs handler model.
+ * 
+ * @author Andrej Jursa
+ * @version 1.0
  * @package AppModels
  */
 class Logs extends CI_Model {
@@ -11,6 +15,12 @@ class Logs extends CI_Model {
         $this->load->model('Admins');
     }
     
+    /**
+     * Store log message and data to database.
+     * 
+     * @param string $message log message.
+     * @param array<mixed> $data log data.
+     */ 
     public function addLog($message = '', $data = array()) {
         $admin_id = intval($this->Admins->getAdminId());
         

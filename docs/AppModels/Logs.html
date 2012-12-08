@@ -21,8 +21,13 @@
 					</div>
 	<div class="info-box-body">
         		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Logs handler model.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Andrej Jursa</li>
+				<li><span class="field">version:</span> 1.0</li>
+			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_models---logs.php.html">/models/logs.php</a> (line <span class="field"><a href="../__filesource/fsource_AppModels__modelslogs.php.html#a6">6</a></span>)
+			Located in <a class="field" href="_models---logs.php.html">/models/logs.php</a> (line <span class="field"><a href="../__filesource/fsource_AppModels__modelslogs.php.html#a10">10</a></span>)
 		</p>
 		
 				
@@ -54,7 +59,7 @@
 																<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#addLog" title="details" class="method-name">addLog</a>
-											([<span class="var-type"></span>&nbsp;<span class="var-name">$message</span> = <span class="var-default">''</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">array()</span>])
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$message</span> = <span class="var-default">''</span>], [<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">array()</span>])
 									</div>
 								</div>
 		</div>
@@ -76,7 +81,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelslogs.php.html#a8">8</a></span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelslogs.php.html#a12">12</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -99,10 +104,11 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">addLog</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelslogs.php.html#a14">14</a></span>)
+		<span class="method-title">addLog</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelslogs.php.html#a24">24</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Store log message and data to database.</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -112,16 +118,16 @@
 		<span class="method-name">
 			addLog
 		</span>
-					([<span class="var-type"></span>&nbsp;<span class="var-name">$message</span> = <span class="var-default">''</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">array()</span>])
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$message</span> = <span class="var-default">''</span>], [<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">array()</span>])
 			</div>
 	
 			<ul class="parameters">
 					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$message</span>			</li>
+				<span class="var-type">string</span>
+				<span class="var-name">$message</span><span class="var-description">: log message.</span>			</li>
 					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$data</span>			</li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$data</span><span class="var-description">: log data.</span>			</li>
 				</ul>
 		
 			
@@ -132,7 +138,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Fri, 07 Dec 2012 22:09:19 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Sat, 08 Dec 2012 11:40:21 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>
