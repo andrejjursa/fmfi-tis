@@ -1,11 +1,10 @@
-{extends file='layouts/backend.tpl'}
+﻿{extends file='layouts/backend.tpl'}
 
 {block content}
 <h1>Obnova aplikácie</h1>
 <p>
 	Tu môžete obnoviť aplikáciu zo zálohového súboru.
 </p>
-{$result}
 {if $result eq "ok"}
 	<span style="font-size: 150%; color: red">Aplikácia bola úspešne obnovená</span>
 {/if}
