@@ -390,6 +390,65 @@ class Admin_editor extends Abstract_backend_controller {
         $this->parser->parse('partials/admin_editor.mm_relation.list.tpl');
     }
     
+	public function backup(){
+		$this->parser->parse("backend/admin_editor.backup.tpl");
+	}
+
+	public function make_backup(){
+		// DB
+		$this->load->dbutil();
+		$backup =& $this->dbutil->backup(array(
+			"ignore" => array("sessions"),
+			"format" => "txt",
+			"add_insert" => TRUE,
+			"newline" => "\r\n"
+		)); 
+
+		// Uploads
+		$this->load->library("zip");
+		$this->zip->read_dir("public/uploads/", false);
+		$this->zip->add_data("database.sql", $backup);
+		
+		// Download in one zip
+		$this->zip->download("backup" . date("Ymd") . ".zip");
+	}
+	
+	public function restore(){
+		if(!$_FILES || !$_FILES["file"]){
+			$this->parser->assign("result", false);
+			$this->parser->parse("backend/admin_editor.restore.tpl");
+		}
+		else{
+			$f = new finfo(FILEINFO_MIME);
+			$this->load->library('unzip');
+
+			if(
+				$f &&
+				($mime = $f->file($_FILES["file"]["tmp_name"])) &&
+				preg_match("/^application\/zip/", $mime) &&
+				$this->unzip->extract($_FILES["file"]["tmp_name"], "application/tmp/") &&
+				is_file("application/tmp/database.sql") &&
+				is_dir("application/tmp/uploads/")
+			){
+				@rename("application/tmp/uploads", "public/uploads");
+				$s = explodeSqlFile("application/tmp/database.sql");
+				foreach($s as $query){
+					$this->db->query($query);
+				}
+				
+				$this->parser->assign("result", "ok");
+			}
+			else{
+				$this->parser->assign("result", "error");
+			}
+			
+			rrmdir("application/tmp");
+			mkdir("application/tmp", 0773);
+			
+			$this->parser->parse("backend/admin_editor.restore.tpl");
+		}
+	}
+	
     private function _deleteUnusedFiles() {
         $files_fields = $this->input->post('delete_files');
         if (count($files_fields)) {

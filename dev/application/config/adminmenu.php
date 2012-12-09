@@ -44,6 +44,30 @@ $config['menu'] = array(
         ),
         
     ),
+	array(
+        'title' => 'Záloha a obnovenie',
+        'link' => 'javascript:void(0)',
+        'sub' => array(
+            array(
+                'title' => 'Vytvoriť zálohu',
+                'link' => array(
+                    'controller' => 'admin_editor',
+                    'action' => 'backup',
+                    'params' => array(),
+                ),
+                'sub' => NULL,
+            ),
+			 array(
+                'title' => 'Obnoviť zo zálohy',
+                'link' => array(
+                    'controller' => 'admin_editor',
+                    'action' => 'restore',
+                    'params' => array(),
+                ),
+                'sub' => NULL,
+            ),
+		)
+	),
     array(
         'title' => 'Záznamy udalostí',
         'link' => array(

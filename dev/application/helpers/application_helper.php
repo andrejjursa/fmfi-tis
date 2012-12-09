@@ -175,4 +175,38 @@ function smartyFormError($params, $smarty) {
     }
 }
 
+function explodeSqlFile($fileName){
+	if(!is_file($fileName)){
+		return false;
+	}
+	
+	if($sql = file_get_contents($fileName)){
+		$return = array();
+		foreach(explode(";\r\n", $sql) as $sqlQuery){
+			$sqlQuery = trim($sqlQuery);
+			if($sqlQuery){
+				$return[] = $sqlQuery;
+			}
+		}
+		return $return;
+	}
+	return false;
+}
+
+function rrmdir($dir){
+	if(!is_dir($dir)){
+		return false;
+	}
+	
+	foreach(glob($dir . '/*') as $file) {
+		if(is_dir($file)){
+			rrmdir($file);
+		}
+		else{
+			unlink($file);
+		}
+	}
+	rmdir($dir);
+ }
+
 ?>
