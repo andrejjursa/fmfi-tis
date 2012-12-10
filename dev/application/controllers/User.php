@@ -133,7 +133,7 @@
 
             $this->email->initialize($config);
 
-            $this->email->from(/*TODO*/);
+            $this->email->from("kukulienka@makova.sk", "Administracia");
             $this->email->to($email); 
             $this->email->subject('Fyzikalna databaza - Zmena emailu');
             

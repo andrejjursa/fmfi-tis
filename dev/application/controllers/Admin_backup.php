@@ -17,7 +17,6 @@ class Admin_backup extends Abstract_backend_controller {
 		// DB
 		$this->load->dbutil();
 		$backup =& $this->dbutil->backup(array(
-			"ignore" => array("sessions"),
 			"format" => "txt",
 			"add_insert" => true,
 			"newline" => "\r\n"
