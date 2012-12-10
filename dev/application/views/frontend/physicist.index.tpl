@@ -2,7 +2,7 @@
 
 {block name="content"}
 <div id="breadcrumbs">
-	<a href="{createUri controller="timeline" action="index" params=[$year]}">Úvod</a>
+	<a href="{createUri controller="timeline" action="index" params=[$returnYear]}">Úvod</a>
 </div>
 {if !is_null($phys->getPhotoObject()) and !is_null($phys->getPhotoObject()->getFile())}
   <img src="{imageThumb image=$phys->getPhotoObject()->getFile() width=120 height=120}" />
@@ -40,7 +40,7 @@
 <h2>Vynálezy, na ktorých sa {$phys->getName()} podieľal</h2>
 <ol>
 {foreach $inventions as $invention}
-	<li><a href="{createUri controller='inventions' action='index' params=[$invention->getId()]}">{$invention->getName()}</li>
+	<li><a href="{createUri controller='inventions' action='index' params=[$invention->getId(), $returnYear]}">{$invention->getName()}</li>
 {/foreach}
 </ol>
 {/if}

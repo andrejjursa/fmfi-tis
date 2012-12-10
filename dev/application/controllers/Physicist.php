@@ -11,7 +11,7 @@ class Physicist extends Abstract_frontend_controller {
 
 		$this->parser->assign('phys', $physicist);
 		$this->parser->assign("inventions", $physicist->getInventions());
-        $this->parser->assign("year", $returnYear);
+        $this->parser->assign("returnYear", $returnYear);
         $this->_addTemplateJs('physicist/index.js');
         $this->_assignTemplateAdditionals();
                 
