@@ -66,7 +66,7 @@
                     Vaše heslo bolo zmenené.
                 {/if}
                 {if ($param2 eq "email")}
-                    Váš email bol zmenený. Aktivujte si ho prosim. 
+                    Na Váš email bola zaslaná overovacia správa.
                 {/if}
             </div>
         {/if}
