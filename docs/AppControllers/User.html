@@ -16,7 +16,7 @@
 	<div class="info-box-title">Description</div>
 	<div class="nav-bar">
 					<span class="disabled">Description</span> |
-													<a href="#sec-vars">Vars</a>
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
 						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
 						
 					</div>
@@ -47,29 +47,43 @@
 
 
 
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																								<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$user_id" title="details" class="var-name">$user_id</a>
+				</div>
+											</div>
+		</div>
+	</div>
 
 	<a name="sec-method-summary"></a>
 	<div class="info-box">
 		<div class="info-box-title">Method Summary</span></div>
 		<div class="nav-bar">
 			<a href="#sec-description">Description</a> |
-																		<a href="#sec-vars">Vars</a>
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
 				 
 				|
 						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																												
+																																				
 												<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#changeForm" title="details" class="method-name">changeForm</a>
 											([<span class="var-type"></span>&nbsp;<span class="var-name">$param1</span> = <span class="var-default">NULL</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$param2</span> = <span class="var-default">NULL</span>])
-									</div>
-																<div class="method-definition">
-											<span class="method-result">void</span>
-										<a href="#editPassword" title="details" class="method-name">editPassword</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$newPassword</span>)
 									</div>
 																<div class="method-definition">
 											<span class="method-result">void</span>
@@ -78,13 +92,13 @@
 									</div>
 																<div class="method-definition">
 											<span class="method-result">void</span>
-										<a href="#sendVerificationEmail" title="details" class="method-name">sendVerificationEmail</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$email</span>)
+										<a href="#validateEmail" title="details" class="method-name">validateEmail</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$uid</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$verification</span>)
 									</div>
 																<div class="method-definition">
 											<span class="method-result">void</span>
-										<a href="#validateEmail" title="details" class="method-name">validateEmail</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$verification</span>)
+										<a href="#_sendVerificationEmail" title="details" class="method-name">_sendVerificationEmail</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$email</span>)
 									</div>
 								</div>
 		</div>
@@ -103,7 +117,28 @@
 							
 					</div>
 		<div class="info-box-body">
-										<h4>Inherited Variables</h4>
+			<a name="var$user_id" id="$user_id"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$user_id</span>
+			 = <span class="var-default"> -1</span>			(line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersUser.php.html#a10">10</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+							<h4>Inherited Variables</h4>
 				<A NAME='inherited_vars'><!-- --></A>
 									<p>Inherited from <span class="classname"><a href="../Abstract/Core/Abstract_backend_controller.html">Abstract_backend_controller</a></span></p>
 					<blockquote>
@@ -129,7 +164,7 @@
 		<div class="info-box-title">Methods</div>
 		<div class="nav-bar">
 			<a href="#sec-description">Description</a> |
-															<a href="#sec-vars">Vars</a>
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
 																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
 						
 		</div>
@@ -140,7 +175,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">changeForm</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersUser.php.html#a17">17</a></span>)
+		<span class="method-title">changeForm</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersUser.php.html#a18">18</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -167,36 +202,8 @@
 		
 			
 	</div>
-<a name="methodeditPassword" id="editPassword"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<span class="method-title">editPassword</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersUser.php.html#a113">113</a></span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-	<ul class="tags">
-				<li><span class="field">access:</span> private</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">void</span>
-		<span class="method-name">
-			editPassword
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$newPassword</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$newPassword</span>			</li>
-				</ul>
-		
-			
-	</div>
 <a name="methodproccesForm" id="proccesForm"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<span class="method-title">proccesForm</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersUser.php.html#a61">61</a></span>)
@@ -223,39 +230,11 @@
 		
 			
 	</div>
-<a name="methodsendVerificationEmail" id="sendVerificationEmail"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<span class="method-title">sendVerificationEmail</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersUser.php.html#a117">117</a></span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-	<ul class="tags">
-				<li><span class="field">access:</span> private</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">void</span>
-		<span class="method-name">
-			sendVerificationEmail
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$email</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$email</span>			</li>
-				</ul>
-		
-			
-	</div>
 <a name="methodvalidateEmail" id="validateEmail"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">validateEmail</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersUser.php.html#a109">109</a></span>)
+		<span class="method-title">validateEmail</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersUser.php.html#a115">115</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -268,13 +247,44 @@
 		<span class="method-name">
 			validateEmail
 		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$verification</span>)
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$uid</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$verification</span>)
 			</div>
 	
 			<ul class="parameters">
 					<li>
 				<span class="var-type"></span>
+				<span class="var-name">$uid</span>			</li>
+					<li>
+				<span class="var-type"></span>
 				<span class="var-name">$verification</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_sendVerificationEmail" id="_sendVerificationEmail"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_sendVerificationEmail</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersUser.php.html#a127">127</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_sendVerificationEmail
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$email</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$email</span>			</li>
 				</ul>
 		
 			
@@ -314,7 +324,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Sat, 08 Dec 2012 20:09:19 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Mon, 10 Dec 2012 18:41:19 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>

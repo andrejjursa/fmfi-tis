@@ -73,11 +73,16 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																				
+																																																																																																				
 												<div class="method-definition">
 											<span class="method-result">Admins</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
 										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#adminExists" title="details" class="method-name">adminExists</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$email</span>)
 									</div>
 																<div class="method-definition">
 											<span class="method-result">string</span>
@@ -88,6 +93,11 @@
 											<span class="method-result">integer</span>
 										<a href="#getAdminId" title="details" class="method-name">getAdminId</a>
 										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getIdByEmail" title="details" class="method-name">getIdByEmail</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$email</span>)
 									</div>
 																<div class="method-definition">
 											<span class="method-result">boolean</span>
@@ -103,6 +113,26 @@
 											<span class="method-result">boolean</span>
 										<a href="#logoutAdmin" title="details" class="method-name">logoutAdmin</a>
 										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#updateEmail" title="details" class="method-name">updateEmail</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$email</span> = <span class="var-default">NULL</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#updateNewEmail" title="details" class="method-name">updateNewEmail</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$id</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$email</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#updatePassword" title="details" class="method-name">updatePassword</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$id</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$pass</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#updateValidToken" title="details" class="method-name">updateValidToken</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$id</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$token</span>)
 									</div>
 								</div>
 		</div>
@@ -123,7 +153,7 @@
 			<A NAME='method_detail'></A>
 
 <a name="method__construct" id="__construct"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a17">17</a></span>)
@@ -142,6 +172,35 @@
 				()
 			</div>
 	
+		
+			
+	</div>
+<a name="methodadminExists" id="adminExists"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">adminExists</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a102">102</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Verifies if entered email exists in table admins.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			adminExists
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$email</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$email</span>			</li>
+				</ul>
 		
 			
 	</div>
@@ -195,8 +254,36 @@
 		
 			
 	</div>
-<a name="methodisAdminLogedIn" id="isAdminLogedIn"><!-- --></a>
+<a name="methodgetIdByEmail" id="getIdByEmail"><!-- --></a>
 <div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getIdByEmail</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a161">161</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getIdByEmail
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$email</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$email</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodisAdminLogedIn" id="isAdminLogedIn"><!-- --></a>
+<div class="evenrow">
 	
 	<div class="method-header">
 		<span class="method-title">isAdminLogedIn</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a52">52</a></span>)
@@ -221,7 +308,7 @@
 			
 	</div>
 <a name="methodloginAdmin" id="loginAdmin"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<span class="method-title">loginAdmin</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a30">30</a></span>)
@@ -255,7 +342,7 @@
 			
 	</div>
 <a name="methodlogoutAdmin" id="logoutAdmin"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<span class="method-title">logoutAdmin</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a89">89</a></span>)
@@ -279,6 +366,133 @@
 		
 			
 	</div>
+<a name="methodupdateEmail" id="updateEmail"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">updateEmail</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a150">150</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			updateEmail
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$email</span> = <span class="var-default">NULL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$id</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$email</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodupdateNewEmail" id="updateNewEmail"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">updateNewEmail</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a143">143</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Upadtes new_email of admin with $id.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			updateNewEmail
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$id</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$email</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$id</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$email</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodupdatePassword" id="updatePassword"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">updatePassword</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a131">131</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Upadtes password of admin with $id.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			updatePassword
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$id</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$pass</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$id</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$pass</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodupdateValidToken" id="updateValidToken"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">updateValidToken</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsadmins.php.html#a118">118</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Updates Validation Token for admin with $id.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			updateValidToken
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$id</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$token</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$id</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$token</span>			</li>
+				</ul>
+		
+			
+	</div>
 						
 		</div>
 	</div>
@@ -297,7 +511,7 @@
 					</div>
 		<div class="info-box-body">
 			<a name="constUSER_DATA_STRING" id="USER_DATA_STRING"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="const-header">
 		<span class="const-title">
@@ -319,7 +533,7 @@
 	</div>
 
 	<p class="notes" id="credit">
-		Documentation generated on Sat, 08 Dec 2012 20:09:12 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Mon, 10 Dec 2012 18:41:11 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>

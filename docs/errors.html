@@ -20,6 +20,7 @@
 <a href="#admins.php">admins.php</a><br>
 <a href="#Admins_table_collection.php">Admins_table_collection.php</a><br>
 <a href="#Admins_table_row.php">Admins_table_row.php</a><br>
+<a href="#Admin_backup.php">Admin_backup.php</a><br>
 <a href="#Admin_editor.php">Admin_editor.php</a><br>
 <a href="#Answers.php">Answers.php</a><br>
 <a href="#Answers_table_collection.php">Answers_table_collection.php</a><br>
@@ -33,6 +34,7 @@
 <a href="#Inventions_table_row.php">Inventions_table_row.php</a><br>
 <a href="#Inventions_to_images_table_relation.php">Inventions_to_images_table_relation.php</a><br>
 <a href="#Inventions_to_one_image_table_relation.php">Inventions_to_one_image_table_relation.php</a><br>
+<a href="#Inventions_to_periods_table_relation.php">Inventions_to_periods_table_relation.php</a><br>
 <a href="#Inventions_to_physicists_table_relation.php">Inventions_to_physicists_table_relation.php</a><br>
 <a href="#logs.php">logs.php</a><br>
 <a href="#Logs_table_collection.php">Logs_table_collection.php</a><br>
@@ -44,12 +46,15 @@
 <a href="#MY_Parser.php">MY_Parser.php</a><br>
 <a href="#Periods_table_collection.php">Periods_table_collection.php</a><br>
 <a href="#Periods_table_row.php">Periods_table_row.php</a><br>
+<a href="#Periods_to_inventions_table_relation.php">Periods_to_inventions_table_relation.php</a><br>
+<a href="#Periods_to_physicists_table_relation.php">Periods_to_physicists_table_relation.php</a><br>
 <a href="#Physicist.php">Physicist.php</a><br>
 <a href="#Physicists_table_collection.php">Physicists_table_collection.php</a><br>
 <a href="#Physicists_table_row.php">Physicists_table_row.php</a><br>
 <a href="#Physicists_to_images_table_relation.php">Physicists_to_images_table_relation.php</a><br>
 <a href="#Physicists_to_inventions_table_relation.php">Physicists_to_inventions_table_relation.php</a><br>
 <a href="#Physicists_to_one_image_table_relation.php">Physicists_to_one_image_table_relation.php</a><br>
+<a href="#Physicists_to_periods_table_relation.php">Physicists_to_periods_table_relation.php</a><br>
 <a href="#Physicists_to_questions_table_relation.php">Physicists_to_questions_table_relation.php</a><br>
 <a href="#Questions.php">Questions.php</a><br>
 <a href="#Questions_table_collection.php">Questions_table_collection.php</a><br>
@@ -57,26 +62,27 @@
 <a href="#Questions_to_answers_table_relation.php">Questions_to_answers_table_relation.php</a><br>
 <a href="#Smarty.php">Smarty.php</a><br>
 <a href="#Timeline.php">Timeline.php</a><br>
+<a href="#Unzip.php">Unzip.php</a><br>
 <a href="#User.php">User.php</a><br>
 <a name="Post-parsing"></a>
 <h1>Post-parsing</h1>
 <h2>Warnings:</h2><br>
-<b>Warning</b> - class Admins in package AppModels parent not found in @see parent::__construct()<br>
-<b>Warning</b> - Class CI_Smarty parent Smarty not found<br>
 <b>Warning</b> - class Install in package AppControllers parent not found in @see parent::__construct()<br>
-<b>Warning</b> - class Admins in package AppModels parent not found in @see parent::__construct()<br>
-<b>Warning</b> - Class Logs parent CI_Model not found<br>
 <b>Warning</b> - class MY_Output in package CodeIgniter parent not found in @see parent::_display()<br>
-<b>Warning</b> - Class Admins parent CI_Model not found<br>
-<b>Warning</b> - class Logs in package AppModels parent not found in @see parent::__construct()<br>
-<b>Warning</b> - class Install in package AppControllers parent not found in @see parent::__construct()<br>
-<b>Warning</b> - class Logs in package AppModels parent not found in @see parent::__construct()<br>
 <b>Warning</b> - Class Install parent CI_Controller not found<br>
+<b>Warning</b> - class Logs in package AppModels parent not found in @see parent::__construct()<br>
+<b>Warning</b> - class Logs in package AppModels parent not found in @see parent::__construct()<br>
 <b>Warning</b> - Class My_Loader parent CI_Loader not found<br>
+<b>Warning</b> - class Install in package AppControllers parent not found in @see parent::__construct()<br>
 <b>Warning</b> - Class My_Controller parent CI_Controller not found<br>
 <b>Warning</b> - class MY_Output in package CodeIgniter parent not found in @see parent::_display()<br>
+<b>Warning</b> - Class CI_Smarty parent Smarty not found<br>
 <b>Warning</b> - Class MY_Output parent CI_Output not found<br>
+<b>Warning</b> - Class Admins parent CI_Model not found<br>
 <b>Warning</b> - Class MY_Parser parent CI_Parser not found<br>
+<b>Warning</b> - class Admins in package AppModels parent not found in @see parent::__construct()<br>
+<b>Warning</b> - class Admins in package AppModels parent not found in @see parent::__construct()<br>
+<b>Warning</b> - Class Logs parent CI_Model not found<br>
 <a name="abstract_backend_controller.php"></a>
 <h1>abstract_backend_controller.php</h1>
 <h2>Warnings:</h2><br>
@@ -103,8 +109,8 @@
 <h1>abstract_frontend_controller.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 13</b> - Page-level DocBlock precedes "require_once APPPATH.'core/abstract_common_controller.php'", use another DocBlock to document the source element<br>
-<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class Abstract_frontend_controller<br>
 <b>Warning on line 15</b> - Class "Abstract_frontend_controller" has no Class-level DocBlock.<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class Abstract_frontend_controller<br>
 <b>Warning on line 19</b> - Method "__construct" has no method-level DocBlock.<br>
 <a name="abstract_table_collection.php"></a>
 <h1>abstract_table_collection.php</h1>
@@ -120,8 +126,8 @@
 <h1>abstract_table_relation.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 13</b> - Page-level DocBlock precedes "require_once APPPATH.'core/abstract_table_core.php'", use another DocBlock to document the source element<br>
-<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class Abstract_table_relation<br>
 <b>Warning on line 15</b> - Class "Abstract_table_relation" has no Class-level DocBlock.<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class Abstract_table_relation<br>
 <a name="abstract_table_row.php"></a>
 <h1>abstract_table_row.php</h1>
 <h2>Warnings:</h2><br>
@@ -137,11 +143,15 @@
 <b>Warning on line 54</b> - Method "do_login" has no method-level DocBlock.<br>
 <b>Warning on line 59</b> - Method "logout" has no method-level DocBlock.<br>
 <b>Warning on line 63</b> - Method "forgotten_password" has no method-level DocBlock.<br>
+<b>Warning on line 90</b> - Method "send_password_request" has no method-level DocBlock.<br>
 <a name="admins.php"></a>
 <h1>admins.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 9</b> - DocBlock would be page-level, but precedes class "Admins", use another DocBlock to document the file<br>
+<b>Warning on line 9</b> - package default is already in category Encryption, will now replace with category default<br>
 <b>Warning on line 19</b> - Method "__construct" has no method-level DocBlock.<br>
+<b>Warning on line 158</b> - Method "updateEmail" has no method-level DocBlock.<br>
+<b>Warning on line 164</b> - Method "getIdByEmail" has no method-level DocBlock.<br>
 <a name="Admins_table_collection.php"></a>
 <h1>Admins_table_collection.php</h1>
 <h2>Warnings:</h2><br>
@@ -150,6 +160,15 @@
 <h1>Admins_table_row.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Admins_table_row", use another DocBlock to document the file<br>
+<b>Warning on line 20</b> - Method "loadByLogin" has no method-level DocBlock.<br>
+<a name="Admin_backup.php"></a>
+<h1>Admin_backup.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Admin_backup", use another DocBlock to document the file<br>
+<b>Warning on line 13</b> - Method "index" has no method-level DocBlock.<br>
+<b>Warning on line 42</b> - Method "make_backup" has no method-level DocBlock.<br>
+<b>Warning on line 51</b> - Method "download" has no method-level DocBlock.<br>
+<b>Warning on line 93</b> - Method "restore" has no method-level DocBlock.<br>
 <a name="Admin_editor.php"></a>
 <h1>Admin_editor.php</h1>
 <h2>Warnings:</h2><br>
@@ -229,8 +248,8 @@
 <h1>Inventions_table_row.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Inventions_table_row", use another DocBlock to document the file<br>
-<b>Warning on line 76</b> - Method "getDataForEditor" has no method-level DocBlock.<br>
-<b>Warning on line 88</b> - Method "prepareEditorSave" has no method-level DocBlock.<br>
+<b>Warning on line 101</b> - Method "getDataForEditor" has no method-level DocBlock.<br>
+<b>Warning on line 113</b> - Method "prepareEditorSave" has no method-level DocBlock.<br>
 <a name="Inventions_to_images_table_relation.php"></a>
 <h1>Inventions_to_images_table_relation.php</h1>
 <h2>Warnings:</h2><br>
@@ -241,6 +260,11 @@
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Inventions_to_one_image_table_relation", use another DocBlock to document the file<br>
 <b>Warning on line 10</b> - Method "__construct" has no method-level DocBlock.<br>
+<a name="Inventions_to_periods_table_relation.php"></a>
+<h1>Inventions_to_periods_table_relation.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Inventions_to_periods_table_relation", use another DocBlock to document the file<br>
+<b>Warning on line 13</b> - Method "__construct" has no method-level DocBlock.<br>
 <a name="Inventions_to_physicists_table_relation.php"></a>
 <h1>Inventions_to_physicists_table_relation.php</h1>
 <h2>Warnings:</h2><br>
@@ -280,8 +304,8 @@
 <h1>My_Loader.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 15</b> - Page-level DocBlock precedes "require_once APPPATH.'core/abstract_table_row.php'", use another DocBlock to document the source element<br>
-<b>Warning on line 19</b> - Class "My_Loader" has no Class-level DocBlock.<br>
 <b>Warning on line 19</b> - no @package tag was used in a DocBlock for class My_Loader<br>
+<b>Warning on line 19</b> - Class "My_Loader" has no Class-level DocBlock.<br>
 <b>Warning on line 23</b> - Method "__construct" has no method-level DocBlock.<br>
 <a name="MY_Output.php"></a>
 <h1>MY_Output.php</h1>
@@ -299,28 +323,38 @@
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Periods_table_collection", use another DocBlock to document the file<br>
 <b>Warning on line 37</b> - Method "gridSettings" has no method-level DocBlock.<br>
-<b>Warning on line 109</b> - Method "editorSettings" has no method-level DocBlock.<br>
+<b>Warning on line 151</b> - Method "editorSettings" has no method-level DocBlock.<br>
 <a name="Periods_table_row.php"></a>
 <h1>Periods_table_row.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Periods_table_row", use another DocBlock to document the file<br>
+<a name="Periods_to_inventions_table_relation.php"></a>
+<h1>Periods_to_inventions_table_relation.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Periods_to_inventions_table_relation", use another DocBlock to document the file<br>
+<b>Warning on line 13</b> - Method "__construct" has no method-level DocBlock.<br>
+<a name="Periods_to_physicists_table_relation.php"></a>
+<h1>Periods_to_physicists_table_relation.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Periods_to_physicists_table_relation", use another DocBlock to document the file<br>
+<b>Warning on line 13</b> - Method "__construct" has no method-level DocBlock.<br>
 <a name="Physicist.php"></a>
 <h1>Physicist.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Physicist", use another DocBlock to document the file<br>
-<b>Warning on line 21</b> - Method "index" has no method-level DocBlock.<br>
+<b>Warning on line 19</b> - Method "index" has no method-level DocBlock.<br>
 <a name="Physicists_table_collection.php"></a>
 <h1>Physicists_table_collection.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Physicists_table_collection", use another DocBlock to document the file<br>
-<b>Warning on line 215</b> - Method "editorSettings" has no method-level DocBlock.<br>
+<b>Warning on line 229</b> - Method "editorSettings" has no method-level DocBlock.<br>
 <a name="Physicists_table_row.php"></a>
 <h1>Physicists_table_row.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Physicists_table_row", use another DocBlock to document the file<br>
-<b>Warning on line 112</b> - Method "prepareEditorSave" has no method-level DocBlock.<br>
-<b>Warning on line 129</b> - Method "getDataForEditor" has no method-level DocBlock.<br>
-<b>Warning on line 141</b> - Method "onDelete" has no method-level DocBlock.<br>
+<b>Warning on line 138</b> - Method "prepareEditorSave" has no method-level DocBlock.<br>
+<b>Warning on line 155</b> - Method "getDataForEditor" has no method-level DocBlock.<br>
+<b>Warning on line 167</b> - Method "onDelete" has no method-level DocBlock.<br>
 <a name="Physicists_to_images_table_relation.php"></a>
 <h1>Physicists_to_images_table_relation.php</h1>
 <h2>Warnings:</h2><br>
@@ -336,6 +370,11 @@
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Physicists_to_one_image_table_relation", use another DocBlock to document the file<br>
 <b>Warning on line 10</b> - Method "__construct" has no method-level DocBlock.<br>
+<a name="Physicists_to_periods_table_relation.php"></a>
+<h1>Physicists_to_periods_table_relation.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Physicists_to_periods_table_relation", use another DocBlock to document the file<br>
+<b>Warning on line 13</b> - Method "__construct" has no method-level DocBlock.<br>
 <a name="Physicists_to_questions_table_relation.php"></a>
 <h1>Physicists_to_questions_table_relation.php</h1>
 <h2>Warnings:</h2><br>
@@ -377,17 +416,25 @@
 <h1>Timeline.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Timeline", use another DocBlock to document the file<br>
+<a name="Unzip.php"></a>
+<h1>Unzip.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 21</b> - DocBlock would be page-level, but precedes class "Unzip", use another DocBlock to document the file<br>
+<b>Warning on line 21</b> - package CodeIgniter is already in category default, will now replace with category Encryption<br>
+<b>Warning on line 21</b> - package default is already in category default, will now replace with category Encryption<br>
+<b>Warning on line 519</b> - Method "_load_file_list_by_eof" has no method-level DocBlock.<br>
+<b>Warning on line 554</b> - Method "_load_files_by_signatures" has no method-level DocBlock.<br>
+<b>Warning on line 617</b> - Method "_get_file_header" has no method-level DocBlock.<br>
 <a name="User.php"></a>
 <h1>User.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 8</b> - DocBlock would be page-level, but precedes class "User", use another DocBlock to document the file<br>
 <b>Warning on line 52</b> - Method "changeForm" has no method-level DocBlock.<br>
-<b>Warning on line 106</b> - Method "proccesForm" has no method-level DocBlock.<br>
-<b>Warning on line 110</b> - Method "validateEmail" has no method-level DocBlock.<br>
-<b>Warning on line 114</b> - Method "editPassword" has no method-level DocBlock.<br>
-<b>Warning on line 118</b> - Method "sendVerificationEmail" has no method-level DocBlock.<br>
+<b>Warning on line 112</b> - Method "proccesForm" has no method-level DocBlock.<br>
+<b>Warning on line 124</b> - Method "validateEmail" has no method-level DocBlock.<br>
+<b>Warning on line 164</b> - Method "_sendVerificationEmail" has no method-level DocBlock.<br>
 	<p class="notes" id="credit">
-		Documentation generated on Sat, 08 Dec 2012 20:09:19 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Mon, 10 Dec 2012 18:41:19 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</body>
 </html>
