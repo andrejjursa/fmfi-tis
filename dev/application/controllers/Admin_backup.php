@@ -6,6 +6,10 @@
 class Admin_backup extends Abstract_backend_controller {
 
 	public function index(){
+		$backups = scandir("application/backup/");
+		$backups = array_slice($backups, 2);
+		sort($backups);
+		$this->parser->assign("backups", $backups);
 		$this->parser->parse("backend/admin_backup.index.tpl");
 	}
 
@@ -39,8 +43,21 @@ class Admin_backup extends Abstract_backend_controller {
 		$this->zip->download($fileName);
 	}
 	
-	public function restore(){
-		if(!$_FILES || !$_FILES["file"]){
+	public function download($fileName = false){
+		if(!$fileName || strpos($fileName, "/") || !is_file("application/backup/" . $fileName)){
+			exit;
+		}
+		$this->load->helper("download");
+		force_download($fileName, file_get_contents("application/backup/" . $fileName));
+	}
+	
+	public function restore($fileName = false){
+		$backups = scandir("application/backup/");
+		$backups = array_slice($backups, 2);
+		sort($backups);
+		$this->parser->assign("backups", $backups);
+			
+		if((!$_FILES || !$_FILES["file"]) && !$fileName){
 			$this->parser->assign("result", false);
 			$this->parser->parse("backend/admin_backup.restore.tpl");
 		}
@@ -48,11 +65,13 @@ class Admin_backup extends Abstract_backend_controller {
 			$f = new finfo(FILEINFO_MIME);
 			$this->load->library('unzip');
 
+			$file = $fileName ? "application/backup/" . $fileName : $_FILES["tmp_name"];
+			
 			if(
 				$f &&
-				($mime = $f->file($_FILES["file"]["tmp_name"])) &&
+				($mime = $f->file($file)) &&
 				preg_match("/^application\/zip/", $mime) &&
-				$this->unzip->extract($_FILES["file"]["tmp_name"], "application/tmp/") &&
+				$this->unzip->extract($file, "application/tmp/") &&
 				is_file("application/tmp/database.sql") &&
 				is_dir("application/tmp/uploads/")
 			){
