@@ -4,6 +4,9 @@
 class Migration_Base_tables extends CI_Migration {
 
     function up(){
+    /**
+     * Adds columns new_email and Validition_token     
+    **/         
         $this->dbforge->add_column('admins',array(
         'new_email' => array(
                 'type' => 'varchar',
@@ -17,15 +20,18 @@ class Migration_Base_tables extends CI_Migration {
                 'default' => '',
                 'null' => FALSE,
             )            
-        );
+        )
+      );
             
     }
 
 
     function down(){
+    /**
+     * Drops columns new_email and Validation_token
+    **/         
         $this->dbforge->drop_column('admins','new_email');
-        $this->dbforge->drop_column('admins','validation_token');
-    
+        $this->dbforge->drop_column('admins','validation_token');    
     }
 
 }
