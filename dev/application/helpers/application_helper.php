@@ -193,7 +193,7 @@ function explodeSqlFile($fileName){
 	return false;
 }
 
-function rrmdir($dir){
+function rrmdir($dir, $removeParent = true){
 	if(!is_dir($dir)){
 		return false;
 	}
@@ -206,7 +206,9 @@ function rrmdir($dir){
 			unlink($file);
 		}
 	}
-	rmdir($dir);
+	if($removeParent){
+		rmdir($dir);
+	}
  }
 
 ?>

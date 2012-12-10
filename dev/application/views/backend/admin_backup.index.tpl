@@ -9,6 +9,6 @@ Tu môžete vytvoriť zálohu celej aplikácie, s ktorou môžete neskôr aplik�
 	<li>Vytvorte zálohu a stiahnite súbor do svojho počítača</li>
 </ol>
 <p>
-<a href="{createUri controller="admin_editor" action="make_backup"}">Vytvoriť zálohu</a>
+<a href="{createUri controller="admin_backup" action="make_backup"}">Vytvoriť zálohu</a>
 </p>
 {/block}

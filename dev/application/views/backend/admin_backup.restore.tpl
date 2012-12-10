@@ -11,7 +11,7 @@
 {if $result eq "error"}
 	<span style="font-size: 150%; color: red">Neplatný súbor zálohy</span>
 {/if}
-<form action="{createUri controller="admin_editor" action="restore"}" enctype="multipart/form-data" method="post">
+<form action="{createUri controller="admin_backup" action="restore"}" enctype="multipart/form-data" method="post">
 	<div>
 		<input type="file" name="file" />
 		<input type="submit" value="Obnoviť" />

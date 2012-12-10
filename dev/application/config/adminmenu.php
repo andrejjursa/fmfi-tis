@@ -51,8 +51,8 @@ $config['menu'] = array(
             array(
                 'title' => 'Vytvoriť zálohu',
                 'link' => array(
-                    'controller' => 'admin_editor',
-                    'action' => 'backup',
+                    'controller' => 'admin_backup',
+                    'action' => 'index',
                     'params' => array(),
                 ),
                 'sub' => NULL,
@@ -60,7 +60,7 @@ $config['menu'] = array(
 			 array(
                 'title' => 'Obnoviť zo zálohy',
                 'link' => array(
-                    'controller' => 'admin_editor',
+                    'controller' => 'admin_backup',
                     'action' => 'restore',
                     'params' => array(),
                 ),

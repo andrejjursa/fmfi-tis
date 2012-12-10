@@ -162,7 +162,6 @@ class CI_DB_mysql_utility extends CI_DB_utility {
 
 
 			// Build the insert string
-			$output .= 'INSERT INTO '.$table.' ('.$field_str.') VALUES '; // single insert per row fix
 			foreach ($query->result_array() as $row)
 			{
 				$val_str = '';
@@ -197,10 +196,9 @@ class CI_DB_mysql_utility extends CI_DB_utility {
 				$val_str = preg_replace( "/, $/" , "" , $val_str);
 
 				// Build the INSERT string
-				//$output .= 'INSERT INTO '.$table.' ('.$field_str.') VALUES ('.$val_str.');'.$newline;
-				$output .= $newline . '('.$val_str.'),';
+				$output .= 'INSERT INTO '.$table.' ('.$field_str.') VALUES ('.$val_str.');'.$newline;
 			}
-			$output[strlen($output) - 1] = ';'; // single insert per row fix
+
 			$output .= $newline.$newline;
 		}
 
