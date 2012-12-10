@@ -5,13 +5,10 @@
 <p>
 Tu môžete vytvoriť zálohu celej aplikácie, s ktorou môžete neskôr aplikáciu obnoviť.
 </p>
+<ol>
+	<li>Vytvorte zálohu a stiahnite súbor do svojho počítača</li>
+</ol>
 <p>
 <a href="{createUri controller="admin_backup" action="make_backup"}">Vytvoriť zálohu</a>
 </p>
-<h2>Dostupné zálohy</h2>
-<ol>
-{foreach $backups as $backup}
-	<li><a href="{createUri controller="admin_backup" action="restore" params=[$backup]}">{$backup}</a></li>
-{/foreach}
-</ol>
 {/block}

@@ -3,7 +3,7 @@
 {block content}
 <h1>Obnova aplikácie</h1>
 <p>
-Nahrajte zálohu, ktorú chcete obnoviť, alebo vyberte jednu z uložených záloh.
+	Tu môžete obnoviť aplikáciu zo zálohového súboru.
 </p>
 {if $result eq "ok"}
 	<span style="font-size: 150%; color: red">Aplikácia bola úspešne obnovená</span>
@@ -17,10 +17,4 @@ Nahrajte zálohu, ktorú chcete obnoviť, alebo vyberte jednu z uložených zál
 		<input type="submit" value="Obnoviť" />
 	</div>
 </form>
-<h2>Obnoviť zálohu</h2>
-<ol>
-{foreach $backups as $backup}
-	<li><a href="{createUri controller="admin_backup" action="restore" params=[$backup]}">{$backup}</a></li>
-{/foreach}
-</ol>
 {/block}

@@ -59,8 +59,8 @@
         * @retrun;
         */
         public function proccesForm($form = NULL) {
-            var_dump($form);
-            var_dump($_POST);
+            //var_dump($form);
+            //var_dump($_POST);
             
             
             $param1 = NULL;
@@ -72,10 +72,10 @@
                     $param1 = "success";
                     $param2 = "email";
                     
-                    $this->sendVerificationEmail($email);
+                    $this->_sendVerificationEmail($email);
                     
                 } else {
-                    $param1 = "failed";
+                    $param1 = "email";
                     $param2 = "invalid-email";
                 }
             }
@@ -86,22 +86,21 @@
                 $pwd_len = 4;
                 
                 if (strlen($pwd1) < $pwd_len || strlen($pwd2) < $pwd_len) {
-                    $param1 = "failed";
+                    $param1 = "password";
                     $param2 = "password-short";
                 } else {
                     if ($pwd1 === $pwd2) {
                         $param1 = "success";
                         $param2 = "password";                        
                         
-                        // zmenit heslo v DB
+                        $this->_editPassword($pwd1);
                     } else {
-                        $param1 = "failed";
-                        $param2 = "password-mismatch";
+                        $param1 = "password";
+                        $param2 = "password-missmatch";
                     }
                 }
             }
             
-            //exit;
             $this->load->helper('url');
             redirect(createUri("user", "changeForm", [$param1, $param2]));
         }
@@ -110,11 +109,21 @@
             
         }
         
-        private function editPassword($newPassword) {
+        private function _editPassword($newPassword) {
+            $this->load->library('session');
             
+            $data = $this->session->userdata("logged_in_admin");
+            $data = $data["id"];
+            
+            $edit = $this->load->table_row('admins');
+            $edit->load(intval($data));
+            $edit->data(array(md5($newPassword)));
+            
+            var_dump($edit);
+            exit;
         }
         
-        private function sendVerificationEmail($email) {
+        private function _sendVerificationEmail($email) {
             
         }
         

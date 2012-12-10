@@ -69,6 +69,31 @@ $config['menu'] = array(
 		)
 	),
     array(
+        'title' => 'Používateľ',
+        'link' => 'javascript:void(0)',
+        'sub' => array(
+            array(
+                'title' => 'Zmeniť email',
+                'link' => array(
+                    'controller' => 'user',
+                    'action' => 'changeForm',
+                    'params' => array("email"),
+                ),
+                'sub' => NULL,
+            ),
+            array(
+                'title' => 'Zmeniť heslo',
+                'link' => array(
+                    'controller' => 'user',
+                    'action' => 'changeForm',
+                    'params' => array("password"),
+                ),
+                'sub' => NULL,
+            ),
+        )
+    ),    
+    
+    array(
         'title' => 'Záznamy udalostí',
         'link' => array(
             'controller' => 'admin_editor',

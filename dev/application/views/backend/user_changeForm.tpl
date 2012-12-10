@@ -22,6 +22,20 @@
                                 <input type="password" name="{$param1}2" />
                             </div>
                         </div>
+                        {if isset($param1) && $param1 eq "password-short"}
+                            <div class="userChangeForm-row">
+                                <div class="userChangeForm-row-text" style="color: red;">
+                                    Heslo je prikratke. Minimalna dlzka su 4 znaky.
+                                </div>
+                            </div>
+                        {/if}
+                        {if isset($param1) && $param1 eq "password-missmatch"}
+                            <div class="userChangeForm-row">
+                                <div class="userChangeForm-row-text" style="color: red;">
+                                    Hesla sa nezhoduju.
+                                </div>
+                            </div>
+                        {/if}
                     {/if}    
                     {if ($param1 == "email")}
                         <div class="userChangeForm-row">
@@ -46,18 +60,6 @@
                 {/if}
                 {if ($param2 eq "email")}
                     Váš email bol zmenený. Aktivujte si ho prosim. 
-                {/if}
-            </div>
-        {elseif ($param1 eq "failed")}
-            <div class="userChangeForm-row" style="color: red;">
-                {if ($param2 eq "invalid-email")}
-                    Zadali ste email v nesprávnom tvare.
-                {elseif ($param2 eq "password-short")}
-                    Prikrátke heslo, minimálne 5 znakov.
-                {elseif ($param2 eq "password-mismatch")}
-                    Zadané heslá sa nezhodujú.
-                {else}    
-                    Nedefinovaná chyba.
                 {/if}
             </div>
         {/if}
