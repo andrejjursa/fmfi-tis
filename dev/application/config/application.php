@@ -33,5 +33,8 @@ $config['grid_rows_per_page_possibilities'] = array(20, 50, 100);
 $config['admin_login_controller'] = 'admin';
 $config['admin_login_action'] = 'login';
 
+$config['tmp_path'] = "application/tmp/";
+$config['backup_path'] = "application/backup/";
+
 /* End of file application.php */
 /* Location: ./application/config/application.php */
