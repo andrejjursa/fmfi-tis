@@ -211,4 +211,19 @@ function rrmdir($dir, $removeParent = true){
 	}
  }
 
+ 
+ function generateToken() {
+     $veta = "Ihla pichla Ivana do nohy'.";
+     
+     $dlzka_vstupu_cryptovania = 10;
+     $veta_len = strlen($veta);
+     $vystup = date("d");
+     for ($i = 0; $i <= $dlzka_vstupu_cryptovania; $i++) {
+         $vystup .= $veta[rand(0, $veta_len - 1)];
+     }
+     
+     return md5($vystup);
+ }
+ 
+ 
 ?>

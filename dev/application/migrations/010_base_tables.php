@@ -22,6 +22,7 @@ class Migration_Base_tables extends CI_Migration {
             )            
         )
       );
+      $this->dbforge->add_key('validation_token');
             
     }
 

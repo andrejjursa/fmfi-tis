@@ -7,6 +7,7 @@
  */
 
     class User extends Abstract_backend_controller {
+        private $user_id = -1;
         
         /*
         * Display Form for changing email and password
@@ -20,7 +21,6 @@
             switch ($param1) {
                 case "email":
                 case "password":
-                case "failed":
                 case "success":
                     $name = $param1;
                     break;
@@ -53,7 +53,7 @@
         }
         
         /*
-        * 
+        * Procces(check and change) submited Form to change email/password
         * 
         * @param string $form
         * @retrun;
@@ -62,6 +62,9 @@
             //var_dump($form);
             //var_dump($_POST);
             
+            $this->load->library('session');
+            $data = $this->session->userdata("logged_in_admin");
+            $this->user_id = $data["id"];
             
             $param1 = NULL;
             $param2 = NULL;
@@ -93,37 +96,59 @@
                         $param1 = "success";
                         $param2 = "password";                        
                         
-                        $this->_editPassword($pwd1);
+                        if ($this->user_id > 0) {
+                            $this->Admins->updatePassword($this->user_id ,$pwd1);
+                        } else {
+                            $param1 = "password";
+                        }
                     } else {
                         $param1 = "password";
-                        $param2 = "password-missmatch";
+                        $param2 = "password-mismatch";
                     }
                 }
             }
             
             $this->load->helper('url');
-            redirect(createUri("user", "changeForm", [$param1, $param2]));
+            redirect(createUri("user", "changeForm", array($param1, $param2) ));
         }
         
-        public function validateEmail($verification) {
+        public function validateEmail($uid, $verification) {
             
-        }
-        
-        private function _editPassword($newPassword) {
-            $this->load->library('session');
+            $admin = $this->load->table_row("admins");
+            $admin->load(intval($uid));
+            if ($verification != "" && $admin->data("validation_token") == $verification)  {
+                
+                $this->Admins->updateMail($this->user_id);
+                
+            }
             
-            $data = $this->session->userdata("logged_in_admin");
-            $data = $data["id"];
-            
-            $edit = $this->load->table_row('admins');
-            $edit->load(intval($data));
-            $edit->data(array(md5($newPassword)));
-            
-            var_dump($edit);
-            exit;
         }
         
         private function _sendVerificationEmail($email) {
+            $this->load->library('email');
+            
+            $config['protocol'] = 'sendmail'; // mail, sendmail, smtp
+            $config['mailtype'] = 'html';
+            $config['charset'] = 'utf-8';
+
+            $this->email->initialize($config);
+
+            $this->email->from(/*TODO*/);
+            $this->email->to($email); 
+            $this->email->subject('Fyzikalna databaza - Zmena emailu');
+            
+            $token = generateToken();
+            $url = createUri("user", "validateEmail", array($this->user_id, $token));
+            
+            $sprava = "Vžiadali ste si zmenu email-u \n\n";
+            $sprava .= "Pre dokončenie zmeny klilnite na: \n<a href='$url'>$url</a>\n";
+            $sprava .= "\n V prípade, že ste si tento email nevyžiadali ignorujte ho.";
+                
+            $this->email->message($sprava); 
+            
+            $this->email->send();
+            
+            $this->Admins->updateNewEmail($this->user_id, $email);
             
         }
         

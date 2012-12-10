@@ -140,10 +140,21 @@ class Admins extends CI_Model {
      *
      */              
     
-    public function updateEmail($id,$email){
+    public function updateNewEmail($id,$email){
         $admin = $this->load->table_row('admins');
         $admin->load($id);
         $admin->data(array( 'new_email' => $email ));
+        $admin->save(); 
+    }
+    
+    public function updateEmail($id, $email = NULL){
+        $admin = $this->load->table_row('admins');
+        $admin->load($id);
+        $admin->data(array( 
+            'email' => (!is_null($email))?$email:$admin->getNew_email() , 
+            "new_email" => "", 
+            "validation_token" => ""
+        ));
         $admin->save(); 
     }
     

@@ -22,14 +22,14 @@
                                 <input type="password" name="{$param1}2" />
                             </div>
                         </div>
-                        {if isset($param1) && $param1 eq "password-short"}
+                        {if isset($param2) && $param2 eq "password-short"}
                             <div class="userChangeForm-row">
                                 <div class="userChangeForm-row-text" style="color: red;">
                                     Heslo je prikratke. Minimalna dlzka su 4 znaky.
                                 </div>
                             </div>
                         {/if}
-                        {if isset($param1) && $param1 eq "password-missmatch"}
+                        {if isset($param2) && $param2 eq "password-mismatch"}
                             <div class="userChangeForm-row">
                                 <div class="userChangeForm-row-text" style="color: red;">
                                     Hesla sa nezhoduju.
@@ -47,6 +47,13 @@
                                 <input type="text" name="{$param1}" />
                             </div>
                         </div>
+                        {if isset($param2) && $param2 eq "invalid-email"}
+                            <div class="userChangeForm-row">
+                                <div class="userChangeForm-row-text" style="color: red;">
+                                    Zadali ste nespravny email.
+                                </div>
+                            </div>
+                        {/if}
                     {/if}
                 </div>
                 <div>
