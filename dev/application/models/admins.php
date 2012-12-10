@@ -94,6 +94,17 @@ class Admins extends CI_Model {
         return FALSE;
     }
     
+    public function adminExists($email){
+          $admin = $this->load->table_row('admins');
+          $admin->loadByLogin($email);
+          if(is_null($admin->getId())){
+            return FALSE;
+          }
+          else{
+            return TRUE;
+          }
+    }
+    
 }
 
 ?>

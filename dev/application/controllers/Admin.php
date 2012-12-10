@@ -60,7 +60,21 @@ class Admin extends Abstract_backend_controller {
     }
     
     public function forgotten_password(){
+        $this->parser->parse('backend/admin.forgottenPassword.tpl');
+    }
     
+    public function send_password_request(){
+        $this->form_validation->set_rules('email','Email','required|valid_email');
+        $this->form_validation->set_message('required', '<strong>%s</strong> musí byť vyplnené.');
+        $this->form_validation->set_message('valid_email', '<strong>%s</strong> musí byť e-mailová adresa.');
+        if($this->form_validation->run()){
+            if($this->admins->adminExists($this->input->post('email'))){
+            
+            }
+        }
+        else{
+            $this->parser->parse('backend/admin.forgottenPassword.tpl');
+        }            
     }
 
 }
