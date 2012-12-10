@@ -125,15 +125,25 @@
         }
         
         private function _sendVerificationEmail($email) {
-            $this->load->library('email');
+		
+		$config = Array(
+		'protocol' => 'smtp',
+				'smtp_host' => 'priso.no-ip.org',
+				'smtp_port' => 25,
+				'smtp_user' => 'tis@priso.no-ip.org',
+				'smtp_pass' => 'Fmf1-t1s',
+				'mailtype'  => 'html', 
+				'charset' => 'utf-8',
+				'wordwrap' => TRUE
+
+			
+			);
+			$this->load->library('email', $config);
             
-            $config['protocol'] = 'mail'; // mail, sendmail, smtp
-            $config['mailtype'] = 'html';
-            $config['charset'] = 'utf-8';
 
             $this->email->initialize($config);
 
-            $this->email->from("kukulienka@makova.sk", "Administracia");
+            $this->email->from("tis@priso.no-ip.org", "Administracia");
             $this->email->to($email); 
             $this->email->subject('Fyzikalna databaza - Zmena emailu');
             
