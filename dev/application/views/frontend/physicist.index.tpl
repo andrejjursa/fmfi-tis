@@ -10,6 +10,7 @@
 <h1 id="physicist_name">
 {$phys->getName()}
 </h1>
+
 <div>
   <p>
     Rok narodenia: {$phys->getBirth_year()}
@@ -24,6 +25,7 @@
   </p>
   <p><a id="doTestLink" href="{createUri controller='questions' action='index' params=[$phys->getId()]}">Pokúsiť sa urobiť test ...</a></p>
 </div>
+  
 {if count($phys->getImages())}
 <div id="images">
     {foreach $phys->getImages() as $image}{if !is_null($image->getFile())}
@@ -32,5 +34,14 @@
     </a>
     {/if}{/foreach}
 </div>
+{/if}
+
+{if count($inventions)}
+<h2>Vynálezy, na ktorých sa {$phys->getName()} podieľal</h2>
+<ol>
+{foreach $inventions as $invention}
+	<li><a href="{createUri controller='inventions' action='index' params=[$invention->getId()]}">{$invention->getName()}</li>
+{/foreach}
+</ol>
 {/if}
 {/block}
