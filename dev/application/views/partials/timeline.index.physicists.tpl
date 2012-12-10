@@ -1,4 +1,6 @@
+{$records = 0}
 {foreach $physicists as $physicist nocache} 
+{if $physicist->getBelongsToPeriod($current_period)}{$records = $records + 1}
     <div>
         <p><a href="{createUri controller='physicist' action='index' params=[$physicist->getId(), $year] nocache}">
             <strong>{$physicist->getName()}</strong>
@@ -6,6 +8,8 @@
         </a></p>
         {$physicist->getShort_description()}
     </div>
-{foreachelse}
-    <p>Nenašli sa žiadny fyzici pre rok {$year}.</p>
+{/if}
 {/foreach}
+{if $records eq 0}
+    <p>Nenašli sa žiadny fyzici pre rok {$year}.</p>
+{/if}

@@ -15,7 +15,7 @@
 </head>
 {function name='adminmenu' menu=[] level=0}
 {if is_array($menu) and count($menu)}
-<ul{if $level eq 0} id="jMenu"{/if}>{$first = 1}
+<ul{if $level eq 0} id="jMenu"{/if}>
     {foreach $menu as $item}
     <li><a href="{if is_array($item.link)}{createUri controller=$item.link.controller action=$item.link.action params=$item.link.params}{else}{$item.link}{/if}" class="{$item.class}{if $level eq 0} fNiv{$first = 0}{/if}">{$item.title}</a>{adminmenu menu=$item.sub level=$level+1}</li>
     {/foreach}

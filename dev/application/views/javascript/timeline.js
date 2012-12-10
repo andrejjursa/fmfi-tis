@@ -11,8 +11,8 @@ $(document).ready(function(){
         
         $('#timeline').slider('disable');
         
-        var urlPatern = '{createUri controller="timeline" action="ajaxUpdateList" params=["-YEAR-"]}';
-        $.ajax(urlPatern.replace('-YEAR-', selected_year), {
+        var urlPatern = '{createUri controller="timeline" action="ajaxUpdateList" params=["-YEAR-","-PERIOD-"]}';
+        $.ajax(urlPatern.replace('-YEAR-', selected_year).replace('-PERIOD-', '{$period}'), {
             cache: false,
             dataType: 'json',
             success: function(data) {
@@ -68,7 +68,7 @@ $(document).ready(function(){
             $('#timeline-info').css('display', 'none');
         });
         
-        var url = '{createUri controller="timeline" action="ajaxTimelineInfoData"}';
+        var url = '{createUri controller="timeline" action="ajaxTimelineInfoData" params=[$period]}';
         $.ajax(url, {
             cache: true,
             dataType: 'json',

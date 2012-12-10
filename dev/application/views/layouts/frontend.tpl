@@ -16,10 +16,12 @@
 <body>
 	<div id="wrapper">
 		<div id="header">
+            <div id="navbar">
+                {block name='top_middle'}{/block}
+            </div>
 		</div>
 {block name="content"}
 {/block}
-
 		<div style="clear: both;"></div>
 	</div>
 	<div id="footer">

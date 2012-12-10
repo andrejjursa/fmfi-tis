@@ -9,32 +9,44 @@ class Timeline extends Abstract_frontend_controller {
      * Displays page with timeline. Year on timeline will be set to its minimum as well
      * as list of physicists and inventions from this minimum year.
      */
-    public function index($year = NULL) {
+    public function index($year = NULL, $period = NULL) {
 		
-        $physicists = $this->load->table_collection('physicists');
-		$physicists->filterOnlyDisplayed()->filterMinYear()->execute();
-		$phisicists_list = $physicists->get();
-		$minYear = count($phisicists_list) ? $phisicists_list[0]->getBirth_year() : 0;
+        $periods_table = $this->load->table_collection('periods');
+        $periods_table->orderBy('start_year', 'asc')->execute();
         
-		if($year === NULL){
+        $periods = $periods_table->get();
+        $current_period = !is_null($period) ? intval($period) : intval(@$periods[0]->getId());
+        
+        $this->parser->assign('periods', $periods);
+        $this->parser->assign('current_period', $current_period);
+        
+        $current_period_table = $this->load->table_row('periods');
+        $current_period_table->load($current_period);
+        
+        $minYear = $current_period_table->getStart_year();
+        $maxYear = $current_period_table->getEnd_year();
+        $maxYear = $maxYear >= 9999 ? date('Y') : $maxYear;
+        
+		if($year === NULL) {
 			$year = $minYear;
 		}
-		$year = (int) $year;
+		$year = intval($year);
 		
         $this->parser->assign('year', $year);
-        $this->parser->assign('max_year', date('Y'));
+        $this->parser->assign('max_year', $maxYear);
 		$this->parser->assign('min_year', $minYear);
         
 		$this->parser->disable_caching();
 		
-        $data = $this->_getPhysicistsAndInventions($year);
+        $data = $this->_getPhysicistsAndInventions($year, $current_period);
         
         $this->parser->assign($data);
         
         $this->_addTemplateDynamicJs('timeline', array(
             'start_year' => $minYear,
 			'year' => $year,
-            'end_year' => date('Y')
+            'end_year' => $maxYear,
+            'period' => $current_period,
         ));
         $this->_assignTemplateAdditionals();
         
@@ -47,9 +59,10 @@ class Timeline extends Abstract_frontend_controller {
      * 
      * @param integer $year year for which data have to be fetched from database.
      */
-    public function ajaxUpdateList($year = NULL) {
+    public function ajaxUpdateList($year = NULL, $period = NULL) {
         $data = $this->_getPhysicistsAndInventions($year);
         $data['year'] = $year;
+        $data['current_period'] = $period;
         
         $output_data = array('physicists' => '', 'inventions' => '');
         
@@ -66,7 +79,7 @@ class Timeline extends Abstract_frontend_controller {
      * @param integer $year year, again ...
      * @return array<mixed> physicists and inventions.
      */
-    public function _getPhysicistsAndInventions($year = NULL) {
+    public function _getPhysicistsAndInventions($year = NULL, $period = NULL) {
         $physicists = $this->load->table_collection('physicists');
         
         $physicists->reset()->filterOnlyDisplayed()->filterLivedInYear(intval($year))->execute();
@@ -83,7 +96,7 @@ class Timeline extends Abstract_frontend_controller {
      * Creates and return JSON array of object representing each physicist name and both birth and
      * death year in chronological order.
      */
-    public function ajaxTimelineInfoData() {
+    public function ajaxTimelineInfoData($period = NULL) {
         $physicists = $this->load->table_collection('physicists');
         $physicists->filterOnlyDisplayed()->orderBy('birth_year', 'asc')->execute();
         
@@ -92,11 +105,13 @@ class Timeline extends Abstract_frontend_controller {
         
         if (count($list)) {
             foreach($list as $item) {
-                $row = array();
-                $row['name'] = $item->getName();
-                $row['birth_year'] = $item->getBirth_year();
-                $row['death_year'] = $item->getDeath_year();
-                $data[] = $row;
+                if ($item->getBelongsToPeriod(intval($period))) {
+                    $row = array();
+                    $row['name'] = $item->getName();
+                    $row['birth_year'] = $item->getBirth_year();
+                    $row['death_year'] = $item->getDeath_year();
+                    $data[] = $row;
+                }
             }
         }
         

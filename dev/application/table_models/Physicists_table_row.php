@@ -26,6 +26,11 @@ class Physicists_table_row extends Abstract_table_row {
     protected $inventions;
     
     /**
+     * @var Abstract_table_relation relation to periods.
+     */
+    protected $periods;
+    
+    /**
      * Relation initialisations.
      */
     protected function init() {
@@ -33,6 +38,7 @@ class Physicists_table_row extends Abstract_table_row {
         $this->photo = $this->load->table_relation('physicists', 'one_image');
         $this->images = $this->load->table_relation('physicists', 'images');
         $this->inventions = $this->load->table_relation('physicists', 'inventions');
+        $this->periods = $this->load->table_relation('physicists', 'periods');
     }
     
     /**
@@ -41,7 +47,9 @@ class Physicists_table_row extends Abstract_table_row {
     protected function resetRelations() {
         $this->questions->reset();
         $this->photo->reset();
-        $this->images->Reset();
+        $this->images->reset();
+        $this->inventions->Reset();
+        $this->periods->reset();
     }
     
     /**
@@ -89,6 +97,24 @@ class Physicists_table_row extends Abstract_table_row {
      */
     public function getInventions() {
         return $this->inventions->get($this->getId());
+    }
+    
+    /**
+     * Returns all periods.
+     * 
+     * @return array<Abstract_table_row> periods.
+     */
+    public function getPeriods() {
+        return $this->periods->get($this->getId()); 
+    }
+    
+    /**
+     * Check if this physicist belongs to given period.
+     * 
+     * @return boolean TRUE if belongs.
+     */
+    public function getBelongsToPeriod($period) {
+        return in_array($period, $this->periods->allIds($this->getId()));
     }
     
     public function prepareEditorSave($formdata) {

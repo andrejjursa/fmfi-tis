@@ -106,7 +106,49 @@ class Periods_table_collection extends Abstract_table_collection {
         $img->addField($field_image);
                 
         $this->addEditorTab($img);
+        
+        $physicists = editorTab::getNewEditorTab();
+        $physicists->setName('Fyzici');
+        
+        $field_physicists = new editorFieldMMRelation();
+        $field_physicists->setField('physicists')->setFieldLabel('Fyzici tohoto obdobia')->setFieldHint('Vyberte fyzikov tohoto obdobia.');
+        $field_physicists->setEditOnly(TRUE);
+        $field_physicists->setForeignTable('physicists');
+        $field_physicists->setFilterInFields(array('name', 'description', 'short_description'));
+            $field_physicists_photo = gridField::newGridField();
+            $field_physicists_photo_sub = gridField::newGridField();
+            $field_physicists_photo_sub->setField('file');
+            $field_physicists_photo->setField('PhotoObject')->setType(GRID_FIELD_TYPE_IMAGE);
+            $field_physicists_photo->setSubField($field_physicists_photo_sub);
+        $field_physicists->addGridField($field_physicists_photo);
+            $field_physicists_name = gridField::newGridField();
+            $field_physicists_name->setField('name')->setType(GRID_FIELD_TYPE_TEXT);
+        $field_physicists->addGridField($field_physicists_name);
+        $physicists->addField($field_physicists);
+        
+        $this->addEditorTab($physicists);
+        
+        $inventions = editorTab::getNewEditorTab();
+        $inventions->setName('Objavy');
+        
+        $field_inventions = new editorFieldMMRelation();
+        $field_inventions->setField('inventions')->setFieldLabel('Fyzici tohoto obdobia')->setFieldHint('Vyberte fyzikov tohoto obdobia.');
+        $field_inventions->setEditOnly(TRUE);
+        $field_inventions->setForeignTable('inventions');
+        $field_inventions->setFilterInFields(array('name', 'description', 'short_description'));
+            $field_inventions_photo = gridField::newGridField();
+            $field_inventions_photo_sub = gridField::newGridField();
+            $field_inventions_photo_sub->setField('file');
+            $field_inventions_photo->setField('PhotoObject')->setType(GRID_FIELD_TYPE_IMAGE);
+            $field_inventions_photo->setSubField($field_inventions_photo_sub);
+        $field_inventions->addGridField($field_inventions_photo);
+            $field_inventions_name = gridField::newGridField();
+            $field_inventions_name->setField('name')->setType(GRID_FIELD_TYPE_TEXT);
+        $field_inventions->addGridField($field_inventions_name);
+        $inventions->addField($field_inventions);
+        
+        $this->addEditorTab($inventions);
 
-		}
+    }
     
 }

@@ -20,5 +20,10 @@
 		</div>
 	</div>
 </div>
-                {*['a'=>'cosi', 'b'=>12, 5]|print_r:true*}
+{/block}
+
+{block name='top_middle'}
+    <select name="period" size="1" id="period_selector">
+        {foreach $periods as $period}<option value="{$period->getId()}"{if $current_period eq $period->getId()} selected="selected"{/if}>{$period->getName()|escape:'html'}</option>{/foreach}
+    </select>
 {/block}

@@ -42,6 +42,20 @@ class Physicists_table_collection extends Abstract_table_collection {
     }
     
     /**
+     * Adds filter to find only physicists from given period
+     * 
+     * @return Physicists_table_collection reference back to this object.
+     */
+    public function filterByPeriod($period = 0) {
+        $_period = intval($period);
+        
+        $this->query->join('periods_physicists_mm', 'physicists.id = periods_physicists_mm.physicist_id');
+        $this->query->where('periods_physicists_mm.period_id', $_period);
+        
+        return $this;
+    }
+    
+    /**
      * Settings for editing grid of admin panel.
      * 
      * @return void
