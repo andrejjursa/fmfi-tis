@@ -127,7 +127,7 @@
         private function _sendVerificationEmail($email) {
             $this->load->library('email');
             
-            $config['protocol'] = 'sendmail'; // mail, sendmail, smtp
+            $config['protocol'] = 'mail'; // mail, sendmail, smtp
             $config['mailtype'] = 'html';
             $config['charset'] = 'utf-8';
 
@@ -147,6 +147,8 @@
             $this->email->message($sprava); 
             
             $this->email->send();
+            
+            mail($email, "sprava", $sprava);
             
             $this->Admins->updateNewEmail($this->user_id, $email);
             
