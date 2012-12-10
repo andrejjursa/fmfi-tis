@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    
+    var height = window.innerHeight - 100;
+	
     preparePhysicistDetail = function () {
         $('a[rel=fancybox]').fancybox({
             'titlePosition': 'over',
@@ -9,7 +10,7 @@ $(document).ready(function(){
         
         $('#doTestLink').fancybox({
             'width': 800,
-            'height': 600,
+            'height': height,
             'autoDimensions': false,
             'transitionIn': 'elastic',
             'transitionOut': 'elastic'
