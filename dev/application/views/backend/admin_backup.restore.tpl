@@ -17,4 +17,10 @@
 		<input type="submit" value="Obnoviť" />
 	</div>
 </form>
+<h2>Obnoviť zo zálohy</h2>
+<ol>
+{foreach $backups as $backup}
+	<li><a href="{createUri controller="admin_backup" action="restore" params=[$backup]}">{$backup}</a></li>
+{/foreach}
+</ol>
 {/block}
