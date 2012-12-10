@@ -69,7 +69,20 @@ class Admin extends Abstract_backend_controller {
         $this->form_validation->set_message('valid_email', '<strong>%s</strong> musí byť e-mailová adresa.');
         if($this->form_validation->run()){
             if($this->admins->adminExists($this->input->post('email'))){
-            
+                  $this->load->library('email');
+                  
+                  $this->email->from('Sidirius.Andyron@gmail.com','MP');
+                  $this->email->to($this->input->post('email'));
+                  $this->email->subject('Obnova hesla');
+                  $token = generateToken();
+                  $id = $this->admins->getIdByLogin($this->input->post('email'));
+                  $message = "Bola zaznamenaná žiadosť o obnovenie vášho hesla. Ak ste neboli autorom tejto žiadosti môžete mail ignorovať./n
+                              Pre obnovenie vášho hesla pokračujte kliknutím na linku nižšie. Tá vás presmeruje na formulár kde zadáte nové heslo./n"
+                              + CreateUri('admin','renew_password',$token);
+                  $this->admins->updateValidToken($id,$token);                              
+                              
+                  $this->email->message($message);
+                  $this->email-send();
             }
         }
         else{

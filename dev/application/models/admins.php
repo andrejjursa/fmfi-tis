@@ -94,6 +94,11 @@ class Admins extends CI_Model {
         return FALSE;
     }
     
+    /**
+     * Verifies if entered email exists in table admins.
+     *
+     */              
+    
     public function adminExists($email){
           $admin = $this->load->table_row('admins');
           $admin->loadByLogin($email);
@@ -104,6 +109,51 @@ class Admins extends CI_Model {
             return TRUE;
           }
     }
+    
+    /**
+     * Updates Validation Token for admin with $id. 
+     *
+     */              
+    
+    public function updateValidToken($id,$token){
+        $admin = $this->load->table_row('admins');
+        $admin->load($id);
+        $admin->data(array( 'validation_token' => $token ));
+        $admin->save();          
+    }
+    
+    
+    /**
+     * Upadtes password of admin with $id.
+     *
+     */              
+    
+    public function updatePassword($id,$pass){
+        $admin = $this->load->table_row('admins');
+        $admin->load($id);
+        $admin->data(array( 'password' => md5($pass) ));
+        $admin->save(); 
+    }
+    
+    /**
+     * Upadtes new_email of admin with $id.
+     *
+     */              
+    
+    public function updateEmail($id,$email){
+        $admin = $this->load->table_row('admins');
+        $admin->load($id);
+        $admin->data(array( 'new_email' => $email ));
+        $admin->save(); 
+    }
+    
+    public function getIdByEmail($email){
+        $admin = $this->load->table_row('admins');
+        $admin->loadByLogin($email);
+        return $admin->GetId();    
+    }
+    
+    
     
 }
 
