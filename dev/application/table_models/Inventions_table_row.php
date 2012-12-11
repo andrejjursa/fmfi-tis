@@ -104,8 +104,10 @@ class Inventions_table_row extends Abstract_table_row {
     public function prepareEditorSave($formdata) {
         if (!isset($formdata['displayed'])) { $formdata['displayed'] = '0'; }
         
-        if (isset($formdata['images']) && $formdata['images'] != '0') {
-            $images = explode(',', $formdata['images']);
+        $this->load->helper('application');
+        
+        if (isset($formdata['images'])) {
+            $images = expandRelationListToArray($formdata['images']);
             $this->images->setTo($this->getId(), $images);
         }
         unset($formdata['images']);

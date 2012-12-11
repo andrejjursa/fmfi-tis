@@ -163,6 +163,19 @@ function deleteImageAndThumbs($image) {
     }
 }
 
+/**
+ * Returns array of ids for setting to relation object for given comma separated list of ids.
+ * 
+ * @param string $list comma separated list of ids.
+ * @return array<mixed> array of ids.
+ */
+function expandRelationListToArray($list) {
+    if (!is_string($list)) { return array(); }
+    if (empty($list)) { return array(); }
+    if ($list == '0') { return array(); }
+    return explode(',', $list);
+}
+
 function smartyFormError($params, $smarty) {
     $CI =& get_instance();
     $CI->load->library('form_validation');

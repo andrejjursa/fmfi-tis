@@ -123,14 +123,16 @@ class Physicists_table_row extends Abstract_table_row {
         
         unset($formdata['_is_dead']);
         
-        if (isset($formdata['inventions']) && $formdata['inventions'] != '0') {
-            $inventions = explode(',', $formdata['inventions']);
+        $this->load->helper('application');
+        
+        if (isset($formdata['inventions'])) {
+            $inventions = expandRelationListToArray($formdata['inventions']);
             $this->inventions->setTo($this->getId(), $inventions);
         }
         unset($formdata['inventions']);
         
-        if (isset($formdata['images']) && $formdata['images'] != '0') {
-            $images = explode(',', $formdata['images']);
+        if (isset($formdata['images'])) {
+            $images = expandRelationListToArray($formdata['images']);
             $this->images->setTo($this->getId(), $images);
         }
         unset($formdata['images']);

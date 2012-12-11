@@ -76,10 +76,22 @@ class Periods_table_row extends Abstract_table_row {
         $inventions = $formdata['inventions'];
         unset($formdata['inventions']);
         
-        $this->physicists->setTo($this->getId(), explode(',', $physicists));
-        $this->inventions->setTo($this->getId(), explode(',', $inventions));
+        $this->load->helper('application');
+        
+        $this->physicists->setTo($this->getId(), expandRelationListToArray($physicists));
+        $this->inventions->setTo($this->getId(), expandRelationListToArray($inventions));
         
         $this->data($formdata);
+    }
+    
+    /**
+     * Delete image when deletind this record.
+     */
+    protected function onDelete() {
+        if ($this->getImage()) {
+            $this->load->helper('application');
+            deleteImageAndThumbs($this->getImage());
+        }
     }
 }
 

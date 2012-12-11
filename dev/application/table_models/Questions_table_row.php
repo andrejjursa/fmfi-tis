@@ -50,6 +50,9 @@ class Questions_table_row extends Abstract_table_row {
         return $data;
     }
     
+    /**
+     * Delete all answers related and image for this question.
+     */
     protected function onDelete() {
         $answers = $this->answers->setOrderBy(NULL)->get($this->getId());
         if (count($answers)) {
