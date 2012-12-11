@@ -118,6 +118,14 @@ class Timeline extends Abstract_frontend_controller {
         $this->output->set_output(json_encode($data));
     }
     
+    public function test() {
+        $this->load->helper('timeline');
+        
+        $img = createSlidebBackgroundImage('public/uploads/periods/perlasca.jpg', 250, 850,'000000', 'ffff00', 50, 800);
+        
+        echo '<img src="' . $img . '" alt="" />';
+    }
+    
 }
 
 ?>
