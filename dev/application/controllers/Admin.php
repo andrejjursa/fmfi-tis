@@ -46,10 +46,10 @@ class Admin extends Abstract_backend_controller {
         $this->form_validation->set_message('max_length', '<strong>%s</strong> môže byť dlhé najviac <strong>%s</strong> znakov.');
         if ($this->form_validation->run()) {
             if ($this->Admins->loginAdmin($this->input->post('email'), $this->input->post('password'))) {
-				$this->Logs->addLog('Administrator login successful', array('type' => 'login', 'result' => 'OK'));
+				$this->Logs->addLog('Administrator login successful', array('type' => 'login', 'result' => 'OK', 'email' => $this->input->post('email')));
                 redirect(createUri('admin', 'dashboard'));
             } else {
-				$this->Logs->addLog('Administrator login failed', array('type' => 'login', 'result' => 'FAILED'));
+				$this->Logs->addLog('Administrator login failed', array('type' => 'login', 'result' => 'FAILED', 'email' => $this->input->post('email')));
                 $this->parser->assign('login_error', TRUE);
                 $this->parser->parse('backend/admin.login.tpl');
             }
