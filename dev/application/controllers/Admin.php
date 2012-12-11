@@ -35,6 +35,8 @@ class Admin extends Abstract_backend_controller {
         if ($this->Admins->isAdminLogedIn()) {
             redirect(createUri('admin', 'dashboard'));
         }
+		$this->load->model('Logs');
+		
         $this->load->library('form_validation');
         $this->form_validation->set_rules('email','Email','required|valid_email');
         $this->form_validation->set_rules('password','Heslo','required|min_length[6]|max_length[20]');
@@ -44,8 +46,10 @@ class Admin extends Abstract_backend_controller {
         $this->form_validation->set_message('max_length', '<strong>%s</strong> môže byť dlhé najviac <strong>%s</strong> znakov.');
         if ($this->form_validation->run()) {
             if ($this->Admins->loginAdmin($this->input->post('email'), $this->input->post('password'))) {
+				$this->Logs->addLog('Administrator login successful', array('type' => 'login', 'result' => 'OK'));
                 redirect(createUri('admin', 'dashboard'));
             } else {
+				$this->Logs->addLog('Administrator login failed', array('type' => 'login', 'result' => 'FAILED'));
                 $this->parser->assign('login_error', TRUE);
                 $this->parser->parse('backend/admin.login.tpl');
             }
@@ -55,7 +59,9 @@ class Admin extends Abstract_backend_controller {
     }
   
     public function logout() {
-        $this->Admins->logoutAdmin();
+		$this->load->model('Logs');
+		$this->Logs->addLog('Administrator logout', array('type' => 'logout'));
+        $this->Admins->logoutAdmin();		
         redirect(createUri('admin', 'login'));  
     }
     
