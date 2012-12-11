@@ -28,13 +28,17 @@
 				<li><span class="field">version:</span> 1.0</li>
 			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_core---abstract_editor_classes.php.html">/core/abstract_editor_classes.php</a> (line <span class="field">547</span>)
+			Located in <a class="field" href="_core---abstract_editor_classes.php.html">/core/abstract_editor_classes.php</a> (line <span class="field">604</span>)
 		</p>
 		
 				
 		<pre><a href="../../Abstract/Core/editorField.html">editorField</a>
    |
-   --editorFieldTinymce</pre>
+   --<a href="../../Abstract/Core/editorFieldText.html">editorFieldText</a>
+      |
+      --<a href="../../Abstract/Core/editorFieldMultilineText.html">editorFieldMultilineText</a>
+         |
+         --editorFieldTinymce</pre>
 	
 			</div>
 </div>
@@ -84,6 +88,18 @@
 		<div class="info-box-body">
 										<h4>Inherited Variables</h4>
 				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../../Abstract/Core/editorFieldMultilineText.html">editorFieldMultilineText</a></span></p>
+					<blockquote>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Abstract/Core/editorFieldMultilineText.html#var$number_of_rows">editorFieldMultilineText::$number_of_rows</a></span><br>
+							</span>
+											</blockquote> 
+									<p>Inherited from <span class="classname"><a href="../../Abstract/Core/editorFieldText.html">editorFieldText</a></span></p>
+					<blockquote>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Abstract/Core/editorFieldText.html#var$default_text">editorFieldText::$default_text</a></span><br>
+							</span>
+											</blockquote> 
 									<p>Inherited from <span class="classname"><a href="../../Abstract/Core/editorField.html">editorField</a></span></p>
 					<blockquote>
 													<span class="var-title">
@@ -119,7 +135,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getFieldHtmlID</span> (line <span class="line-number">563</span>)
+		<span class="method-title">getFieldHtmlID</span> (line <span class="line-number">620</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -141,8 +157,8 @@
 			<hr class="separator" />
 		<div class="notes">Redefinition of:</div>
 		<dl>
-			<dt><a href="../../Abstract/Core/editorField.html#methodgetFieldHtmlID">editorField::getFieldHtmlID()</a></dt>
-						<dd>Returns field id in editor form.</dd>
+			<dt><a href="../../Abstract/Core/editorFieldMultilineText.html#methodgetFieldHtmlID">editorFieldMultilineText::getFieldHtmlID()</a></dt>
+						<dd>Returns field unique id.</dd>
 					</dl>
 			
 	</div>
@@ -150,7 +166,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">getFieldType</span> (line <span class="line-number">554</span>)
+		<span class="method-title">getFieldType</span> (line <span class="line-number">611</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -172,13 +188,29 @@
 			<hr class="separator" />
 		<div class="notes">Redefinition of:</div>
 		<dl>
-			<dt><a href="../../Abstract/Core/editorField.html#methodgetFieldType">editorField::getFieldType()</a></dt>
+			<dt><a href="../../Abstract/Core/editorFieldMultilineText.html#methodgetFieldType">editorFieldMultilineText::getFieldType()</a></dt>
 						<dd>Returns field type.</dd>
 					</dl>
 			
 	</div>
 							<h4>Inherited Methods</h4>
 				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../Abstract/Core/editorFieldMultilineText.html">editorFieldMultilineText</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../../Abstract/Core/editorFieldMultilineText.html#methodgetFieldHtmlID">editorFieldMultilineText::getFieldHtmlID()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorFieldMultilineText.html#methodgetFieldType">editorFieldMultilineText::getFieldType()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorFieldMultilineText.html#methodgetNumberOfRows">editorFieldMultilineText::getNumberOfRows()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorFieldMultilineText.html#methodsetNumberOfRows">editorFieldMultilineText::setNumberOfRows()</a></span><br>
+											</blockquote>
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../Abstract/Core/editorFieldText.html">editorFieldText</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../../Abstract/Core/editorFieldText.html#methodgetDefaultText">editorFieldText::getDefaultText()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorFieldText.html#methodgetFieldHtmlID">editorFieldText::getFieldHtmlID()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorFieldText.html#methodgetFieldType">editorFieldText::getFieldType()</a></span><br>
+													<span class="method-name"><a href="../../Abstract/Core/editorFieldText.html#methodsetDefaultText">editorFieldText::setDefaultText()</a></span><br>
+											</blockquote>
 									<!-- =========== Summary =========== -->
 					<p>Inherited From <span class="classname"><a href="../../Abstract/Core/editorField.html">editorField</a></span></p>
 					<blockquote>
@@ -200,7 +232,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Mon, 10 Dec 2012 18:41:09 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Tue, 11 Dec 2012 19:20:28 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>

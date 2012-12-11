@@ -1,5 +1,4 @@
-<?php
-
+<?php if (!defined('APPPATH')) { die('No direct access allowed ...'); }
 
 class Migration_Admins_fields1 extends CI_Migration {
 

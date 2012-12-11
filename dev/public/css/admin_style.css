@@ -42,3 +42,40 @@ a:visited{
 #flogin{
 	font-family: "Courier New", Courier, monospace;
 }
+
+div.colorpicker div.clear {
+    clear: both;
+}
+
+div.colorpicker div.colorpreviewbox {
+    float: left;
+    width: 100px;
+    height: 100px;
+    border: 1px solid silver;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 100px;
+}
+
+div.colorpicker div.colorsliders {
+    margin-left: 120px;
+}
+
+div.colorpicker div.slider_wrapper {
+    height: 33px;
+}
+
+div.colorpicker div.slider_red,
+div.colorpicker div.slider_green,
+div.colorpicker div.slider_blue {
+    width: 300px;
+    margin: 10px 0;
+    display: inline-block;
+}
+
+div.colorpicker div.slider_red .ui-slider-range { background: red; }
+div.colorpicker div.slider_red .ui-slider-handle { border-color: red; }
+div.colorpicker div.slider_green .ui-slider-range { background: green; }
+div.colorpicker div.slider_green .ui-slider-handle { border-color: green; }
+div.colorpicker div.slider_blue .ui-slider-range { background: blue; }
+div.colorpicker div.slider_blue .ui-slider-handle { border-color: blue; }

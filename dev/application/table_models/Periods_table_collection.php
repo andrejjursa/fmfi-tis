@@ -90,13 +90,14 @@ class Periods_table_collection extends Abstract_table_collection {
         $this->addEditorTab($texts);
         
         $img = editorTab::getNewEditorTab();
-        $img->setName('Obrázok');
+        $img->setName('Pozadie');
         
         $field_image = new editorFieldFileUpload();
-        $field_image->setField('image')->setFieldLabel('Obrázok')->setFieldHint('Vyberte súbor s obrázkom a nahrajte ho na server.');
+        $field_image->setField('image')->setFieldLabel('Obrázok pozadia')->setFieldHint('Vyberte súbor s obrázkom a nahrajte ho na server.');
         $field_image->setAllowedTypes('*.jpg;*.jpeg;*.png');
         $field_image->setMaxSize('1MB');
         $field_image->setUploadPath('public/uploads/periods/');
+        $field_image->setUseFancybox(TRUE);
         $field_image->setRules(array(
             'required' => TRUE,
             'messages' => array(
@@ -104,6 +105,16 @@ class Periods_table_collection extends Abstract_table_collection {
             ),
         ));
         $img->addField($field_image);
+        
+        $field_bg_color = new editorFieldColorPicker();
+        $field_bg_color->setField('bg_color')->setFieldLabel('Farba pozadia')->setFieldHint('Zadajte farbu pozadia posuvníka časovej osi.');
+        $field_bg_color->setDefaultColor('#000000');
+        $img->addField($field_bg_color);
+        
+        $field_number_color = new editorFieldColorPicker();
+        $field_number_color->setField('number_color')->setFieldLabel('Farba číselnej osi')->setFieldHint('Zadajte farbu číselnej osi na časovej osi.');
+        $field_number_color->setDefaultColor('#ffffff');
+        $img->addField($field_number_color);
                 
         $this->addEditorTab($img);
         
@@ -118,11 +129,11 @@ class Periods_table_collection extends Abstract_table_collection {
             $field_physicists_photo = gridField::newGridField();
             $field_physicists_photo_sub = gridField::newGridField();
             $field_physicists_photo_sub->setField('file');
-            $field_physicists_photo->setField('PhotoObject')->setType(GRID_FIELD_TYPE_IMAGE);
+            $field_physicists_photo->setField('PhotoObject')->setType(GRID_FIELD_TYPE_IMAGE)->setName('Fotka')->setWidth('25%');
             $field_physicists_photo->setSubField($field_physicists_photo_sub);
         $field_physicists->addGridField($field_physicists_photo);
             $field_physicists_name = gridField::newGridField();
-            $field_physicists_name->setField('name')->setType(GRID_FIELD_TYPE_TEXT);
+            $field_physicists_name->setField('name')->setType(GRID_FIELD_TYPE_TEXT)->setName('Meno');
         $field_physicists->addGridField($field_physicists_name);
         $physicists->addField($field_physicists);
         
@@ -139,11 +150,11 @@ class Periods_table_collection extends Abstract_table_collection {
             $field_inventions_photo = gridField::newGridField();
             $field_inventions_photo_sub = gridField::newGridField();
             $field_inventions_photo_sub->setField('file');
-            $field_inventions_photo->setField('PhotoObject')->setType(GRID_FIELD_TYPE_IMAGE);
+            $field_inventions_photo->setField('PhotoObject')->setType(GRID_FIELD_TYPE_IMAGE)->setName('Obrázok')->setWidth('25%');
             $field_inventions_photo->setSubField($field_inventions_photo_sub);
         $field_inventions->addGridField($field_inventions_photo);
             $field_inventions_name = gridField::newGridField();
-            $field_inventions_name->setField('name')->setType(GRID_FIELD_TYPE_TEXT);
+            $field_inventions_name->setField('name')->setType(GRID_FIELD_TYPE_TEXT)->setName('Názov');
         $field_inventions->addGridField($field_inventions_name);
         $inventions->addField($field_inventions);
         

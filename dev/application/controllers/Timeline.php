@@ -6,6 +6,14 @@
 class Timeline extends Abstract_frontend_controller {
 
     /**
+     * Constructor for loading common stuff.
+     */
+    public function __construct() {
+        parent::__construct();
+        $this->load->helper('timeline');
+    }
+
+    /**
      * Displays page with timeline. Year on timeline will be set to its minimum as well
      * as list of physicists and inventions from this minimum year.
      */
@@ -41,13 +49,19 @@ class Timeline extends Abstract_frontend_controller {
         
         $this->parser->assign($data);
         
+        $slider_background = createSlidebBackgroundImage($current_period_table->getImage(), $minYear, $maxYear, $current_period_table->getBg_color(), $current_period_table->getNumber_color(), 14, 400);
+        
         $this->_addTemplateDynamicJs('timeline', array(
             'start_year' => $minYear,
 			'year' => $year,
             'end_year' => $maxYear,
             'period' => $current_period,
+            'background' => base64_encode($slider_background),
+            'number_color' => base64_encode($current_period_table->getNumber_color()),
         ));
         $this->_assignTemplateAdditionals();
+        
+        $this->parser->assign('slider_background', $slider_background);
         
         $this->parser->parse('frontend/timeline.index.tpl');
     }
@@ -116,14 +130,6 @@ class Timeline extends Abstract_frontend_controller {
         
         $this->output->set_content_type('application/json');
         $this->output->set_output(json_encode($data));
-    }
-    
-    public function test() {
-        $this->load->helper('timeline');
-        
-        $img = createSlidebBackgroundImage('public/uploads/periods/perlasca.jpg', 250, 850,'000000', 'ffff00', 50, 800);
-        
-        echo '<img src="' . $img . '" alt="" />';
     }
     
 }

@@ -539,12 +539,69 @@ class editorFieldText extends editorField {
 }
 
 /**
+ * Editor field for simple text area input.
+ * 
+ * @author Andrej Jursa
+ * @version 1.0
+ */
+class editorFieldMultilineText extends editorFieldText {
+    
+    /**
+     * @var integer number of wors in editor.
+     */
+    private $number_of_rows = 5;
+    
+    /**
+     * Returns field type.
+     * 
+     * @return string field type.
+     */
+    public function getFieldType() {
+        return 'miltilinetext_field';
+    }
+    
+    /**
+     * Returns field unique id.
+     * 
+     * @return string field unique id for editor form.
+     */
+    public function getFieldHtmlID() {
+        return 'miltilinetext_field_' . $this->getField() . '_id';
+    }
+    
+    /**
+     * Set the number of rows in textarea editor.
+     * 
+     * @param integer $number_of_rows number of rows.
+     * @return editorFieldMultilineText reference to this object.
+     */
+    public function setNumberOfRows($number_of_rows) {
+        if (is_integer($number_of_rows)) {
+            $this->number_of_rows = $number_of_rows;
+        } else {
+            throw new exception(get_class($this) . '::setNumberOfRows argument must be integer');
+        }
+        return $this;
+    } 
+    
+    /**
+     * Returns number of rows.
+     * 
+     * @return integer number of rows for textarea.
+     */
+    public function getNumberOfRows() {
+        return $this->number_of_rows;
+    }
+    
+}
+
+/**
  * Editor field for TinyMCE editor for html code.
  * 
  * @author Andrej Jursa
  * @version 1.0
  */
-class editorFieldTinymce extends editorField {
+class editorFieldTinymce extends editorFieldMultilineText {
     
     /**
      * Returns field type.
@@ -1121,6 +1178,61 @@ class editorFieldParentIdRecord extends editorField {
     public function getElseField() {
         return $this->else_field;
     }
+}
+
+/**
+ * Editor field for picking color.
+ * Makes three sliders for color choosing.
+ */
+class editorFieldColorPicker extends editorField {
+    
+    /**
+     * @var string default color value in hex format.
+     */
+    private $default_color = '#000000';
+    
+    /**
+     * Returns field type.
+     * 
+     * @return string field type.
+     */
+    public function getFieldType() {
+        return 'colorpicker';
+    }
+    
+    /**
+     * Returns field unique id.
+     * 
+     * @return string field unique id for editor form.
+     */
+    public function getFieldHtmlID() {
+        return 'colorpicker_' . $this->getField() . '_id';
+    }
+    
+    /**
+     * Set the default color value.
+     * 
+     * @param string $default default color in hex notation: #rrggbb.
+     * @return editorFieldColorPicker reference to this object.
+     */
+    public function setDefaultColor($default) {
+        if (is_string($default) && preg_match('/^\#[0-9a-fA-F]{6}$/', $default)) {
+            $this->default_color = $default;
+        } else {
+            throw new exception(get_class($this) . '::setDefaultColor argument must be string like #rrggbb');
+        }
+        return $this;
+    }
+    
+    /**
+     * Returns default color.
+     * 
+     * @return string default color value.
+     */
+    public function getDefaultColor() {
+        return $this->default_color;
+    }
+    
 }
 
 ?>
