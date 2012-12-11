@@ -1,10 +1,10 @@
 <?php if (!defined('APPPATH')) { die('No direct access allowed ...'); }
     
-class Migration_Base_tables extends CI_Migration {
+class Migration_Questions_answers extends CI_Migration {
     
     public function up() {
         /**
-         * Add physicists table begin.
+         * Add questions table begin.
          */
         $this->dbforge->add_field(array(
             'id' => array(
@@ -19,53 +19,39 @@ class Migration_Base_tables extends CI_Migration {
             'crdate' => array(
                 'type' => 'timestamp',
             ),
-            'name' => array(
+            'question' => array(
+                'type' => 'text',
+                'null' => FALSE,
+            ),
+            'image' => array(
                 'type' => 'varchar',
                 'constraint' => '255',
                 'default' => '',
-                'null' => FALSE,
             ),
-            'birth_year' => array(
-                'type' => 'INT',
-                'constraint' => '4',
-                'unsigned' => TRUE,
-                'default' => '0',
-            ),
-            'death_year' => array(
-                'type' => 'INT',
-                'constraint' => '4',
-                'unsigned' => TRUE,
-                'default' => '99999',
-            ),
-            'description' => array(
-                'type' => 'TEXT',
-                'null' => TRUE,
-            ),
-            'short_description' => array(
-                'type' => 'TEXT',
-                'null' => TRUE,
-            ),
-            'displayed' => array(
-                'type' => 'INT',
-                'constraint' => '1',
-                'default' => '0',
-            ),
-            'photo' => array(
+            'physicist_id' => array(
                 'type' => 'INT',
                 'constraint' => '11',
+                'unsigned' => TRUE,
+                'default' => '0',
+            ),
+            'value' => array(
+                'type' => 'INT',
+                'constraint' => '4',
+                'unsigned' => TRUE,
                 'default' => '0',
             ),
         ));
         
         $this->dbforge->add_key('id', TRUE);
+        $this->dbforge->add_key('physicist_id');
         
-        $this->dbforge->create_table('physicists');
+        $this->dbforge->create_table('questions');
         /**
-         * Add physicists table end.
+         * Add questions table end.
          */
          
         /**
-         * Add inventions table begin.
+         * Add answers table begin.
          */
         $this->dbforge->add_field(array(
             'id' => array(
@@ -80,54 +66,47 @@ class Migration_Base_tables extends CI_Migration {
             'crdate' => array(
                 'type' => 'timestamp',
             ),
-            'name' => array(
+            'answer' => array(
+                'type' => 'text',
+                'null' => FALSE,
+            ),
+            'image' => array(
                 'type' => 'varchar',
                 'constraint' => '255',
                 'default' => '',
             ),
-            'year' => array(
-                'type' => 'int',
-                'constraint' => '4',
-                'default' => '0',
-            ),
-            'description' => array(
-                'type' => 'TEXT',
-                'null' => TRUE,
-            ),
-            'short_description' => array(
-                'type' => 'TEXT',
-                'null' => TRUE,
-            ),
-            'displayed' => array(
+            'correct' => array(
                 'type' => 'INT',
                 'constraint' => '1',
+                'unsigned' => TRUE,
                 'default' => '0',
             ),
-            'photo' => array(
+            'question_id' => array(
                 'type' => 'INT',
                 'constraint' => '11',
+                'unsigned' => TRUE,
                 'default' => '0',
             ),
         ));
         
         $this->dbforge->add_key('id', TRUE);
+        $this->dbforge->add_key('question_id');
         
-        $this->dbforge->create_table('inventions');
+        $this->dbforge->create_table('answers');
         /**
-         * Add inventions table end.
+         * Add answers table end.
          */
     }
     
     public function down() {
         /**
-         * Drop physicists table.
+         * Drop questions table.
          */
-        $this->dbforge->drop_table('physicists');
-        
+        $this->dbforge->drop_table('questions');
         /**
-         * Drop inventions table.
-         */ 
-        $this->dbforge->drop_table('inventions');
+         * Drop answers table.
+         */
+        $this->dbforge->drop_table('answers');
     }
     
 }

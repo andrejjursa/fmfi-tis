@@ -1,6 +1,6 @@
 <?php if (!defined('APPPATH')) { die('No direct access allowed ...'); }
     
-class Migration_Base_tables extends CI_Migration {
+class Migration_Miniapps extends CI_Migration {
     
     public function up() {
         /**

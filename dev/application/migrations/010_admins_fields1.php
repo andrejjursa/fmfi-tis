@@ -1,7 +1,7 @@
 <?php
 
 
-class Migration_Base_tables extends CI_Migration {
+class Migration_Admins_fields1 extends CI_Migration {
 
     function up(){
     /**

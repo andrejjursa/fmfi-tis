@@ -10,7 +10,6 @@ class Timeline extends Abstract_frontend_controller {
      * as list of physicists and inventions from this minimum year.
      */
     public function index($year = NULL, $period = NULL) {
-		
         $periods_table = $this->load->table_collection('periods');
         $periods_table->orderBy('start_year', 'asc')->execute();
         
@@ -27,11 +26,11 @@ class Timeline extends Abstract_frontend_controller {
         $maxYear = $current_period_table->getEnd_year();
         $maxYear = $maxYear >= 9999 ? date('Y') : $maxYear;
         
-		if($year === NULL) {
-			$year = $minYear;
+		if($year === NULL || !is_integer($year)) {
+			$year = !is_null($minYear) ? $minYear : 0;
 		}
 		$year = intval($year);
-		
+        
         $this->parser->assign('year', $year);
         $this->parser->assign('max_year', $maxYear);
 		$this->parser->assign('min_year', $minYear);

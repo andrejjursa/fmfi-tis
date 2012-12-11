@@ -1,10 +1,10 @@
 <?php if (!defined('APPPATH')) { die('No direct access allowed ...'); }
     
-class Migration_Base_tables extends CI_Migration {
+class Migration_Periods_admins extends CI_Migration {
     
     public function up() {
         /**
-         * Add questions table begin.
+         * Add periods table begin.
          */
         $this->dbforge->add_field(array(
             'id' => array(
@@ -19,39 +19,42 @@ class Migration_Base_tables extends CI_Migration {
             'crdate' => array(
                 'type' => 'timestamp',
             ),
-            'question' => array(
-                'type' => 'text',
-                'null' => FALSE,
-            ),
-            'image' => array(
+            'name' => array(
                 'type' => 'varchar',
                 'constraint' => '255',
                 'default' => '',
+                'null' => FALSE,
             ),
-            'physicist_id' => array(
-                'type' => 'INT',
-                'constraint' => '11',
-                'unsigned' => TRUE,
-                'default' => '0',
+            'description' => array(
+                'type' => 'TEXT',
+				'default' => '',
+                'null' => TRUE,
             ),
-            'value' => array(
-                'type' => 'INT',
+            'image' => array(
+                'type' => 'text',
+                'null' => FALSE,
+            ),
+            'start_year' => array(
+                'type' => 'int',
                 'constraint' => '4',
-                'unsigned' => TRUE,
                 'default' => '0',
             ),
+            'end_year' => array(
+                'type' => 'int',
+                'constraint' => '4',
+                'default' => '9999',
+            ),			
         ));
         
         $this->dbforge->add_key('id', TRUE);
-        $this->dbforge->add_key('physicist_id');
         
-        $this->dbforge->create_table('questions');
+        $this->dbforge->create_table('periods');
         /**
-         * Add questions table end.
+         * Add periods table end.
          */
-         
+
         /**
-         * Add answers table begin.
+         * Add admins table start.
          */
         $this->dbforge->add_field(array(
             'id' => array(
@@ -66,47 +69,34 @@ class Migration_Base_tables extends CI_Migration {
             'crdate' => array(
                 'type' => 'timestamp',
             ),
-            'answer' => array(
+            'email' => array(
                 'type' => 'text',
                 'null' => FALSE,
             ),
-            'image' => array(
+            'password' => array(
                 'type' => 'varchar',
-                'constraint' => '255',
+                'constraint' => '32',
                 'default' => '',
-            ),
-            'correct' => array(
-                'type' => 'INT',
-                'constraint' => '1',
-                'unsigned' => TRUE,
-                'default' => '0',
-            ),
-            'question_id' => array(
-                'type' => 'INT',
-                'constraint' => '11',
-                'unsigned' => TRUE,
-                'default' => '0',
             ),
         ));
         
         $this->dbforge->add_key('id', TRUE);
-        $this->dbforge->add_key('question_id');
         
-        $this->dbforge->create_table('answers');
+        $this->dbforge->create_table('admins');
         /**
-         * Add answers table end.
+         * Add admins table end.
          */
     }
     
     public function down() {
         /**
-         * Drop questions table.
+         * Drop periods table.
          */
-        $this->dbforge->drop_table('questions');
+        $this->dbforge->drop_table('periods');
         /**
-         * Drop answers table.
+         * Drop admins table.
          */
-        $this->dbforge->drop_table('answers');
+        $this->dbforge->drop_table('admins');
     }
     
 }

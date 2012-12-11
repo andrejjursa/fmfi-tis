@@ -80,5 +80,14 @@ $(document).ready(function(){
     
     insertTimeline();
     
+    updatePeriod = function() {
+        var action = $(this).parent('form').attr('action');
+        var period = $(this).val();
+        var url = action.replace('-PERIOD-', period);
+        window.location = url;
+    }
+    
+    $('#period_selector').bind('change', updatePeriod);
+    
 });
 {/nocache}
