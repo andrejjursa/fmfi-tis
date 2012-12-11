@@ -1,4 +1,4 @@
-<h2>{$gridTableName}</h2>
+﻿<h2>{$gridTableName}</h2>
 {if $gridOperations.new_record}
 <div><a href="{createUri controller='admin_editor' action='newRecord' params=[$sql_table]}" class="button">{$gridOperations.new_record_title|default:'Nový záznam'}</a></div>
 {/if}
@@ -15,7 +15,7 @@
     </thead>
     <tbody>
         {foreach $rows as $row}
-        <tr class="{cycle values='grid_row_light,grid_row_dark'}">
+        <tr class="{cycle values='grid_row_dark,grid_row_light'}">
             {foreach $gridFields as $gridField}
             <td style="width: {$gridField->getWidth()};">
                 {include file='partials/admin_editor.index.grid.field.tpl' row=$row gridField=$gridField inline}    

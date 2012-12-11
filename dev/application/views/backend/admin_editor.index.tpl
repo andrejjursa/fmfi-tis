@@ -3,7 +3,7 @@
 {block content}
     <style type="text/css">{literal}
         #editor_grid_table { border: 1px solid black; border-collapse: collapse; }
-        #editor_grid_table thead tr { background-color: silver; }
+        #editor_grid_table thead tr { background-color: #F8F8F8; }
         #editor_grid_table tfoot tr { background-color: silver; text-align: right; }
         #editor_grid_table td { border: 1px solid black; }
         #editor_grid_table td, #editor_grid_table th { padding: 2px; }

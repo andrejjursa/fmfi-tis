@@ -2,6 +2,7 @@
 
 {block content}
 <h1>Záloha</h1>
+<div id="dbackup">
 <p>
 Tu môžete vytvoriť zálohu celej aplikácie, s ktorou môžete neskôr aplikáciu obnoviť.
 </p>
@@ -14,4 +15,5 @@ Tu môžete vytvoriť zálohu celej aplikácie, s ktorou môžete neskôr aplik�
 	<li><a href="{createUri controller="admin_backup" action="download" params=[$backup]}">{$backup}</a></li>
 {/foreach}
 </ol>
+</div>
 {/block}

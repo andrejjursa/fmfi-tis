@@ -1,6 +1,7 @@
 {extends file='layouts/backend_login.tpl'}
 
 {block name="content"}
+<h2>Zabudnuté heslo...</h2>
 {if $login_error}
     {include file='partials/admin_editor.error_msg.tpl' message='Nesprávny e-mail.' inline}
 {/if}

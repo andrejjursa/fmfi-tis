@@ -2,6 +2,7 @@
 
 {block content}
 <h1>Obnova aplikácie</h1>
+<div id="dbackup">
 <p>
 	Tu môžete obnoviť aplikáciu zo zálohového súboru.
 </p>
@@ -23,4 +24,5 @@
 	<li><a href="{createUri controller="admin_backup" action="restore" params=[$backup]}">{$backup}</a></li>
 {/foreach}
 </ol>
+</div>
 {/block}
