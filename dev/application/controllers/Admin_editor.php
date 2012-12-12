@@ -472,7 +472,8 @@ class Admin_editor extends Abstract_backend_controller {
     
     private function _applySorting(Abstract_table_collection $table_collection) {
         $post = $this->input->post();
-        if ($post === FALSE || !isset($post['sorting']['by']) || empty($post['sorting']['by'])) { return; }
+        $grid_settings = $table_collection->getGridSettings();
+        if ($post === FALSE || !isset($post['sorting']['by']) || empty($post['sorting']['by'])) { $post['sorting']['by'] = $grid_settings['default_sorting']['field']; $post['sorting']['direction'] = $grid_settings['default_sorting']['direction']; }
         
         $sort_by = $post['sorting']['by'];
         $sort_direction = isset($post['sorting']['direction']) ? $post['sorting']['direction'] : 'DESC';

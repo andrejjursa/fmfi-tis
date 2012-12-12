@@ -458,6 +458,19 @@ class Abstract_table_collection extends Abstract_table_core {
     }
     
     /**
+     * Set default sorting by field and direction.
+     * 
+     * @param string $field column in table.
+     * @param string $direction direction of sorting, can be 'asc' or 'desc'.
+     * @return Abstract_table_collection reference to this object.
+     */
+    public function setDefaultSorting($field, $direction = 'asc') {
+        $this->grid_settings['default_sorting']['field'] = $field;
+        $this->grid_settings['default_sorting']['direction'] = $direction;
+        return $this;
+    }
+    
+    /**
      * Return last executed sql query.
      * 
      * @return string sql query.
@@ -537,6 +550,8 @@ class Abstract_table_collection extends Abstract_table_core {
         $this->enableEditRecord(FALSE);
         $this->enableDeleteRecord(FALSE);
         $this->enablePreviewRecord(FALSE);
+        
+        $this->setDefaultSorting($this->primaryIdField(), 'asc');
     }
     
     /**

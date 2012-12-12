@@ -9,6 +9,7 @@ class Logs_table_collection extends Abstract_table_collection {
         $this->enableGrid(TRUE);
         $this->setGridTableName('Záznamy udalostí');
         $this->enablePreviewRecord(TRUE);
+        $this->setDefaultSorting('crdate', 'desc');
         
         $message = gridField::newGridField();
         $message->setField('message')->setSortable(TRUE)->setName('Správa')->setType(GRID_FIELD_TYPE_TEXT);
