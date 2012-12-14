@@ -2,6 +2,8 @@ body{
 	margin: 10px;
 	background-color: #E6E6E5;
 	color: #322f32;
+    font-family: Verdana, Arial;
+    font-size: 14px;
 }
 
 a{
@@ -101,3 +103,10 @@ tr.grid_row_light { background-color: #F8F8F8; }
 tr.grid_row_dark { background-color: #C4C4C4; }
 tr.grid_row_light:hover,
 tr.grid_row_dark:hover { background-color: #FFE586; }
+
+fieldset.logs,
+fieldset.logs fieldset { border: 1px solid black; border-radius: 5px; }
+fieldset.logs legend { border: 1px solid black; border-radius: 5px; }
+fieldset.logs div.row { clear: both; min-width: 900px; }
+fieldset.logs div.row div.label { width: 200px; text-align: right; font-weight: bold; float: left; }
+fieldset.logs div.row div.content { margin-left: 210px; }

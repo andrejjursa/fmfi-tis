@@ -29,7 +29,16 @@
                 <a href="{createUri controller='admin_editor' action='deleteRecord' params=[$sql_table, $row->getId()]}" class="button deleteRecord">{$gridOperations.delete_record_title|default:'Vymazať'}</a>
                 {/if}
                 {if $gridOperations.preview_record}
-                <a href="{createUri controller='admin_editor' action='previewRecord' params=[$sql_table, $row->getId()]}" class="button" target="_blank" rel="fancybox_ajax">{$gridOperations.preview_record_title|default:'Náhlad'}</a>
+                {if $gridOperations.preview_record_openin eq 'fancybox'}
+                    {$target = ''}{$rel = 'fancybox_ajax'}
+                {elseif $gridOperations.preview_record_openin eq 'popup'}
+                    {$target = ''}{$rel = 'popup_window'}
+                {elseif $gridOperations.preview_record_openin eq 'newwindow'}
+                    {$target = '_blank'}{$rel = ''}
+                {else}
+                    {$target = ''}{$rel = ''}
+                {/if}
+                <a href="{createUri controller='admin_editor' action='previewRecord' params=[$sql_table, $row->getId()]}" class="button" target="{$target}" rel="{$rel}">{$gridOperations.preview_record_title|default:'Náhlad'}</a>
                 {/if}
             </td>
         </tr>

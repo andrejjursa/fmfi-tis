@@ -295,7 +295,30 @@ class Admin_editor extends Abstract_backend_controller {
     }
     
     public function previewRecord($table = NULL, $id = NULL) {
+        $table_collection = $this->load->table_collection($table);
         
+        if (!is_null($table_collection)) {
+            $grid_settings = $table_collection->getGridSettings();
+            if ($table_collection->isPreviewRecordEnabled()) {
+                $table_row = $this->load->table_row($table);
+                $table_row->load($id);
+                if (!is_null($table_row->getId())) {
+                    $this->load->helper(array('application', 'url'));
+                    $controller = $grid_settings['operations']['preview_record_controller'];
+                    $action = $grid_settings['operations']['preview_record_action'];
+                    redirect(createUri($controller, $action, array($table_row->getId())));    
+                } else {
+                    $this->parser->assign('error', 'unknown_record');
+                    $this->parser->parse('backend/admin_editor.previewRecord.tpl');
+                }
+            } else {
+                $this->parser->assign('error', 'no_preview_record');
+                $this->parser->parse('backend/admin_editor.previewRecord.tpl');
+            }
+        } else {
+            $this->parser->assign('error', 'no_table');
+            $this->parser->parse('backend/admin_editor.previewRecord.tpl');
+        }
     }
     
     public function file_upload($table = NULL) {

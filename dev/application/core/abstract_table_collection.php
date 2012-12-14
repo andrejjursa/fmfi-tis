@@ -14,6 +14,11 @@
 require_once APPPATH . 'core/abstract_table_core.php';
 require_once APPPATH . 'core/abstract_editor_classes.php';
 
+define('OPEN_IN_FANCYBOX', 'fancybox');
+define('OPEN_IN_POPUP', 'popup');
+define('OPEN_IN_NEWWINDOW', 'newwindow');
+define('OPEN_IN_MAINWINDOW', 'mainwindow');
+
 class Abstract_table_collection extends Abstract_table_core {
     
     /**
@@ -413,11 +418,17 @@ class Abstract_table_collection extends Abstract_table_core {
      * 
      * @param boolean $status TRUE or FALSE for enabled or disabled state.
      * @param string $title button title.
+     * @param string $controller controller to be called when preview is triggered.
+     * @param string $action action of controller to be called.
+     * @param string $open_in target window to open record in, possible values from constants OPEN_IN_*.
      * @return Abstract_table_collection reference to this object.
      */
-    protected function enablePreviewRecord($status = TRUE, $title = 'Náhlad') {
+    protected function enablePreviewRecord($status = TRUE, $title = 'Náhlad', $controller = 'default', $action = 'index', $open_in = OPEN_IN_FANCYBOX) {
         $this->grid_settings['operations']['preview_record'] = is_bool($status) ? $status : FALSE;
         $this->grid_settings['operations']['preview_record_title'] = $title;
+        $this->grid_settings['operations']['preview_record_controller'] = $controller;
+        $this->grid_settings['operations']['preview_record_action'] = $action;
+        $this->grid_settings['operations']['preview_record_openin'] = $open_in;
         return $this;
     }
     

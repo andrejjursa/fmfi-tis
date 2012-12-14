@@ -8,7 +8,7 @@ class Logs_table_collection extends Abstract_table_collection {
     protected function gridSettings() {
         $this->enableGrid(TRUE);
         $this->setGridTableName('Záznamy udalostí');
-        $this->enablePreviewRecord(TRUE);
+        $this->enablePreviewRecord(TRUE, 'Zobraziť', 'admin_logs', 'index', OPEN_IN_MAINWINDOW);
         $this->setDefaultSorting('crdate', 'desc');
         
         $message = gridField::newGridField();

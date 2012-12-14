@@ -11,6 +11,11 @@ jQuery(document).ready(function($){
         transitionOut: 'elastic'
     });
     
+    $('a[rel=popup_window]').click(function(event) {
+        event.preventDefault();
+        window.open($(this).attr('href'), '', 'width=800,height=600,left=10,top=10,toolbar=no,status=no,scrollbars=yes,titlebar=yes,menubar=no,location=no,fullscreen=no,directories=no,channelmode=no');
+    });
+    
     $('a.button').button();
     
     $('a.deleteRecord').click(function(event) {

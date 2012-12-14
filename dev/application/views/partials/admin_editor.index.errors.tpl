@@ -16,4 +16,6 @@
     {include file='partials/admin_editor.error_msg.tpl' message='Táto tabuľka nemá povolené vymazávať existujúce záznamy.'}
 {elseif $error eq 'cant_delete_data'}
     {include file='partials/admin_editor.error_msg.tpl' message='Nie je možné vymazať neexistujúci záznam.'}
+{elseif $error eq 'no_preview_record'}
+    {include file='partials/admin_editor.error_msg.tpl' message='Táto tabuľka nemá povolené náhľady na záznamy.'}
 {/if}
