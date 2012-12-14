@@ -54,6 +54,7 @@
                                 row_ids += row_id;
                             });
                             $('#{$field->getFieldHtmlID()}').val(row_ids).valid();
+                            highlightChange();
                         }
                     }).disableSelection();
                     

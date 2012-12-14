@@ -764,7 +764,12 @@ class editorFieldFileUpload extends editorField {
     /**
      * @var boolean fancybox flag, for images upload.
      */
-    private $use_fancybox = false;
+    private $use_fancybox = FALSE;
+    
+    /**
+     * @var boolean flag for showing server file path in editor form.
+     */
+    private $show_file_path = FALSE;
     
     /**
      * Returns field type.
@@ -849,6 +854,21 @@ class editorFieldFileUpload extends editorField {
     }
     
     /**
+     * Set show file path flag for this file uploader.
+     * 
+     * @param boolean $state TRUE showing file path, FALSE will disable this behavior.
+     * @return editorFieldFileUpload reference to this object.
+     */
+    public function setShowFilePath($state) {
+        if (is_bool($state)) {
+            $this->show_file_path = $state;
+        } else{
+            throw new exception(get_class($this) . '::setShowFilePath argument must be boolean');
+        }
+        return $this;
+    }
+    
+    /**
      * Returns file upload path.
      * 
      * @return string file upload path.
@@ -884,6 +904,14 @@ class editorFieldFileUpload extends editorField {
         return $this->use_fancybox;
     }
     
+    /**
+     * Returns show file path flag.
+     * 
+     * @return boolean shof file path flag.
+     */
+    public function getShowFilePath() {
+        return $this->show_file_path;
+    }
 }
 
 /**
@@ -1054,6 +1082,11 @@ class editorFieldIframeForeignRelation extends editorField {
     private $foreign_table = '';
     
     /**
+     * @var integer minimum height of iframe.
+     */
+    private $minheight = NULL;
+    
+    /**
      * Returns field type.
      * 
      * @return string field type.
@@ -1087,12 +1120,36 @@ class editorFieldIframeForeignRelation extends editorField {
     }
     
     /**
+     * Set the minimum height of iframe.
+     * 
+     * @param integer $min minimum height of iframe.
+     * @return editorFieldIframeForeignRelation reference to this object.
+     */
+    public function setMinimumHeight($min) {
+        if (is_integer($min) || is_null($min)) {
+            $this->minheight = $min;
+        } else {
+            throw new exception(get_class($this) . '::setMinimumHeight argument must be integer or NULL');
+        }
+        return $this;
+    }
+    
+    /**
      * Returns the name of foreign table.
      * 
      * @return string foreign table name.
      */
     public function getForeignTable() {
         return $this->foreign_table;
+    }
+    
+    /**
+     * Returns the minimum height of iframe.
+     * 
+     * @return string foreign table name.
+     */
+    public function getMinimumHeight() {
+        return $this->minheight;
     }
     
 }

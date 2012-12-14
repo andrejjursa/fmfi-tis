@@ -77,6 +77,7 @@ class Questions_table_collection extends Abstract_table_collection {
         $field_answers = new editorFieldIframeForeignRelation();
         $field_answers->setField('answers')->setFieldLabel('Odpovede')->setFieldHint('Vytvorte či upravde odpovede pre túto otázku.');
         $field_answers->setForeignTable('answers');
+        $field_answers->setMinimumHeight(470);
         $answers->addField($field_answers);
         
         $this->addEditorTab($answers);

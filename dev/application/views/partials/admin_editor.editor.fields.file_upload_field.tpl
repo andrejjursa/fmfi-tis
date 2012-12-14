@@ -5,6 +5,7 @@
     <input type="hidden" name="data[{$field->getField()}]" value="{$smarty.post.data[$field->getField()]|default:$data[$field->getField()]|escape:'html'}" id="{$field->getFieldHtmlID()}_hidden" />
     <div class="error_container"></div>
     <input type="hidden" name="delete_files[{$field->getField()}]" value="" id="{$field->getFieldHtmlID()}_delete_files" />
+    {if $field->getShowFilePath()}Cesta k súboru: <span id="{$field->getFieldHtmlID()}_path_to_file">{if !empty($data[$field->getField()])}{$site_base_url}{$data[$field->getField()]|ltrim:'/'|escape:'html'}{/if}</span>{/if}
     <script type="text/javascript">
         jQuery(document).ready(function($){
             $('#{$field->getFieldHtmlID()}_hidden').rules('add', {$field->getRulesJSON()});
@@ -30,7 +31,11 @@
                         var download_link = '<a href="{$site_base_url}' + trimeddata.substring(4) + '" target="_blank">Stiahnuť</a>';
                         $('#{$field->getFieldHtmlID()}_download').html(download_link);
                         $('#{$field->getFieldHtmlID()}_delete button').css('display', '');
+                        {if $field->getShowFilePath()}
+                        $('#{$field->getFieldHtmlID()}_path_to_file').text('{$site_base_url}' + trimeddata.substring(4));
+                        {/if}
                         update_link_{$field->getFieldHtmlID()}();
+                        highlightChange();
                     } else {
                         alert('Chyba: ' + trimeddata);
                     }

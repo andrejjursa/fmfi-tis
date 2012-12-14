@@ -7,9 +7,6 @@ body{
 a{
 	color: black;
 }
-a:visited{
-	color:#8D8C7E;
-}
 #dbackup a:hover{
 	color:#E6E6E5;
 	background-color: black;
@@ -42,6 +39,11 @@ a:visited{
 #flogin{
 	font-family: "Courier New", Courier, monospace;
 }
+
+.notSavedButton { color: green; border-color: green; }
+.saveButtonError { color: red; border-color: red; }
+input.notValid { border-color: red; }
+textarea.notValid { border-color: red; }
 
 div.colorpicker div.clear {
     clear: both;

@@ -18,6 +18,18 @@ jQuery(document).ready(function($){
         errorPlacement: function(error, element) {
             var elem_error_container = element.parent('div.editor_field_line').find('div.error_container');
             error.appendTo(elem_error_container);
+        },
+        highlight: function(element, errorClass) {
+            if (this.numberOfInvalids() > 0) {
+                $('[name=save], [name=save_and_edit], [name=save_and_iframe]').addClass('saveButtonError');
+            }
+            $(element).addClass('notValid');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            if (this.numberOfInvalids() == 0) {
+                $('[name=save], [name=save_and_edit], [name=save_and_iframe]').removeClass('saveButtonError');
+            }
+            $(element).removeClass('notValid');
         }
     });
     
@@ -63,6 +75,7 @@ jQuery(document).ready(function($){
         theme_advanced_resizing: false,
         
         onchange_callback: function(editor) {
+            highlightChange();
             $('#' + editor.id).valid();
         }
     });
@@ -98,4 +111,8 @@ function componentToHex(c) {
 
 function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+function highlightChange() {
+    jQuery('[name=save], [name=save_and_edit], [name=save_and_iframe]').addClass('notSavedButton');
 }

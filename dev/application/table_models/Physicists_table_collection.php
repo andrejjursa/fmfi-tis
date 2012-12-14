@@ -223,6 +223,7 @@ class Physicists_table_collection extends Abstract_table_collection {
         $field_questions = new editorFieldIframeForeignRelation();
         $field_questions->setField('questions')->setFieldLabel('Otázky')->setFieldHint('Vytvorte otázky pre test k tomuto fyzikovi.');
         $field_questions->setForeignTable('questions');
+        $field_questions->setMinimumHeight(610);
         $questions->addField($field_questions);
         
         $this->addEditorTab($questions);

@@ -12,13 +12,17 @@
         <script type="text/javascript">
             jQuery(document).ready(function($) {
                 
-                $('#{$field->getFieldHtmlID()}_records iframe').iframeAutoHeight();
+                $('#{$field->getFieldHtmlID()}_records iframe').iframeAutoHeight({
+                    {if is_integer($field->getMinimumHeight())}minHeight: {$field->getMinimumHeight()}{/if}
+                });
                 
                 $('#{$field->getFieldHtmlID()}_add_record').click(function(){
                     $('<iframe />', {
                         'src': '{createUri controller="admin_editor" action="newRecordIframe" params=[$field->getForeignTable(),$id,$sql_table]}',
                         'style': 'width: 100%; backgound-color: white; border: 1px solid silver;'
-                    }).prependTo('#{$field->getFieldHtmlID()}_records').iframeAutoHeight();                        
+                    }).prependTo('#{$field->getFieldHtmlID()}_records').iframeAutoHeight({
+                        {if is_integer($field->getMinimumHeight())}minHeight: {$field->getMinimumHeight()}{/if}
+                    });                        
                 });
                 
             });

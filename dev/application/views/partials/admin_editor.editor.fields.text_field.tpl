@@ -5,6 +5,10 @@
     <script type="text/javascript">
         jQuery(document).ready(function($){
             $('#{$field->getFieldHtmlID()}').rules('add', {$field->getRulesJSON()});
+            $('#{$field->getFieldHtmlID()}').bind('change', function() {
+                highlightChange();
+                $(this).valid();
+            });
         });
     </script>
 </div>
