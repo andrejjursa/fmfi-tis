@@ -32,7 +32,8 @@ class Periods_table_collection extends Abstract_table_collection {
         $this->addGridField($start_year);
 		
 		$end_year = gridField::newGridField();
-        $end_year->setField('end_year')->setName('Koniec obdobia')->setType(GRID_FIELD_TYPE_NUMBER)->setSortable(TRUE);
+        $end_year->setField('end_year')->setName('Koniec obdobia')->setType(GRID_FIELD_TYPE_SMARTY)->setSortable(TRUE);
+		$end_year->setSmarty('{if $row->getEnd_year() ge 9999}Neskončilo{else}{$row->getEnd_year()}{/if}');
         $this->addGridField($end_year);
 
     }
@@ -63,16 +64,23 @@ class Periods_table_collection extends Abstract_table_collection {
             ),
         ));     
         $general->addField($field_start_year);
+
+        $field_is_over = new editorFieldSingleCheckbox();
+        $field_is_over->setField('_is_over')->setFieldLabel('Obdobie už skončilo')->setFieldHint('Označte, ak obdobie už skončilo.')->setDefaultChecked(FALSE)
+            ->setCheckboxText('Áno')->setDefaultValue(1);
+        $general->addField($field_is_over);
 		
   
         $field_end_year = new editorFieldText();
         $field_end_year->setField('end_year')->setFieldLabel('Koniec obdobia (rok)')->setFieldHint('Zadajte rok, v ktorom sa skončilo toto obdobie.');
         $field_end_year->setRules(array(
-            'required' => true,
+            'required' => '#' . $field_is_over->getFieldHtmlID() . ':checked',
             'range' => array(-9999, 9999),
+			'greater_than' => '#' . $field_start_year->getFieldHtmlID(),
             'messages' => array(
                 'required' => 'Je nutné zadať rok konca obdobia.',
                 'range' => 'Rok musí byť číslo v rozsahu od {0} do {1}.',
+				'greater_than' => 'Rok konca musí byť väčšie číslo ako rok začiatku.',
             ),
         ));     
         $general->addField($field_end_year);		

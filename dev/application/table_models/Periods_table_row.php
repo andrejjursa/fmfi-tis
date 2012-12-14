@@ -56,7 +56,16 @@ class Periods_table_row extends Abstract_table_row {
      */
     public function getDataForEditor() {
         $data = $this->data();
-        
+		
+		
+        if (isset($data['end_year']) && intval($data['end_year']) < 9999) {
+            $data['_is_over'] = TRUE;
+        } else if (isset($data['end_year']) && intval($data['end_year']) >= 9999) {
+            $data['_is_over'] = FALSE;
+            unset($data['end_year']);
+        } 
+
+ 
         $data['physicists'] = implode(',', $this->physicists->setOrderBy()->allIds($this->getId()));
         $data['inventions'] = implode(',', $this->inventions->setOrderBy()->allIds($this->getId()));
         
@@ -70,6 +79,10 @@ class Periods_table_row extends Abstract_table_row {
      * @return void
      */
     public function prepareEditorSave($formdata) {
+
+        if (!isset($formdata['_is_over'])) { $formdata['end_year'] = '9999'; }	
+		unset($formdata['_is_over']);
+	
         $physicists = $formdata['physicists'];
         unset($formdata['physicists']);
         
@@ -85,7 +98,7 @@ class Periods_table_row extends Abstract_table_row {
     }
     
     /**
-     * Delete image when deletind this record.
+     * Delete image when deleting this record.
      */
     protected function onDelete() {
         if ($this->getImage()) {
