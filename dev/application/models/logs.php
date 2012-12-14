@@ -24,8 +24,11 @@ class Logs extends CI_Model {
     public function addLog($message = '', $data = array()) {
         $admin_id = intval($this->Admins->getAdminId());
         
+        $ip = $_SERVER['REMOTE_ADDR'];
+        
         $this->db->set('tstamp', 'CURRENT_TIMESTAMP', FALSE);
         $this->db->set('crdate', 'CURRENT_TIMESTAMP', FALSE);
+        $this->db->set('ipaddress', $ip);
         $this->db->set('admin_id', $admin_id);
         $this->db->set('message', $message);
         $this->db->set('data', base64_encode(serialize($data)));
