@@ -81,3 +81,23 @@ div.colorpicker div.slider_green .ui-slider-range { background: green; }
 div.colorpicker div.slider_green .ui-slider-handle { border-color: green; }
 div.colorpicker div.slider_blue .ui-slider-range { background: blue; }
 div.colorpicker div.slider_blue .ui-slider-handle { border-color: blue; }
+
+#editor_grid_table { border: 1px solid black; border-collapse: collapse; }
+#editor_grid_table thead tr { background-color: #F8F8F8; }
+#editor_grid_table tfoot tr { background-color: silver; text-align: right; }
+#editor_grid_table td { border: 1px solid black; }
+#editor_grid_table td, #editor_grid_table th { padding: 2px; }
+#editor_grid_table .bool_field .yes { color: green; }
+#editor_grid_table .bool_field .no { color: red; }
+tr.grid_row_light,
+tr.grid_row_dark { 
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+}
+tr.grid_row_light { background-color: #F8F8F8; }
+tr.grid_row_dark { background-color: #C4C4C4; }
+tr.grid_row_light:hover,
+tr.grid_row_dark:hover { background-color: #FFE586; }
