@@ -3,7 +3,7 @@
     {if !$id}
         <p>Táto položka sa dá upravovať až po uložení záznamu.</p>
     {else}
-        <button type="button" id="{$field->getFieldHtmlID()}_add_record">Pridať záznam</button>
+        <button type="button" id="{$field->getFieldHtmlID()}_add_record" class="button">Pridať záznam</button>
         <div id="{$field->getFieldHtmlID()}_records">
             {foreach $data[$field->getField()] as $record_id}
             <iframe src="{createUri controller='admin_editor' action='editRecordIframe' params=[$field->getForeignTable(),$record_id,$id,$sql_table]}" style="width: 100%; backgound-color: white; border: 1px solid silver;"></iframe>

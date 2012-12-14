@@ -21,7 +21,7 @@
             <tbody>
                 {if $field->getFilterInFields()}
                 <tr>
-                    <td colspan="2">Súčasný filter: <span id="{$field->getFieldHtmlID()}_relations_table_filter"></span> <button id="filter_mm_relation_button_{$field->getFieldHtmlID()}" type="button">Filtrovať</button> <a href="{createUri controller='admin_editor' action='newRecordIframe' params=[$field->getForeignTable()]}" id="add_new_relate_item_{$field->getFieldHtmlID()}">Vytvoriť nový záznam</a></td>
+                    <td colspan="2">Súčasný filter: <span id="{$field->getFieldHtmlID()}_relations_table_filter"></span> <button id="filter_mm_relation_button_{$field->getFieldHtmlID()}" type="button" class="button">Filtrovať</button> <a href="{createUri controller='admin_editor' action='newRecordIframe' params=[$field->getForeignTable()]}" id="add_new_relate_item_{$field->getFieldHtmlID()}" class="button">Vytvoriť nový záznam</a></td>
                 </tr>
                 {/if}
                 <tr>

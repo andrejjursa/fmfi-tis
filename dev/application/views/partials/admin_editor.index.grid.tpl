@@ -1,6 +1,6 @@
 ﻿<h2>{$gridTableName}</h2>
 {if $gridOperations.new_record}
-<div><a href="{createUri controller='admin_editor' action='newRecord' params=[$sql_table]}" class="button">{$gridOperations.new_record_title|default:'Nový záznam'}</a></div>
+<div style="margin-bottom: 10px;"><a href="{createUri controller='admin_editor' action='newRecord' params=[$sql_table]}" class="button">{$gridOperations.new_record_title|default:'Nový záznam'}</a></div>
 {/if}
 <table id="editor_grid_table" style="width: 100%;">
     <thead>
