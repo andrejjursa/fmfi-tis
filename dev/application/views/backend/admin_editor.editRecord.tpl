@@ -1,11 +1,6 @@
 {extends file='layouts/backend.tpl'}
 
 {block content}
-    <style type="text/css">{literal}
-        label.error { color: red; }
-        .mm_relation_container ul li { background-color: white; border: 1px solid silver; padding: 2px; margin: 1px 0; border-radius: 4px; }
-        .mm_relation_container ul li.sortable-highlight { height: 20px; background-color: #D0FFA8; border: 2px solid black; }
-    {/literal}</style>
     <div id="site_base_url" rel="{$site_base_url}"></div>
     {if !isset($error)}
         <form action="{createUri controller='admin_editor' action='saveRecord' params=[$sql_table]}" method="post" class="editor">

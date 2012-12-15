@@ -1,11 +1,19 @@
-<div id="text_field_{$field->getField()}" class="highlight_field editor_field_line">
-    <label for="{$field->getFieldHtmlID()}" title="{$field->getFieldHint()}">{$field->getFieldLabel()}:</label> <span id="{$field->getFieldHtmlID()}_download">{if $smarty.post.data[$field->getField()]|default:$data[$field->getField()]}<a href="{$site_base_url}{$smarty.post.data[$field->getField()]|default:$data[$field->getField()]}" target="_blank">Stiahnuť</a>{/if}</span> <span id="{$field->getFieldHtmlID()}_delete"><button type="button" style="{{if $smarty.post.data[$field->getField()]|default:$data[$field->getField()]}}{else}display: none;{/if}">Vymazať</button></span>
-    <input type="file" name="uploader_{$field->getField()}" value="" id="{$field->getFieldHtmlID()}" />
-    <div id="{$field->getFieldHtmlID()}_queue"></div>
-    <input type="hidden" name="data[{$field->getField()}]" value="{$smarty.post.data[$field->getField()]|default:$data[$field->getField()]|escape:'html'}" id="{$field->getFieldHtmlID()}_hidden" />
-    <div class="error_container"></div>
-    <input type="hidden" name="delete_files[{$field->getField()}]" value="" id="{$field->getFieldHtmlID()}_delete_files" />
-    {if $field->getShowFilePath()}Cesta k súboru: <span id="{$field->getFieldHtmlID()}_path_to_file">{if !empty($data[$field->getField()])}{$site_base_url}{$data[$field->getField()]|ltrim:'/'|escape:'html'}{/if}</span>{/if}
+<div id="fileupload_field_{$field->getField()}" class="highlight_field editor_field_line">
+    <table class="formtable"><tbody><tr>
+        <td class="label"><label for="{$field->getFieldHtmlID()}" title="{$field->getFieldHint()}">{$field->getFieldLabel()}:</label></td>
+        <td><input type="file" name="uploader_{$field->getField()}" value="" id="{$field->getFieldHtmlID()}" /> <span id="{$field->getFieldHtmlID()}_download">{if $smarty.post.data[$field->getField()]|default:$data[$field->getField()]}<a href="{$site_base_url}{$smarty.post.data[$field->getField()]|default:$data[$field->getField()]}" target="_blank">Stiahnuť</a>{/if}</span> <span id="{$field->getFieldHtmlID()}_delete"><button type="button" style="{{if $smarty.post.data[$field->getField()]|default:$data[$field->getField()]}}{else}display: none;{/if}" class="button deleteRecord">Vymazať</button></span></td>
+        <td class="errors"><div class="error_container"></div></td>
+    </tr><tr>
+        <td></td>
+        <td colspan="2">
+            <div id="{$field->getFieldHtmlID()}_queue"></div>
+            <input type="hidden" name="data[{$field->getField()}]" value="{$smarty.post.data[$field->getField()]|default:$data[$field->getField()]|escape:'html'}" id="{$field->getFieldHtmlID()}_hidden" />
+            <input type="hidden" name="delete_files[{$field->getField()}]" value="" id="{$field->getFieldHtmlID()}_delete_files" />
+        </td>
+    </tr>{if $field->getShowFilePath()}<tr>
+        <td class="label">Cesta k súboru:</td>
+        <td colspan="2"><span id="{$field->getFieldHtmlID()}_path_to_file">{if !empty($data[$field->getField()])}{$site_base_url}{$data[$field->getField()]|ltrim:'/'|escape:'html'}{/if}</span></td>
+    </tr>{/if}</tbody></table>
     <script type="text/javascript">
         jQuery(document).ready(function($){
             $('#{$field->getFieldHtmlID()}_hidden').rules('add', {$field->getRulesJSON()});

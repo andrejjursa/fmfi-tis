@@ -3,11 +3,6 @@
 {block content}
     <style type="text/css">{literal}
         body { background-color: white; }
-        label.error { color: red; }
-        .mm_relation_container ul li { background-color: white; border: 1px solid silver; padding: 2px; margin: 1px 0; border-radius: 4px; }
-        .mm_relation_container ul li.sortable-highlight { height: 20px; background-color: #D0FFA8; border: 2px solid black; }
-        #editor_items fieldset.editor_item { border: 1px solid silver; border-radius: 4px; margin-top: 10px; }
-        #editor_items fieldset.editor_item legend.editor_item { border: 1px solid silver; border-radius: 4px; padding: 4px 10px; font-size: 1.5em; }
     {/literal}</style>
     <div id="site_base_url" rel="{$site_base_url}"></div>
     {if !isset($error)}

@@ -1,14 +1,20 @@
-<div id="wrapper_{$field->getFieldHtmlID()}" class="highlight_field editor_field_line">
-    <label for="{$field->getFieldHtmlID()}" title="{$field->getFieldHint()}">{$field->getFieldLabel()}:</label> <span id="color_info_{$field->getFieldHtmlID()}"></span><div class="error_container"></div>
-    <div id="colorpicker_{$field->getFieldHtmlID()}" class="colorpicker">
-        <div class="colorpreviewbox">Ukážka</div>
-        <div class="colorsliders">
-            <div class="slider_wrapper"><div class="slider_red"></div></div>
-            <div class="slider_wrapper"><div class="slider_green"></div></div>
-            <div class="slider_wrapper"><div class="slider_blue"></div></div>
-        </div>
-        <div class="clear"></div>
-    </div><input type="hidden" name="data[{$field->getField()}]" value="{$smarty.post.data[$field->getField()]|default:$data[$field->getField()]|default:$field->getDefaultColor()|escape:'html'}" id="{$field->getFieldHtmlID()}" />
+<div id="colorpicker_field_{$field->getFieldHtmlID()}" class="highlight_field editor_field_line">
+    <table class="formtable"><tbody><tr>
+        <td class="label"><label for="{$field->getFieldHtmlID()}" title="{$field->getFieldHint()}">{$field->getFieldLabel()}:</label></td>
+        <td colspan="2"><span id="color_info_{$field->getFieldHtmlID()}"></span></td>
+    </tr><tr>
+        <td></td>
+        <td><div id="colorpicker_{$field->getFieldHtmlID()}" class="colorpicker">
+            <div class="colorpreviewbox">Ukážka</div>
+            <div class="colorsliders">
+                <div class="slider_wrapper"><div class="slider_red"></div></div>
+                <div class="slider_wrapper"><div class="slider_green"></div></div>
+                <div class="slider_wrapper"><div class="slider_blue"></div></div>
+            </div>
+            <div class="clear"></div>
+        </div><input type="hidden" name="data[{$field->getField()}]" value="{$smarty.post.data[$field->getField()]|default:$data[$field->getField()]|default:$field->getDefaultColor()|escape:'html'}" id="{$field->getFieldHtmlID()}" /></td>
+        <td class="errors"><div class="error_container"></div></td>
+    </tr></tbody></table>
     <script type="text/javascript">
         jQuery(document).ready(function($){
             $('#{$field->getFieldHtmlID()}').rules('add', {$field->getRulesJSON()});

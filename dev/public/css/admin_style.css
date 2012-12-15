@@ -58,16 +58,16 @@ a{
     -ms-transition: all 0.3s ease-in-out;
 }
 .saveButtonError:hover { background-color: red; color: black; border-color: black; background-image: none; }
-.deleteRecord { color: darkred; border-color: darkred; background-image: none; background-color: #FFD8D8;
+.deleteRecord { color: darkred !important; border-color: darkred !important; background-image: none !important; background-color: #FFD8D8 !important;
     transition: all 0.3s ease-in-out; 
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
 }
-.deleteRecord:hover { background-color: #FF8585; background-image: none; }
-input.notValid { border-color: red; }
-textarea.notValid { border-color: red; }
+.deleteRecord:hover { background-color: #FF8585 !important; background-image: none; }
+input.notValid { border-color: red; color: red; }
+textarea.notValid { border-color: red; color: red; }
 
 div.colorpicker div.clear {
     clear: both;
@@ -131,16 +131,33 @@ tr.grid_row_dark:hover { background-color: #FFE586; }
 
 #editor_tabs div.highlight_field,
 #editor_items div.highlight_field {
-    transition: all 0.25s ease-in-out;
-    -moz-transition: all 0.25s ease-in-out;
-    -o-transition: all 0.25s ease-in-out;
-    -webkit-transition: all 0.25s ease-in-out;
-    -ms-transition: all 0.25s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
 } 
 
+label.error { color: red; }
+.mm_relation_container ul li { background-color: white; border: 1px solid silver; padding: 2px; margin: 1px 0; border-radius: 4px; }
+.mm_relation_container ul li.sortable-highlight { height: 20px; background-color: #D0FFA8; border: 2px solid black; }
+#editor_items fieldset.editor_item { border: 1px solid silver; border-radius: 4px; margin-top: 10px; }
+#editor_items fieldset.editor_item legend.editor_item { border: 1px solid silver; border-radius: 4px; padding: 4px 10px; font-size: 1.5em; }
+div.highlight_field:hover { background-color: #F7F6CD; box-shadow: 0 0 5px 10px #F7F6CD; }
+
 fieldset.logs,
-fieldset.logs fieldset { border: 1px solid black; border-radius: 5px; }
-fieldset.logs legend { border: 1px solid black; border-radius: 5px; }
+fieldset.logs fieldset { border: 1px solid black; border-radius: 5px; background-color: white; box-shadow: none; }
+fieldset.logs { box-shadow: 5px 5px 10px gray; }
+fieldset.logs legend { border: 1px solid black; border-radius: 5px; padding: 4px; background-color: white; }
 fieldset.logs div.row { clear: both; min-width: 900px; }
 fieldset.logs div.row div.label { width: 200px; text-align: right; font-weight: bold; float: left; }
 fieldset.logs div.row div.content { margin-left: 210px; }
+
+table.formtable { width: 100%; border-collapse: collapse; }
+table.formtable td { padding: 4px; }
+table.formtable td.label { width: 220px; }
+table.formtable td.label label { font-weight: bold; }
+table.formtable td.errors { width: 200px; }
+table.formtable .uploadify { display: inline-block; margin-right: 10px; }
+
+input.form_field_text_input { width: 100%; }

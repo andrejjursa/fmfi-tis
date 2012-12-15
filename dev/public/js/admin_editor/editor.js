@@ -2,11 +2,11 @@ jQuery(document).ready(function($){
     
     $('#editor_tabs').tabs();
     
-    $('div.highlight_field').mouseover(function(){
+    /*$('div.highlight_field').mouseover(function(){
         $(this).css('background-color', '#F7F6CD'); 
     }).mouseout(function(){
         $(this).css('background-color', '');
-    });
+    });*/
     
     $('label[title]').tooltip();
     
@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
     $('form.editor').validate({
         ignore: '',
         errorPlacement: function(error, element) {
-            var elem_error_container = element.parent('div.editor_field_line').find('div.error_container');
+            var elem_error_container = element.parents('div.editor_field_line').find('div.error_container');
             error.appendTo(elem_error_container);
         },
         highlight: function(element, errorClass) {
