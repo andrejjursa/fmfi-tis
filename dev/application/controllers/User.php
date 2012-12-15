@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
     
     if (!defined('APPPATH')) { die('No direct access allowed ...'); }
 

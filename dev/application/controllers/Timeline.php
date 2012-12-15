@@ -17,12 +17,12 @@ class Timeline extends Abstract_frontend_controller {
      * Displays page with timeline. Year on timeline will be set to its minimum as well
      * as list of physicists and inventions from this minimum year.
      */
-    public function index($year = NULL, $period = NULL) {
+    public function index($year = 0, $period = NULL) {
         $periods_table = $this->load->table_collection('periods');
         $periods_table->orderBy('start_year', 'asc')->execute();
         
         $periods = $periods_table->get();
-        $current_period = !is_null($period) ? intval($period) : intval(@$periods[0]->getId());
+        $current_period = (!is_null($period) && $period > 0) ? intval($period) : intval(@$periods[0]->getId());
         
         $this->parser->assign('periods', $periods);
         $this->parser->assign('current_period', $current_period);
@@ -33,12 +33,12 @@ class Timeline extends Abstract_frontend_controller {
         $minYear = $current_period_table->getStart_year();
         $maxYear = $current_period_table->getEnd_year();
         $maxYear = $maxYear >= 9999 ? date('Y') : $maxYear;
-        
-		if($year === NULL || !is_integer($year)) {
-			$year = !is_null($minYear) ? $minYear : 0;
+
+		$year = (int) $year;
+		if($year < $minYear || $year > $maxYear){
+			$year = $minYear;
 		}
-		$year = intval($year);
-        
+		
         $this->parser->assign('year', $year);
         $this->parser->assign('max_year', $maxYear);
 		$this->parser->assign('min_year', $minYear);

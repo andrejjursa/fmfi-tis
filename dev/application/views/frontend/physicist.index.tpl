@@ -1,9 +1,7 @@
 {extends file="layouts/frontend.tpl"}
 
 {block name="content"}
-<div id="breadcrumbs">
-	<a href="{createUri controller="timeline" action="index" params=[$returnYear]}">Úvod</a>
-</div>
+{include file='partials/breadcrumbs.tpl' year=$year current_period=$current_period inline}
 {if !is_null($phys->getPhotoObject()) and !is_null($phys->getPhotoObject()->getFile())}
   <img src="{imageThumb image=$phys->getPhotoObject()->getFile() width=120 height=120}" />
 {/if}
@@ -40,7 +38,7 @@
 <h2>Vynálezy, na ktorých sa {$phys->getName()} podieľal</h2>
 <ol>
 {foreach $inventions as $invention}
-	<li><a href="{createUri controller='inventions' action='index' params=[$invention->getId(), $returnYear]}">{$invention->getName()}</li>
+	<li><a href="{createUri controller='inventions' action='index' params=[$invention->getId(), $year, $current_period]}">{$invention->getName()}</li>
 {/foreach}
 </ol>
 {/if}
