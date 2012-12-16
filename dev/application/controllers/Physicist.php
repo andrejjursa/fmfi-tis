@@ -10,7 +10,7 @@ class Physicist extends Abstract_frontend_controller {
 		$physicist->load(intval($id));
 
 		$this->parser->assign('phys', $physicist);
-		$this->parser->assign("inventions", $physicist->getInventions());
+		$this->parser->assign("inventions", $physicist->getInventions(TRUE));
         $this->parser->assign("year", $year);
 		$this->parser->assign("current_period", $period);
         $this->_addTemplateJs('physicist/index.js');

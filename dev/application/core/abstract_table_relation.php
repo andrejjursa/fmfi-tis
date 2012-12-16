@@ -233,11 +233,13 @@ class Abstract_table_relation extends Abstract_table_core {
                 $this->db->join($this->mm_table_name, $this->foreign_table_name . '.' . $this->foreign_primary_field . ' = ' . $this->mm_table_name . '.' . $this->mm_foreign_id_field);
                 $this->db->where($this->mm_table_name . '.' . $this->mm_local_id_field, $real_local_id);
                 $this->insertLimit($this->db);
+                $this->insertWhere($this->db);
                 $this->count = $this->db->count_all_results();
             } else {
                 if (is_null($foreign_ids)) {
                     $this->db->where($this->foreign_index_field, $real_local_id);
                     $this->insertLimit($this->db);
+                    $this->insertWhere($this->db);
                     $this->count = $this->db->count_all_results($this->foreign_table_name);
                 } else {
                     $ids_array = array();
@@ -255,6 +257,7 @@ class Abstract_table_relation extends Abstract_table_core {
                     
                     $this->db->where_in($this->foreign_primary_field, $ids_array);
                     $this->insertLimit($this->db);
+                    $this->insertWhere($this->db);
                     $this->count = $this->db->count_all_results($this->foreign_table_name);
                 }
             }
@@ -542,6 +545,7 @@ class Abstract_table_relation extends Abstract_table_core {
                     }
                 }
                 $this->insertLimit($this->db);
+                $this->insertWhere($this->db);
                 $query = $this->db->get();
                 
                 if ($query->num_rows() > 0) {
@@ -559,6 +563,7 @@ class Abstract_table_relation extends Abstract_table_core {
                     $this->db->where($this->foreign_index_field, $real_local_id);
                     $this->insertOrderByAndNotification($this->db);
                     $this->insertLimit($this->db);
+                    $this->insertWhere($this->db);
                     $query = $this->db->get($this->foreign_table_name);
                     
                     if ($query->num_rows() > 0) {
@@ -588,6 +593,7 @@ class Abstract_table_relation extends Abstract_table_core {
                     $this->db->where_in($this->foreign_primary_field, $ids_array);
                     $this->insertOrderByAndNotification($this->db);
                     $this->insertLimit($this->db);
+                    $this->insertWhere($this->db);
                     $query = $this->db->get($this->foreign_table_name);
                     
                     if ($query->num_rows() > 0) {
@@ -642,6 +648,7 @@ class Abstract_table_relation extends Abstract_table_core {
             }
         }
         $this->insertLimit($this->db);
+        $this->insertWhere($this->db);
         $query = $this->db->get();
         
         if ($query->num_rows() > 0) {

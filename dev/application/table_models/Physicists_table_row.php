@@ -93,10 +93,16 @@ class Physicists_table_row extends Abstract_table_row {
     /**
      * Get all related inventions for this physicist.
      * 
+     * @param boolean $displayed_only displays only displayed invention or all (hidden as well).
      * @return array<Abstract_table_row> related inventions.
      */
-    public function getInventions() {
-        return $this->inventions->get($this->getId());
+    public function getInventions($displayed_only = FALSE) {
+        if ($displayed_only) {
+            $this->inventions->setWhere('inventions.displayed = ?', array(1));
+        } else {
+            $this->inventions->setWhere(NULL);
+        }
+        return $this->inventions->setOrderBy('name')->get($this->getId());
     }
     
     /**

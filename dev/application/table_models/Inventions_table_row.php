@@ -48,10 +48,16 @@ class Inventions_table_row extends Abstract_table_row {
     /**
      * Get all related physicists.
      * 
+     * @param boolean $displayed_only return only displayed physicists when set to TRUE.
      * @return array<Abstract_table_row> related physicists.
      */
-    public function getPhysicists() {
-        return $this->physicists->get($this->getId());
+    public function getPhysicists($displayed_only = FALSE) {
+        if ($displayed_only) {
+            $this->physicists->setWhere('physicists.displayed = ?', array(1));
+        } else {
+            $this->physicists->setWhere(NULL);
+        }
+        return $this->physicists->setOrderBy('name')->get($this->getId());
     }
     
     /**
