@@ -78,9 +78,9 @@ class Physicists_table_collection extends Abstract_table_collection {
         $displayed->setField('displayed')->setName('Je zobraziteľný?')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_BOOL);
         $this->addGridField($displayed);
         
-        $short_description = gridField::newGridField();
+        /*$short_description = gridField::newGridField();
         $short_description->setField('short_description')->setName('Krátky popis')->setSortable(TRUE)->setType(GRID_FIELD_TYPE_HTML);
-        $this->addGridField($short_description);
+        $this->addGridField($short_description);*/
         
         $photo = gridField::newGridField();
         $photo->setField('PhotoObject')->setName('Fotografia')->setSortable(FALSE)->setType(GRID_FIELD_TYPE_IMAGE);
@@ -94,7 +94,7 @@ class Physicists_table_collection extends Abstract_table_collection {
         $this->enableNewRecord(TRUE, 'Pridať fyzika');
         $this->enableEditRecord(TRUE);
         $this->enableDeleteRecord(TRUE);
-        $this->enablePreviewRecord(TRUE);
+        $this->enablePreviewRecord(FALSE);
     }
     
     protected function editorSettings() {
@@ -242,6 +242,21 @@ class Physicists_table_collection extends Abstract_table_collection {
         $questions->addField($field_questions);
         
         $this->addEditorTab($questions);
+        
+        $miniapps = editorTab::getNewEditorTab();
+        $miniapps->setName('Miniaplikácie');
+        
+        $field_miniapps = new editorFieldMMRelation();
+        $field_miniapps->setField('miniapps')->setFieldLabel('Miniaplikácie')->setFieldHint('Vyberte miniaplikácie k tomuto fyzikovi.');
+        $field_miniapps->setForeignTable('miniapps');
+        $field_miniapps->setEditOnly(TRUE);
+        $field_miniapps_name = gridField::newGridField();
+        $field_miniapps_name->setField('name')->setName('Názov miniaplikácie')->setType(GRID_FIELD_TYPE_TEXT);
+        $field_miniapps->addGridField($field_miniapps_name);
+        $field_miniapps->setFilterInFields(array('name'));
+        $miniapps->addField($field_miniapps);
+        
+        $this->addEditorTab($miniapps);
         
     }
 }

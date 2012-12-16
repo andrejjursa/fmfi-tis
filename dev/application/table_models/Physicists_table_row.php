@@ -31,6 +31,11 @@ class Physicists_table_row extends Abstract_table_row {
     protected $periods;
     
     /**
+     * @var Abstract_table_relation relation to miniapps.
+     */
+    protected $miniapps;
+    
+    /**
      * Relation initialisations.
      */
     protected function init() {
@@ -39,6 +44,7 @@ class Physicists_table_row extends Abstract_table_row {
         $this->images = $this->load->table_relation('physicists', 'images');
         $this->inventions = $this->load->table_relation('physicists', 'inventions');
         $this->periods = $this->load->table_relation('physicists', 'periods');
+        $this->miniapps = $this->load->table_relation('physicists', 'miniapps');
     }
     
     /**
@@ -50,6 +56,7 @@ class Physicists_table_row extends Abstract_table_row {
         $this->images->reset();
         $this->inventions->Reset();
         $this->periods->reset();
+        $this->miniapps->reset();
     }
     
     /**
@@ -123,6 +130,15 @@ class Physicists_table_row extends Abstract_table_row {
         return in_array($period, $this->periods->allIds($this->getId()));
     }
     
+    /**
+     * Returns all miniapps.
+     * 
+     * @return array<Abstract_table_row> miniapps.
+     */
+    public function getMiniapps() {
+        return $this->miniapps->setOrderBy('name')->get($this->getId());
+    }
+    
     public function prepareEditorSave($formdata) {
         if (!isset($formdata['displayed'])) { $formdata['displayed'] = '0'; }
         if (!isset($formdata['_is_dead'])) { $formdata['death_year'] = '9999'; }
@@ -143,6 +159,12 @@ class Physicists_table_row extends Abstract_table_row {
         }
         unset($formdata['images']);
         
+        if (isset($formdata['miniapps'])) {
+            $miniapps = expandRelationListToArray($formdata['miniapps']);
+            $this->miniapps->setTo($this->getId(), $miniapps);
+        }
+        unset($formdata['miniapps']);
+        
         $this->data($formdata);
     }
     
@@ -159,6 +181,7 @@ class Physicists_table_row extends Abstract_table_row {
         $data['inventions'] = implode(',', $this->inventions->allIds($this->getId()));
         $data['images'] = implode(',', $this->images->allIds($this->getId()));
         $data['questions'] = $this->questions->allIds($this->getId());
+        $data['miniapps'] = implode(',', $this->miniapps->allIds($this->getId()));
         
         return $data;
     }

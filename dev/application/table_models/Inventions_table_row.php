@@ -26,6 +26,11 @@ class Inventions_table_row extends Abstract_table_row {
     protected $periods;
     
     /**
+     * @var Abstract_table_relation relation to miniapps.
+     */
+    protected $miniapps;
+    
+    /**
      * Initialise all relations.
      */ 
     protected function init() {
@@ -33,6 +38,7 @@ class Inventions_table_row extends Abstract_table_row {
         $this->photo = $this->load->table_relation('inventions', 'one_image');
         $this->images = $this->load->table_relation('inventions', 'images');
         $this->periods = $this->load->table_relation('inventions', 'periods');
+        $this->miniapps = $this->load->table_relation('inventions', 'miniapps');
     }
     
     /**
@@ -43,6 +49,7 @@ class Inventions_table_row extends Abstract_table_row {
         $this->photo->reset();
         $this->images->reset();
         $this->periods->reset();
+        $this->miniapps->reset();
     }
     
     /**
@@ -103,6 +110,7 @@ class Inventions_table_row extends Abstract_table_row {
         $data = $this->data();
         
         $data['images'] = implode(',', $this->images->allIds($this->getId()));
+        $data['miniapps'] = implode(',', $this->miniapps->allIds($this->getId()));
         
         return $data;
     }
@@ -117,6 +125,12 @@ class Inventions_table_row extends Abstract_table_row {
             $this->images->setTo($this->getId(), $images);
         }
         unset($formdata['images']);
+        
+        if (isset($formdata['miniapps'])) {
+            $miniapps = expandRelationListToArray($formdata['miniapps']);
+            $this->miniapps->setTo($this->getId(), $miniapps);
+        }
+        unset($formdata['miniapps']);
         
         $this->data($formdata);
     }

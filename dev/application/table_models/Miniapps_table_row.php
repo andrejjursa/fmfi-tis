@@ -46,6 +46,15 @@ class Miniapps_table_row extends Abstract_table_row {
         return $data;
     }
 
+    protected function onDelete() {
+        $files = $this->files->get($this->getId());
+        if (count($files)) {
+            foreach($files as $file) {
+                $file->delete();
+            }
+        }
+    }
+
 
 }
 

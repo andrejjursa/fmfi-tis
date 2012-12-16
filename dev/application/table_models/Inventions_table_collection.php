@@ -127,6 +127,21 @@ class Inventions_table_collection extends Abstract_table_collection {
         $photo_images->addField($field_images);
         
         $this->addEditorTab($photo_images);
+        
+        $miniapps = editorTab::getNewEditorTab();
+        $miniapps->setName('Miniaplikácie');
+        
+        $field_miniapps = new editorFieldMMRelation();
+        $field_miniapps->setField('miniapps')->setFieldLabel('Miniaplikácie')->setFieldHint('Vyberte miniaplikácie k tomuto objavu.');
+        $field_miniapps->setForeignTable('miniapps');
+        $field_miniapps->setEditOnly(TRUE);
+        $field_miniapps_name = gridField::newGridField();
+        $field_miniapps_name->setField('name')->setName('Názov miniaplikácie')->setType(GRID_FIELD_TYPE_TEXT);
+        $field_miniapps->addGridField($field_miniapps_name);
+        $field_miniapps->setFilterInFields(array('name'));
+        $miniapps->addField($field_miniapps);
+        
+        $this->addEditorTab($miniapps);
     }
     
 }

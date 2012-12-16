@@ -135,6 +135,7 @@ function imageThumb($image, $max_width = NULL, $max_height = NULL) {
 /**
  * Deletes image file and all thumbnails this image has cached.
  * Deletes only image file located inside public/uploads directory, for security reasons.
+ * Can be used to delete all other files from public/uploads directory.
  * 
  * @param string $image path to image.
  * @return void
