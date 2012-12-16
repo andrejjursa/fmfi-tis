@@ -41,6 +41,11 @@
 <a href="#Logs_table_collection.php">Logs_table_collection.php</a><br>
 <a href="#Logs_table_row.php">Logs_table_row.php</a><br>
 <a href="#Logs_to_one_admin_table_relation.php">Logs_to_one_admin_table_relation.php</a><br>
+<a href="#Miniapps_table_collection.php">Miniapps_table_collection.php</a><br>
+<a href="#Miniapps_table_row.php">Miniapps_table_row.php</a><br>
+<a href="#Miniapps_to_miniapp_files_table_relation.php">Miniapps_to_miniapp_files_table_relation.php</a><br>
+<a href="#Miniapp_files_table_collection.php">Miniapp_files_table_collection.php</a><br>
+<a href="#Miniapp_files_table_row.php">Miniapp_files_table_row.php</a><br>
 <a href="#My_Controller.php">My_Controller.php</a><br>
 <a href="#My_Loader.php">My_Loader.php</a><br>
 <a href="#MY_Output.php">MY_Output.php</a><br>
@@ -68,22 +73,22 @@
 <a name="Post-parsing"></a>
 <h1>Post-parsing</h1>
 <h2>Warnings:</h2><br>
-<b>Warning</b> - class Install in package AppControllers parent not found in @see parent::__construct()<br>
-<b>Warning</b> - class MY_Output in package CodeIgniter parent not found in @see parent::_display()<br>
-<b>Warning</b> - Class My_Controller parent CI_Controller not found<br>
-<b>Warning</b> - class Logs in package AppModels parent not found in @see parent::__construct()<br>
-<b>Warning</b> - class Logs in package AppModels parent not found in @see parent::__construct()<br>
-<b>Warning</b> - class Install in package AppControllers parent not found in @see parent::__construct()<br>
-<b>Warning</b> - Class Install parent CI_Controller not found<br>
-<b>Warning</b> - class Admins in package AppModels parent not found in @see parent::__construct()<br>
 <b>Warning</b> - class MY_Output in package CodeIgniter parent not found in @see parent::_display()<br>
 <b>Warning</b> - Class MY_Output parent CI_Output not found<br>
-<b>Warning</b> - class Admins in package AppModels parent not found in @see parent::__construct()<br>
-<b>Warning</b> - Class MY_Parser parent CI_Parser not found<br>
-<b>Warning</b> - Class My_Loader parent CI_Loader not found<br>
 <b>Warning</b> - Class CI_Smarty parent Smarty not found<br>
+<b>Warning</b> - class MY_Output in package CodeIgniter parent not found in @see parent::_display()<br>
+<b>Warning</b> - class Logs in package AppModels parent not found in @see parent::__construct()<br>
+<b>Warning</b> - Class MY_Parser parent CI_Parser not found<br>
+<b>Warning</b> - class Install in package AppControllers parent not found in @see parent::__construct()<br>
+<b>Warning</b> - Class My_Loader parent CI_Loader not found<br>
+<b>Warning</b> - class Logs in package AppModels parent not found in @see parent::__construct()<br>
 <b>Warning</b> - Class Logs parent CI_Model not found<br>
+<b>Warning</b> - Class My_Controller parent CI_Controller not found<br>
+<b>Warning</b> - class Admins in package AppModels parent not found in @see parent::__construct()<br>
 <b>Warning</b> - Class Admins parent CI_Model not found<br>
+<b>Warning</b> - Class Install parent CI_Controller not found<br>
+<b>Warning</b> - class Admins in package AppModels parent not found in @see parent::__construct()<br>
+<b>Warning</b> - class Install in package AppControllers parent not found in @see parent::__construct()<br>
 <a name="abstract_backend_controller.php"></a>
 <h1>abstract_backend_controller.php</h1>
 <h2>Warnings:</h2><br>
@@ -119,8 +124,8 @@
 <h1>abstract_table_collection.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 13</b> - Page-level DocBlock precedes "require_once APPPATH.'core/abstract_table_core.php'", use another DocBlock to document the source element<br>
-<b>Warning on line 21</b> - Class "Abstract_table_collection" has no Class-level DocBlock.<br>
 <b>Warning on line 21</b> - no @package tag was used in a DocBlock for class Abstract_table_collection<br>
+<b>Warning on line 21</b> - Class "Abstract_table_collection" has no Class-level DocBlock.<br>
 <a name="abstract_table_core.php"></a>
 <h1>abstract_table_core.php</h1>
 <h2>Warnings:</h2><br>
@@ -150,8 +155,8 @@
 <a name="admins.php"></a>
 <h1>admins.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 9</b> - package default is already in category Encryption, will now replace with category default<br>
 <b>Warning on line 9</b> - DocBlock would be page-level, but precedes class "Admins", use another DocBlock to document the file<br>
+<b>Warning on line 9</b> - package default is already in category Encryption, will now replace with category default<br>
 <b>Warning on line 19</b> - Method "__construct" has no method-level DocBlock.<br>
 <b>Warning on line 158</b> - Method "updateEmail" has no method-level DocBlock.<br>
 <b>Warning on line 164</b> - Method "getIdByEmail" has no method-level DocBlock.<br>
@@ -256,8 +261,8 @@
 <h1>Inventions_table_row.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Inventions_table_row", use another DocBlock to document the file<br>
-<b>Warning on line 101</b> - Method "getDataForEditor" has no method-level DocBlock.<br>
-<b>Warning on line 115</b> - Method "prepareEditorSave" has no method-level DocBlock.<br>
+<b>Warning on line 107</b> - Method "getDataForEditor" has no method-level DocBlock.<br>
+<b>Warning on line 121</b> - Method "prepareEditorSave" has no method-level DocBlock.<br>
 <a name="Inventions_to_images_table_relation.php"></a>
 <h1>Inventions_to_images_table_relation.php</h1>
 <h2>Warnings:</h2><br>
@@ -301,12 +306,37 @@
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Logs_to_one_admin_table_relation", use another DocBlock to document the file<br>
 <b>Warning on line 10</b> - Method "__construct" has no method-level DocBlock.<br>
+<a name="Miniapps_table_collection.php"></a>
+<h1>Miniapps_table_collection.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Miniapps_table_collection", use another DocBlock to document the file<br>
+<b>Warning on line 17</b> - Method "gridSettings" has no method-level DocBlock.<br>
+<b>Warning on line 65</b> - Method "editorSettings" has no method-level DocBlock.<br>
+<a name="Miniapps_table_row.php"></a>
+<h1>Miniapps_table_row.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Miniapps_table_row", use another DocBlock to document the file<br>
+<a name="Miniapps_to_miniapp_files_table_relation.php"></a>
+<h1>Miniapps_to_miniapp_files_table_relation.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Miniapps_to_miniapp_files_table_relation", use another DocBlock to document the file<br>
+<b>Warning on line 11</b> - Method "__construct" has no method-level DocBlock.<br>
+<a name="Miniapp_files_table_collection.php"></a>
+<h1>Miniapp_files_table_collection.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Miniapp_files_table_collection", use another DocBlock to document the file<br>
+<b>Warning on line 12</b> - Method "gridSettings" has no method-level DocBlock.<br>
+<b>Warning on line 57</b> - Method "editorSettings" has no method-level DocBlock.<br>
+<a name="Miniapp_files_table_row.php"></a>
+<h1>Miniapp_files_table_row.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Miniapp_files_table_row", use another DocBlock to document the file<br>
 <a name="My_Controller.php"></a>
 <h1>My_Controller.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 13</b> - Page-level DocBlock precedes "require_once APPPATH.'core/abstract_frontend_controller.php'", use another DocBlock to document the source element<br>
-<b>Warning on line 16</b> - Class "My_Controller" has no Class-level DocBlock.<br>
 <b>Warning on line 16</b> - no @package tag was used in a DocBlock for class My_Controller<br>
+<b>Warning on line 16</b> - Class "My_Controller" has no Class-level DocBlock.<br>
 <b>Warning on line 20</b> - Method "__construct" has no method-level DocBlock.<br>
 <a name="My_Loader.php"></a>
 <h1>My_Loader.php</h1>
@@ -318,8 +348,8 @@
 <a name="MY_Output.php"></a>
 <h1>MY_Output.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 14</b> - Unknown tag "@hacked-by" used<br>
 <b>Warning on line 14</b> - DocBlock would be page-level, but precedes class "MY_Output", use another DocBlock to document the file<br>
+<b>Warning on line 14</b> - Unknown tag "@hacked-by" used<br>
 <b>Warning on line 25</b> - Method "_display" has no method-level DocBlock.<br>
 <a name="MY_Parser.php"></a>
 <h1>MY_Parser.php</h1>
@@ -360,9 +390,9 @@
 <h1>Physicists_table_row.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Physicists_table_row", use another DocBlock to document the file<br>
-<b>Warning on line 140</b> - Method "prepareEditorSave" has no method-level DocBlock.<br>
-<b>Warning on line 157</b> - Method "getDataForEditor" has no method-level DocBlock.<br>
-<b>Warning on line 169</b> - Method "onDelete" has no method-level DocBlock.<br>
+<b>Warning on line 146</b> - Method "prepareEditorSave" has no method-level DocBlock.<br>
+<b>Warning on line 163</b> - Method "getDataForEditor" has no method-level DocBlock.<br>
+<b>Warning on line 175</b> - Method "onDelete" has no method-level DocBlock.<br>
 <a name="Physicists_to_images_table_relation.php"></a>
 <h1>Physicists_to_images_table_relation.php</h1>
 <h2>Warnings:</h2><br>
@@ -414,8 +444,8 @@
 <h1>Smarty.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 15</b> - Page-level DocBlock precedes "require_once APPPATH."third_party/Smarty/Smarty.class.php"", use another DocBlock to document the source element<br>
-<b>Warning on line 17</b> - Class "CI_Smarty" has no Class-level DocBlock.<br>
 <b>Warning on line 17</b> - no @package tag was used in a DocBlock for class CI_Smarty<br>
+<b>Warning on line 17</b> - Class "CI_Smarty" has no Class-level DocBlock.<br>
 <b>Warning on line 66</b> - Method "__construct" has no method-level DocBlock.<br>
 <b>Warning on line 74</b> - example file "$this->smarty->enable_caching(); then do your parse call" does not exist<br>
 <b>Warning on line 85</b> - example file "$this->smarty->disable_caching(); then do your parse call" does not exist<br>
@@ -426,9 +456,9 @@
 <a name="Unzip.php"></a>
 <h1>Unzip.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 21</b> - package default is already in category default, will now replace with category Encryption<br>
-<b>Warning on line 21</b> - DocBlock would be page-level, but precedes class "Unzip", use another DocBlock to document the file<br>
 <b>Warning on line 21</b> - package CodeIgniter is already in category default, will now replace with category Encryption<br>
+<b>Warning on line 21</b> - DocBlock would be page-level, but precedes class "Unzip", use another DocBlock to document the file<br>
+<b>Warning on line 21</b> - package default is already in category default, will now replace with category Encryption<br>
 <b>Warning on line 519</b> - Method "_load_file_list_by_eof" has no method-level DocBlock.<br>
 <b>Warning on line 554</b> - Method "_load_files_by_signatures" has no method-level DocBlock.<br>
 <b>Warning on line 617</b> - Method "_get_file_header" has no method-level DocBlock.<br>
@@ -441,7 +471,7 @@
 <b>Warning on line 124</b> - Method "validateEmail" has no method-level DocBlock.<br>
 <b>Warning on line 164</b> - Method "_sendVerificationEmail" has no method-level DocBlock.<br>
 	<p class="notes" id="credit">
-		Documentation generated on Sun, 16 Dec 2012 14:21:37 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Sun, 16 Dec 2012 16:03:05 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</body>
 </html>
