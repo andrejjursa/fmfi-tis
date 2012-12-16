@@ -159,5 +159,4 @@ table.formtable td.label { width: 220px; }
 table.formtable td.label label { font-weight: bold; }
 table.formtable td.errors { width: 200px; }
 table.formtable .uploadify { display: inline-block; margin-right: 10px; }
-
 input.form_field_text_input { width: 100%; }

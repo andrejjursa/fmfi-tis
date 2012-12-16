@@ -41,9 +41,19 @@
     <h2>Vynálezy, na ktorých sa {$phys->getName()} podieľal</h2>
     <ol>
     {foreach $inventions as $invention}
-    	<li><a href="{createUri controller='inventions' action='index' params=[$invention->getId(), $year, $current_period]}">{$invention->getName()}</li>
+    	<li><a href="{createUri controller='inventions' action='index' params=[$invention->getId(), $year, $current_period]}">{$invention->getName()}</a></li>
     {/foreach}
     </ol>
+    {/if}
+    <h2>Miniaplikácie</h2>
+    {if $phys->getMiniapps()}
+    <ol>
+    {foreach $phys->getMiniapps() as $miniapp}
+        <li><a href="{createUri controller='miniapps' action='index' params=[$miniapp->getId()]}" rel="fancybox_ajax">{$miniapp->getName()|escape:'html'}</a></li>
+    {/foreach}
+    </ol>
+    {else}
+    <p>Neboli pridané žiadne miniaplikácie k tomuto fyzikovi.</p>
     {/if}
 {/if}
 {/block}

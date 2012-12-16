@@ -8,6 +8,8 @@ $(document).ready(function(){
             'transitionOut': 'elastic'
         });
         
+        $('a[rel=fancybox_ajax]').fancybox({ showNavArrows: false });
+        
         $('#doTestLink').fancybox({
             'width': 800,
             'height': height,

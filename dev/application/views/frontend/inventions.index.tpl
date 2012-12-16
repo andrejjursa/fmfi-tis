@@ -17,5 +17,15 @@
         {foreachelse}
             <p>Žiadny fyzici sa nenašli...</p>
         {/foreach}
+        <h2>Miniaplikácie</h2>
+        {if $invention->getMiniapps()}
+        <ol>
+        {foreach $invention->getMiniapps() as $miniapp}
+            <li><a href="{createUri controller='miniapps' action='index' params=[$miniapp->getId()]}" rel="fancybox_ajax">{$miniapp->getName()|escape:'html'}</a></li>
+        {/foreach}
+        </ol>
+        {else}
+        <p>Neboli pridané žiadne miniaplikácie k tomuto objavu.</p>
+        {/if}
     {/if}
 {/block}

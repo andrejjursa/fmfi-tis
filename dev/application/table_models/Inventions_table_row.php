@@ -106,6 +106,15 @@ class Inventions_table_row extends Abstract_table_row {
         return $this->images->get($this->getId());
     }
     
+    /**
+     * Returns all miniapps.
+     * 
+     * @return array<Abstract_table_row> miniapps.
+     */
+    public function getMiniapps() {
+        return $this->miniapps->setOrderBy('name')->get($this->getId());
+    }
+    
     public function getDataForEditor() {
         $data = $this->data();
         

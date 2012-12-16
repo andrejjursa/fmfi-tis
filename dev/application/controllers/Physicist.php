@@ -16,7 +16,6 @@ class Physicist extends Abstract_frontend_controller {
         $this->_addTemplateJs('physicist/index.js');
         $this->_assignTemplateAdditionals();
                 
-        $this->parser->setCacheId('physicist_detail_for_' + intval($id));
         $this->parser->parse("frontend/physicist.index.tpl");
     }  
 
