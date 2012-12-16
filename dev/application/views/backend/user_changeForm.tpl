@@ -64,14 +64,27 @@
             <div class="userChangeForm-row" style='color: green;'>
                 {if ($param2 eq "password")}
                     Vaše heslo bolo zmenené.
-                {/if}
-                {if ($param2 eq "email")}
+                {elseif ($param2 eq "email")}
                     Na Váš email bola zaslaná overovacia správa.
+                {elseif ($param2 eq "email2")}
+                    Váš email bo úspešne zmenený.
+                {else}
+                    <p style='color: red;'>Neplatný vstup</p>
                 {/if}
             </div>
+        {elseif ($param1 eq "failure")}
+            <div class="userChangeForm-row" style='color: red;'>
+                {if ($param2 eq "email")}
+                    Vyskytla sa chyba, heslo nebolo zmenené.
+                {elseif ($param2 eq "email2")}
+                    Nesprávne overovacie údaje !!
+                {else}
+                    <p>Neplatný vstup</p>
+                {/if}                
+            </div>            
         {/if}
     {else}
-        <p>Neplatny vstup ....</p>
+        <p>Neplatný vstup</p>
     {/if}
      </div>
 {/block}

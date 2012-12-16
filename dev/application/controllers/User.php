@@ -22,6 +22,7 @@
                 case "email":
                 case "password":
                 case "success":
+                case "failure":
                     $name = $param1;
                     break;
                 default:
@@ -37,6 +38,7 @@
                 case "password-mismatch":
                 case "invalid-email":
                 case "email":
+                case "email2":
                 case "password";
                     $msg = $param2;
                     break;
@@ -116,29 +118,35 @@
             
             $admin = $this->load->table_row("admins");
             $admin->load(intval($uid));
-            if ($verification != "" && $admin->data("validation_token") == $verification)  {
+
+            if ($verification != "" && $admin->data("validation_token") == $verification && intval($uid) != 0)  {
                 
-                $this->Admins->updateMail($this->user_id);
+                if ($this->Admins->updateEmail($uid)) {
+                    $this->changeForm("success", "email2");
+                } else {
+                    $this->changeForm("failure", "email");
+                }
                 
+            } else {
+                $this->changeForm("failure", "email2");
             }
             
         }
         
         private function _sendVerificationEmail($email) {
 		
-		$config = Array(
-		'protocol' => 'smtp',
-				'smtp_host' => 'priso.no-ip.org',
-				'smtp_port' => 25,
-				'smtp_user' => 'tis@priso.no-ip.org',
-				'smtp_pass' => 'Fmf1-t1s',
-				'mailtype'  => 'html', 
-				'charset' => 'utf-8',
-				'wordwrap' => TRUE
-
-			
-			);
-			$this->load->library('email', $config);
+            $config = Array(
+            'protocol' => 'smtp',
+                    'smtp_host' => 'priso.no-ip.org',
+                    'smtp_port' => 25,
+                    'smtp_user' => 'tis@priso.no-ip.org',
+                    'smtp_pass' => 'Fmf1-t1s',
+                    'mailtype'  => 'html', 
+                    'charset' => 'utf-8',
+                    'wordwrap' => TRUE
+            );
+            
+            $this->load->library('email', $config);
             
 
             $this->email->initialize($config);
@@ -160,7 +168,7 @@
             
             mail($email, "sprava", $sprava);
             
-            $this->Admins->updateNewEmail($this->user_id, $email);
+            $this->Admins->updateNewEmail($this->user_id, $email, $token);
             
         }
         

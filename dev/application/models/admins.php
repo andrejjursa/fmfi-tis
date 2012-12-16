@@ -132,21 +132,35 @@ class Admins extends CI_Model {
         $admin = $this->load->table_row('admins');
         $admin->load($id);
         $admin->data(array( 'password' => md5($pass) ));
-        $admin->save(); 
+        return $admin->save(); 
     }
     
     /**
-     * Upadtes new_email of admin with $id.
-     *
+     * Upadtes 'new_email' and 'validation_token' of admin with $id.
+     * 
+     * @param int $id Id of admin
+     * @param string $email new email
+     * @param string $validation_token token for validation
+     * 
+     * @return bolean True if email is updated or False when fails.
      */              
-    
-    public function updateNewEmail($id,$email){
+    public function updateNewEmail($id,$email, $validation_token){
         $admin = $this->load->table_row('admins');
         $admin->load($id);
-        $admin->data(array( 'new_email' => $email ));
-        $admin->save(); 
+        $admin->data(array( 'new_email' => $email, 'validation_token' => $validation_token ));
+        return $admin->save(); 
     }
     
+    
+    
+    /**
+     * Set value 'email' to 'new_email' and 'new_email' and 'validation_token' to ""
+     * 
+     * @param int $id Id of admin
+     * @param string $email new email
+     * 
+     * @return bolean True if email is updated or False when fails.
+     */                  
     public function updateEmail($id, $email = NULL){
         $admin = $this->load->table_row('admins');
         $admin->load($id);
@@ -155,7 +169,7 @@ class Admins extends CI_Model {
             "new_email" => "", 
             "validation_token" => ""
         ));
-        $admin->save(); 
+        return $admin->save(); 
     }
     
     public function getIdByEmail($email){
