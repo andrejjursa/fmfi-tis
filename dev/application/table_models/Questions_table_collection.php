@@ -8,6 +8,12 @@ class Questions_table_collection extends Abstract_table_collection {
     public function filterForPhysicist($physicist_id) {
         $this->query->where('physicist_id', intval($physicist_id));
         
+        $physicist = $this->load->table_row('physicists');
+        $physicist->load($physicist_id);
+        if ($physicist->getId() !== NULL) {
+            $this->query->limit($physicist->getQuestionscount());
+        }
+        
         return $this;
     }
     

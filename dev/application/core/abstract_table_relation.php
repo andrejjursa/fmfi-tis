@@ -77,7 +77,58 @@ class Abstract_table_relation extends Abstract_table_core {
     protected $custom_order_by = NULL;
     
     /**
-     * This function will set new ordre by clause to select, it resets selected rows.
+     * @var array<integer> custom limit clausule for selecting.
+     */
+    protected $custom_limit = NULL;
+    
+    /**
+     * @var array<mixed> custom where clausule for selecting.
+     */
+    protected $custom_where = NULL;
+    
+    /**
+     * This function will set the additional where clausule conditions with optional substituents, it resets the selected rows.
+     * 
+     * @param string $conditions where clausule conditions as string, can contains question marks for replace with substituens.
+     * @param array<mixed> $substituents array of substituents to be replaced against questions marks in where condition, in given order.
+     * @return Abstract_table_relation reference to this object.
+     */ 
+    public function setWhere($conditions = NULL, $substituents = NULL) {
+        if (is_null($conditions)) {
+            if ($this->custom_where !== NULL) { $this->reset(); }
+            $this->custom_where = NULL;
+        } elseif (is_string($conditions)) {
+            $_substituents = $substituents;
+            if (!is_array($substituents)) { $_substituents = NULL; }
+            $new_value = array($conditions, $_substituents);
+            if (serialize($new_value) != serialize($this->custom_where)) { $this->reset(); }
+            $this->custom_where = $new_value;
+        }
+        return $this;
+    }
+    
+    /**
+     * This function will set new limit clausule to select, it resets the selected rows.
+     * 
+     * @param integer $how_many how many rows to select.
+     * @param integer $start_from starting inded.
+     * @return Abstract_table_relation reference to this object.
+     */
+    public function setLimit($how_many = NULL, $start_from = 0) {
+        if (is_null($how_many)) {
+            if ($this->custom_limit !== NULL) { $this->reset(); }
+            $this->custom_limit = NULL;
+        } elseif (is_numeric($how_many)) {
+            if ($this->custom_limit === NULL || (is_array($this->custom_limit) && ($this->custom_limit[0] != intval($how_many) || $this->custom_limit[1] != intval($start_from)))) {
+                $this->reset();    
+            }
+            $this->custom_limit = array(intval($how_many), intval($start_from));
+        }
+        return $this;
+    }
+    
+    /**
+     * This function will set new ordre by clausule to select, it resets selected rows.
      * 
      * @param string $new_order_by $new_order_by order by clause for select.
      * @return Abstract_table_relation reference to this object.
@@ -181,10 +232,12 @@ class Abstract_table_relation extends Abstract_table_core {
                 $this->db->from($this->foreign_table_name);
                 $this->db->join($this->mm_table_name, $this->foreign_table_name . '.' . $this->foreign_primary_field . ' = ' . $this->mm_table_name . '.' . $this->mm_foreign_id_field);
                 $this->db->where($this->mm_table_name . '.' . $this->mm_local_id_field, $real_local_id);
+                $this->insertLimit($this->db);
                 $this->count = $this->db->count_all_results();
             } else {
                 if (is_null($foreign_ids)) {
                     $this->db->where($this->foreign_index_field, $real_local_id);
+                    $this->insertLimit($this->db);
                     $this->count = $this->db->count_all_results($this->foreign_table_name);
                 } else {
                     $ids_array = array();
@@ -201,6 +254,7 @@ class Abstract_table_relation extends Abstract_table_core {
                     for($i=0;$i<count($ids_array);$i++) { $ids_array[$i] = intval($ids_array[$i]); }
                     
                     $this->db->where_in($this->foreign_primary_field, $ids_array);
+                    $this->insertLimit($this->db);
                     $this->count = $this->db->count_all_results($this->foreign_table_name);
                 }
             }
@@ -487,6 +541,7 @@ class Abstract_table_relation extends Abstract_table_core {
                         $this->db->order_by($this->mm_table_name . '.' . $this->mm_sorting_field, 'asc');
                     }
                 }
+                $this->insertLimit($this->db);
                 $query = $this->db->get();
                 
                 if ($query->num_rows() > 0) {
@@ -503,6 +558,7 @@ class Abstract_table_relation extends Abstract_table_core {
                 if (is_null($foreign_ids)) {
                     $this->db->where($this->foreign_index_field, $real_local_id);
                     $this->insertOrderByAndNotification($this->db);
+                    $this->insertLimit($this->db);
                     $query = $this->db->get($this->foreign_table_name);
                     
                     if ($query->num_rows() > 0) {
@@ -531,6 +587,7 @@ class Abstract_table_relation extends Abstract_table_core {
                     
                     $this->db->where_in($this->foreign_primary_field, $ids_array);
                     $this->insertOrderByAndNotification($this->db);
+                    $this->insertLimit($this->db);
                     $query = $this->db->get($this->foreign_table_name);
                     
                     if ($query->num_rows() > 0) {
@@ -584,6 +641,7 @@ class Abstract_table_relation extends Abstract_table_core {
                 $this->db->order_by($this->mm_table_name . '.' . $this->mm_sorting_field, 'asc');
             }
         }
+        $this->insertLimit($this->db);
         $query = $this->db->get();
         
         if ($query->num_rows() > 0) {
@@ -601,7 +659,7 @@ class Abstract_table_relation extends Abstract_table_core {
     }
     
     /**
-     * Inserts custom ORDER BY clause to given active record and return boolean notification.
+     * Inserts custom ORDER BY clausule to given active record and return boolean notification.
      * 
      * @param CI_DB_active_record $db database active record object.
      * @return boolean TRUE, if there is custom order by clause, or FALSE otherwise.
@@ -616,6 +674,53 @@ class Abstract_table_relation extends Abstract_table_core {
             return TRUE;
         }
         return FALSE;
+    }
+    
+    /**
+     * Inserts custom LIMIT clausule to given active record.
+     * 
+     * @param CI_DB_active_record $db database active record object.
+     * @return void
+     */
+    private function insertLimit(CI_DB_active_record $db) {
+        if (is_array($this->custom_limit) && count($this->custom_limit) == 2) {
+            $db->limit($this->custom_limit[0], $this->custom_limit[1]);
+        }
+    }
+    
+    /**
+     * Inserts custom additional condition(s) to WHERE clausule in given active record.
+     * 
+     * @param CI_DB_active_record $db database active record object.
+     * @return void
+     */
+    private function insertWhere(CI_DB_active_record $db) {
+        if (is_array($this->custom_where) && count($this->custom_where) == 2) {
+            $where = $this->custom_where[0];
+            if (is_array($this->custom_where[1]) && count($this->custom_where[1])) {
+                foreach ($this->custom_where[1] as $value) {
+                    $where = $this->replaceFirstQuestionMark($where, $value, $db);
+                }
+            }
+            $db->where($where);
+        }
+    }
+    
+    /**
+     * Replaces first found question mark with given value using given database active record class.
+     * 
+     * @param string $where where clausule to be altered.
+     * @param mixed $value value, to be replacet against first question mark from left.
+     * @param CI_DB_active_record $db database active record object.
+     * @return string altered where clausule.
+     */
+    private function replaceFirstQuestionMark($where, $value, CI_DB_active_record $db) {
+        $escaped_value = $db->escape($value);
+        $index = strpos($where, '?', 0);
+        if ($index !== FALSE) {
+            return substr($where, 0, $index) . $escaped_value . substr($where, $index + 1);
+        }
+        return $where;
     }
 }
 

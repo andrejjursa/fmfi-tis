@@ -220,6 +220,21 @@ class Physicists_table_collection extends Abstract_table_collection {
         $questions = editorTab::getNewEditorTab();
         $questions->setName('Otázky');
         
+        $field_questionscount = new editorFieldText();
+        $field_questionscount->setField('questionscount')->setFieldLabel('Počet otázok v teste')->setFieldHint('Zadajte počet otázok, ktoré budú zobrazené v teste. Ak je nižšie vytvorených viacej otázok, vždy sa vyberie maximálne tolko, kolko je tu nastavené (otázky sa vyberajú náhodne).');
+        $field_questionscount->setDefaultText('10');
+        $field_questionscount->setRules(array(
+            'digits' => TRUE,
+            'min' => 1,
+            'required' => TRUE,
+            'messages' => array(
+                'digits' => 'Zadajte len číselnú hodnotu',
+                'min' => 'Minimálna možná hodnota je {0}',
+                'required' => 'Prosím zadajte hodnotu.',
+            ),
+        ));
+        $questions->addField($field_questionscount);
+        
         $field_questions = new editorFieldIframeForeignRelation();
         $field_questions->setField('questions')->setFieldLabel('Otázky')->setFieldHint('Vytvorte otázky pre test k tomuto fyzikovi.');
         $field_questions->setForeignTable('questions');

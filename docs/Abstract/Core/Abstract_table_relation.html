@@ -153,13 +153,21 @@
 								</div>
 		<div class="info-box-body">
 			<div class="var-summary">
-																																																																																																																<div class="var-title">
+																																																																																																																																<div class="var-title">
 					<span class="var-type">integer</span>
 					<a href="#$count" title="details" class="var-name">$count</a>
 				</div>
 																<div class="var-title">
+					<span class="var-type">array<integer></span>
+					<a href="#$custom_limit" title="details" class="var-name">$custom_limit</a>
+				</div>
+																<div class="var-title">
 					<span class="var-type">string</span>
 					<a href="#$custom_order_by" title="details" class="var-name">$custom_order_by</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">array<mixed></span>
+					<a href="#$custom_where" title="details" class="var-name">$custom_where</a>
 				</div>
 																<div class="var-title">
 					<span class="var-type">string</span>
@@ -218,7 +226,7 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																																																																												
+																																																																																																																																																																				
 												<div class="method-definition">
 											<span class="method-result">bool</span>
 										<a href="#add" title="details" class="method-name">add</a>
@@ -275,14 +283,34 @@
 											(<span class="var-type">array<integer|Abstract_table_row></span>&nbsp;<span class="var-name">$local_ids</span>)
 									</div>
 																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#insertLimit" title="details" class="method-name">insertLimit</a>
+											(<span class="var-type">CI_DB_active_record</span>&nbsp;<span class="var-name">$db</span>)
+									</div>
+																<div class="method-definition">
 											<span class="method-result">boolean</span>
 										<a href="#insertOrderByAndNotification" title="details" class="method-name">insertOrderByAndNotification</a>
 											(<span class="var-type">CI_DB_active_record</span>&nbsp;<span class="var-name">$db</span>)
 									</div>
 																<div class="method-definition">
 											<span class="method-result">void</span>
+										<a href="#insertWhere" title="details" class="method-name">insertWhere</a>
+											(<span class="var-type">CI_DB_active_record</span>&nbsp;<span class="var-name">$db</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#replaceFirstQuestionMark" title="details" class="method-name">replaceFirstQuestionMark</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$where</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>, <span class="var-type">CI_DB_active_record</span>&nbsp;<span class="var-name">$db</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
 										<a href="#reset" title="details" class="method-name">reset</a>
 										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/Abstract_table_relation.html">Abstract_table_relation</a></span>
+										<a href="#setLimit" title="details" class="method-name">setLimit</a>
+											([<span class="var-type">integer</span>&nbsp;<span class="var-name">$how_many</span> = <span class="var-default">NULL</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$start_from</span> = <span class="var-default">0</span>])
 									</div>
 																<div class="method-definition">
 											<span class="method-result"><a href="../../Abstract/Core/Abstract_table_relation.html">Abstract_table_relation</a></span>
@@ -293,6 +321,11 @@
 											<span class="method-result">bool</span>
 										<a href="#setTo" title="details" class="method-name">setTo</a>
 											(<span class="var-type">integer|<a href="../../Abstract/Core/Abstract_table_row.html">Abstract_table_row</a></span>&nbsp;<span class="var-name">$local_id</span>, <span class="var-type">array<integer|Abstract_table_row></span>&nbsp;<span class="var-name">$foreign_ids</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../../Abstract/Core/Abstract_table_relation.html">Abstract_table_relation</a></span>
+										<a href="#setWhere" title="details" class="method-name">setWhere</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$conditions</span> = <span class="var-default">NULL</span>], [<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$substituents</span> = <span class="var-default">NULL</span>])
 									</div>
 								</div>
 		</div>
@@ -334,8 +367,30 @@
 		
 
 </div>
-<a name="var$custom_order_by" id="$custom_order_by"><!-- --></A>
+<a name="var$custom_limit" id="$custom_limit"><!-- --></A>
 <div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array<integer></span>
+			<span class="var-name">$custom_limit</span>
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number">82</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> custom limit clausule for selecting.</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$custom_order_by" id="$custom_order_by"><!-- --></A>
+<div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
@@ -348,6 +403,28 @@
 	<!-- ========== Info from phpDoc block ========= -->
 	<ul class="tags">
 				<li><span class="field">var:</span> custom order by clausule for selecting.</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$custom_where" id="$custom_where"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array<mixed></span>
+			<span class="var-name">$custom_where</span>
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number">87</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> custom where clausule for selecting.</li>
 				<li><span class="field">access:</span> protected</li>
 			</ul>
 	
@@ -597,7 +674,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">add</span> (line <span class="line-number">249</span>)
+		<span class="method-title">add</span> (line <span class="line-number">303</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -634,7 +711,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">allIds</span> (line <span class="line-number">232</span>)
+		<span class="method-title">allIds</span> (line <span class="line-number">286</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -667,7 +744,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">allIdsMultiple</span> (line <span class="line-number">114</span>)
+		<span class="method-title">allIdsMultiple</span> (line <span class="line-number">165</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -698,7 +775,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">count</span> (line <span class="line-number">170</span>)
+		<span class="method-title">count</span> (line <span class="line-number">221</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -731,7 +808,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">countMultiple</span> (line <span class="line-number">128</span>)
+		<span class="method-title">countMultiple</span> (line <span class="line-number">179</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -762,7 +839,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">delete</span> (line <span class="line-number">324</span>)
+		<span class="method-title">delete</span> (line <span class="line-number">378</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -795,7 +872,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">deleteAll</span> (line <span class="line-number">436</span>)
+		<span class="method-title">deleteAll</span> (line <span class="line-number">490</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -825,7 +902,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">get</span> (line <span class="line-number">219</span>)
+		<span class="method-title">get</span> (line <span class="line-number">273</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -858,7 +935,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">getMultiple</span> (line <span class="line-number">100</span>)
+		<span class="method-title">getMultiple</span> (line <span class="line-number">151</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -889,7 +966,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getRowsAndIds</span> (line <span class="line-number">469</span>)
+		<span class="method-title">getRowsAndIds</span> (line <span class="line-number">523</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -921,7 +998,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">getRowsAndIdsMultiple</span> (line <span class="line-number">557</span>)
+		<span class="method-title">getRowsAndIdsMultiple</span> (line <span class="line-number">614</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -947,15 +1024,44 @@
 		
 			
 	</div>
-<a name="methodinsertOrderByAndNotification" id="insertOrderByAndNotification"><!-- --></a>
+<a name="methodinsertLimit" id="insertLimit"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">insertOrderByAndNotification</span> (line <span class="line-number">609</span>)
+		<span class="method-title">insertLimit</span> (line <span class="line-number">685</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Inserts custom ORDER BY clause to given active record and return boolean notification.</p>
+<p class="short-description">Inserts custom LIMIT clausule to given active record.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			insertLimit
+		</span>
+					(<span class="var-type">CI_DB_active_record</span>&nbsp;<span class="var-name">$db</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">CI_DB_active_record</span>
+				<span class="var-name">$db</span><span class="var-description">: database active record object.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodinsertOrderByAndNotification" id="insertOrderByAndNotification"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">insertOrderByAndNotification</span> (line <span class="line-number">667</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Inserts custom ORDER BY clausule to given active record and return boolean notification.</p>
 	<ul class="tags">
 				<li><span class="field">return:</span> TRUE, if there is custom order by clause, or FALSE otherwise.</li>
 				<li><span class="field">access:</span> private</li>
@@ -977,11 +1083,76 @@
 		
 			
 	</div>
-<a name="methodreset" id="reset"><!-- --></a>
+<a name="methodinsertWhere" id="insertWhere"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">insertWhere</span> (line <span class="line-number">697</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Inserts custom additional condition(s) to WHERE clausule in given active record.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			insertWhere
+		</span>
+					(<span class="var-type">CI_DB_active_record</span>&nbsp;<span class="var-name">$db</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">CI_DB_active_record</span>
+				<span class="var-name">$db</span><span class="var-description">: database active record object.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodreplaceFirstQuestionMark" id="replaceFirstQuestionMark"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">reset</span> (line <span class="line-number">457</span>)
+		<span class="method-title">replaceFirstQuestionMark</span> (line <span class="line-number">717</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Replaces first found question mark with given value using given database active record class.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> altered where clausule.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			replaceFirstQuestionMark
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$where</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>, <span class="var-type">CI_DB_active_record</span>&nbsp;<span class="var-name">$db</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$where</span><span class="var-description">: where clausule to be altered.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$value</span><span class="var-description">: value, to be replacet against first question mark from left.</span>			</li>
+					<li>
+				<span class="var-type">CI_DB_active_record</span>
+				<span class="var-name">$db</span><span class="var-description">: database active record object.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodreset" id="reset"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">reset</span> (line <span class="line-number">511</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1001,15 +1172,48 @@
 		
 			
 	</div>
+<a name="methodsetLimit" id="setLimit"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setLimit</span> (line <span class="line-number">117</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This function will set new limit clausule to select, it resets the selected rows.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/Abstract_table_relation.html">Abstract_table_relation</a></span>
+		<span class="method-name">
+			setLimit
+		</span>
+					([<span class="var-type">integer</span>&nbsp;<span class="var-name">$how_many</span> = <span class="var-default">NULL</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$start_from</span> = <span class="var-default">0</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$how_many</span><span class="var-description">: how many rows to select.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$start_from</span><span class="var-description">: starting inded.</span>			</li>
+				</ul>
+		
+			
+	</div>
 <a name="methodsetOrderBy" id="setOrderBy"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">setOrderBy</span> (line <span class="line-number">85</span>)
+		<span class="method-title">setOrderBy</span> (line <span class="line-number">136</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">This function will set new ordre by clause to select, it resets selected rows.</p>
+<p class="short-description">This function will set new ordre by clausule to select, it resets selected rows.</p>
 	<ul class="tags">
 				<li><span class="field">return:</span> reference to this object.</li>
 				<li><span class="field">access:</span> public</li>
@@ -1035,7 +1239,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">setTo</span> (line <span class="line-number">381</span>)
+		<span class="method-title">setTo</span> (line <span class="line-number">435</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1064,6 +1268,39 @@
 		
 			
 	</div>
+<a name="methodsetWhere" id="setWhere"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setWhere</span> (line <span class="line-number">96</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This function will set the additional where clausule conditions with optional substituents, it resets the selected rows.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> reference to this object.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Abstract/Core/Abstract_table_relation.html">Abstract_table_relation</a></span>
+		<span class="method-name">
+			setWhere
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$conditions</span> = <span class="var-default">NULL</span>], [<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$substituents</span> = <span class="var-default">NULL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$conditions</span><span class="var-description">: where clausule conditions as string, can contains question marks for replace with substituens.</span>			</li>
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$substituents</span><span class="var-description">: array of substituents to be replaced against questions marks in where condition, in given order.</span>			</li>
+				</ul>
+		
+			
+	</div>
 							<h4>Inherited Methods</h4>
 				<a name='inherited_methods'><!-- --></a>	
 									<!-- =========== Summary =========== -->
@@ -1079,7 +1316,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Fri, 14 Dec 2012 20:28:26 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Sun, 16 Dec 2012 14:21:27 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>

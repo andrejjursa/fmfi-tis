@@ -143,7 +143,7 @@ label.error { color: red; }
 .mm_relation_container ul li.sortable-highlight { height: 20px; background-color: #D0FFA8; border: 2px solid black; }
 #editor_items fieldset.editor_item { border: 1px solid silver; border-radius: 4px; margin-top: 10px; }
 #editor_items fieldset.editor_item legend.editor_item { border: 1px solid silver; border-radius: 4px; padding: 4px 10px; font-size: 1.5em; }
-div.highlight_field:hover { background-color: #F7F6CD; box-shadow: 0 0 5px 10px #F7F6CD; }
+div.highlight_field:hover { background-color: #F7F6CD; box-shadow: 0 0 5px 5px #F7F6CD; }
 
 fieldset.logs,
 fieldset.logs fieldset { border: 1px solid black; border-radius: 5px; background-color: white; box-shadow: none; }

@@ -411,10 +411,22 @@
 			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#var$count">Abstract_table_relation::$count</a> in abstract_table_relation.php</div>
 					</dd>
 			<dt class="field">
+						<span class="var-title">$custom_limit</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#var$custom_limit">Abstract_table_relation::$custom_limit</a> in abstract_table_relation.php</div>
+					</dd>
+			<dt class="field">
 						<span class="var-title">$custom_order_by</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#var$custom_order_by">Abstract_table_relation::$custom_order_by</a> in abstract_table_relation.php</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$custom_where</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#var$custom_where">Abstract_table_relation::$custom_where</a> in abstract_table_relation.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">count</span>
@@ -1356,13 +1368,13 @@
 						<span class="var-title">$ids</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#var$ids">Abstract_table_relation::$ids</a> in abstract_table_relation.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_collection.html#var$ids">Abstract_table_collection::$ids</a> in abstract_table_collection.php</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$ids</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_collection.html#var$ids">Abstract_table_collection::$ids</a> in abstract_table_collection.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#var$ids">Abstract_table_relation::$ids</a> in abstract_table_relation.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">init</span>
@@ -1372,11 +1384,25 @@
 							<div class="index-item-description">Function which can initialize relations.</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">insertLimit</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodinsertLimit">Abstract_table_relation::insertLimit()</a> in abstract_table_relation.php</div>
+							<div class="index-item-description">Inserts custom LIMIT clausule to given active record.</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">insertOrderByAndNotification</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodinsertOrderByAndNotification">Abstract_table_relation::insertOrderByAndNotification()</a> in abstract_table_relation.php</div>
-							<div class="index-item-description">Inserts custom ORDER BY clause to given active record and return boolean notification.</div>
+							<div class="index-item-description">Inserts custom ORDER BY clausule to given active record and return boolean notification.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">insertWhere</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodinsertWhere">Abstract_table_relation::insertWhere()</a> in abstract_table_relation.php</div>
+							<div class="index-item-description">Inserts custom additional condition(s) to WHERE clausule in given active record.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">isCalledFrom</span>
@@ -1716,6 +1742,13 @@
 			<div class="index-item-details"><a href="Abstract/Core/editorField.html#var$rules">editorField::$rules</a> in abstract_editor_classes.php</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">replaceFirstQuestionMark</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodreplaceFirstQuestionMark">Abstract_table_relation::replaceFirstQuestionMark()</a> in abstract_table_relation.php</div>
+							<div class="index-item-description">Replaces first found question mark with given value using given database active record class.</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">reset</span>
 					</dt>
 		<dd class="index-item-body">
@@ -1842,15 +1875,15 @@
 						<span class="method-title">setField</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/gridField.html#methodsetField">gridField::setField()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Set the table column field.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodsetField">editorField::setField()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Set the sql table field name.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setField</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodsetField">editorField::setField()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Set the sql table field name.</div>
+			<div class="index-item-details"><a href="Abstract/Core/gridField.html#methodsetField">gridField::setField()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Set the table column field.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setFieldHint</span>
@@ -1877,15 +1910,15 @@
 						<span class="method-title">setForeignTable</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodsetForeignTable">editorFieldIframeForeignRelation::setForeignTable()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Set the name of foreign table to be edited in iframes.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldMMRelation.html#methodsetForeignTable">editorFieldMMRelation::setForeignTable()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Set the foreign table name.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setForeignTable</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldMMRelation.html#methodsetForeignTable">editorFieldMMRelation::setForeignTable()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Set the foreign table name.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodsetForeignTable">editorFieldIframeForeignRelation::setForeignTable()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Set the name of foreign table to be edited in iframes.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setGridTableName</span>
@@ -1900,6 +1933,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_row.html#methodsetId">Abstract_table_row::setId()</a> in abstract_table_row.php</div>
 							<div class="index-item-description">Sets new value of primary key (primary index).</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">setLimit</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodsetLimit">Abstract_table_relation::setLimit()</a> in abstract_table_relation.php</div>
+							<div class="index-item-description">This function will set new limit clausule to select, it resets the selected rows.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setMaxSize</span>
@@ -1941,7 +1981,7 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodsetOrderBy">Abstract_table_relation::setOrderBy()</a> in abstract_table_relation.php</div>
-							<div class="index-item-description">This function will set new ordre by clause to select, it resets selected rows.</div>
+							<div class="index-item-description">This function will set new ordre by clausule to select, it resets selected rows.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setParentTable</span>
@@ -2012,6 +2052,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorFieldFileUpload.html#methodsetUseFancybox">editorFieldFileUpload::setUseFancybox()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Set fancybox flag for image uploads.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">setWhere</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodsetWhere">Abstract_table_relation::setWhere()</a> in abstract_table_relation.php</div>
+							<div class="index-item-description">This function will set the additional where clausule conditions with optional substituents, it resets the selected rows.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setWidth</span>
