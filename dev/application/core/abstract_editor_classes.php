@@ -557,7 +557,7 @@ class editorFieldMultilineText extends editorFieldText {
      * @return string field type.
      */
     public function getFieldType() {
-        return 'miltilinetext_field';
+        return 'multilinetext_field';
     }
     
     /**
@@ -566,7 +566,7 @@ class editorFieldMultilineText extends editorFieldText {
      * @return string field unique id for editor form.
      */
     public function getFieldHtmlID() {
-        return 'miltilinetext_field_' . $this->getField() . '_id';
+        return 'multilinetext_field_' . $this->getField() . '_id';
     }
     
     /**

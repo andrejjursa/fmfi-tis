@@ -40,9 +40,17 @@ $config['menu'] = array(
                     'params' => array('images'),
                 ),
                 'sub' => NULL,
-            ),            
+            ),  
+            array(
+                'title' => 'Miniaplikácie',
+                'link' => array(
+                    'controller' => 'admin_editor',
+                    'action' => 'index',
+                    'params' => array('miniapps'),
+                ),
+                'sub' => NULL,
+            ),           
         ),
-        
     ),
 	array(
         'title' => 'Záloha a obnovenie',
