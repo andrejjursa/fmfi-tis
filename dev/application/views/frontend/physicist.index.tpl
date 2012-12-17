@@ -80,7 +80,7 @@
     {if $physicist->getHasTest()}
     <div class="test">
         <p>K tomuto fyzikovi boli pridané testovacie otázky.</p>
-        <p><a id="doTestLink" href="{createUri controller='questions' action='index' params=[$phys->getId()]}">Chcem sa otestovať</a></p>
+        <p><a id="doTestLink" href="{createUri controller='questions' action='index' params=[$physicist->getId()]}">Chcem sa otestovať</a></p>
     </div>
     {/if}
 {/if}
