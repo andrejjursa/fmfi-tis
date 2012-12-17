@@ -56,6 +56,8 @@ $(document).ready(function(){
             allQuestionsValues.push(data);
             sumOfAllQuestionsValues += parseInt(value);
         });
+        
+        $("#testprogress-text").html(currentTestScore + " / " + sumOfAllQuestionsValues);
     }
     
     createProgressBar = function() {
