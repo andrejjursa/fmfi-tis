@@ -1,7 +1,7 @@
 ﻿{extends file='layouts/backend.tpl'}
 
 {block content}
-<h1>Obnova aplikácie</h1>
+<h2>Obnova aplikácie</h2>
 <div id="dbackup">
 
     <fieldset class="logs">

@@ -1,7 +1,7 @@
 {extends file='layouts/backend.tpl'}
 
 {block content}
-<h1>Nastavenia používateľa</h1>
+<h2>Nastavenia používateľa</h2>
     <div id="userChangeForm">
     {if isset($param1) && $param1 neq NULL}
         {if ($param1 eq "password" || $param1 eq "email")}

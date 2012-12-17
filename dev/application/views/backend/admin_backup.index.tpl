@@ -1,7 +1,7 @@
 {extends file='layouts/backend.tpl'}
 
 {block content}
-<h1>Záloha</h1>
+<h2>Záloha</h2>
 <div id="dbackup">
     <fieldset class="logs">
         <legend>Tu môžete vytvoriť zálohu celej aplikácie, s ktorou môžete neskôr aplikáciu obnoviť.</legend>
