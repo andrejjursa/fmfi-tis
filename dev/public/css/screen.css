@@ -111,6 +111,7 @@ h1{
 #text_content div.photo img { display: block; margin: 0; padding: 1px; border: 1px solid black; border-radius: 3px; text-align: center; }
 #text_content div.photo span.phototitle { padding: 2px; margin: 0; border: 1px solid black; border-radius: 3px; display: block; background-color: white; color: black; }
 #text_content div.description { margin: 10px; }
+#text_content div.break_float { clear: both; }
 #text_content div.images { margin: 10px; }
 #text_content div.images_border { border-top: 1px solid black; border-bottom: 1px solid black; padding: 5px 0; }
 #text_content div.images a { text-decoration: none; color: white; display: inline-block; padding: 1px; border: 1px solid black; border-radius: 3px; }

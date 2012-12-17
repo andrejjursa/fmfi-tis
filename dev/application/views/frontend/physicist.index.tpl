@@ -19,6 +19,7 @@
         <p>({$physicist->getBirth_year()}{if $physicist->getDeath_Year() lt 9999} - {$physicist->getDeath_Year()}{/if})</p>
         {$physicist->getDescription()}
     </div>
+    <div class="break_float"></div>
     <div class="images">
         {if $physicist->getPhotoObject() or count($physicist->getImages())}
         <div class="images_border">
