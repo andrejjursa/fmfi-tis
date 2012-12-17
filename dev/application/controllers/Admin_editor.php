@@ -415,7 +415,7 @@ class Admin_editor extends Abstract_backend_controller {
 	
     private function _deleteUnusedFiles() {
         $files_fields = $this->input->post('delete_files');
-        if (count($files_fields)) {
+        if (is_array($files_fields) && count($files_fields)) {
             foreach($files_fields as $files_list) {
                 $files = explode('|', $files_list);
                 if (count($files)) {

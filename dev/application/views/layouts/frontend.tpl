@@ -16,12 +16,20 @@
 <body>
 	<div id="wrapper">
 		<div id="header">
+			<a href="/"><img src="{$site_base_url}public/images/einstein.png" alt="Albert Einstein" /></a>
             <div id="navbar">
                 {block name='top_middle'}{/block}
             </div>
+			{if get_class($this) neq "Timeline"}
+			<div id="breadcrumbs">
+				<a href="{createUri controller="timeline" action="index" params=[$year, $current_period]}">&laquo; Späť na časovú os</a>
+			</div>
+			{/if}
 		</div>
+		<div id="content">
 {block name="content"}
 {/block}
+		</div>
 		<div style="clear: both;"></div>
 	</div>
 	<div id="footer">
