@@ -167,7 +167,6 @@
             $this->email->send();
             
             echo $this->email->print_debugger();
-            exit;
             
             //mail($email, "sprava", $sprava);
             
