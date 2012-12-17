@@ -137,8 +137,8 @@
 		
             $config = Array(
             'protocol' => 'smtp',
-                    'smtp_host' => 'priso.no-ip.org',
-                    'smtp_port' => 25,
+                    'smtp_host' => 'ssl://priso.no-ip.org',
+                    'smtp_port' => 465,
                     'smtp_user' => 'tis@priso.no-ip.org',
                     'smtp_pass' => 'Fmf1-t1s',
                     'mailtype'  => 'html', 
@@ -166,7 +166,10 @@
             
             $this->email->send();
             
-            mail($email, "sprava", $sprava);
+            echo $this->email->print_debugger();
+            exit;
+            
+            //mail($email, "sprava", $sprava);
             
             $this->Admins->updateNewEmail($this->user_id, $email, $token);
             
