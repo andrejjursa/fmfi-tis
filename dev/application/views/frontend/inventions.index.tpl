@@ -1,7 +1,6 @@
 {extends file="layouts/frontend.tpl"}
 
 {block name="content"}
-{include file='partials/breadcrumbs.tpl' year=$year current_period=$current_period inline}
     {if is_null($invention->getId()) or $invention->getDisplayed() eq 0}
         Zadaný objav neexistuje!
     {else}

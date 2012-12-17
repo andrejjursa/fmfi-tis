@@ -43,8 +43,12 @@ $(document).ready(function(){
         var distance_p = distance / range;
         var plus_top = -1 * info_height * distance_p;
         var handle_plus = height * distance_p;
-        $('#timeline-info').css('display', '').css('top', pos.top + plus_top + handle_plus).css('left', pos.left + width);
-        $('#timeline-info .year').html(year);
+        $('#timeline-info')
+			.css('display', 'block')
+			.css('top', pos.top + plus_top + handle_plus)
+			.css('left', pos.left + width);
+			
+        $('#timeline-info h1').html(year);
         for (i=0;i<knownPhysicists.length;i++) {
             if (knownPhysicists[i].birth_year <= year && year <= knownPhysicists[i].death_year) {
                 info += '<p>' + knownPhysicists[i].name
@@ -74,7 +78,7 @@ $(document).ready(function(){
             stop: sliderOnStop,
 			value: {$year},
             slide: updateHandleInfo
-        }).after('<div id="timeline-info" style="display: none; position: absolute; width: 200px; min-height: 200px; border: 1px solid black; background-color: white; z-index: 1000;"><p>Rok: <span class="year"></span></p><div class="physicists"></div></div>').mouseover(updateHandleInfo).mouseout(function(){
+        }).after('<div id="timeline-info"><p><h1></h1></p><div class="physicists"></div></div>').mouseover(updateHandleInfo).mouseout(function(){
             $('#timeline-info').css('display', 'none');
         });
         
