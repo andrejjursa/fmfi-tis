@@ -130,6 +130,17 @@ class Physicists_table_row extends Abstract_table_row {
         return in_array($period, $this->periods->allIds($this->getId()));
     }
     
+        
+    /**
+     * Returns TRUE, if this physicist have defined some test questions.
+     * 
+     * @return boolean TRUE, if there is at least one question.
+     */
+    public function getHasTest() {
+        $count_of_questions = $this->questions->setWhere(NULL)->setLimit(NULL)->count($this->getId());
+        return $count_of_questions > 0;
+    }
+    
     /**
      * Returns all miniapps.
      * 
