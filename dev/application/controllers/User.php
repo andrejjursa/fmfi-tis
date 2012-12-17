@@ -115,6 +115,8 @@
         }
         
         public function validateEmail($uid = NULL, $verification = "") {
+		
+			$this->load->model('Logs');
             
             $admin = $this->load->table_row("admins");
             $admin->load(intval($uid));
@@ -122,19 +124,22 @@
             if ($verification != "" && $admin->data("validation_token") == $verification && intval($uid) != 0)  {
                 
                 if ($this->Admins->updateEmail($uid)) {
+					$this->Logs->addLog('Administrator e-mail verification', array('type' => 'e-mail verification', 'result' => 'OK', 'ID' => $uid, 'validation_token' => $verification));
                     $this->changeForm("success", "email2");
                 } else {
+					$this->Logs->addLog('Administrator e-mail verification', array('type' => 'e-mail verification', 'result' => 'FAILED', 'ID' => $uid, 'validation_token' => $verification));
                     $this->changeForm("failure", "email");
                 }
                 
             } else {
-                $this->changeForm("failure", "email2");
+				$this->Logs->addLog('Administrator e-mail verification', array('type' => 'e-mail verification', 'result' => 'FAILED', 'ID' => $uid, 'validation_token' => $verification));
+                $this->changeForm("failure", "email2");				
             }
             
         }
         
         private function _sendVerificationEmail($email) {
-		
+
             $config = Array(
             'protocol' => 'smtp',
                     'smtp_host' => 'ssl://priso.no-ip.org',
@@ -166,7 +171,7 @@
             
             $this->email->send();
             
-            echo $this->email->print_debugger();
+            //echo $this->email->print_debugger();
             
             //mail($email, "sprava", $sprava);
             
