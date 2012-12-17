@@ -114,7 +114,7 @@
             redirect(createUri("user", "changeForm", array($param1, $param2) ));
         }
         
-        public function validateEmail($uid, $verification) {
+        public function validateEmail($uid = NULL, $verification = "") {
             
             $admin = $this->load->table_row("admins");
             $admin->load(intval($uid));
