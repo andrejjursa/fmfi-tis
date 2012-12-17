@@ -69,6 +69,7 @@ $(document).ready(function(){
         $('#testprogress').progressbar({
             value: currentTestScore
         });
+        $("#testprogress-text").html(currentTestScore + " / " + sumOfAllQuestionsValues);
     }
     
     collectQuestionsValues();
