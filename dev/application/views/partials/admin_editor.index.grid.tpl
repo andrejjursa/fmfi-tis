@@ -38,7 +38,7 @@
                 {else}
                     {$target = ''}{$rel = ''}
                 {/if}
-                <a href="{createUri controller='admin_editor' action='previewRecord' params=[$sql_table, $row->getId()]}" class="button" target="{$target}" rel="{$rel}">{$gridOperations.preview_record_title|default:'Náhlad'}</a>
+                <a href="{createUri controller='admin_editor' action='previewRecord' params=[$sql_table, $row->getId()]}" class="button" target="{$target}" rel="{$rel}">{$gridOperations.preview_record_title|default:'Náhľad'}</a>
                 {/if}
             </td>
         </tr>
