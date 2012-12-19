@@ -16,5 +16,6 @@
     <input type="hidden" name="id" value="{$id}"/>
     <input type="hidden" name="token" value="{$token}"/>
     <button type="submit" name="login" id="login_id" value="true">Odošli</button>
+
 </form>
 {/block}

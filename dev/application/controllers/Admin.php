@@ -102,7 +102,7 @@ class Admin extends Abstract_backend_controller {
                   $token = generateToken();
                   $id = $this->Admins->getIdByEmail($this->input->post('email'));  
 				  
-				 $url = base_url('admin/renew_password/'. $token);
+				          $url = base_url('admin/renew_password/'. $token);
 				  
                   $sprava = "Bola zaznamenaná žiadosť o obnovenie Vášho hesla. Ak ste neboli autorom tejto žiadosti môžete e-mail ignorovať.\n";
                   $sprava .= "Pre obnovenie Vášho hesla pokračujte kliknutím na linku nižšie. Tá Vás presmeruje na formulár kde zadáte nové heslo.\n";
@@ -112,6 +112,7 @@ class Admin extends Abstract_backend_controller {
                               
                   $this->email->message($sprava);
                   $this->email->send();
+                  $this->parser->parse('backend/admin.succes_sent_mail.tpl');
             }
         }
         else{
@@ -134,7 +135,7 @@ class Admin extends Abstract_backend_controller {
     }
     
     public function do_renew_password(){
-        if(($this->input->post('id') == 0)||($this->input->post('id') == $this->Admins->getIdByValidToken($this->input->post('token')))){
+        if(($this->input->post('id') == 0)||($this->input->post('id') != $this->Admins->getIdByValidToken($this->input->post('token')))){
             redirect('admin','login');
         }
         $this->parser->assign('id',$this->input->post('id'));
