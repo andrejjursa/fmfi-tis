@@ -113,8 +113,7 @@ class Admins extends CI_Model {
     /**
      * Updates Validation Token for admin with $id. 
      *
-     */              
-    
+     */    
     public function updateValidToken($id,$token){
         $admin = $this->load->table_row('admins');
         $admin->load($id);
@@ -126,8 +125,7 @@ class Admins extends CI_Model {
     /**
      * Upadtes password of admin with $id.
      *
-     */              
-    
+     */  
     public function updatePassword($id,$pass){
         $admin = $this->load->table_row('admins');
         $admin->load($id);
