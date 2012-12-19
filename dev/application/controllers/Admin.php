@@ -80,6 +80,7 @@ class Admin extends Abstract_backend_controller {
         $this->form_validation->set_message('valid_email', '<strong>%s</strong> musí byť e-mailová adresa.');
         if($this->form_validation->run()){
             if($this->Admins->adminExists($this->input->post('email'))){
+			
                   $config = Array(
                       'protocol' => 'smtp',
                       'smtp_host' => 'ssl://priso.no-ip.org',
@@ -90,6 +91,7 @@ class Admin extends Abstract_backend_controller {
                       'charset' => 'utf-8',
                       'wordwrap' => TRUE
                   );
+
                   $this->load->library('email',$config);
                   $this->load->helper('url');
                   $this->email->initialize($config);
@@ -99,12 +101,16 @@ class Admin extends Abstract_backend_controller {
                   $this->email->subject('Obnova hesla');
                   $token = generateToken();
                   $id = $this->Admins->getIdByEmail($this->input->post('email'));  
-                  $message = "Bola zaznamenaná žiadosť o obnovenie vášho hesla. Ak ste neboli autorom tejto žiadosti môžete mail ignorovať./n
-                              Pre obnovenie vášho hesla pokračujte kliknutím na linku nižšie. Tá vás presmeruje na formulár kde zadáte nové heslo./n"
-                              + base_url('admin/renew_password/'. $token);
+				  
+				 $url = base_url('admin/renew_password/'. $token);
+				  
+                  $sprava = "Bola zaznamenaná žiadosť o obnovenie Vášho hesla. Ak ste neboli autorom tejto žiadosti môžete e-mail ignorovať.\n";
+                  $sprava .= "Pre obnovenie Vášho hesla pokračujte kliknutím na linku nižšie. Tá Vás presmeruje na formulár kde zadáte nové heslo.\n";
+                  $sprava .= "<a href='$url'>$url</a>\n";
+				  
                   $this->Admins->updateValidToken($id,$token);                              
                               
-                  $this->email->message($message);
+                  $this->email->message($sprava);
                   $this->email->send();
             }
         }
