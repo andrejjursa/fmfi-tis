@@ -16,8 +16,20 @@ class Admins_table_row extends Abstract_table_row {
         return $this->loadBy('email = ? AND password = ?', $email, md5($password));
     }
     
+    /**
+     * Loads row with matched email.
+     *
+     */                                           
     public function loadByLogin($email){
         return $this->loadBy('email = ? ', $email);
+    }
+    
+    /**
+     * Loads row with matched validation_token.
+     *
+     */                                           
+    public function loadByToken($token){
+        return $this->loadBy('validation_token = ? ', $token);
     }
     
 }

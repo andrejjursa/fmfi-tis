@@ -178,6 +178,11 @@ class Admins extends CI_Model {
         return $admin->GetId();    
     }
     
+    public function getIdByValidToken($token){
+        $admin = $this->load->table_row('admins');
+        $admin->loadByToken($token);
+        return $admin->GetId();    
+    }
     
     
 }
