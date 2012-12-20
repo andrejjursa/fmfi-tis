@@ -56,7 +56,7 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																				
+																																				
 												<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#loadByLogin" title="details" class="method-name">loadByLogin</a>
@@ -66,6 +66,16 @@
 											<span class="method-result">boolean.</span>
 										<a href="#loadByLoginData" title="details" class="method-name">loadByLoginData</a>
 											(<span class="var-type">string</span>&nbsp;<span class="var-name">$email</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$password</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#loadByToken" title="details" class="method-name">loadByToken</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$token</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#prepareEditorSave" title="details" class="method-name">prepareEditorSave</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$formdata</span>)
 									</div>
 								</div>
 		</div>
@@ -121,10 +131,11 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">loadByLogin</span> (line <span class="line-number"><a href="../__filesource/fsource_TableModels__table_modelsAdmins_table_row.php.html#a19">19</a></span>)
+		<span class="method-title">loadByLogin</span> (line <span class="line-number"><a href="../__filesource/fsource_TableModels__table_modelsAdmins_table_row.php.html#a23">23</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Loads row with matched email.</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -177,6 +188,69 @@
 		
 			
 	</div>
+<a name="methodloadByToken" id="loadByToken"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">loadByToken</span> (line <span class="line-number"><a href="../__filesource/fsource_TableModels__table_modelsAdmins_table_row.php.html#a31">31</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Loads row with matched validation_token.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			loadByToken
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$token</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$token</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprepareEditorSave" id="prepareEditorSave"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">prepareEditorSave</span> (line <span class="line-number"><a href="../__filesource/fsource_TableModels__table_modelsAdmins_table_row.php.html#a35">35</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			prepareEditorSave
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$formdata</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$formdata</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Abstract/Core/Abstract_table_row.html#methodprepareEditorSave">Abstract_table_row::prepareEditorSave()</a></dt>
+						<dd>Sets the date to be saved after editing in editor.</dd>
+					</dl>
+			
+	</div>
 							<h4>Inherited Methods</h4>
 				<a name='inherited_methods'><!-- --></a>	
 									<!-- =========== Summary =========== -->
@@ -215,7 +289,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Sun, 16 Dec 2012 21:02:25 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Thu, 20 Dec 2012 16:26:39 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>
