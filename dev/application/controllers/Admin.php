@@ -81,28 +81,23 @@ class Admin extends Abstract_backend_controller {
         if($this->form_validation->run()){
             if($this->Admins->adminExists($this->input->post('email'))){
 			
-                  $config = Array(
-                      'protocol' => 'smtp',
-                      'smtp_host' => 'ssl://priso.no-ip.org',
-                      'smtp_port' => 465,
-                      'smtp_user' => 'tis@priso.no-ip.org',
-                      'smtp_pass' => 'Fmf1-t1s',
-                      'mailtype'  => 'html', 
-                      'charset' => 'utf-8',
-                      'wordwrap' => TRUE
-                  );
+                  $config = self::getConfigItem('application', 'email');
 
                   $this->load->library('email',$config);
                   $this->load->helper('url');
                   $this->email->initialize($config);
+                  
+                  $from = self::getConfigItem('application', 'email_from');
+                  $from_name = self::getConfigItem('application', 'email_from_name');
 
-                  $this->email->from("tis@priso.no-ip.org", "Administracia");
+                  $this->email->from($from, $from_name);
                   $this->email->to($this->input->post('email'));
                   $this->email->subject('Obnova hesla');
                   $token = generateToken();
                   $id = $this->Admins->getIdByEmail($this->input->post('email'));  
 				  
-				          $url = base_url('admin/renew_password/'. $token);
+				          //$url = base_url('admin/renew_password/'. $token);
+                          $url = createUri('admin', 'renew_password', array($token));
 				  
                   $sprava = "Bola zaznamenaná žiadosť o obnovenie Vášho hesla. Ak ste neboli autorom tejto žiadosti môžete e-mail ignorovať.\n";
                   $sprava .= "Pre obnovenie Vášho hesla pokračujte kliknutím na linku nižšie. Tá Vás presmeruje na formulár kde zadáte nové heslo.\n";
@@ -136,7 +131,7 @@ class Admin extends Abstract_backend_controller {
     
     public function do_renew_password(){
         if(($this->input->post('id') == 0)||($this->input->post('id') != $this->Admins->getIdByValidToken($this->input->post('token')))){
-            redirect('admin','login');
+            redirect(createUri('admin', 'login'));
         }
         $this->parser->assign('id',$this->input->post('id'));
         $this->parser->assign('token',$this->input->post('token'));
