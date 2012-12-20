@@ -142,6 +142,21 @@ class Inventions_table_collection extends Abstract_table_collection {
         $miniapps->addField($field_miniapps);
         
         $this->addEditorTab($miniapps);
+        
+        $links = editorTab::getNewEditorTab();
+        $links->setName('Externé odkazy');
+        
+        $field_links = new editorFieldMultilineText();
+        $field_links->setField('links')->setFieldLabel('Zoznam odkazov')->setFieldHint('Zadajte URL externých odkazov, vždy iba jedno URL na riadok!');
+        $field_links->setNumberOfRows(7);
+        $links->addField($field_links);
+        
+        $field_links_labels = new editorFieldMultilineText();
+        $field_links_labels->setField('links_labels')->setFieldLabel('Texty odkazov')->setFieldHint('Zadajte texty externých odkazov, vždy iba jeden text na riadok! Každý riadok tu zodpovedá jednému riadku v zozname URL.');
+        $field_links_labels->setNumberOfRows(7);
+        $links->addField($field_links_labels); 
+        
+        $this->addEditorTab($links);
     }
     
 }

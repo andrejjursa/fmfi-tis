@@ -61,7 +61,7 @@
                             {foreach $physicist->getMiniapps() as $miniapp}
                                 <p><a href="{createUri controller='miniapps' action='index' params=[$miniapp->getId()]}" rel="fancybox_ajax">{$miniapp->getName()|escape:'html'}</a></p>
                             {foreachelse}
-                                <p>Neboli pridané žiadne miniaplikácie k tomuto fyzikovi.</p>
+                                <p>Neboli pridané žiadne miniaplikácie.</p>
                             {/foreach}
                             </div>
                         </div>
@@ -71,7 +71,13 @@
                     <div class="widget">
                         <div class="widget_title">Externé odkazy</div>
                         <div class="widget_content">
-                            
+                            <div class="narrow_paragraphs">
+                            {foreach $physicist->getLinksLabelsArray() as $link}
+                                <p><a href="{$link.url}" target="_blank">{$link.label|default:'Nepomenovaný odkaz'|escape:'html'}</a></p>
+                            {foreachelse}
+                                <p>Neboli pridané žiadne externé odkazy.</p>
+                            {/foreach}
+                            </div>
                         </div>
                     </div>
                 </td>

@@ -115,6 +115,23 @@ class Inventions_table_row extends Abstract_table_row {
         return $this->miniapps->setOrderBy('name')->get($this->getId());
     }
     
+    /**
+     * Returns array with links and they labels.
+     * 
+     * @return array<string> links with labels.
+     */
+    public function getLinksLabelsArray() {
+        $lnk = $this->getLinks();
+        if (is_null($lnk) || empty($lnk)) { return array(); }
+        $links = explode("\n", $this->getLinks());
+        $labels = explode("\n", $this->getLinks_labels());
+        $output = array();
+        for ($i=0;$i<count($links);$i++) {
+            $output[] = array('url' => trim($links[$i]), 'label' => isset($labels[$i]) ? trim($labels[$i]) : '');
+        }
+        return $output;
+    }
+    
     public function getDataForEditor() {
         $data = $this->data();
         

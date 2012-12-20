@@ -31,7 +31,7 @@ class Images_table_collection extends Abstract_table_collection {
         
         $field_file = new editorFieldFileUpload();
         $field_file->setField('file')->setFieldLabel('Obrázok')->setFieldHint('Vyberte súbor s obrázkom a nahrajte ho na server.');
-        $field_file->setAllowedTypes('*.jpg;*.jpeg;*.png');
+        $field_file->setAllowedTypes('*.jpg;*.jpeg;*.png;*.gif');
         $field_file->setMaxSize('3MB');
         $field_file->setUploadPath('public/uploads/images/');
         $field_file->setRules(array(

@@ -123,6 +123,11 @@ class Periods_table_collection extends Abstract_table_collection {
         $field_number_color->setField('number_color')->setFieldLabel('Farba číselnej osi')->setFieldHint('Zadajte farbu číselnej osi na časovej osi.');
         $field_number_color->setDefaultColor('#ffffff');
         $img->addField($field_number_color);
+        
+        $field_border_color = new editorFieldColorPicker();
+        $field_border_color->setField('border_color')->setFieldLabel('Farba orámovania')->setFieldHint('Zadajte farbu orámovania časovej osi.');
+        $field_border_color->setDefaultColor('#000000');
+        $img->addField($field_border_color);
                 
         $this->addEditorTab($img);
         
