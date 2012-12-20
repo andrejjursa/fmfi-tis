@@ -487,6 +487,27 @@
 							<div class="index-item-description">Free the file resource.</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">configItemByPath</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AppModels/Configurator.html#methodconfigItemByPath">Configurator::configItemByPath()</a> in configurator.php</div>
+							<div class="index-item-description">Creates $config variable for config file content.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">configItemValueByPath</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AppModels/Configurator.html#methodconfigItemValueByPath">Configurator::configItemValueByPath()</a> in configurator.php</div>
+							<div class="index-item-description">Returns value of config item by path.</div>
+					</dd>
+			<dt class="field">
+						Configurator
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AppModels/Configurator.html">Configurator</a> in configurator.php</div>
+							<div class="index-item-description">Config editing handler model.</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">count</span>
 					</dt>
 		<dd class="index-item-body">
@@ -541,6 +562,12 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="CI/MY_Parser.html#methodcurrent_module">MY_Parser::current_module()</a> in MY_Parser.php</div>
 							<div class="index-item-description">Current Module</div>
+					</dd>
+			<dt class="field">
+						<span class="include-title">configurator.php</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AppModels/_models---configurator.php.html">configurator.php</a> in configurator.php</div>
 					</dd>
 		</dl>
 	<a name="d"></a>
@@ -1205,15 +1232,15 @@
 						<span class="method-title">get</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_collection.html#methodget">Abstract_table_collection::get()</a> in abstract_table_collection.php</div>
-							<div class="index-item-description">Returns array of table rows as instance of extended Abstract_table_row class.</div>
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodget">Abstract_table_relation::get()</a> in abstract_table_relation.php</div>
+							<div class="index-item-description">Renew array of foreign table rows if it is NULL and returns it.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">get</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodget">Abstract_table_relation::get()</a> in abstract_table_relation.php</div>
-							<div class="index-item-description">Renew array of foreign table rows if it is NULL and returns it.</div>
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_collection.html#methodget">Abstract_table_collection::get()</a> in abstract_table_collection.php</div>
+							<div class="index-item-description">Returns array of table rows as instance of extended Abstract_table_row class.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getAdminEmail</span>
@@ -1285,6 +1312,27 @@
 							<div class="index-item-description">Returns optional label text.</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">getConfigArray</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AppModels/Configurator.html#methodgetConfigArray">Configurator::getConfigArray()</a> in configurator.php</div>
+							<div class="index-item-description">Returns configuration array for given config file.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getConfigFileArangementFromTokens</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AppModels/Configurator.html#methodgetConfigFileArangementFromTokens">Configurator::getConfigFileArangementFromTokens()</a> in configurator.php</div>
+							<div class="index-item-description">Parses tokens to produce arangement array.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getConfigFileTokens</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AppModels/Configurator.html#methodgetConfigFileTokens">Configurator::getConfigFileTokens()</a> in configurator.php</div>
+							<div class="index-item-description">Returns php parser tokens for given config file.</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">getConfigItem</span>
 					</dt>
 		<dd class="index-item-body">
@@ -1292,17 +1340,24 @@
 							<div class="index-item-description">Returns config item value from given file.</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">getDataForEditor</span>
+						<span class="method-title">getConfigVariablePath</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Miniapps_table_row.html#methodgetDataForEditor">Miniapps_table_row::getDataForEditor()</a> in Miniapps_table_row.php</div>
-							<div class="index-item-description">Get editor data.</div>
+			<div class="index-item-details"><a href="AppModels/Configurator.html#methodgetConfigVariablePath">Configurator::getConfigVariablePath()</a> in configurator.php</div>
+							<div class="index-item-description">Returns the path of found config variable at given token position in tokens array.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getDataForEditor</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Inventions_table_row.html#methodgetDataForEditor">Inventions_table_row::getDataForEditor()</a> in Inventions_table_row.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_row.html#methodgetDataForEditor">Abstract_table_row::getDataForEditor()</a> in abstract_table_row.php</div>
+							<div class="index-item-description">Returns all available data data to editor.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getDataForEditor</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="TableModels/Physicists_table_row.html#methodgetDataForEditor">Physicists_table_row::getDataForEditor()</a> in Physicists_table_row.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getDataForEditor</span>
@@ -1321,14 +1376,14 @@
 						<span class="method-title">getDataForEditor</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Physicists_table_row.html#methodgetDataForEditor">Physicists_table_row::getDataForEditor()</a> in Physicists_table_row.php</div>
+			<div class="index-item-details"><a href="TableModels/Inventions_table_row.html#methodgetDataForEditor">Inventions_table_row::getDataForEditor()</a> in Inventions_table_row.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getDataForEditor</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_row.html#methodgetDataForEditor">Abstract_table_row::getDataForEditor()</a> in abstract_table_row.php</div>
-							<div class="index-item-description">Returns all available data data to editor.</div>
+			<div class="index-item-details"><a href="TableModels/Miniapps_table_row.html#methodgetDataForEditor">Miniapps_table_row::getDataForEditor()</a> in Miniapps_table_row.php</div>
+							<div class="index-item-description">Get editor data.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getDefaultChecked</span>
@@ -1383,15 +1438,15 @@
 						<span class="method-title">getField</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodgetField">editorField::getField()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns the sql table field name of table row getter without get prefix.</div>
+			<div class="index-item-details"><a href="Abstract/Core/gridField.html#methodgetField">gridField::getField()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns table field.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getField</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/gridField.html#methodgetField">gridField::getField()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns table field.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodgetField">editorField::getField()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns the sql table field name of table row getter without get prefix.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getFieldHint</span>
@@ -1399,20 +1454,6 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodgetFieldHint">editorField::getFieldHint()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns the label hint text for this field.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getFieldHtmlID</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldText.html#methodgetFieldHtmlID">editorFieldText::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field unique id.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getFieldHtmlID</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldTinymce.html#methodgetFieldHtmlID">editorFieldTinymce::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field unique id.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getFieldHtmlID</span>
@@ -1432,28 +1473,21 @@
 						<span class="method-title">getFieldHtmlID</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldMultilineText.html#methodgetFieldHtmlID">editorFieldMultilineText::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldTinymce.html#methodgetFieldHtmlID">editorFieldTinymce::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field unique id.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getFieldHtmlID</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldFileUpload.html#methodgetFieldHtmlID">editorFieldFileUpload::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field unique id.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getFieldHtmlID</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodgetFieldHtmlID">editorField::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field id in editor form.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getFieldHtmlID</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorFieldSingleCheckbox.html#methodgetFieldHtmlID">editorFieldSingleCheckbox::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field unique id.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldHtmlID</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldText.html#methodgetFieldHtmlID">editorFieldText::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field unique id.</div>
 					</dd>
 			<dt class="field">
@@ -1467,6 +1501,13 @@
 						<span class="method-title">getFieldHtmlID</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodgetFieldHtmlID">editorField::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field id in editor form.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldHtmlID</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorFieldColorPicker.html#methodgetFieldHtmlID">editorFieldColorPicker::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field unique id.</div>
 					</dd>
@@ -1474,7 +1515,21 @@
 						<span class="method-title">getFieldHtmlID</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldMultilineText.html#methodgetFieldHtmlID">editorFieldMultilineText::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field unique id.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldHtmlID</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodgetFieldHtmlID">editorFieldIframeForeignRelation::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field unique id.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldHtmlID</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldFileUpload.html#methodgetFieldHtmlID">editorFieldFileUpload::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field unique id.</div>
 					</dd>
 			<dt class="field">
@@ -1495,14 +1550,21 @@
 						<span class="method-title">getFieldType</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldSingleCheckbox.html#methodgetFieldType">editorFieldSingleCheckbox::getFieldType()</a> in abstract_editor_classes.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldColorPicker.html#methodgetFieldType">editorFieldColorPicker::getFieldType()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field type.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getFieldType</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldColorPicker.html#methodgetFieldType">editorFieldColorPicker::getFieldType()</a> in abstract_editor_classes.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldFileUpload.html#methodgetFieldType">editorFieldFileUpload::getFieldType()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field type.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldType</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodgetFieldType">editorFieldIframeForeignRelation::getFieldType()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field type.</div>
 					</dd>
 			<dt class="field">
@@ -1530,14 +1592,7 @@
 						<span class="method-title">getFieldType</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldFileUpload.html#methodgetFieldType">editorFieldFileUpload::getFieldType()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field type.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getFieldType</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldMMRelation.html#methodgetFieldType">editorFieldMMRelation::getFieldType()</a> in abstract_editor_classes.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldPassword.html#methodgetFieldType">editorFieldPassword::getFieldType()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field type.</div>
 					</dd>
 			<dt class="field">
@@ -1551,21 +1606,21 @@
 						<span class="method-title">getFieldType</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSingleCheckbox.html#methodgetFieldType">editorFieldSingleCheckbox::getFieldType()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field type.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldType</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldMMRelation.html#methodgetFieldType">editorFieldMMRelation::getFieldType()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field type.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldType</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorFieldMultilineText.html#methodgetFieldType">editorFieldMultilineText::getFieldType()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field type.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getFieldType</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldPassword.html#methodgetFieldType">editorFieldPassword::getFieldType()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field type.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getFieldType</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodgetFieldType">editorFieldIframeForeignRelation::getFieldType()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field type.</div>
 					</dd>
 			<dt class="field">
@@ -1586,15 +1641,15 @@
 						<span class="method-title">getForeignTable</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldMMRelation.html#methodgetForeignTable">editorFieldMMRelation::getForeignTable()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns foreign table name.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodgetForeignTable">editorFieldIframeForeignRelation::getForeignTable()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns the name of foreign table.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getForeignTable</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodgetForeignTable">editorFieldIframeForeignRelation::getForeignTable()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns the name of foreign table.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldMMRelation.html#methodgetForeignTable">editorFieldMMRelation::getForeignTable()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns foreign table name.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getGD2ImageFromFile</span>
@@ -1661,28 +1716,28 @@
 						<span class="method-title">getInventions</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Periods_table_row.html#methodgetInventions">Periods_table_row::getInventions()</a> in Periods_table_row.php</div>
-							<div class="index-item-description">Returns all related inventions.</div>
+			<div class="index-item-details"><a href="TableModels/Physicists_table_row.html#methodgetInventions">Physicists_table_row::getInventions()</a> in Physicists_table_row.php</div>
+							<div class="index-item-description">Get all related inventions for this physicist.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getInventions</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Physicists_table_row.html#methodgetInventions">Physicists_table_row::getInventions()</a> in Physicists_table_row.php</div>
-							<div class="index-item-description">Get all related inventions for this physicist.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getLinksLabelsArray</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Inventions_table_row.html#methodgetLinksLabelsArray">Inventions_table_row::getLinksLabelsArray()</a> in Inventions_table_row.php</div>
-							<div class="index-item-description">Returns array with links and they labels.</div>
+			<div class="index-item-details"><a href="TableModels/Periods_table_row.html#methodgetInventions">Periods_table_row::getInventions()</a> in Periods_table_row.php</div>
+							<div class="index-item-description">Returns all related inventions.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getLinksLabelsArray</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="TableModels/Physicists_table_row.html#methodgetLinksLabelsArray">Physicists_table_row::getLinksLabelsArray()</a> in Physicists_table_row.php</div>
+							<div class="index-item-description">Returns array with links and they labels.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getLinksLabelsArray</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="TableModels/Inventions_table_row.html#methodgetLinksLabelsArray">Inventions_table_row::getLinksLabelsArray()</a> in Inventions_table_row.php</div>
 							<div class="index-item-description">Returns array with links and they labels.</div>
 					</dd>
 			<dt class="field">
@@ -1730,15 +1785,15 @@
 						<span class="method-title">getName</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/gridField.html#methodgetName">gridField::getName()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns header name for table column in grid view.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorTab.html#methodgetName">editorTab::getName()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns name (or title) of this tab.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getName</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorTab.html#methodgetName">editorTab::getName()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns name (or title) of this tab.</div>
+			<div class="index-item-details"><a href="Abstract/Core/gridField.html#methodgetName">gridField::getName()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns header name for table column in grid view.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getNewEditorTab</span>
@@ -1772,22 +1827,15 @@
 						<span class="method-title">getPeriods</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Physicists_table_row.html#methodgetPeriods">Physicists_table_row::getPeriods()</a> in Physicists_table_row.php</div>
+			<div class="index-item-details"><a href="TableModels/Inventions_table_row.html#methodgetPeriods">Inventions_table_row::getPeriods()</a> in Inventions_table_row.php</div>
 							<div class="index-item-description">Returns all periods.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getPeriods</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Inventions_table_row.html#methodgetPeriods">Inventions_table_row::getPeriods()</a> in Inventions_table_row.php</div>
+			<div class="index-item-details"><a href="TableModels/Physicists_table_row.html#methodgetPeriods">Physicists_table_row::getPeriods()</a> in Physicists_table_row.php</div>
 							<div class="index-item-description">Returns all periods.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getPhotoObject</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Physicists_table_row.html#methodgetPhotoObject">Physicists_table_row::getPhotoObject()</a> in Physicists_table_row.php</div>
-							<div class="index-item-description">Get related photo image row.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getPhotoObject</span>
@@ -1795,6 +1843,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="TableModels/Inventions_table_row.html#methodgetPhotoObject">Inventions_table_row::getPhotoObject()</a> in Inventions_table_row.php</div>
 							<div class="index-item-description">Returns photo object as instance of Images_table_row or blank  instance if no photo provided.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getPhotoObject</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="TableModels/Physicists_table_row.html#methodgetPhotoObject">Physicists_table_row::getPhotoObject()</a> in Physicists_table_row.php</div>
+							<div class="index-item-description">Get related photo image row.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getPhysicists</span>
@@ -1947,7 +2002,7 @@
 						<span class="method-title">gridSettings</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Answers_table_collection.html#methodgridSettings">Answers_table_collection::gridSettings()</a> in Answers_table_collection.php</div>
+			<div class="index-item-details"><a href="TableModels/Logs_table_collection.html#methodgridSettings">Logs_table_collection::gridSettings()</a> in Logs_table_collection.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">gridSettings</span>
@@ -1978,13 +2033,25 @@
 						<span class="method-title">gridSettings</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="TableModels/Miniapps_table_collection.html#methodgridSettings">Miniapps_table_collection::gridSettings()</a> in Miniapps_table_collection.php</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">gridSettings</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="TableModels/Images_table_collection.html#methodgridSettings">Images_table_collection::gridSettings()</a> in Images_table_collection.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">gridSettings</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Inventions_table_collection.html#methodgridSettings">Inventions_table_collection::gridSettings()</a> in Inventions_table_collection.php</div>
+			<div class="index-item-details"><a href="TableModels/Answers_table_collection.html#methodgridSettings">Answers_table_collection::gridSettings()</a> in Answers_table_collection.php</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">gridSettings</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="TableModels/Admins_table_collection.html#methodgridSettings">Admins_table_collection::gridSettings()</a> in Admins_table_collection.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">gridSettings</span>
@@ -1997,19 +2064,7 @@
 						<span class="method-title">gridSettings</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Admins_table_collection.html#methodgridSettings">Admins_table_collection::gridSettings()</a> in Admins_table_collection.php</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">gridSettings</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Miniapps_table_collection.html#methodgridSettings">Miniapps_table_collection::gridSettings()</a> in Miniapps_table_collection.php</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">gridSettings</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Logs_table_collection.html#methodgridSettings">Logs_table_collection::gridSettings()</a> in Logs_table_collection.php</div>
+			<div class="index-item-details"><a href="TableModels/Inventions_table_collection.html#methodgridSettings">Inventions_table_collection::gridSettings()</a> in Inventions_table_collection.php</div>
 					</dd>
 			<dt class="field">
 						<span class="const-title">GRID_FIELD_TYPE_BOOL</span>
@@ -2638,13 +2693,13 @@
 						<span class="var-title">$miniapps</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Inventions_table_row.html#var$miniapps">Inventions_table_row::$miniapps</a> in Inventions_table_row.php</div>
+			<div class="index-item-details"><a href="TableModels/Physicists_table_row.html#var$miniapps">Physicists_table_row::$miniapps</a> in Physicists_table_row.php</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$miniapps</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="TableModels/Physicists_table_row.html#var$miniapps">Physicists_table_row::$miniapps</a> in Physicists_table_row.php</div>
+			<div class="index-item-details"><a href="TableModels/Inventions_table_row.html#var$miniapps">Inventions_table_row::$miniapps</a> in Inventions_table_row.php</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$mm_foreign_id_field</span>
@@ -2699,6 +2754,13 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="CI/_libraries---MY_Parser.php.html">MY_Parser.php</a> in MY_Parser.php</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">makeConfigFileContent</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AppModels/Configurator.html#methodmakeConfigFileContent">Configurator::makeConfigFileContent()</a> in configurator.php</div>
+							<div class="index-item-description">For given data and arangement creates content of config file.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">make_backup</span>
@@ -3509,6 +3571,13 @@
 							<div class="index-item-description">Set optional label text.</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">setConfigArray</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AppModels/Configurator.html#methodsetConfigArray">Configurator::setConfigArray()</a> in configurator.php</div>
+							<div class="index-item-description">Saves new data array to given config file.</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">setDefaultChecked</span>
 					</dt>
 		<dd class="index-item-body">
@@ -3603,15 +3672,15 @@
 						<span class="method-title">setForeignTable</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldMMRelation.html#methodsetForeignTable">editorFieldMMRelation::setForeignTable()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Set the foreign table name.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodsetForeignTable">editorFieldIframeForeignRelation::setForeignTable()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Set the name of foreign table to be edited in iframes.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setForeignTable</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodsetForeignTable">editorFieldIframeForeignRelation::setForeignTable()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Set the name of foreign table to be edited in iframes.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldMMRelation.html#methodsetForeignTable">editorFieldMMRelation::setForeignTable()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Set the foreign table name.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setGridTableName</span>

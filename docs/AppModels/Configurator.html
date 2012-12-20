@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Configurator</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Configurator</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Config editing handler model.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Andrej Jursa</li>
+				<li><span class="field">version:</span> 1.0</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_models---configurator.php.html">/models/configurator.php</a> (line <span class="field"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a10">10</a></span>)
+		</p>
+		
+				
+		<pre>CI_Model
+   |
+   --Configurator</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																				
+												<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#configItemByPath" title="details" class="method-name">configItemByPath</a>
+											(<span class="var-type">array<string></span>&nbsp;<span class="var-name">$path</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#configItemValueByPath" title="details" class="method-name">configItemValueByPath</a>
+											(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array<string></span>&nbsp;<span class="var-name">$path</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array<mixed></span>
+										<a href="#getConfigArray" title="details" class="method-name">getConfigArray</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$config</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array<mixed></span>
+										<a href="#getConfigFileArangementFromTokens" title="details" class="method-name">getConfigFileArangementFromTokens</a>
+											(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$tokens</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array<mixed>|NULL</span>
+										<a href="#getConfigFileTokens" title="details" class="method-name">getConfigFileTokens</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$file</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array<string></span>
+										<a href="#getConfigVariablePath" title="details" class="method-name">getConfigVariablePath</a>
+											(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$tokens</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$at</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#makeConfigFileContent" title="details" class="method-name">makeConfigFileContent</a>
+											(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$arangement</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#setConfigArray" title="details" class="method-name">setConfigArray</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$config</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="methodconfigItemByPath" id="configItemByPath"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">configItemByPath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a165">165</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Creates $config variable for config file content.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> config variable like array.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			configItemByPath
+		</span>
+					(<span class="var-type">array<string></span>&nbsp;<span class="var-name">$path</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array<string></span>
+				<span class="var-name">$path</span><span class="var-description">: path of array segments.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodconfigItemValueByPath" id="configItemValueByPath"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">configItemValueByPath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a182">182</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns value of config item by path.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> value of config item defined by path.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			configItemValueByPath
+		</span>
+					(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array<string></span>&nbsp;<span class="var-name">$path</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$data</span><span class="var-description">: configuration data.</span>			</li>
+					<li>
+				<span class="var-type">array<string></span>
+				<span class="var-name">$path</span><span class="var-description">: path of array segments.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetConfigArray" id="getConfigArray"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getConfigArray</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a18">18</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns configuration array for given config file.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> values of config file.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array<mixed></span>
+		<span class="method-name">
+			getConfigArray
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$config</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$config</span><span class="var-description">: name of config file without extension.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetConfigFileArangementFromTokens" id="getConfigFileArangementFromTokens"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getConfigFileArangementFromTokens</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a104">104</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parses tokens to produce arangement array.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> arangement of config file content.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array<mixed></span>
+		<span class="method-name">
+			getConfigFileArangementFromTokens
+		</span>
+					(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$tokens</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$tokens</span><span class="var-description">: php parser tokens.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetConfigFileTokens" id="getConfigFileTokens"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getConfigFileTokens</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a82">82</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns php parser tokens for given config file.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> array of tokens or NULL if file not found.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array<mixed>|NULL</span>
+		<span class="method-name">
+			getConfigFileTokens
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$file</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$file</span><span class="var-description">: path to config file.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetConfigVariablePath" id="getConfigVariablePath"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getConfigVariablePath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a133">133</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the path of found config variable at given token position in tokens array.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> path for array segments.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array<string></span>
+		<span class="method-name">
+			getConfigVariablePath
+		</span>
+					(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$tokens</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$at</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$tokens</span><span class="var-description">: php parser tokens.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$at</span><span class="var-description">: position where config variable is found.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmakeConfigFileContent" id="makeConfigFileContent"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">makeConfigFileContent</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a63">63</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">For given data and arangement creates content of config file.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> config file content.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			makeConfigFileContent
+		</span>
+					(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$arangement</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$data</span><span class="var-description">: values of config.</span>			</li>
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$arangement</span><span class="var-description">: arangement of config file content.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetConfigArray" id="setConfigArray"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setConfigArray</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a33">33</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Saves new data array to given config file.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> returns TRUE if file is writen, FALSE otherwise.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			setConfigArray
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$config</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$config</span><span class="var-description">: name of config file without extension.</span>			</li>
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$data</span><span class="var-description">: new values for config items.</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 20 Dec 2012 19:17:06 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</p>
+	</div></body>
+</html>
