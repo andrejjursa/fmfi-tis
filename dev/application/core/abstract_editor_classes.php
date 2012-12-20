@@ -481,6 +481,28 @@ abstract class editorField {
     
 }
 
+class editorFieldPassword extends editorField {
+    
+    /**
+     * Returns field type.
+     * 
+     * @return string field type.
+     */
+    public function getFieldType() {
+        return 'password_field';
+    }
+    
+    /**
+     * Returns field unique id.
+     * 
+     * @return string field unique id for editor form.
+     */
+    public function getFieldHtmlID() {
+        return 'password_field_' . $this->getField() . '_id';
+    }
+    
+}
+
 /**
  * Editor field for simple text input.
  * 

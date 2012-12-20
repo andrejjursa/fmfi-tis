@@ -32,6 +32,19 @@ class Admins_table_row extends Abstract_table_row {
         return $this->loadBy('validation_token = ? ', $token);
     }
     
+    public function prepareEditorSave($formdata) {
+        if ($formdata['password'] != '') {
+            $formdata['password'] = md5($formdata['password']);
+        }
+        if (!is_null($this->getId()) && $formdata['password'] == '') {
+            unset($formdata['password']);
+        }
+        unset($formdata['_password']);
+        
+        $this->data($formdata);
+    }
+
+    
 }
 
 ?>

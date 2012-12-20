@@ -77,7 +77,7 @@ $config['menu'] = array(
 		)
 	),
     array(
-        'title' => 'Používateľ',
+        'title' => 'Môj účet&nbsp;&nbsp;&nbsp;&nbsp;',
         'link' => 'javascript:void(0)',
         'sub' => array(
             array(
@@ -100,7 +100,15 @@ $config['menu'] = array(
             ),
         )
     ),    
-    
+    array(
+        'title' => 'Administrátori',
+        'link' => array(
+            'controller' => 'admin_editor',
+            'action' => 'index',
+            'params' => array('admins'),
+        ),
+        'sub' => NULL,
+    ),
     array(
         'title' => 'Záznamy udalostí',
         'link' => array(

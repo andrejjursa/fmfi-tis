@@ -95,6 +95,15 @@ jQuery(document).ready(function($){
         }
     });
     
+    setInterval(function() {
+        $('iframe').each(function(element) {
+            iframecontentheight = $(this).contents().height();
+            if (iframecontentheight != $(this).height()) {
+                $(this).height(iframecontentheight);
+            }
+        });
+    }, 1000);
+    
 });
 
 function hexToRgb(hex) {

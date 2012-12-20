@@ -51,9 +51,10 @@ class Abstract_table_row extends Abstract_table_core {
      * This function loads one row of database table by given value of primary key (primary index).
      * 
      * @param integer $id integer value of primary index in table, should be positive value.
+     * @param array<integer> $excludet_ids array of excludet ids.
      * @return bool return TRUE when table row is found and loaded, FALSE otherwise.
      */
-    public function load($id) {
+    public function load($id, $excludet_ids = array()) {
         if ($this->isInsideTemplate()) {
             throw new exception(get_class($this) . ': Can\'t load table row inside template view!');
         }
@@ -63,6 +64,9 @@ class Abstract_table_row extends Abstract_table_core {
         $this->original_data = array();
         $this->resetRelations();
         
+        if (is_array($excludet_ids) && count($excludet_ids)) {
+            $this->db->where_not_in($this->primary_field, $excludet_ids);
+        }
         $query = $this->db->get_where($this->table_name, array($this->primary_field => $id), 1);
         $this->original_data = $query->row_array();
         

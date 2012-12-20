@@ -202,11 +202,26 @@ class Abstract_table_collection extends Abstract_table_core {
      * Adds custom where clause to the query.
      * 
      * @param string $where where clause.
+     * @return Abstract_table_collection reference to this object.
      */
     public function filterCustomWhere($where) {
         if (trim($where) != '') {
             $this->query->where(trim($where));
         }
+        return $this;
+    }
+    
+    /**
+     * Add filter for excludet ids.
+     * 
+     * @param array<integer> array of excludet ids.
+     * @return Abstract_table_collection reference to this object.
+     */
+    public function filterExcludeIds($list = array()) {
+        if (is_array($list) && count($list)) {
+            $this->query->where_not_in($this->primary_id, $list);
+        }
+        return $this;
     }
     
     /**
@@ -475,9 +490,27 @@ class Abstract_table_collection extends Abstract_table_core {
      * @param string $direction direction of sorting, can be 'asc' or 'desc'.
      * @return Abstract_table_collection reference to this object.
      */
-    public function setDefaultSorting($field, $direction = 'asc') {
+    protected function setDefaultSorting($field, $direction = 'asc') {
         $this->grid_settings['default_sorting']['field'] = $field;
         $this->grid_settings['default_sorting']['direction'] = $direction;
+        return $this;
+    }
+    
+    /**
+     * Set excludet ids from editing grid and editor as well.
+     * 
+     * @param string|array<integer> $ids_list list of excludet ids, can be array of integer or comma separated list of ids.
+     * @return Abstract_table_collection reference to this object.
+     */
+    protected function setExcludetIds($ids_list) {
+        if (is_string($ids_list)) {
+            $list = explode(',', $ids_list);
+        } elseif (is_array($ids_list)) {
+            $list = $ids_list;
+        } else {
+            return $this;
+        }
+        $this->grid_settings['excludet_ids'] = $list;
         return $this;
     }
     
@@ -561,6 +594,8 @@ class Abstract_table_collection extends Abstract_table_core {
         $this->enableEditRecord(FALSE);
         $this->enableDeleteRecord(FALSE);
         $this->enablePreviewRecord(FALSE);
+        
+        $this->setExcludetIds(array());
         
         $this->setDefaultSorting($this->primaryIdField(), 'asc');
     }

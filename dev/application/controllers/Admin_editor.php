@@ -27,6 +27,8 @@ class Admin_editor extends Abstract_backend_controller {
                 $max_pages = $table_collection->getPagesCount($this->_numberOfRowsPerPage());
                 $table_collection->paginate($this->_pageNumber($max_pages), $this->_numberOfRowsPerPage());
                 
+                $table_collection->filterExcludeIds($grid_settings['excludet_ids']);
+                
                 $this->parser->assign('current_page', $this->_pageNumber($max_pages));
                 $this->parser->assign('current_rows_per_page', $this->_numberOfRowsPerPage());
                 $this->parser->assign('max_pages', $max_pages);
@@ -69,7 +71,7 @@ class Admin_editor extends Abstract_backend_controller {
         $this->_addTemplateJs('jquery.validate.new_rules.js');
         $this->_addTemplateJs('tinymce/jquery.tinymce.js');
         $this->_addTemplateJs('jquery.uploadify.min.js');
-        $this->_addTemplateJs('jquery.iframe-auto-height.js');
+        //$this->_addTemplateJs('jquery.iframe-auto-height.js');
         $this->_addTemplateCss('uploadify.css');
         $this->_assignTemplateAdditionals();
         
@@ -101,7 +103,7 @@ class Admin_editor extends Abstract_backend_controller {
         $this->_addTemplateJs('jquery.validate.new_rules.js');
         $this->_addTemplateJs('tinymce/jquery.tinymce.js');
         $this->_addTemplateJs('jquery.uploadify.min.js');
-        $this->_addTemplateJs('jquery.iframe-auto-height.js');
+        //$this->_addTemplateJs('jquery.iframe-auto-height.js');
         $this->_addTemplateCss('uploadify.css');
         $this->_assignTemplateAdditionals();
         
@@ -114,14 +116,14 @@ class Admin_editor extends Abstract_backend_controller {
             $this->parser->assign('error', 'no_table');
             $this->parser->parse('backend/admin_editor.saveRecord.tpl');
         } else {
-            $table_collection->getGridSettings();
+            $grid_settings = $table_collection->getGridSettings();
             $table_row = $this->load->table_row($table);
             if ($table_row == NULL) {
                 $this->parser->assign('error', 'no_table');
                 $this->parser->parse('backend/admin_editor.saveRecord.tpl');
             } else {
                 $id = $this->input->post('row_id');
-                $table_row->load($id);
+                $table_row->load($id, $grid_settings['excludet_ids']);
                 
                 if ($table_row->getId() === NULL && !$table_collection->isNewRecordEnabled()) {
                     $this->parser->assign('error', 'no_new_record');
@@ -161,7 +163,7 @@ class Admin_editor extends Abstract_backend_controller {
             $gridsettings = $table_collection->getGridSettings();
             if ($table_collection->isEditRecordEnabled()) {
                 $table_row = $this->load->table_row($table);
-                $table_row->load($id);
+                $table_row->load($id, $gridsettings['excludet_ids']);
                 if (!is_null($table_row->getId())) {
                     $editor_settings = $table_collection->getEditorSettings();
                     $this->parser->assign('sql_table', $table);
@@ -185,7 +187,7 @@ class Admin_editor extends Abstract_backend_controller {
         $this->_addTemplateJs('jquery.validate.new_rules.js');
         $this->_addTemplateJs('tinymce/jquery.tinymce.js');
         $this->_addTemplateJs('jquery.uploadify.min.js');
-        $this->_addTemplateJs('jquery.iframe-auto-height.js');
+        //$this->_addTemplateJs('jquery.iframe-auto-height.js');
         $this->_addTemplateCss('uploadify.css');
         $this->_assignTemplateAdditionals();
         
@@ -201,7 +203,7 @@ class Admin_editor extends Abstract_backend_controller {
             $gridsettings = $table_collection->getGridSettings();
             if ($table_collection->isEditRecordEnabled()) {
                 $table_row = $this->load->table_row($table);
-                $table_row->load($id);
+                $table_row->load($id, $gridsettings['excludet_ids']);
                 if (!is_null($table_row->getId())) {
                     $editor_settings = $table_collection->getEditorSettings();
                     $this->parser->assign('sql_table', $table);
@@ -225,7 +227,7 @@ class Admin_editor extends Abstract_backend_controller {
         $this->_addTemplateJs('jquery.validate.new_rules.js');
         $this->_addTemplateJs('tinymce/jquery.tinymce.js');
         $this->_addTemplateJs('jquery.uploadify.min.js');
-        $this->_addTemplateJs('jquery.iframe-auto-height.js');
+        //$this->_addTemplateJs('jquery.iframe-auto-height.js');
         $this->_addTemplateCss('uploadify.css');
         $this->_assignTemplateAdditionals();
         
@@ -239,14 +241,14 @@ class Admin_editor extends Abstract_backend_controller {
             $this->parser->assign('error', 'no_table');
             $this->parser->parse('backend/admin_editor.deleteRecord.tpl');
         } else {
-            $table_collection->getGridSettings();
+            $gridsettings = $table_collection->getGridSettings();
             $table_row = $this->load->table_row($table);
             if ($table_row == NULL) {
                 $this->parser->assign('error', 'no_table');
                 $this->parser->parse('backend/admin_editor.deleteRecord.tpl');
             } else {
                 if ($table_collection->isDeleteRecordEnabled()) {
-                    $table_row->load($id);
+                    $table_row->load($id, $gridsettings['excludet_ids']);
                     if (!is_null($table_row->getId())) {
                         $table_row->delete();
                         $this->load->helper('url');
@@ -270,14 +272,14 @@ class Admin_editor extends Abstract_backend_controller {
             $this->parser->assign('error', 'no_table');
             $this->parser->parse('backend/admin_editor.deleteRecordIframe.tpl');
         } else {
-            $table_collection->getGridSettings();
+            $gridsettings = $table_collection->getGridSettings();
             $table_row = $this->load->table_row($table);
             if ($table_row == NULL) {
                 $this->parser->assign('error', 'no_table');
                 $this->parser->parse('backend/admin_editor.deleteRecordIframe.tpl');
             } else {
                 if ($table_collection->isDeleteRecordEnabled()) {
-                    $table_row->load($id);
+                    $table_row->load($id, $gridsettings['excludet_ids']);
                     if (!is_null($table_row->getId())) {
                         $table_row->delete();
                         $this->parser->assign('success', true);

@@ -159,6 +159,22 @@ class Admin extends Abstract_backend_controller {
         }
 
     }
+    
+    public function check_email() {
+        $row_id = $this->input->post('row_id');
+        $data = $this->input->post('data');
+        $admins = $this->load->table_row('admins');
+        $admins->loadBy('email = ?', $data['email']);
+        if (is_null($admins->getId())) {
+            echo json_encode(TRUE);
+        } else {
+            if ($admins->getId() == $row_id) {
+                echo json_encode(TRUE);
+            } else {
+                echo json_encode(FALSE);
+            }
+        }
+    }
 
 }
 
