@@ -119,6 +119,15 @@ $config['menu'] = array(
         'sub' => NULL,
     ),
     array(
+        'title' => 'Nastavenia',
+        'link' => array(
+            'controller' => 'admin_config',
+            'action' => 'index',
+            'params' => array(),
+        ),
+        'sub' => NULL,
+    ),
+    array(
         'title' => 'Odhlásiť sa',
         'link' => array(
             'controller' => 'admin',

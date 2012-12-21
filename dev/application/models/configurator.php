@@ -34,7 +34,7 @@ class Configurator extends CI_Model {
         $file = APPPATH . 'config/' . $config . '.php';
         if (file_exists($file)) {
             $this->config->load($config, TRUE);
-            $this->config->config[$config] = array_merge($this->config->config[$config], $data);
+            $this->config->config[$config] = $this->mergeArray($this->config->config[$config], $data);
             
             $tokens = $this->getConfigFileTokens($file);
             if (is_null($tokens)) { return FALSE; }
@@ -52,6 +52,38 @@ class Configurator extends CI_Model {
         }
         return FALSE;
     }   
+    
+    /**
+     * Recursively merge two arrays.
+     * 
+     * @param array<mixed> $array1 first array.
+     * @param array<mixed> $array2 second array.
+     * @return array<mixed> merged array.
+     */
+    public function mergeArray($array1, $array2) {
+        $output = array();
+        if (count($array1)) {
+            foreach($array1 as $key => $value) {
+                if (isset($array2[$key])) {
+                    if (is_array($value) && is_array($array2[$key])) {
+                        $output[$key] = $this->mergeArray($value, $array2[$key]);
+                    } else {
+                        $output[$key] = $array2[$key];
+                    }
+                } else {
+                    $output[$key] = $value;
+                }
+            }
+        }
+        if (count($array2)) {
+            foreach($array2 as $key => $value) {
+                if (!isset($output[$key])) {
+                    $output[$key] = $value;
+                }
+            }
+        }
+        return $output;
+    }
     
     /**
      * For given data and arangement creates content of config file.

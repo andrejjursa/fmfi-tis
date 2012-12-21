@@ -21,11 +21,13 @@
 <a href="#Admins_table_collection.php">Admins_table_collection.php</a><br>
 <a href="#Admins_table_row.php">Admins_table_row.php</a><br>
 <a href="#Admin_backup.php">Admin_backup.php</a><br>
+<a href="#Admin_config.php">Admin_config.php</a><br>
 <a href="#Admin_editor.php">Admin_editor.php</a><br>
 <a href="#Admin_logs.php">Admin_logs.php</a><br>
 <a href="#Answers.php">Answers.php</a><br>
 <a href="#Answers_table_collection.php">Answers_table_collection.php</a><br>
 <a href="#Answers_table_row.php">Answers_table_row.php</a><br>
+<a href="#application_helper.php">application_helper.php</a><br>
 <a href="#configurator.php">configurator.php</a><br>
 <a href="#DynamicLoad.php">DynamicLoad.php</a><br>
 <a href="#Images_table_collection.php">Images_table_collection.php</a><br>
@@ -77,27 +79,27 @@
 <a name="Post-parsing"></a>
 <h1>Post-parsing</h1>
 <h2>Warnings:</h2><br>
-<b>Warning</b> - class Install in package AppControllers parent not found in @see parent::__construct()<br>
+<b>Warning</b> - class Logs in package AppModels parent not found in @see parent::__construct()<br>
+<b>Warning</b> - class MY_Output in package CodeIgniter parent not found in @see parent::_display()<br>
 <b>Warning</b> - Class Install parent CI_Controller not found<br>
-<b>Warning</b> - Class My_Loader parent CI_Loader not found<br>
 <b>Warning</b> - class Logs in package AppModels parent not found in @see parent::__construct()<br>
-<b>Warning</b> - class Logs in package AppModels parent not found in @see parent::__construct()<br>
-<b>Warning</b> - class MY_Output in package CodeIgniter parent not found in @see parent::_display()<br>
-<b>Warning</b> - class MY_Output in package CodeIgniter parent not found in @see parent::_display()<br>
-<b>Warning</b> - Class MY_Parser parent CI_Parser not found<br>
+<b>Warning</b> - class Install in package AppControllers parent not found in @see parent::__construct()<br>
 <b>Warning</b> - Class MY_Output parent CI_Output not found<br>
 <b>Warning</b> - class Install in package AppControllers parent not found in @see parent::__construct()<br>
-<b>Warning</b> - class Admins in package AppModels parent not found in @see parent::__construct()<br>
-<b>Warning</b> - Class CI_Smarty parent Smarty not found<br>
-<b>Warning</b> - Class Admins parent CI_Model not found<br>
-<b>Warning</b> - class Admins in package AppModels parent not found in @see parent::__construct()<br>
-<b>Warning</b> - Class Configurator parent CI_Model not found<br>
-<b>Warning</b> - Class Logs parent CI_Model not found<br>
 <b>Warning</b> - Class My_Controller parent CI_Controller not found<br>
+<b>Warning</b> - class MY_Output in package CodeIgniter parent not found in @see parent::_display()<br>
+<b>Warning</b> - Class Configurator parent CI_Model not found<br>
+<b>Warning</b> - Class Admins parent CI_Model not found<br>
+<b>Warning</b> - Class My_Loader parent CI_Loader not found<br>
+<b>Warning</b> - Class Logs parent CI_Model not found<br>
+<b>Warning</b> - Class CI_Smarty parent Smarty not found<br>
+<b>Warning</b> - class Admins in package AppModels parent not found in @see parent::__construct()<br>
+<b>Warning</b> - class Admins in package AppModels parent not found in @see parent::__construct()<br>
+<b>Warning</b> - Class MY_Parser parent CI_Parser not found<br>
 <a name="abstract_backend_controller.php"></a>
 <h1>abstract_backend_controller.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 86</b> - File "C:\xampp\htdocs\tis\dev\application\core\abstract_backend_controller.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 87</b> - File "C:\xampp\htdocs\tis\dev\application\core\abstract_backend_controller.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="abstract_common_controller.php"></a>
 <h1>abstract_common_controller.php</h1>
 <h2>Warnings:</h2><br>
@@ -124,8 +126,8 @@
 <h1>abstract_frontend_controller.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 13</b> - Page-level DocBlock precedes "require_once APPPATH.'core/abstract_common_controller.php'", use another DocBlock to document the source element<br>
-<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class Abstract_frontend_controller<br>
 <b>Warning on line 15</b> - Class "Abstract_frontend_controller" has no Class-level DocBlock.<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class Abstract_frontend_controller<br>
 <b>Warning on line 19</b> - Method "__construct" has no method-level DocBlock.<br>
 <a name="abstract_table_collection.php"></a>
 <h1>abstract_table_collection.php</h1>
@@ -189,6 +191,17 @@
 <b>Warning on line 42</b> - Method "make_backup" has no method-level DocBlock.<br>
 <b>Warning on line 51</b> - Method "download" has no method-level DocBlock.<br>
 <b>Warning on line 93</b> - Method "restore" has no method-level DocBlock.<br>
+<a name="Admin_config.php"></a>
+<h1>Admin_config.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Admin_config", use another DocBlock to document the file<br>
+<b>Warning on line 10</b> - Method "__construct" has no method-level DocBlock.<br>
+<b>Warning on line 25</b> - Method "index" has no method-level DocBlock.<br>
+<b>Warning on line 57</b> - Method "save" has no method-level DocBlock.<br>
+<b>Warning on line 64</b> - Method "_valid_email_protocol" has no method-level DocBlock.<br>
+<b>Warning on line 71</b> - Method "_valid_rewrite_enabled" has no method-level DocBlock.<br>
+<b>Warning on line 79</b> - Method "generateEncryptionKey" has no method-level DocBlock.<br>
+<b>Warning on line 120</b> - Method "testEmailSending" has no method-level DocBlock.<br>
 <a name="Admin_editor.php"></a>
 <h1>Admin_editor.php</h1>
 <h2>Warnings:</h2><br>
@@ -234,6 +247,10 @@
 <h2>Warnings:</h2><br>
 <b>Warning on line 5</b> - DocBlock would be page-level, but precedes class "Answers_table_row", use another DocBlock to document the file<br>
 <b>Warning on line 12</b> - Method "onDelete" has no method-level DocBlock.<br>
+<a name="application_helper.php"></a>
+<h1>application_helper.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 8</b> - Page-level DocBlock precedes "function forceDisableRewriteEngine", use another DocBlock to document the source element<br>
 <a name="configurator.php"></a>
 <h1>configurator.php</h1>
 <h2>Warnings:</h2><br>
@@ -370,8 +387,8 @@
 <h1>My_Loader.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 15</b> - Page-level DocBlock precedes "require_once APPPATH.'core/abstract_table_row.php'", use another DocBlock to document the source element<br>
-<b>Warning on line 19</b> - Class "My_Loader" has no Class-level DocBlock.<br>
 <b>Warning on line 19</b> - no @package tag was used in a DocBlock for class My_Loader<br>
+<b>Warning on line 19</b> - Class "My_Loader" has no Class-level DocBlock.<br>
 <b>Warning on line 23</b> - Method "__construct" has no method-level DocBlock.<br>
 <a name="MY_Output.php"></a>
 <h1>MY_Output.php</h1>
@@ -489,9 +506,9 @@
 <a name="Unzip.php"></a>
 <h1>Unzip.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 21</b> - package default is already in category default, will now replace with category Encryption<br>
 <b>Warning on line 21</b> - DocBlock would be page-level, but precedes class "Unzip", use another DocBlock to document the file<br>
 <b>Warning on line 21</b> - package CodeIgniter is already in category default, will now replace with category Encryption<br>
+<b>Warning on line 21</b> - package default is already in category default, will now replace with category Encryption<br>
 <b>Warning on line 519</b> - Method "_load_file_list_by_eof" has no method-level DocBlock.<br>
 <b>Warning on line 554</b> - Method "_load_files_by_signatures" has no method-level DocBlock.<br>
 <b>Warning on line 617</b> - Method "_get_file_header" has no method-level DocBlock.<br>
@@ -504,7 +521,7 @@
 <b>Warning on line 138</b> - Method "validateEmail" has no method-level DocBlock.<br>
 <b>Warning on line 171</b> - Method "_sendVerificationEmail" has no method-level DocBlock.<br>
 	<p class="notes" id="credit">
-		Documentation generated on Thu, 20 Dec 2012 19:17:14 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Fri, 21 Dec 2012 20:14:17 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</body>
 </html>

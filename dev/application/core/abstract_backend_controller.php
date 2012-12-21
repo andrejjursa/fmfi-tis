@@ -24,6 +24,7 @@ class Abstract_backend_controller extends Abstract_common_controller {
      */
     public function __construct() {
         parent::__construct();
+        forceDisableRewriteEngine();
         $this->load->model('Admins');
         $this->parser->assign('Admins_model', $this->Admins);
         $this->_validateLogin();

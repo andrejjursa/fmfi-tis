@@ -133,7 +133,20 @@ fieldset.logs div.row div.content { margin-left: 210px; }
 table.formtable { width: 100%; border-collapse: collapse; }
 table.formtable td { padding: 4px; }
 table.formtable td.label { width: 220px; }
-table.formtable td.label label { font-weight: bold; }
+table.formtable td.label label { font-weight: bold; cursor: help; }
 table.formtable td.errors { width: 200px; }
 table.formtable .uploadify { display: inline-block; margin-right: 10px; }
 input.form_field_text_input { width: 100%; }
+
+fieldset.config { border: 1px solid black; border-radius: 5px; background-color: white; box-shadow:  5px 5px 10px gray; margin-bottom: 15px; margin-top: 5px; }
+fieldset.config legend { border: 1px solid black; border-radius: 5px; padding: 4px; background-color: white; }
+fieldset.config table.config_table { width: 100%; border-collapse: collapse; }
+fieldset.config table.config_table td { padding: 2px; }
+fieldset.config table.config_table td.label { width: 220px; }
+fieldset.config table.config_table td.error { width: 200px; }
+fieldset.config table.config_table td.error span { color: red; padding-left: 5px; display: inline-block; }
+fieldset.config table.config_table td.label label { font-weight: bold; cursor: help; }
+fieldset.config table.config_table td input.width_75pr,
+fieldset.config table.config_table td select.width_75pr { width: 75%; }
+fieldset.config table.config_table td input.width_100pr,
+fieldset.config table.config_table td select.width_100pr { width: 100%; }

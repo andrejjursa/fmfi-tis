@@ -3,6 +3,10 @@
 /**
  * @package AppHelpers
  */
+ 
+function forceDisableRewriteEngine() {
+    $GLOBALS['APPLICATION']['REWRIREENGINEOFF'] = TRUE;
+}
 
 /**
  * Returns url for navigation between controllers and actions.
@@ -19,6 +23,10 @@ function createUri($controller, $action = 'index', $params = array()) {
     
     $CI->config->load('application', TRUE);
     $rewrite_enabled = $CI->config->item('rewrite_enabled', 'application');
+    
+    if (isset($GLOBALS['APPLICATION']['REWRIREENGINEOFF']) && $GLOBALS['APPLICATION']['REWRIREENGINEOFF']) {
+        $rewrite_enabled = FALSE;
+    }
     
     $url = $base_url . ($rewrite_enabled ? '' : 'index.php/') . rawurlencode($controller) . '/' . rawurlencode($action) . '/';
     

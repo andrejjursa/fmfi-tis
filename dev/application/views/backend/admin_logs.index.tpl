@@ -2,9 +2,9 @@
 
 {block content}
     {if $log->getId()}
-    <h1>Obsah záznamu s id {$log->getId()}</h1>
+    <h2>Obsah záznamu s id {$log->getId()}</h2>
     {else}
-    <h1>Neexistujúci záznam</h1>
+    <h2>Neexistujúci záznam</h2>
     {/if}
     <a href="{createUri controller='admin_editor' action='index' params=['logs']}" style="float: right; margin-top: -2.8em;">&lt;&lt; Návrat na všetky záznamy</a>
     <div style="display: none; clear: both;"></div>

@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -8,8 +8,7 @@
 | Boolean expression, TRUE for enabled state, FALSE otherwise.
 |
 */
-$config['rewrite_enabled'] = TRUE;
-
+$config['rewrite_enabled'] = true;
 /*
 |--------------------------------------------------------------------------
 | Default number of rows in editor grid.
@@ -19,7 +18,6 @@ $config['rewrite_enabled'] = TRUE;
 |
 */
 $config['grid_default_rows_per_page'] = 20;
-
 /*
 |--------------------------------------------------------------------------
 | Possible numbers of rows per page in editor grid.
@@ -28,8 +26,11 @@ $config['grid_default_rows_per_page'] = 20;
 | Array of integers.
 |
 */
-$config['grid_rows_per_page_possibilities'] = array(20, 50, 100);
-
+$config['grid_rows_per_page_possibilities'] = array (
+  0 => 20,
+  1 => 50,
+  2 => 100,
+);
 /*
 |--------------------------------------------------------------------------
 | Login controller and action for administrator login.
@@ -40,10 +41,8 @@ $config['grid_rows_per_page_possibilities'] = array(20, 50, 100);
 */
 $config['admin_login_controller'] = 'admin';
 $config['admin_login_action'] = 'login';
-
-$config['tmp_path'] = "application/tmp/";
-$config['backup_path'] = "application/backup/";
-
+$config['tmp_path'] = 'application/tmp/';
+$config['backup_path'] = 'application/backup/';
 /*
 |--------------------------------------------------------------------------
 | Email configuration.
@@ -51,15 +50,16 @@ $config['backup_path'] = "application/backup/";
 */
 $config['email']['protocol'] = 'smtp';
 $config['email']['smtp_host'] = 'ssl://priso.no-ip.org';
-$config['email']['smtp_port'] = 465;
+$config['email']['smtp_port'] = '465';
 $config['email']['smtp_user'] = 'tis@priso.no-ip.org';
 $config['email']['smtp_pass'] = 'Fmf1-t1s';
 $config['email']['mailtype'] = 'html';
 $config['email']['charset'] = 'utf-8';
-$config['email']['wordwrap'] = TRUE;
-
+$config['email']['wordwrap'] = true;
 $config['email_from'] = 'tis@priso.no-ip.org';
 $config['email_from_name'] = 'Administrácia systému';
-
 /* End of file application.php */
 /* Location: ./application/config/application.php */
+
+
+?>

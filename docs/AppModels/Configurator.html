@@ -50,7 +50,7 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																				
+																																																																												
 												<div class="method-definition">
 											<span class="method-result">string</span>
 										<a href="#configItemByPath" title="details" class="method-name">configItemByPath</a>
@@ -87,6 +87,11 @@
 											(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$arangement</span>)
 									</div>
 																<div class="method-definition">
+											<span class="method-result">array<mixed></span>
+										<a href="#mergeArray" title="details" class="method-name">mergeArray</a>
+											(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$array1</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$array2</span>)
+									</div>
+																<div class="method-definition">
 											<span class="method-result">boolean</span>
 										<a href="#setConfigArray" title="details" class="method-name">setConfigArray</a>
 											(<span class="var-type">string</span>&nbsp;<span class="var-name">$config</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>)
@@ -111,7 +116,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">configItemByPath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a165">165</a></span>)
+		<span class="method-title">configItemByPath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a197">197</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -141,7 +146,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">configItemValueByPath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a182">182</a></span>)
+		<span class="method-title">configItemValueByPath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a214">214</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -204,7 +209,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getConfigFileArangementFromTokens</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a104">104</a></span>)
+		<span class="method-title">getConfigFileArangementFromTokens</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a136">136</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -234,7 +239,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">getConfigFileTokens</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a82">82</a></span>)
+		<span class="method-title">getConfigFileTokens</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a114">114</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -264,7 +269,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getConfigVariablePath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a133">133</a></span>)
+		<span class="method-title">getConfigVariablePath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a165">165</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -297,7 +302,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">makeConfigFileContent</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a63">63</a></span>)
+		<span class="method-title">makeConfigFileContent</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a95">95</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -326,8 +331,41 @@
 		
 			
 	</div>
-<a name="methodsetConfigArray" id="setConfigArray"><!-- --></a>
+<a name="methodmergeArray" id="mergeArray"><!-- --></a>
 <div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">mergeArray</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a63">63</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Recursively merge two arrays.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> merged array.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array<mixed></span>
+		<span class="method-name">
+			mergeArray
+		</span>
+					(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$array1</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$array2</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$array1</span><span class="var-description">: first array.</span>			</li>
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$array2</span><span class="var-description">: second array.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetConfigArray" id="setConfigArray"><!-- --></a>
+<div class="oddrow">
 	
 	<div class="method-header">
 		<span class="method-title">setConfigArray</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a33">33</a></span>)
@@ -365,7 +403,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Thu, 20 Dec 2012 19:17:06 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Fri, 21 Dec 2012 20:14:09 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>
