@@ -6,7 +6,6 @@
             <strong>{$invention->getName()}</strong> ({$invention->getYear()})
         </a></p>
         {$invention->getShort_description()}
-        <p><a href="{createUri controller='inventions' action='index' params=[$invention->getId(), $year, $current_period]}">Viac informácií</a></p>
     </div>
 {/if}
 {/foreach}
