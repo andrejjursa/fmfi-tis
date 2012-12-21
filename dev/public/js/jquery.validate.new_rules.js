@@ -6,7 +6,8 @@ jQuery.validator.addMethod('greater_than', function(value, element, param) {
     } catch (e) {
         compare_to = param;
     }
-    return this.optional(element) || value > compare_to;
+    console.log(value + ' > ' + compare_to);
+    return this.optional(element) || value - compare_to > 0;
 }, jQuery.validator.format('Value must be greater than {0}.'));
 
 jQuery.validator.addMethod('lesser_than', function(value, element, param) {
@@ -17,7 +18,7 @@ jQuery.validator.addMethod('lesser_than', function(value, element, param) {
     } catch (e) {
         compare_to = param;
     }
-    return this.optional(element) || value < compare_to;
+    return this.optional(element) || value - compare_to < 0;
 }, jQuery.validator.format('Value must be lesser than {0}.'));
 
 jQuery.validator.addMethod('lesserequal_than', function(value, element, param) {
@@ -28,7 +29,7 @@ jQuery.validator.addMethod('lesserequal_than', function(value, element, param) {
     } catch (e) {
         compare_to = param;
     }
-    return this.optional(element) || value <= compare_to;
+    return this.optional(element) || value - compare_to <= 0;
 }, jQuery.validator.format('Value must be lesser or equal than {0}.'));
 
 jQuery.validator.addMethod('greaterequal_than', function(value, element, param) {
@@ -39,7 +40,7 @@ jQuery.validator.addMethod('greaterequal_than', function(value, element, param) 
     } catch (e) {
         compare_to = param;
     }
-    return this.optional(element) || value >= compare_to;
+    return this.optional(element) || value - compare_to >= 0;
 }, jQuery.validator.format('Value must be greater or equal than {0}.'));
 
 jQuery.validator.addMethod('min_mm_items', function(value, element, param) {

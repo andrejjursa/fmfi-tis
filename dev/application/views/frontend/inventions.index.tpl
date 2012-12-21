@@ -72,7 +72,7 @@
                         <div class="widget_content">
                             <div class="narrow_paragraphs">
                             {foreach $invention->getLinksLabelsArray() as $link}
-                                <p><a href="{$link.url}" target="_blank">{$link.label|default:'Nepomenovaný odkaz'|escape:'html'}</a></p>
+                                <p><a href="{$link.url}" target="_blank" class="external-link">{$link.label|default:'Nepomenovaný odkaz'|escape:'html'}</a></p>
                             {foreachelse}
                                 <p>Neboli pridané žiadne externé odkazy.</p>
                             {/foreach}

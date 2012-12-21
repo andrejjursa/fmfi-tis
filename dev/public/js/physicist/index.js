@@ -15,7 +15,16 @@ $(document).ready(function(){
             'height': height,
             'autoDimensions': false,
             'transitionIn': 'elastic',
-            'transitionOut': 'elastic'
+            'transitionOut': 'elastic',
+            'type': 'iframe'
+        });
+        
+        $('a.external-link').fancybox({
+            width: '100%',
+            height: '100%',
+            transitionIn: 'elastic',
+            transitionOut: 'elastic',
+            type: 'iframe'
         });
     }
     
