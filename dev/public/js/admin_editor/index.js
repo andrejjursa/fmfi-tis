@@ -7,8 +7,11 @@ jQuery(document).ready(function($){
     });
     
     $('a[rel=fancybox_ajax]').fancybox({
+        width: '100%',
+        height: '100%',
         transitionIn: 'elastic',
-        transitionOut: 'elastic'
+        transitionOut: 'elastic',
+        type: 'iframe'
     });
     
     $('a[rel=popup_window]').click(function(event) {
