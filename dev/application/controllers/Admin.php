@@ -147,7 +147,7 @@ class Admin extends Abstract_backend_controller {
             if ($this->input->post('pass') == $this->input->post('npass')){
               $this->Admins->updatePassword($this->input->post('id'),$this->input->post('pass'));
               $this->Admins->updateValidToken($this->input->post('id'),'');
-              redirect(createUri('admin', 'login'));
+              $this->parser->parse('backend/admin_passchangesucces.tpl');
             }
             else {
 				      $this->parser->assign('pass_error', TRUE);
