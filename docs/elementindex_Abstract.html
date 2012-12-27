@@ -322,11 +322,11 @@
 							<div class="index-item-description">Adds gridField to the list of foreign table row fields.</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">allIds</span>
+						<span class="method-title">addOption</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodallIds">Abstract_table_relation::allIds()</a> in abstract_table_relation.php</div>
-							<div class="index-item-description">Renew array of foreign table primary indexes if it is NULL and returns it.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#methodaddOption">editorFieldSelectBox::addOption()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Add option to list of options.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">allIds</span>
@@ -334,6 +334,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_collection.html#methodallIds">Abstract_table_collection::allIds()</a> in abstract_table_collection.php</div>
 							<div class="index-item-description">Returns array of table rows primary indexes as array of integers.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">allIds</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodallIds">Abstract_table_relation::allIds()</a> in abstract_table_relation.php</div>
+							<div class="index-item-description">Renew array of foreign table primary indexes if it is NULL and returns it.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">allIdsMultiple</span>
@@ -640,6 +647,13 @@
 							<div class="index-item-description">Abstract editor field class.</div>
 					</dd>
 			<dt class="field">
+						editorFieldSelectBox
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html">editorFieldSelectBox</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Abstract editor field class.</div>
+					</dd>
+			<dt class="field">
 						editorFieldSingleCheckbox
 					</dt>
 		<dd class="index-item-body">
@@ -843,15 +857,15 @@
 						<span class="method-title">get</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_collection.html#methodget">Abstract_table_collection::get()</a> in abstract_table_collection.php</div>
-							<div class="index-item-description">Returns array of table rows as instance of extended Abstract_table_row class.</div>
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodget">Abstract_table_relation::get()</a> in abstract_table_relation.php</div>
+							<div class="index-item-description">Renew array of foreign table rows if it is NULL and returns it.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">get</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#methodget">Abstract_table_relation::get()</a> in abstract_table_relation.php</div>
-							<div class="index-item-description">Renew array of foreign table rows if it is NULL and returns it.</div>
+			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_collection.html#methodget">Abstract_table_collection::get()</a> in abstract_table_collection.php</div>
+							<div class="index-item-description">Returns array of table rows as instance of extended Abstract_table_row class.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getAllowedTypes</span>
@@ -962,7 +976,35 @@
 						<span class="method-title">getFieldHtmlID</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldMMRelation.html#methodgetFieldHtmlID">editorFieldMMRelation::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodgetFieldHtmlID">editorField::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field id in editor form.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldHtmlID</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodgetFieldHtmlID">editorFieldIframeForeignRelation::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field unique id.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldHtmlID</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldPassword.html#methodgetFieldHtmlID">editorFieldPassword::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field unique id.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldHtmlID</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#methodgetFieldHtmlID">editorFieldSelectBox::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field unique id.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldHtmlID</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldParentIdRecord.html#methodgetFieldHtmlID">editorFieldParentIdRecord::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field unique id.</div>
 					</dd>
 			<dt class="field">
@@ -983,20 +1025,6 @@
 						<span class="method-title">getFieldHtmlID</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldPassword.html#methodgetFieldHtmlID">editorFieldPassword::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field unique id.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getFieldHtmlID</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldParentIdRecord.html#methodgetFieldHtmlID">editorFieldParentIdRecord::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field unique id.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getFieldHtmlID</span>
-					</dt>
-		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorFieldTinymce.html#methodgetFieldHtmlID">editorFieldTinymce::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field unique id.</div>
 					</dd>
@@ -1011,21 +1039,14 @@
 						<span class="method-title">getFieldHtmlID</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodgetFieldHtmlID">editorFieldIframeForeignRelation::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldColorPicker.html#methodgetFieldHtmlID">editorFieldColorPicker::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field unique id.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getFieldHtmlID</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodgetFieldHtmlID">editorField::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field id in editor form.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getFieldHtmlID</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldColorPicker.html#methodgetFieldHtmlID">editorFieldColorPicker::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldMMRelation.html#methodgetFieldHtmlID">editorFieldMMRelation::getFieldHtmlID()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field unique id.</div>
 					</dd>
 			<dt class="field">
@@ -1053,6 +1074,20 @@
 						<span class="method-title">getFieldType</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldTinymce.html#methodgetFieldType">editorFieldTinymce::getFieldType()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field type.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldType</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldText.html#methodgetFieldType">editorFieldText::getFieldType()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field type.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldType</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorFieldMultilineText.html#methodgetFieldType">editorFieldMultilineText::getFieldType()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field type.</div>
 					</dd>
@@ -1060,7 +1095,14 @@
 						<span class="method-title">getFieldType</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldColorPicker.html#methodgetFieldType">editorFieldColorPicker::getFieldType()</a> in abstract_editor_classes.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSingleCheckbox.html#methodgetFieldType">editorFieldSingleCheckbox::getFieldType()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field type.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldType</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#methodgetFieldType">editorFieldSelectBox::getFieldType()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field type.</div>
 					</dd>
 			<dt class="field">
@@ -1081,14 +1123,21 @@
 						<span class="method-title">getFieldType</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldFileUpload.html#methodgetFieldType">editorFieldFileUpload::getFieldType()</a> in abstract_editor_classes.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodgetFieldType">editorField::getFieldType()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field type.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getFieldType</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodgetFieldType">editorField::getFieldType()</a> in abstract_editor_classes.php</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldColorPicker.html#methodgetFieldType">editorFieldColorPicker::getFieldType()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns field type.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getFieldType</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldFileUpload.html#methodgetFieldType">editorFieldFileUpload::getFieldType()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns field type.</div>
 					</dd>
 			<dt class="field">
@@ -1106,27 +1155,6 @@
 							<div class="index-item-description">Returns field type.</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">getFieldType</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldText.html#methodgetFieldType">editorFieldText::getFieldType()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field type.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getFieldType</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldTinymce.html#methodgetFieldType">editorFieldTinymce::getFieldType()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field type.</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getFieldType</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldSingleCheckbox.html#methodgetFieldType">editorFieldSingleCheckbox::getFieldType()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns field type.</div>
-					</dd>
-			<dt class="field">
 						<span class="method-title">getFilterInFields</span>
 					</dt>
 		<dd class="index-item-body">
@@ -1137,15 +1165,15 @@
 						<span class="method-title">getForeignTable</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodgetForeignTable">editorFieldIframeForeignRelation::getForeignTable()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns the name of foreign table.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldMMRelation.html#methodgetForeignTable">editorFieldMMRelation::getForeignTable()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns foreign table name.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getForeignTable</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorFieldMMRelation.html#methodgetForeignTable">editorFieldMMRelation::getForeignTable()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns foreign table name.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldIframeForeignRelation.html#methodgetForeignTable">editorFieldIframeForeignRelation::getForeignTable()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns the name of foreign table.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getGridFields</span>
@@ -1190,11 +1218,11 @@
 							<div class="index-item-description">Returns all foreign rows in relation to list of local ids using.</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">getName</span>
+						<span class="method-title">getMultiple</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/gridField.html#methodgetName">gridField::getName()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Returns header name for table column in grid view.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#methodgetMultiple">editorFieldSelectBox::getMultiple()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns multiple selection flag.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getName</span>
@@ -1202,6 +1230,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorTab.html#methodgetName">editorTab::getName()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns name (or title) of this tab.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getName</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/gridField.html#methodgetName">gridField::getName()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns header name for table column in grid view.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getNewEditorTab</span>
@@ -1216,6 +1251,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorFieldMultilineText.html#methodgetNumberOfRows">editorFieldMultilineText::getNumberOfRows()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns number of rows.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getOptions</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#methodgetOptions">editorFieldSelectBox::getOptions()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns all options as array.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getPagesCount</span>
@@ -1260,11 +1302,25 @@
 							<div class="index-item-description">Returns the JSON version of validation rules, enforced all to be objects.</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">getSelected</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#methodgetSelected">editorFieldSelectBox::getSelected()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns selected value(s).</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">getShowFilePath</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorFieldFileUpload.html#methodgetShowFilePath">editorFieldFileUpload::getShowFilePath()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Returns show file path flag.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getSize</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#methodgetSize">editorFieldSelectBox::getSize()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Returns the size of select box.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getSmarty</span>
@@ -1567,6 +1623,12 @@
 			<div class="index-item-details"><a href="Abstract/Core/Abstract_table_relation.html#var$mm_table_name">Abstract_table_relation::$mm_table_name</a> in abstract_table_relation.php</div>
 					</dd>
 			<dt class="field">
+						<span class="var-title">$multiple</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#var$multiple">editorFieldSelectBox::$multiple</a> in abstract_editor_classes.php</div>
+					</dd>
+			<dt class="field">
 						<span class="include-title">My_Controller.php</span>
 					</dt>
 		<dd class="index-item-body">
@@ -1632,6 +1694,12 @@
 		<div style="clear: both"></div>
 	</div>
 	<dl>
+			<dt class="field">
+						<span class="var-title">$options</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#var$options">editorFieldSelectBox::$options</a> in abstract_editor_classes.php</div>
+					</dd>
 			<dt class="field">
 						<span class="var-title">$original_data</span>
 					</dt>
@@ -1806,10 +1874,22 @@
 	</div>
 	<dl>
 			<dt class="field">
+						<span class="var-title">$selected</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#var$selected">editorFieldSelectBox::$selected</a> in abstract_editor_classes.php</div>
+					</dd>
+			<dt class="field">
 						<span class="var-title">$show_file_path</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorFieldFileUpload.html#var$show_file_path">editorFieldFileUpload::$show_file_path</a> in abstract_editor_classes.php</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$size</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#var$size">editorFieldSelectBox::$size</a> in abstract_editor_classes.php</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$smarty</span>
@@ -1910,15 +1990,15 @@
 						<span class="method-title">setField</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodsetField">editorField::setField()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Set the sql table field name.</div>
+			<div class="index-item-details"><a href="Abstract/Core/gridField.html#methodsetField">gridField::setField()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Set the table column field.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setField</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/gridField.html#methodsetField">gridField::setField()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Set the table column field.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorField.html#methodsetField">editorField::setField()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Set the sql table field name.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setFieldHint</span>
@@ -1991,11 +2071,11 @@
 							<div class="index-item-description">Set the minimum height of iframe.</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">setName</span>
+						<span class="method-title">setMultiple</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Abstract/Core/gridField.html#methodsetName">gridField::setName()</a> in abstract_editor_classes.php</div>
-							<div class="index-item-description">Set the table column name.</div>
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#methodsetMultiple">editorFieldSelectBox::setMultiple()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Set multiple attribute of select box.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setName</span>
@@ -2003,6 +2083,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorTab.html#methodsetName">editorTab::setName()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Set the name (or title) of tab in rendered editor form.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">setName</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/gridField.html#methodsetName">gridField::setName()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Set the table column name.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setNumberOfRows</span>
@@ -2033,11 +2120,25 @@
 							<div class="index-item-description">Set the associative array of rules for form validation based up on jquery validation plugin.</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">setSelected</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#methodsetSelected">editorFieldSelectBox::setSelected()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Set by default selected select box options.</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">setShowFilePath</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Abstract/Core/editorFieldFileUpload.html#methodsetShowFilePath">editorFieldFileUpload::setShowFilePath()</a> in abstract_editor_classes.php</div>
 							<div class="index-item-description">Set show file path flag for this file uploader.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">setSize</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Abstract/Core/editorFieldSelectBox.html#methodsetSize">editorFieldSelectBox::setSize()</a> in abstract_editor_classes.php</div>
+							<div class="index-item-description">Set size of select box.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setSmarty</span>
