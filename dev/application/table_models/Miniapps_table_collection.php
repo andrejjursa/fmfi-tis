@@ -32,6 +32,39 @@ class Miniapps_table_collection extends Abstract_table_collection {
         ));
         $general->addField($field_name);
         
+        $field_openin = new editorFieldSelectBox();
+        $field_openin->setField('openin')->setFieldLabel('Otvoriť v')->setFieldHint('Nastavte ako otvárať túto miniaplikáciu.');
+        $field_openin->setSize(1);
+        $field_openin->setSelected('fancybox');
+        $field_openin->addOption('fancybox_ajax', 'FancyBoxe pomocou ajax, bez prednastavených rozmerov okna.', 'FancyBox');
+        $field_openin->addOption('fancybox_inline', 'FancyBoxe s použitím otvorenia v iframe, zohľadňuje nastavenie rozmerov okna.', 'FancyBox');
+        $field_openin->addOption('popup', 'PopUp okne, zohľadňuje nastavenie rozmerov okna.', 'PopUp');
+        $general->addField($field_openin);
+        
+        $field_windowwidth = new editorFieldText();
+        $field_windowwidth->setField('windowwidth')->setFieldLabel('Šírka okna')->setFieldHint('Nastavuje šírku okna, použite formát [číslo][jednotka] alebo slovo auto.');
+        $field_windowwidth->setDefaultText('auto')->setRules(array(
+            'required' => TRUE,
+            'maxlength' => 32,
+            'messages' => array(
+                'required' => 'Je nutné zadať šírku.',
+                'maxlength' => 'Počet znakov prevyšuje maximum {0}.',
+            ),
+        ));
+        $general->addField($field_windowwidth);
+        
+        $field_windowheight = new editorFieldText();
+        $field_windowheight->setField('windowheight')->setFieldLabel('Výška okna')->setFieldHint('Nastavuje výšku okna, použite formát [číslo][jednotka] alebo slovo auto.');
+        $field_windowheight->setDefaultText('auto')->setRules(array(
+            'required' => TRUE,
+            'maxlength' => 32,
+            'messages' => array(
+                'required' => 'Je nutné zadať výšku.',
+                'maxlength' => 'Počet znakov prevyšuje maximum {0}.',
+            ),
+        ));
+        $general->addField($field_windowheight);
+        
         $field_headerhtml = new editorFieldMultilineText();
         $field_headerhtml->setField('headerhtml')->setFieldLabel('HTML obsah v hlavičke')->setFieldHint('Tento obsah sa vloží do <head> elementu stránky s miniaplikáciou.');
         $field_headerhtml->setNumberOfRows(10);

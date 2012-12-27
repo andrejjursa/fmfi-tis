@@ -481,6 +481,160 @@ abstract class editorField {
     
 }
 
+class editorFieldSelectBox extends editorField {
+    
+    /**
+     * @var integer size of select box.
+     */
+    private $size = 1;
+    
+    /**
+     * @var boolean multiple selection of items.
+     */
+    private $multiple = FALSE;
+    
+    /**
+     * @var array<mixed> selected value(s).
+     */
+    private $selected = NULL;
+    
+    /**
+     * @var array<mixed> select box options.
+     */
+    private $options = array();
+    
+    /**
+     * Returns field type.
+     * 
+     * @return string field type.
+     */
+    public function getFieldType() {
+        return 'selectbox_field';
+    }
+    
+    /**
+     * Returns field unique id.
+     * 
+     * @return string field unique id for editor form.
+     */
+    public function getFieldHtmlID() {
+        return 'selectbox_field_' . $this->getField() . '_id';
+    }
+    
+    /**
+     * Set size of select box.
+     * 
+     * @param integer $size size of select box.
+     * @return editorFieldSelectBox reference to this object.
+     */
+    public function setSize($size) {
+        if (is_integer($size) && $size > 0) {
+            $this->size = $size;
+        } else {
+            throw new exception(get_class($this) . '::setSize argument must be integer greater than 0');
+        }
+        return $this;
+    }
+    
+    /**
+     * Set multiple attribute of select box.
+     * 
+     * @param boolean $multiple multiple selection flag.
+     * @return editorFieldSelectBox reference to this object.
+     */
+    public function setMultiple($multiple) {
+        if (is_bool($multiple)) {
+            $this->multiple = $multiple;
+        } else {
+            throw new exception(get_class($this) . '::setMultiple argument must be boolean');
+        }
+        return $this;
+    }
+    
+    /**
+     * Set by default selected select box options.
+     * 
+     * @param integer|double|boolean|string|array<mixed> $selected array of simple value of selected option.
+     * @return editorFieldSelectBox reference to this object.
+     */
+    public function setSelected($selected) {
+        if (is_integer($selected) || is_double($selected) || is_bool($selected) || is_string($selected) || is_array($selected)) {
+            if (is_array($selected)) {
+                if (count($selected)) {
+                    if (!(is_integer($selected) || is_double($selected) || is_bool($selected) || is_string($selected))) {
+                        throw new exception(get_class($this) . '::setSelected array argument can contain only integer, double, boolean or string values.');
+                    }
+                }
+            }
+            $this->selected = $selected;
+        } else {
+            throw new exception(get_class($this) . '::setSelected argument must be integer, double, boolean, string or array of integer, double, boolean or string');
+        }
+        return $this;
+    }
+    
+    /**
+     * Add option to list of options.
+     * 
+     * @param mixed $value value of "value" attribute of option element.
+     * @param mixed $label value of text node in option element.
+     * @param string $optgroup NULL or string name of option group if needed.
+     * @return editorFieldSelectBox reference to this object.
+     */
+    public function addOption($value, $label, $optgroup = NULL) {
+        if (is_null($optgroup) || is_string($optgroup)) {
+            if (is_null($optgroup)) {
+                if (!isset($this->options[$value])) {
+                    $this->options[$value] = $label;
+                }
+            } else {
+                if (!isset($this->options[$optgroup][$value])) {
+                    $this->options[$optgroup][$value] = $label;
+                }
+            }
+        } else {
+            throw new exception(get_class($this) . '::addOption $optgroup argument must be string or NULL');
+        }
+        return $this;
+    }
+    
+    /**
+     * Returns the size of select box.
+     * 
+     * @return integer size of select box.
+     */
+    public function getSize() {
+        return $this->size;
+    }
+    
+    /**
+     * Returns multiple selection flag.
+     * 
+     * @return boolean multiple selection flag.
+     */
+    public function getMultiple() {
+        return $this->multiple;
+    }
+    
+    /**
+     * Returns selected value(s).
+     * 
+     * @return integer|double|boolean|string|array<mixed> selected value of options of select box (by default).
+     */
+    public function getSelected() {
+        return $this->selected;
+    }
+    
+    /**
+     * Returns all options as array.
+     * 
+     * @return array<mixed> array of options.
+     */
+    public function getOptions() {
+        return $this->options;
+    }
+}
+
 class editorFieldPassword extends editorField {
     
     /**

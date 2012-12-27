@@ -136,6 +136,7 @@ table.formtable td.label { width: 220px; }
 table.formtable td.label label { font-weight: bold; cursor: help; }
 table.formtable td.errors { width: 200px; }
 table.formtable .uploadify { display: inline-block; margin-right: 10px; }
+table.formtable td select.form_field_select_box { width: 100%; }
 input.form_field_text_input { width: 100%; }
 
 fieldset.config { border: 1px solid black; border-radius: 5px; background-color: white; box-shadow:  5px 5px 10px gray; margin-bottom: 15px; margin-top: 5px; }

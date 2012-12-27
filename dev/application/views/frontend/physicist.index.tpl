@@ -59,7 +59,7 @@
                         <div class="widget_content">
                             <div class="narrow_paragraphs">
                             {foreach $physicist->getMiniapps() as $miniapp}
-                                <p><a href="{createUri controller='miniapps' action='index' params=[$miniapp->getId()]}" rel="fancybox_ajax">{$miniapp->getName()|escape:'html'}</a></p>
+                                <p><a href="{createUri controller='miniapps' action='index' params=[$miniapp->getId()]}" rel="{$miniapp->getOpenIn()|escape:'html'}">{$miniapp->getName()|escape:'html'}<span style="display: none;" class="link_width">{$miniapp->getWindowWidth()|escape:'html'}</span><span style="display: none;" class="link_height">{$miniapp->getWindowHeight()|escape:'html'}</span></a></p>
                             {foreachelse}
                                 <p>Neboli pridané žiadne miniaplikácie.</p>
                             {/foreach}
