@@ -151,3 +151,16 @@ fieldset.config table.config_table td input.width_75pr,
 fieldset.config table.config_table td select.width_75pr { width: 75%; }
 fieldset.config table.config_table td input.width_100pr,
 fieldset.config table.config_table td select.width_100pr { width: 100%; }
+
+#installationSteps { list-style-type: none; margin: 0; padding: 0; }
+#installationSteps li { float: left; margin: 0; padding: 5px; }
+#installationSteps li.step { border-top: 1px solid silver; border-left: 1px solid silver; border-right: 1px solid gray; border-bottom: 1px solid gray; background-color: black; color: silver; }
+#installationSteps li.step.current { color: yellow; text-shadow: 0px 0px 5px yellow; }
+
+#installationWrap { clear: both; }
+#installationFieldset { margin: 60px 0 0 0; border: 1px solid black; border-radius: 5px; box-shadow: 5px 5px 10px black; background-color: white; }
+#installationLegend { border: 1px solid black; border-radius: 5px; padding: 5px; background-color: white; }
+
+#installationWrap .button { display: inline-block; border-top: 2px solid silver; border-left: 2px solid silver; border-right: 2px solid gray; border-bottom: 2px solid gray; background-color: black; color: silver; padding: 4px; border-radius: 5px; text-decoration: none; transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; }
+#installationWrap .button:hover { color: yellow; text-shadow: 0px 0px 5px yellow; }
+#installationWrap .button:active { border-top-color: gray; border-left-color: gray; border-right-color: silver; border-bottom-color: silver; text-shadow: none; color: white; }

@@ -1,4 +1,5 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -44,26 +45,27 @@
 | The $active_record variables lets you determine whether or not to load
 | the active record class
 */
-
 $active_group = 'default';
 $active_record = TRUE;
-
-$db['default']['hostname'] = 'priso.no-ip.org:3306';
-$db['default']['username'] = 'tis';
-$db['default']['password'] = 'Fmf1-t1s';
-$db['default']['database'] = 'tis';
-$db['default']['dbdriver'] = 'mysql';
-$db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
-$db['default']['db_debug'] = TRUE;
-$db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = '';
-$db['default']['char_set'] = 'utf8';
-$db['default']['dbcollat'] = 'utf8_general_ci';
-$db['default']['swap_pre'] = '';
-$db['default']['autoinit'] = TRUE;
-$db['default']['stricton'] = FALSE;
-
-
+$db['default'] = array (
+  'hostname' => 'priso.no-ip.org:3306',
+  'username' => 'tis',
+  'password' => 'Fmf1-t1s',
+  'database' => 'tis',
+  'dbdriver' => 'mysql',
+  'dbprefix' => '',
+  'pconnect' => true,
+  'db_debug' => false,
+  'cache_on' => false,
+  'cachedir' => '',
+  'char_set' => 'utf8',
+  'dbcollat' => 'utf8_general_ci',
+  'swap_pre' => '',
+  'autoinit' => true,
+  'stricton' => false,
+);
 /* End of file database.php */
 /* Location: ./application/config/database.php */
+
+
+?>

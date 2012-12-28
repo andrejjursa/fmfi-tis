@@ -18,6 +18,13 @@ class My_Controller extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
+        
+        $this->load->library('parser');
+        $this->load->helper('application');
+        
+        $this->parser->registerPlugin('function', 'createUri', 'smartyCreateUri');
+        $this->parser->registerPlugin('function', 'imageThumb', 'smartyImageThumb');
+        $this->parser->registerPlugin('function', 'form_error', 'smartyFormError');
     }
     
 }

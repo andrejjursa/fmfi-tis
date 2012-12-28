@@ -27,17 +27,16 @@ class Abstract_common_controller extends My_Controller {
     public function __construct() {
         parent::__construct();
         
-        $this->load->library('parser');
-        $this->load->helper('application');
+        if (!self::getConfigItem('application', 'installed')) {
+            $this->load->helper('url');
+            redirect('install');
+        }
         
         $this->_resetTemplateCss();
         $this->_resetTemplateJs();
         $this->_assignTemplateAdditionals();
         
         $this->parser->assign('site_base_url', self::getBaseUrl());
-        $this->parser->registerPlugin('function', 'createUri', 'smartyCreateUri');
-        $this->parser->registerPlugin('function', 'imageThumb', 'smartyImageThumb');
-        $this->parser->registerPlugin('function', 'form_error', 'smartyFormError');
     }
     
     /**

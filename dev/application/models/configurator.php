@@ -54,6 +54,31 @@ class Configurator extends CI_Model {
     }   
     
     /**
+     * Saves new data array to given config file with custom arangement and custom config variable name.
+     * 
+     * @param string $config name of config file without extension.
+     * @param array<mixed> $data new values for config items.
+     * @param array<mixed> $arangement custom arangement of file content.
+     * @param string $config_variable name of configuration array (variable name with dollar sign).
+     * @return boolean returns TRUE if file is writen, FALSE otherwise.
+     */
+    public function setConfigArrayCustom($config, $data, $arangement, $config_variable = '$config') {
+        $file = APPPATH . 'config/' . $config . '.php';
+        if (file_exists($file)) {
+            try {
+                $content = $this->makeConfigFileContent($data, $arangement, $config_variable);
+                $f = fopen($file, 'w');
+                fputs($f, $content);
+                fclose($f);
+                return TRUE;
+            } catch (exception $e) {
+                return FALSE;
+            }
+        }
+        return FALSE;
+    }
+    
+    /**
      * Recursively merge two arrays.
      * 
      * @param array<mixed> $array1 first array.
@@ -90,15 +115,18 @@ class Configurator extends CI_Model {
      * 
      * @param array<mixed> $data values of config.
      * @param array<mixed> $arangement arangement of config file content.
+     * @param string $config_variable name of configuration array (variable name with dollar sign).
      * @return string config file content.
      */
-    private function makeConfigFileContent($data, $arangement) {
+    private function makeConfigFileContent($data, $arangement, $config_variable = '$config') {
         $content = '<?php if ( ! defined(\'BASEPATH\')) exit(\'No direct script access allowed\');' . "\n\n";
         foreach($arangement as $item) {
             if ($item['type'] == 'comment') {
                 $content .= $item['value'] . "\n";
             } elseif ($item['type'] == 'config') {
-                $content .= $this->configItemByPath($item['value']) . ' = ' . var_export($this->configItemValueByPath($data, $item['value']), TRUE) . ';' . "\n";
+                $content .= $this->configItemByPath($item['value'], $config_variable) . ' = ' . var_export($this->configItemValueByPath($data, $item['value']), TRUE) . ';' . "\n";
+            } elseif ($item['type'] == 'custom') {
+                $content .= $item['value'] . "\n";
             }
         }
         $content .= "\n\n?>";
@@ -192,10 +220,11 @@ class Configurator extends CI_Model {
      * Creates $config variable for config file content.
      * 
      * @param array<string> $path path of array segments.
+     * @param string $config_variable name of configuration array (variable name with dollar sign).
      * @return string config variable like array.
      */
-    private function configItemByPath($path) {
-        $output = '$config';
+    private function configItemByPath($path, $config_variable = '$config') {
+        $output = $config_variable;
         if (count($path)) {
             foreach($path as $segment) {
                 $output .= '[' . var_export($segment, TRUE) . ']';

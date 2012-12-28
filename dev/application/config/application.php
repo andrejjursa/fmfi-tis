@@ -2,6 +2,13 @@
 
 /*
 |--------------------------------------------------------------------------
+| Boolean expression determining installed status of this application.
+| DO NOT CHANGE MANUALLY UNLESS YOU KNOW WHAT YOU DOING!
+|--------------------------------------------------------------------------
+*/
+$config['installed'] = true;
+/*
+|--------------------------------------------------------------------------
 | Enable use of mod rewrite for links.
 |--------------------------------------------------------------------------
 |
