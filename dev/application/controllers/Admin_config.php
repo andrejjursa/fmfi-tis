@@ -103,7 +103,7 @@ class Admin_config extends Abstract_backend_controller {
             $this->email->subject('Pokusný e-mail');
             
             $msg = '<div style="color: blue; background-color: white; padding: 4px; border: 1px solid black; border-radius: 4px">';
-            $msg .= 'Toto je pokusná správa s konfigurátora nastavení.<br />Ak Vám prišla, znamená to, že máte v aplikácii nastavený e-mail správne.</div>';
+            $msg .= 'Toto je pokusná správa z konfigurátora nastavení.<br />Ak Vám prišla, znamená to, že máte v aplikácii nastavený e-mail správne.</div>';
             
             $this->email->message($msg);
             if ($this->email->send()) {
