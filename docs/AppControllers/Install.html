@@ -28,7 +28,9 @@
 				
 		<pre>CI_Controller
    |
-   --Install</pre>
+   --<a href="../Abstract/Core/My_Controller.html">My_Controller</a>
+      |
+      --Install</pre>
 	
 			</div>
 </div>
@@ -45,10 +47,50 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																												
+																																																																																																																																																																																				
 												<div class="method-definition">
 											<span class="method-result">Install</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#adminacc" title="details" class="method-name">adminacc</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#config" title="details" class="method-name">config</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#database" title="details" class="method-name">database</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#finish" title="details" class="method-name">finish</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getBaseDir" title="details" class="method-name">getBaseDir</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getDatabaseConfig" title="details" class="method-name">getDatabaseConfig</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getDatabaseConfigArangement" title="details" class="method-name">getDatabaseConfigArangement</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getRandomEncryptionKey" title="details" class="method-name">getRandomEncryptionKey</a>
 										()
 									</div>
 																<div class="method-definition">
@@ -58,18 +100,63 @@
 									</div>
 																<div class="method-definition">
 											<span class="method-result">void</span>
-										<a href="#updateMigrations" title="details" class="method-name">updateMigrations</a>
+										<a href="#installedAlready" title="details" class="method-name">installedAlready</a>
 										()
 									</div>
 																<div class="method-definition">
 											<span class="method-result">void</span>
-										<a href="#updateToMigration" title="details" class="method-name">updateToMigration</a>
-											([<span class="var-type"></span>&nbsp;<span class="var-name">$level</span> = <span class="var-default">NULL</span>])
+										<a href="#make_adminacc" title="details" class="method-name">make_adminacc</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#make_database" title="details" class="method-name">make_database</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#make_database_structure" title="details" class="method-name">make_database_structure</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#save_config" title="details" class="method-name">save_config</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#sendTestEmail" title="details" class="method-name">sendTestEmail</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$email</span>)
 									</div>
 																<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#_doUpdateMigrations" title="details" class="method-name">_doUpdateMigrations</a>
 											([<span class="var-type"></span>&nbsp;<span class="var-name">$level</span> = <span class="var-default">NULL</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_is_same_as" title="details" class="method-name">_is_same_as</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$string</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$field</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_updateMigrations" title="details" class="method-name">_updateMigrations</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_updateToMigration" title="details" class="method-name">_updateToMigration</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$level</span> = <span class="var-default">NULL</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_valid_email_protocol" title="details" class="method-name">_valid_email_protocol</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$protocol</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_valid_rewrite_enabled" title="details" class="method-name">_valid_rewrite_enabled</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$value</span>)
 									</div>
 								</div>
 		</div>
@@ -88,7 +175,7 @@
 			<A NAME='method_detail'></A>
 
 <a name="method__construct" id="__construct"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a8">8</a></span>)
@@ -108,13 +195,202 @@
 			</div>
 	
 		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Abstract/Core/My_Controller.html#method__construct">My_Controller::__construct()</a></dt>
+					</dl>
 			
 	</div>
-<a name="methodindex" id="index"><!-- --></a>
+<a name="methodadminacc" id="adminacc"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">adminacc</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a91">91</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			adminacc
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodconfig" id="config"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">index</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a14">14</a></span>)
+		<span class="method-title">config</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a153">153</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			config
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddatabase" id="database"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">database</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a43">43</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			database
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodfinish" id="finish"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">finish</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a227">227</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			finish
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetBaseDir" id="getBaseDir"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getBaseDir</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a264">264</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getBaseDir
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetDatabaseConfig" id="getDatabaseConfig"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getDatabaseConfig</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a274">274</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getDatabaseConfig
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetDatabaseConfigArangement" id="getDatabaseConfigArangement"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getDatabaseConfigArangement</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a279">279</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getDatabaseConfigArangement
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetRandomEncryptionKey" id="getRandomEncryptionKey"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getRandomEncryptionKey</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a270">270</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getRandomEncryptionKey
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodindex" id="index"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">index</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a35">35</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -133,11 +409,11 @@
 		
 			
 	</div>
-<a name="methodupdateMigrations" id="updateMigrations"><!-- --></a>
-<div class="evenrow">
+<a name="methodinstalledAlready" id="installedAlready"><!-- --></a>
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">updateMigrations</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a18">18</a></span>)
+		<span class="method-title">installedAlready</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a235">235</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -148,7 +424,7 @@
 	<div class="method-signature">
 		<span class="method-result">void</span>
 		<span class="method-name">
-			updateMigrations
+			installedAlready
 		</span>
 				()
 			</div>
@@ -156,11 +432,11 @@
 		
 			
 	</div>
-<a name="methodupdateToMigration" id="updateToMigration"><!-- --></a>
-<div class="oddrow">
+<a name="methodmake_adminacc" id="make_adminacc"><!-- --></a>
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">updateToMigration</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a26">26</a></span>)
+		<span class="method-title">make_adminacc</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a98">98</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -171,24 +447,116 @@
 	<div class="method-signature">
 		<span class="method-result">void</span>
 		<span class="method-name">
-			updateToMigration
+			make_adminacc
 		</span>
-					([<span class="var-type"></span>&nbsp;<span class="var-name">$level</span> = <span class="var-default">NULL</span>])
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodmake_database" id="make_database"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">make_database</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a50">50</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			make_database
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodmake_database_structure" id="make_database_structure"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">make_database_structure</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a81">81</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			make_database_structure
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsave_config" id="save_config"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">save_config</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a160">160</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			save_config
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsendTestEmail" id="sendTestEmail"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">sendTestEmail</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a209">209</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			sendTestEmail
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$email</span>)
 			</div>
 	
 			<ul class="parameters">
 					<li>
 				<span class="var-type"></span>
-				<span class="var-name">$level</span>			</li>
+				<span class="var-name">$email</span>			</li>
 				</ul>
 		
 			
 	</div>
 <a name="method_doUpdateMigrations" id="_doUpdateMigrations"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_doUpdateMigrations</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a34">34</a></span>)
+		<span class="method-title">_doUpdateMigrations</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a254">254</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -212,13 +580,158 @@
 		
 			
 	</div>
-						
+<a name="method_is_same_as" id="_is_same_as"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_is_same_as</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a136">136</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_is_same_as
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$string</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$field</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$string</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$field</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_updateMigrations" id="_updateMigrations"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_updateMigrations</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a242">242</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_updateMigrations
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_updateToMigration" id="_updateToMigration"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_updateToMigration</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a248">248</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_updateToMigration
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$level</span> = <span class="var-default">NULL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$level</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_valid_email_protocol" id="_valid_email_protocol"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_valid_email_protocol</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a195">195</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_valid_email_protocol
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$protocol</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$protocol</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_valid_rewrite_enabled" id="_valid_rewrite_enabled"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_valid_rewrite_enabled</span> (line <span class="line-number"><a href="../__filesource/fsource_AppControllers__controllersInstall.php.html#a202">202</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_valid_rewrite_enabled
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$value</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../Abstract/Core/My_Controller.html">My_Controller</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../Abstract/Core/My_Controller.html#method__construct">My_Controller::__construct()</a></span><br>
+											</blockquote>
+										
 		</div>
 	</div>
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Thu, 27 Dec 2012 18:54:32 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Sat, 29 Dec 2012 18:23:04 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>

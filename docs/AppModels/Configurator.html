@@ -50,11 +50,11 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																												
+																																																																																				
 												<div class="method-definition">
 											<span class="method-result">string</span>
 										<a href="#configItemByPath" title="details" class="method-name">configItemByPath</a>
-											(<span class="var-type">array<string></span>&nbsp;<span class="var-name">$path</span>)
+											(<span class="var-type">array<string></span>&nbsp;<span class="var-name">$path</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$config_variable</span> = <span class="var-default">'$config'</span>])
 									</div>
 																<div class="method-definition">
 											<span class="method-result">mixed</span>
@@ -84,7 +84,7 @@
 																<div class="method-definition">
 											<span class="method-result">string</span>
 										<a href="#makeConfigFileContent" title="details" class="method-name">makeConfigFileContent</a>
-											(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$arangement</span>)
+											(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$arangement</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$config_variable</span> = <span class="var-default">'$config'</span>])
 									</div>
 																<div class="method-definition">
 											<span class="method-result">array<mixed></span>
@@ -95,6 +95,11 @@
 											<span class="method-result">boolean</span>
 										<a href="#setConfigArray" title="details" class="method-name">setConfigArray</a>
 											(<span class="var-type">string</span>&nbsp;<span class="var-name">$config</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#setConfigArrayCustom" title="details" class="method-name">setConfigArrayCustom</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$config</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$arangement</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$config_variable</span> = <span class="var-default">'$config'</span>])
 									</div>
 								</div>
 		</div>
@@ -116,7 +121,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">configItemByPath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a197">197</a></span>)
+		<span class="method-title">configItemByPath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a226">226</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -131,13 +136,16 @@
 		<span class="method-name">
 			configItemByPath
 		</span>
-					(<span class="var-type">array<string></span>&nbsp;<span class="var-name">$path</span>)
+					(<span class="var-type">array<string></span>&nbsp;<span class="var-name">$path</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$config_variable</span> = <span class="var-default">'$config'</span>])
 			</div>
 	
 			<ul class="parameters">
 					<li>
 				<span class="var-type">array<string></span>
 				<span class="var-name">$path</span><span class="var-description">: path of array segments.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$config_variable</span><span class="var-description">: name of configuration array (variable name with dollar sign).</span>			</li>
 				</ul>
 		
 			
@@ -146,7 +154,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">configItemValueByPath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a214">214</a></span>)
+		<span class="method-title">configItemValueByPath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a243">243</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -209,7 +217,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getConfigFileArangementFromTokens</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a136">136</a></span>)
+		<span class="method-title">getConfigFileArangementFromTokens</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a164">164</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -239,7 +247,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">getConfigFileTokens</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a114">114</a></span>)
+		<span class="method-title">getConfigFileTokens</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a142">142</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -269,7 +277,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getConfigVariablePath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a165">165</a></span>)
+		<span class="method-title">getConfigVariablePath</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a193">193</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -302,7 +310,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">makeConfigFileContent</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a95">95</a></span>)
+		<span class="method-title">makeConfigFileContent</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a121">121</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -317,7 +325,7 @@
 		<span class="method-name">
 			makeConfigFileContent
 		</span>
-					(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$arangement</span>)
+					(<span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$arangement</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$config_variable</span> = <span class="var-default">'$config'</span>])
 			</div>
 	
 			<ul class="parameters">
@@ -327,6 +335,9 @@
 					<li>
 				<span class="var-type">array<mixed></span>
 				<span class="var-name">$arangement</span><span class="var-description">: arangement of config file content.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$config_variable</span><span class="var-description">: name of configuration array (variable name with dollar sign).</span>			</li>
 				</ul>
 		
 			
@@ -335,7 +346,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">mergeArray</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a63">63</a></span>)
+		<span class="method-title">mergeArray</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a88">88</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -397,13 +408,52 @@
 		
 			
 	</div>
+<a name="methodsetConfigArrayCustom" id="setConfigArrayCustom"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setConfigArrayCustom</span> (line <span class="line-number"><a href="../__filesource/fsource_AppModels__modelsconfigurator.php.html#a65">65</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Saves new data array to given config file with custom arangement and custom config variable name.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> returns TRUE if file is writen, FALSE otherwise.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			setConfigArrayCustom
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$config</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$data</span>, <span class="var-type">array<mixed></span>&nbsp;<span class="var-name">$arangement</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$config_variable</span> = <span class="var-default">'$config'</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$config</span><span class="var-description">: name of config file without extension.</span>			</li>
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$data</span><span class="var-description">: new values for config items.</span>			</li>
+					<li>
+				<span class="var-type">array<mixed></span>
+				<span class="var-name">$arangement</span><span class="var-description">: custom arangement of file content.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$config_variable</span><span class="var-description">: name of configuration array (variable name with dollar sign).</span>			</li>
+				</ul>
+		
+			
+	</div>
 						
 		</div>
 	</div>
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Thu, 27 Dec 2012 18:54:32 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Sat, 29 Dec 2012 18:23:03 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>

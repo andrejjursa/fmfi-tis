@@ -23,6 +23,13 @@ class Install extends My_Controller {
             'config' => 'Konfigurácia',
             'finish' => 'Hotovo',
         ));
+        
+        if (Abstract_common_controller::getConfigItem('application', 'installed') === true) {
+            $action = $this->router->fetch_method();
+            if ($action != 'installedAlready') {
+                redirect('install/installedAlready');
+            }
+        }
     }
 
     public function index() {
@@ -223,6 +230,13 @@ class Install extends My_Controller {
         $this->parser->assign('current_step', 'finish');
         $this->parser->assign('legend', 'H O T O V O');
         $this->parser->parse('install/finish.tpl');
+    }
+    
+    public function installedAlready() {
+        $this->parser->assign('flash_message', $this->session->flashdata('flash_message'));
+        $this->parser->assign('current_step', '');
+        $this->parser->assign('legend', 'CHYBA!');
+        $this->parser->parse('install/installedAlready.tpl');
     }
     
     public function _updateMigrations() {
