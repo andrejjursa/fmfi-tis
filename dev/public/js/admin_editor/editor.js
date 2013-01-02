@@ -97,9 +97,13 @@ jQuery(document).ready(function($){
     
     setInterval(function() {
         $('iframe').each(function(element) {
-            iframecontentheight = $(this).contents().height();
-            if (iframecontentheight != $(this).height()) {
-                $(this).height(iframecontentheight);
+            try {
+                iframecontentheight = $(this).contents().height();
+                if (iframecontentheight > $(this).height()) {
+                    $(this).height(iframecontentheight + 20);
+                }
+            } catch (e) {
+                
             }
         });
     }, 1000);

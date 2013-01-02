@@ -6,6 +6,8 @@ body{
     font-size: 14px;
 }
 
+iframe { border: 0 !important; }
+
 a{
 	color: black;
 }
