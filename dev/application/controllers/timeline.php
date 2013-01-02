@@ -56,13 +56,16 @@ class Timeline extends Abstract_frontend_controller {
 			'year' => $year,
             'end_year' => $maxYear,
             'period' => $current_period,
-            'background' => base64_encode($slider_background),
-            'number_color' => base64_encode($current_period_table->getNumber_color()),
-            'border_color' => base64_encode($current_period_table->getBorder_color()),
         ));
         $this->_assignTemplateAdditionals();
         
         $this->parser->assign('slider_background', $slider_background);
+        
+        $this->parser->assign('dataForJS', array(
+            'background' => $slider_background,
+            'number_color' => $current_period_table->getNumber_color(),
+            'border_color' => $current_period_table->getBorder_color(),
+        ));
         
         $this->parser->parse('frontend/timeline.index.tpl');
     }

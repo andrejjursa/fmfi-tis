@@ -83,12 +83,12 @@ $(document).ready(function(){
         });
         
         $('#timeline').css({
-            'background-image': 'url({$background|base64_decode})',
+            'background-image': 'url(' + $('#dataForJS [name=background]').val() + ')',
             'background-position': 'top center',
             'background-repeat': 'no-repeat',
-            'border-color': '{$border_color|base64_decode|substr:0:7}'
+            'border-color': $('#dataForJS [name=border_color]').val()
         });
-        $('#timeline a').fadeTo(0, 0.7).css('border-color', '{$border_color|base64_decode|substr:0:7}');
+        $('#timeline a').fadeTo(0, 0.7).css('border-color', $('#dataForJS [name=border_color]').val());
         
         var url = '{createUri controller="timeline" action="ajaxTimelineInfoData" params=[$period]}';
         $.ajax(url, {
