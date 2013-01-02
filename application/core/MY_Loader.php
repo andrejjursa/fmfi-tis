@@ -17,7 +17,7 @@ require_once APPPATH . 'core/abstract_table_row.php';
 require_once APPPATH . 'core/abstract_table_collection.php';
 require_once APPPATH . 'core/abstract_table_relation.php';
 
-class My_Loader extends CI_Loader {
+class MY_Loader extends CI_Loader {
     
     public function __construct() {
         parent::__construct();

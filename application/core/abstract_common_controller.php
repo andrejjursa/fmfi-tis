@@ -10,7 +10,7 @@
  * @subpackage Core
  * 
  */
-class Abstract_common_controller extends My_Controller {
+class Abstract_common_controller extends MY_Controller {
     
     /**
      * @var array<stdClass> array of additional js files. 
