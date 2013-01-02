@@ -1,0 +1,96 @@
+div, p {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    line-height: 1em;
+    font-size: 1em;
+}
+
+
+.question, .question-answers, .question-header, .question-answers-answer-text {
+    width: 96%;
+    float: left;
+    clear: both;
+}
+.question-answers-answer {
+    float: left; 
+    width: 100%;
+}
+
+
+.question-points, .question-counter {
+    float: left;
+    font-weight: bold;
+}
+
+.question-counter {
+    min-width: 2em;
+}
+
+.question-header {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-top: 0.5ex;
+    text-align: justify;
+}
+
+.question {
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 10px;
+}
+
+.question:nth-child(odd) {
+    background: #E6E6E5;
+}
+
+.question:nth-child(even) {
+    background: #F7F7F7;
+}
+
+.question-answers-answer {
+    margin: 1ex 0;
+}
+
+.question-answers-answer-counter, .question-answers-answer-selector, .question-image, .question-answers-answer-image {
+    float: left;
+}
+
+.question-answers-answer-counter {
+    min-width: 1em;
+}
+
+.question-answers-answer-text {
+    margin-left: 1.2em;
+    text-align: justify;
+}
+
+.question-answers-answer-selector {
+    margin-top: -0.5ex;
+}
+
+.question-image, .question-answers-answer-image {
+    margin: 1ex 0;
+    clear: both;
+}
+
+.question-answers-answer-image {
+    margin-left: 1.25em;
+}
+
+#testprogress {
+    float: left;
+    margin: 1em 0;
+    width: 60%;
+    margin-left: 20%;
+    text-align: center;
+    position: relative;
+}
+
+#testprogress-text {
+    position: absolute;
+    top: 1ex;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}

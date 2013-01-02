@@ -1,0 +1,1 @@
+<div class="text_field">{$row->data($gridField->getField())|date_format:"%d.%m.%Y %H:%M:%S"|default:'Neznámy formát dátumu'}</div>

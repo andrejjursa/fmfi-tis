@@ -1,0 +1,1 @@
+<div class="smarty_field">{$gridField->getSmarty($smarty.template_object)}</div>
