@@ -18,6 +18,11 @@
 		{include file='partials/timeline.index.inventions.tpl' inventions=$inventions year=$year inline}
 	</div>
 </div>
+<div id="dataForJS">
+    <input type="hidden" name="background" value="{$dataForJS.background|escape:'html'}" />
+    <input type="hidden" name="number_color" value="{$dataForJS.number_color|escape:'html'}" />
+    <input type="hidden" name="border_color" value="{$dataForJS.border_color|escape:'html'}" />
+</div>
 {/block}
 
 {block name='top_middle'}
