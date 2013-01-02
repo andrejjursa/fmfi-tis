@@ -139,7 +139,7 @@ table.formtable .uploadify { display: inline-block; margin-right: 10px; }
 table.formtable td select.form_field_select_box { width: 100%; }
 input.form_field_text_input { width: 100%; }
 
-fieldset.config { border: 1px solid black; border-radius: 5px; background-color: white; box-shadow:  5px 5px 10px gray; margin-bottom: 15px; margin-top: 5px; }
+fieldset.config { border: 1px solid black; border-radius: 5px; background-color: white; box-shadow: 5px 5px 10px gray; margin-bottom: 15px; margin-top: 5px; }
 fieldset.config legend { border: 1px solid black; border-radius: 5px; padding: 4px; background-color: white; }
 fieldset.config table.config_table { width: 100%; border-collapse: collapse; }
 fieldset.config table.config_table td { padding: 2px; }
@@ -164,3 +164,32 @@ fieldset.config table.config_table td select.width_100pr { width: 100%; }
 #installationWrap .button { display: inline-block; border-top: 2px solid silver; border-left: 2px solid silver; border-right: 2px solid gray; border-bottom: 2px solid gray; background-color: black; color: silver; padding: 4px; border-radius: 5px; text-decoration: none; transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; }
 #installationWrap .button:hover { color: yellow; text-shadow: 0px 0px 5px yellow; }
 #installationWrap .button:active { border-top-color: gray; border-left-color: gray; border-right-color: silver; border-bottom-color: silver; text-shadow: none; color: white; }
+
+#loginbox { width: 500px; border: 1px solid black; border-radius: 5px; background-color: white; box-shadow: 5px 5px 10px gray; margin: 100px auto; }
+#loginbox legend { border: 1px solid black; border-radius: 5px; padding: 4px; background-color: white; }
+#loginbox div.loginTableWrap { margin: 10px 30px; }
+#loginbox table.loginTable { width: 100%; border-collapse: collapse; } 
+#loginbox table.loginTable td { padding: 2px; }
+#loginbox table.loginTable td.label { width: 25%; }
+#loginbox table.loginTable td.button { text-align: right; }
+#loginbox table.loginTable td input[type=text],
+#loginbox table.loginTable td input[type=password] { width: 98.5%; border: 1px solid black; border-radius: 3px; height: 16px; padding: 2px; }
+#loginbox table.loginTable td input[type=submit],
+#loginbox table.loginTable td input[type=reset],
+#loginbox table.loginTable td input[type=button],
+#loginbox table.loginTable td button { height: 22px; padding: 2px 6px; border: 1px solid black; border-radius: 3px; background-color: silver; margin: 0 0 0 6px;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+}
+#loginbox table.loginTable td input[type=submit]:hover,
+#loginbox table.loginTable td input[type=reset]:hover,
+#loginbox table.loginTable td input[type=button]:hover,
+#loginbox table.loginTable td button:hover { background-color: white; }
+#loginbox table.loginTable td input[type=submit]:active,
+#loginbox table.loginTable td input[type=reset]:active,
+#loginbox table.loginTable td input[type=button]:active,
+#loginbox table.loginTable td button:active { background-color: gray; }
+#loginbox p { margin: 2px 30px; }

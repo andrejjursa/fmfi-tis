@@ -21,7 +21,7 @@ class Admins_table_row extends Abstract_table_row {
      *
      */                                           
     public function loadByLogin($email){
-        return $this->loadBy('email = ? ', $email);
+        return $this->loadBy('email = ?', $email);
     }
     
     /**

@@ -42,7 +42,7 @@ class Admin extends Abstract_backend_controller {
 		$this->load->model('Logs');
 		
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('email','Email','required|valid_email');
+        $this->form_validation->set_rules('email','E-mail','required|valid_email');
         $this->form_validation->set_rules('password','Heslo','required|min_length[6]|max_length[20]');
         $this->form_validation->set_message('required', '<strong>%s</strong> musí byť vyplnené.');
         $this->form_validation->set_message('valid_email', '<strong>%s</strong> musí byť e-mailová adresa.');
@@ -69,17 +69,17 @@ class Admin extends Abstract_backend_controller {
         redirect(createUri('admin', 'login'));  
     }
     
-    public function forgotten_password(){
+    public function forgotten_password() {
         $this->parser->parse('backend/admin.forgottenPassword.tpl');
     }
     
-    public function send_password_request(){             
+    public function send_password_request() {    
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('email','Email','required|valid_email');
+        $this->form_validation->set_rules('email','E-mail','required|valid_email');
         $this->form_validation->set_message('required', '<strong>%s</strong> musí byť vyplnené.');
         $this->form_validation->set_message('valid_email', '<strong>%s</strong> musí byť e-mailová adresa.');
-        if($this->form_validation->run()){
-            if($this->Admins->adminExists($this->input->post('email'))){
+        if($this->form_validation->run()) {
+            if($this->Admins->adminExists($this->input->post('email'))) {
 			
                   $config = self::getConfigItem('application', 'email');
 
@@ -96,8 +96,7 @@ class Admin extends Abstract_backend_controller {
                   $token = generateToken();
                   $id = $this->Admins->getIdByEmail($this->input->post('email'));  
 				  
-				          //$url = base_url('admin/renew_password/'. $token);
-                          $url = createUri('admin', 'renew_password', array($token));
+                  $url = createUri('admin', 'renew_password', array($token));
 				  
                   $sprava = "Bola zaznamenaná žiadosť o obnovenie Vášho hesla. Ak ste neboli autorom tejto žiadosti môžete e-mail ignorovať.\n";
                   $sprava .= "Pre obnovenie Vášho hesla pokračujte kliknutím na linku nižšie. Tá Vás presmeruje na formulár kde zadáte nové heslo.\n";
@@ -108,6 +107,9 @@ class Admin extends Abstract_backend_controller {
                   $this->email->message($sprava);
                   $this->email->send();
                   $this->parser->parse('backend/admin.succes_sent_mail.tpl');
+            } else {
+                $this->parser->assign('login_error', TRUE);
+                $this->parser->parse('backend/admin.forgottenPassword.tpl');
             }
         }
         else{
@@ -138,7 +140,7 @@ class Admin extends Abstract_backend_controller {
        
         $this->load->library('form_validation');
         $this->form_validation->set_rules('pass','Heslo','required|min_length[6]|max_length[20]');
-        $this->form_validation->set_rules('npass','Potvrdenie Hesla','matches[pass]');
+        $this->form_validation->set_rules('npass','Potvrdenie','required|matches[pass]');
         $this->form_validation->set_message('matches', '<strong>%s</strong> sa musí zhodovat s <strong>%s</strong>.');
         $this->form_validation->set_message('required', '<strong>%s</strong> musí byť vyplnené.');
         $this->form_validation->set_message('min_length', '<strong>%s</strong> musí byť dlhé najmenej <strong>%s</strong> znakov.');
@@ -147,14 +149,12 @@ class Admin extends Abstract_backend_controller {
             if ($this->input->post('pass') == $this->input->post('npass')){
               $this->Admins->updatePassword($this->input->post('id'),$this->input->post('pass'));
               $this->Admins->updateValidToken($this->input->post('id'),'');
-              $this->parser->parse('backend/admin_passchangesucces.tpl');
-            }
-            else {
-				      $this->parser->assign('pass_error', TRUE);
+              $this->parser->parse('backend/admin.passchangesucces.tpl');
+            } else {
+		      $this->parser->assign('pass_error', TRUE);
               $this->parser->parse('backend/admin.renewPassword.tpl');
             }
-        }
-        else {
+        } else {
             $this->parser->parse('backend/admin.renewPassword.tpl');
         }
 
