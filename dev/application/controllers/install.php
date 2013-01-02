@@ -33,12 +33,16 @@ class Install extends My_Controller {
     }
 
     public function index() {
+        $this->configurator->setConfigArray('config', array('encryption_key' => $this->getRandomEncryptionKey(), 'base_url' => $this->getBaseDir(), 'sess_use_database' => false));
+        redirect('install/welcome');
+    }  
+    
+    public function welcome() {
         $this->parser->assign('flash_message', $this->session->flashdata('flash_message'));
         $this->parser->assign('current_step', 'welcome');
         $this->parser->assign('legend', 'Vitajte v inštalácii');
-        $this->configurator->setConfigArray('config', array('encryption_key' => $this->getRandomEncryptionKey(), 'base_url' => $this->getBaseDir()));
         $this->parser->parse('install/index.tpl');
-    }  
+    }
     
     public function database() {
         $this->parser->assign('flash_message', $this->session->flashdata('flash_message'));
@@ -81,11 +85,16 @@ class Install extends My_Controller {
     public function make_database_structure() {
         if ($this->_updateMigrations()) {
             $this->session->set_flashdata('flash_message', array('type' => 'success', 'message' => 'Databáza bola úspešne pripojená a databázová štruktúra vytvorená.'));
-            redirect('install/adminacc');            
+            redirect('install/after_database');            
         } else {
             $this->session->set_flashdata('flash_message', array('type' => 'error', 'message' => 'Nepodarilo sa vytvoriť databázovú štruktúru. Bola databáza prázdna?<br /><br />Popis chyby: ' . $this->migration->error_string()));
             redirect('install/database');
         }
+    }
+    
+    public function after_database() {
+        $this->configurator->setConfigArray('config', array('sess_use_database' => true));
+        redirect('install/adminacc'); 
     }
     
     public function adminacc() {
