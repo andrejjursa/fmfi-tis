@@ -1,0 +1,197 @@
+body{
+	margin: 10px;
+	background-color: #E6E6E5;
+	color: #322f32;
+    font-family: Verdana, Arial;
+    font-size: 14px;
+}
+
+iframe { border: 0 !important; }
+
+a{
+	color: black;
+}
+#dbackup a:hover{
+	color:#E6E6E5;
+	background-color: black;
+	text-decoration:none;
+}
+
+#flogin{
+	font-family: "Courier New", Courier, monospace;
+}
+
+.notSavedButton { color: green; border-color: green; background-color: #D5FFC8; background-image: none;
+    transition: all 0.3s ease-in-out; 
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+}
+.notSavedButton:hover { background-color: #9AFF88; background-image: none; }
+.saveButtonError { color: red; border-color: red; background-color: white; background-image: none;
+    transition: all 0.3s ease-in-out; 
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+}
+.saveButtonError:hover { background-color: red; color: black; border-color: black; background-image: none; }
+.deleteRecord { color: darkred !important; border-color: darkred !important; background-image: none !important; background-color: #FFD8D8 !important;
+    transition: all 0.3s ease-in-out; 
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+}
+.deleteRecord:hover { background-color: #FF8585 !important; background-image: none; }
+input.notValid { border-color: red; color: red; }
+textarea.notValid { border-color: red; color: red; }
+
+div.colorpicker div.clear {
+    clear: both;
+}
+
+div.colorpicker div.colorpreviewbox {
+    float: left;
+    width: 100px;
+    height: 100px;
+    border: 1px solid silver;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 100px;
+}
+
+div.colorpicker div.colorsliders {
+    margin-left: 120px;
+}
+
+div.colorpicker div.slider_wrapper {
+    height: 33px;
+}
+
+div.colorpicker div.slider_red,
+div.colorpicker div.slider_green,
+div.colorpicker div.slider_blue {
+    width: 300px;
+    margin: 10px 0;
+    display: inline-block;
+}
+
+div.colorpicker div.slider_red .ui-slider-range { background: red; }
+div.colorpicker div.slider_red .ui-slider-handle { border-color: red; }
+div.colorpicker div.slider_green .ui-slider-range { background: green; }
+div.colorpicker div.slider_green .ui-slider-handle { border-color: green; }
+div.colorpicker div.slider_blue .ui-slider-range { background: blue; }
+div.colorpicker div.slider_blue .ui-slider-handle { border-color: blue; }
+
+#editor_grid_table { border: 1px solid black; border-collapse: collapse; margin: 0 10px 10px 0; box-shadow: 5px 5px 10px gray; }
+#editor_grid_table thead tr { background-color: #F8F8F8; }
+#editor_grid_table tfoot tr { background-color: silver; text-align: right; }
+#editor_grid_table td { border: 1px solid black; }
+#editor_grid_table td, #editor_grid_table th { padding: 2px; }
+#editor_grid_table .bool_field .yes { color: green; }
+#editor_grid_table .bool_field .no { color: red; }
+tr.grid_row_light,
+tr.grid_row_dark { 
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+}
+tr.grid_row_light { background-color: #F8F8F8; }
+tr.grid_row_dark { background-color: #C4C4C4; }
+tr.grid_row_light:hover,
+tr.grid_row_dark:hover { background-color: #FFE586; }
+
+#editor_tabs { margin-right: 10px; margin-bottom: 10px; box-shadow: 5px 5px 10px gray; }
+#editor_items fieldset.editor_item { margin-right: 10px; margin-bottom: 10px; box-shadow: 5px 5px 10px gray; }
+
+#editor_tabs div.highlight_field,
+#editor_items div.highlight_field {
+    transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+} 
+
+label.error { color: red; }
+.mm_relation_container ul li { background-color: white; border: 1px solid silver; padding: 2px; margin: 1px 0; border-radius: 4px; }
+.mm_relation_container ul li.sortable-highlight { height: 20px; background-color: #D0FFA8; border: 2px solid black; }
+#editor_items fieldset.editor_item { border: 1px solid silver; border-radius: 4px; margin-top: 10px; }
+#editor_items fieldset.editor_item legend.editor_item { border: 1px solid silver; border-radius: 4px; padding: 4px 10px; font-size: 1.2em; }
+div.highlight_field:hover { background-color: #F7F6CD; box-shadow: 0 0 5px 5px #F7F6CD; }
+
+fieldset.logs,
+fieldset.logs fieldset { border: 1px solid black; border-radius: 5px; background-color: white; box-shadow: none; }
+fieldset.logs { box-shadow: 5px 5px 10px gray; }
+fieldset.logs legend { border: 1px solid black; border-radius: 5px; padding: 4px; background-color: white; }
+fieldset.logs div.row { clear: both; min-width: 900px; }
+fieldset.logs div.row div.label { width: 200px; text-align: right; font-weight: bold; float: left; }
+fieldset.logs div.row div.content { margin-left: 210px; }
+
+table.formtable { width: 100%; border-collapse: collapse; }
+table.formtable td { padding: 4px; }
+table.formtable td.label { width: 220px; }
+table.formtable td.label label { font-weight: bold; cursor: help; }
+table.formtable td.errors { width: 200px; }
+table.formtable .uploadify { display: inline-block; margin-right: 10px; }
+table.formtable td select.form_field_select_box { width: 100%; }
+input.form_field_text_input { width: 100%; }
+
+fieldset.config { border: 1px solid black; border-radius: 5px; background-color: white; box-shadow: 5px 5px 10px gray; margin-bottom: 15px; margin-top: 5px; }
+fieldset.config legend { border: 1px solid black; border-radius: 5px; padding: 4px; background-color: white; }
+fieldset.config table.config_table { width: 100%; border-collapse: collapse; }
+fieldset.config table.config_table td { padding: 2px; }
+fieldset.config table.config_table td.label { width: 220px; }
+fieldset.config table.config_table td.error { width: 200px; }
+fieldset.config table.config_table td.error span { color: red; padding-left: 5px; display: inline-block; }
+fieldset.config table.config_table td.label label { font-weight: bold; cursor: help; }
+fieldset.config table.config_table td input.width_75pr,
+fieldset.config table.config_table td select.width_75pr { width: 75%; }
+fieldset.config table.config_table td input.width_100pr,
+fieldset.config table.config_table td select.width_100pr { width: 100%; }
+
+#installationSteps { list-style-type: none; margin: 0; padding: 0; }
+#installationSteps li { float: left; margin: 0; padding: 5px; }
+#installationSteps li.step { border-top: 1px solid silver; border-left: 1px solid silver; border-right: 1px solid gray; border-bottom: 1px solid gray; background-color: black; color: silver; }
+#installationSteps li.step.current { color: yellow; text-shadow: 0px 0px 5px yellow; }
+
+#installationWrap { clear: both; }
+#installationFieldset { margin: 60px 0 0 0; border: 1px solid black; border-radius: 5px; box-shadow: 5px 5px 10px black; background-color: white; }
+#installationLegend { border: 1px solid black; border-radius: 5px; padding: 5px; background-color: white; }
+
+#installationWrap .button { display: inline-block; border-top: 2px solid silver; border-left: 2px solid silver; border-right: 2px solid gray; border-bottom: 2px solid gray; background-color: black; color: silver; padding: 4px; border-radius: 5px; text-decoration: none; transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; }
+#installationWrap .button:hover { color: yellow; text-shadow: 0px 0px 5px yellow; }
+#installationWrap .button:active { border-top-color: gray; border-left-color: gray; border-right-color: silver; border-bottom-color: silver; text-shadow: none; color: white; }
+
+#loginbox { width: 500px; border: 1px solid black; border-radius: 5px; background-color: white; box-shadow: 5px 5px 10px gray; margin: 100px auto; }
+#loginbox legend { border: 1px solid black; border-radius: 5px; padding: 4px; background-color: white; }
+#loginbox div.loginTableWrap { margin: 10px 30px; }
+#loginbox table.loginTable { width: 100%; border-collapse: collapse; } 
+#loginbox table.loginTable td { padding: 2px; }
+#loginbox table.loginTable td.label { width: 25%; }
+#loginbox table.loginTable td.button { text-align: right; }
+#loginbox table.loginTable td input[type=text],
+#loginbox table.loginTable td input[type=password] { width: 98.5%; border: 1px solid black; border-radius: 3px; height: 16px; padding: 2px; }
+#loginbox table.loginTable td input[type=submit],
+#loginbox table.loginTable td input[type=reset],
+#loginbox table.loginTable td input[type=button],
+#loginbox table.loginTable td button { height: 22px; padding: 2px 6px; border: 1px solid black; border-radius: 3px; background-color: silver; margin: 0 0 0 6px;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+}
+#loginbox table.loginTable td input[type=submit]:hover,
+#loginbox table.loginTable td input[type=reset]:hover,
+#loginbox table.loginTable td input[type=button]:hover,
+#loginbox table.loginTable td button:hover { background-color: white; }
+#loginbox table.loginTable td input[type=submit]:active,
+#loginbox table.loginTable td input[type=reset]:active,
+#loginbox table.loginTable td input[type=button]:active,
+#loginbox table.loginTable td button:active { background-color: gray; }
+#loginbox p { margin: 2px 30px; }

@@ -1,0 +1,1 @@
+<div class="bool_field">{if $row->data($gridField->getField())}<span class="yes">Áno</span>{else}<span class="no">Nie</span>{/if}</div>
