@@ -14,7 +14,7 @@
 require_once APPPATH . 'core/abstract_frontend_controller.php';
 require_once APPPATH . 'core/abstract_backend_controller.php';
 
-class My_Controller extends CI_Controller {
+class MY_Controller extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
