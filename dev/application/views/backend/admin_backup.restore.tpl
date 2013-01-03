@@ -1,4 +1,4 @@
-﻿{extends file='layouts/backend.tpl'}
+{extends file='layouts/backend.tpl'}
 
 {block content}
 <h2>Obnova aplikácie</h2>
@@ -24,7 +24,7 @@
         <div class="row">
             <div class="label">Obnoviť zo zálohy:</div>
 			{foreach $backups as $backup}
-            <div class="content"><a href="{createUri controller='admin_backup' action='restore' params=[$backup]}">{$backup}</a></div>
+				<div class="content"><a href="{createUri controller='admin_backup' action='restore' params=[$backup]}" onclick="return confirm('Naozaj chcete obnoviť túto zálohu?')">{$backup}</a></div>
 			{foreachelse}
 			<div class="content">Žiadne zálohy nie sú dostupné.</div>
 			{/foreach}
