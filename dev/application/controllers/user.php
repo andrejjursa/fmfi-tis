@@ -157,6 +157,7 @@
             
             $sprava = "Vžiadali ste si zmenu email-u \n\n";
             $sprava .= "Pre dokončenie zmeny klilnite na: \n<a href='$url'>$url</a>\n";
+            $sprava .= "\nPre dokončenie validácie emailu musíte byť prihlásený so starým emailom.\n";
             $sprava .= "\n V prípade, že ste si tento email nevyžiadali ignorujte ho.";
                 
             $this->email->message($sprava); 
