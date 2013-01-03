@@ -33,7 +33,7 @@
 		<div style="clear: both;"></div>
 	</div>
 	<div id="footer">
-		&copy; Fyzika {date("Y")}
+		&copy; {date("Y")}
 	</div>
 </body>
 </html>
