@@ -3,7 +3,7 @@
         <td class="label"><label for="{$field->getFieldHtmlID()}" title="{$field->getFieldHint()}">{$field->getFieldLabel()}:</label></td>
         <td><div class="error_container"></div></td>
     </tr><tr>
-        <td colspan="2"><textarea class="tinymce" style="width: 100%; height: {$field->getNumberOfRows() * 18}px" rows="{$field->getNumberOfRows()}" name="data[{$field->getField()}]" id="{$field->getFieldHtmlID()}">{$smarty.post.data[$field->getField()]|default:$data[$field->getField()]|default:$field->getDefaultText()|escape:'html'}</textarea></td>
+        <td colspan="2"><textarea class="tinymce" style="width: 100%; height: {$field->getNumberOfRows() * 18.1}px" name="data[{$field->getField()}]" id="{$field->getFieldHtmlID()}">{$smarty.post.data[$field->getField()]|default:$data[$field->getField()]|default:$field->getDefaultText()|escape:'html'}</textarea></td>
     </tr></tbody></table>
     <script type="text/javascript">
         jQuery(document).ready(function($){
