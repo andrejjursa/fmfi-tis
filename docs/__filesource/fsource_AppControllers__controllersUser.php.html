@@ -3,13 +3,13 @@
   <html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
 			<!-- template designed by Marco Von Ballmoos -->
-			<title>File Source for User.php</title>
+			<title>File Source for user.php</title>
 			<link rel="stylesheet" href="../media/stylesheet.css" />
 			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
 		</head>
 		<body>
-						<h1>Source for file User.php</h1>
-<p>Documentation is available at <a href="../AppControllers/_controllers---User.php.html">User.php</a></p>
+						<h1>Source for file user.php</h1>
+<p>Documentation is available at <a href="../AppControllers/_controllers---user.php.html">user.php</a></p>
 <div class="src-code">
 <div class="src-code"><ol><li><div class="src-line"><a name="a1"></a>﻿<span class="src-php">&lt;?php&nbsp;</span></div></li>
 <li><div class="src-line"><a name="a2"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
@@ -168,28 +168,29 @@
 <li><div class="src-line"><a name="a155"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$token&nbsp;</span>=&nbsp;<a href="../AppHelpers/_helpers---application_helper.php.html#functiongenerateToken">generateToken</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line"><a name="a156"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$url&nbsp;</span>=&nbsp;<a href="../AppHelpers/_helpers---application_helper.php.html#functioncreateUri">createUri</a><span class="src-sym">(</span><span class="src-str">&quot;user&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-str">&quot;validateEmail&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../AppControllers/User.html#var$user_id">user_id</a><span class="src-sym">,&nbsp;</span><span class="src-var">$token</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line"><a name="a157"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a158"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sprava&nbsp;</span>=&nbsp;<span class="src-str">&quot;Vžiadali&nbsp;ste&nbsp;si&nbsp;zmenu&nbsp;email-u&nbsp;\n\n&quot;</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line"><a name="a159"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sprava&nbsp;</span>.=&nbsp;<span class="src-str">&quot;</span><span class="src-str">Pre&nbsp;dokončenie&nbsp;zmeny&nbsp;klilnite&nbsp;na:&nbsp;\n&lt;a&nbsp;href='<span class="src-var">$url</span>'&gt;<span class="src-var">$url</span>&lt;/a&gt;\n</span><span class="src-str">&quot;</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line"><a name="a160"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sprava&nbsp;</span>.=&nbsp;<span class="src-str">&quot;\n&nbsp;V&nbsp;prípade,&nbsp;že&nbsp;ste&nbsp;si&nbsp;tento&nbsp;email&nbsp;nevyžiadali&nbsp;ignorujte&nbsp;ho.&quot;</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line"><a name="a161"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a162"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">email</span><span class="src-sym">-&gt;</span><span class="src-id">message</span><span class="src-sym">(</span><span class="src-var">$sprava</span><span class="src-sym">)</span><span class="src-sym">;&nbsp;</span></div></li>
-<li><div class="src-line"><a name="a163"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a164"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">email</span><span class="src-sym">-&gt;</span><span class="src-id">send</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line"><a name="a165"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a166"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//echo&nbsp;$this-&gt;email-&gt;print_debugger();</span></div></li>
-<li><div class="src-line"><a name="a167"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a168"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//mail($email,&nbsp;&quot;sprava&quot;,&nbsp;$sprava);</span></div></li>
-<li><div class="src-line"><a name="a169"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a170"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">Admins</span><span class="src-sym">-&gt;</span><span class="src-id">updateNewEmail</span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../AppControllers/User.html#var$user_id">user_id</a><span class="src-sym">,&nbsp;</span><span class="src-var">$email</span><span class="src-sym">,&nbsp;</span><span class="src-var">$token</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line"><a name="a171"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a172"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
-<li><div class="src-line"><a name="a173"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a158"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sprava&nbsp;</span>=&nbsp;<span class="src-str">&quot;Vžiadali&nbsp;ste&nbsp;si&nbsp;zmenu&nbsp;email-u&nbsp;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a159"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sprava&nbsp;</span>.=&nbsp;<span class="src-str">&quot;</span><span class="src-str">Pre&nbsp;dokončenie&nbsp;zmeny&nbsp;klilnite&nbsp;na:&nbsp;\n&lt;a&nbsp;href='<span class="src-var">$url</span>'&gt;<span class="src-var">$url</span>&lt;/a&gt;&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;</span><span class="src-str">&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a160"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sprava&nbsp;</span>.=&nbsp;<span class="src-str">&quot;Pre&nbsp;dokončenie&nbsp;validácie&nbsp;emailu&nbsp;musíte&nbsp;byť&nbsp;prihlásený&nbsp;so&nbsp;starým&nbsp;emailom.&lt;br&nbsp;/&gt;&lt;br&nbsp;/&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a161"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sprava&nbsp;</span>.=&nbsp;<span class="src-str">&quot;V&nbsp;prípade,&nbsp;že&nbsp;ste&nbsp;si&nbsp;tento&nbsp;email&nbsp;nevyžiadali&nbsp;ignorujte&nbsp;ho.&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a162"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a163"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">email</span><span class="src-sym">-&gt;</span><span class="src-id">message</span><span class="src-sym">(</span><span class="src-var">$sprava</span><span class="src-sym">)</span><span class="src-sym">;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a164"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a165"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">email</span><span class="src-sym">-&gt;</span><span class="src-id">send</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a166"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a167"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//echo&nbsp;$this-&gt;email-&gt;print_debugger();</span></div></li>
+<li><div class="src-line"><a name="a168"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a169"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//mail($email,&nbsp;&quot;sprava&quot;,&nbsp;$sprava);</span></div></li>
+<li><div class="src-line"><a name="a170"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a171"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">Admins</span><span class="src-sym">-&gt;</span><span class="src-id">updateNewEmail</span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../AppControllers/User.html#var$user_id">user_id</a><span class="src-sym">,&nbsp;</span><span class="src-var">$email</span><span class="src-sym">,&nbsp;</span><span class="src-var">$token</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a172"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a173"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
 <li><div class="src-line"><a name="a174"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a175"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a175"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a176"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
 </ol></div>
 </div>
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 02 Jan 2013 17:37:03 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Thu, 03 Jan 2013 14:04:54 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</body>
 </html>
