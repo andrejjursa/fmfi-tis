@@ -7,7 +7,7 @@
             {if !$id}
                 <p>Táto položka sa dá upravovať až po uložení záznamu.</p>
             {else}
-                <div id="{$field->getFieldHtmlID()}_records">
+                <div id="{$field->getFieldHtmlID()}_records" class="editor_dynamic_iframes">
                     {foreach $data[$field->getField()] as $record_id}
                     <iframe src="{createUri controller='admin_editor' action='editRecordIframe' params=[$field->getForeignTable(),$record_id,$id,$sql_table]}" style="width: 100%; backgound-color: white; border: 1px solid silver;"></iframe>
                     {/foreach}

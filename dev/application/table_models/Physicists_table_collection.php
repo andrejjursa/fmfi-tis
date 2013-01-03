@@ -147,11 +147,11 @@ class Physicists_table_collection extends Abstract_table_collection {
         $this->addEditorTab($general);
         
         $texts = editorTab::getNewEditorTab();
-        $texts->setName('Informácie');
+        $texts->setName('Textové informácie');
         
         $field_description = new editorFieldTinymce();
         $field_description->setField('description')->setFieldLabel('Detailný text o fyzikovi')->setFieldHint('Sem vložte text popisujúci fyzikov život a prácu.')
-            ->setRules(array('required' => true, 'messages' => array('required' => 'Je potrebné vyplniť túto položku.')));
+            ->setRules(array('required' => true, 'messages' => array('required' => 'Je potrebné vyplniť túto položku.')))->setNumberOfRows(10);
         $texts->addField($field_description);
         
         $field_short_description = new editorFieldTinymce();
