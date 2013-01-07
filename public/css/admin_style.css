@@ -8,6 +8,8 @@ body{
 
 iframe { border: 0 !important; }
 
+h1 a { color: #322F32; text-decoration: none; }
+
 a{
 	color: black;
 }
@@ -195,3 +197,12 @@ fieldset.config table.config_table td select.width_100pr { width: 100%; }
 #loginbox table.loginTable td input[type=button]:active,
 #loginbox table.loginTable td button:active { background-color: gray; }
 #loginbox p { margin: 2px 30px; }
+
+#dashboard {  }
+#dashboard p.welcome { font-size: 2em; font-weight: bold; }
+#dashboard fieldset { border: 1px solid black; border-radius: 5px; background-color: white; box-shadow: 5px 5px 10px gray; margin-bottom: 15px; margin-top: 5px; }
+#dashboard fieldset legend { border: 1px solid black; border-radius: 5px; padding: 4px; background-color: white; }
+#dashboard table.statistics { border-collapse: collapse; }
+#dashboard table.statistics td { padding: 5px; }
+#dashboard table.statistics td.header { text-transform: uppercase; }
+#dashboard table.statistics th { text-align: left; font-weight: bold; padding: 5px; }

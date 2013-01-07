@@ -33,6 +33,9 @@ class Admin_editor extends Abstract_backend_controller {
                 $this->parser->assign('current_rows_per_page', $this->_numberOfRowsPerPage());
                 $this->parser->assign('max_pages', $max_pages);
                 $this->parser->assign('rows_per_pages_options', self::getConfigItem('application', 'grid_rows_per_page_possibilities'));
+                $this->parser->assign('no_sorting', FALSE);
+                $this->parser->assign('no_pagination', FALSE);
+                $this->parser->assign('no_header', FALSE);
                 
                 $this->parser->assign('rows', $table_collection->execute()->get());
             } else {
@@ -44,6 +47,45 @@ class Admin_editor extends Abstract_backend_controller {
         $this->_assignTemplateAdditionals();
         
         $this->parser->parse('backend/admin_editor.index.tpl', array());
+    }
+    
+    public function ajaxInlineGrid($table = NULL, $count = 5, $orderBy = 'id-asc') {
+        $table_collection = $this->load->table_collection($table);
+        $this->output->set_content_type('application/json');
+        if ($table_collection == NULL) {
+            $this->output->set_output(json_encode($this->parser->parse('partials/admin_editor.index.errors.tpl', array('error' => 'no_table'), TRUE)));
+        } else {
+            $grid_settings = $table_collection->getGridSettings();
+            if ($grid_settings['enabled']) {
+                $this->parser->assign('sql_table', $table);
+                $this->parser->assign('grid_settings', $grid_settings);
+                
+                $countOfRecords = intval($count) == 0 ? 5 : intval($count);
+                
+                $max_pages = 1;
+                
+                $table_collection->filterExcludeIds($grid_settings['excludet_ids']);
+                
+                $orderByField = 'id';
+                $orderByDirection = 'asc';
+                list($orderByField, $orderByDirection) = explode('-', $orderBy, 2);
+                $table_collection->orderBy($orderByField, $orderByDirection);
+                $table_collection->limit($countOfRecords);
+                
+                $this->parser->assign('current_page', 1);
+                $this->parser->assign('current_rows_per_page', $countOfRecords);
+                $this->parser->assign('max_pages', $max_pages);
+                $this->parser->assign('rows_per_pages_options', $countOfRecords);
+                $this->parser->assign('no_sorting', TRUE);
+                $this->parser->assign('no_pagination', TRUE);
+                $this->parser->assign('no_header', TRUE);
+                
+                $this->parser->assign('rows', $table_collection->execute()->get());
+                $this->output->set_output(json_encode($this->parser->parse('backend/admin_editor.ajaxInlineGrid.tpl', array(), TRUE)));
+            } else {
+                $this->output->set_output(json_encode($this->parser->parse('partials/admin_editor.index.errors.tpl', array('error' => 'disabled'), TRUE)));
+            }
+        }
     }
     
     public function newRecord($table = NULL) {

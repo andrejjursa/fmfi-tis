@@ -23,7 +23,7 @@
 {/if}
 {/function}
 <body>
-<h1>A D M I N I S T R Á C I A</h1>
+<h1><a href="{createUri controller="admin" action="dashboard"}">A D M I N I S T R Á C I A</a></h1>
 {adminmenu menu=$adminmenu}
 {block name="content"}
 {/block}
