@@ -17,8 +17,9 @@ class Configurator extends CI_Model {
      */
     public function getConfigArray($config) {
         if (file_exists(APPPATH . 'config/' . $config . '.php')) {
-            $this->config->load($config, TRUE);
-            return $this->config->config[$config];    
+            $configObject = new CI_Config();
+            $configObject->load($config, TRUE);
+            return $configObject->config[$config];    
         }
         return NULL;
     }
@@ -31,17 +32,17 @@ class Configurator extends CI_Model {
      * @return boolean returns TRUE if file is writen, FALSE otherwise.
      */
     public function setConfigArray($config, $data) {
-        $file = APPPATH . 'config/' . $config . '.php';
-        if (file_exists($file)) {
-            $this->config->load($config, TRUE);
-            $this->config->config[$config] = $this->mergeArray($this->config->config[$config], $data);
+        $original_config_options = $this->getConfigArray($config);
+        if (!is_null($original_config_options)) {
+            $config_data = $this->mergeArray($original_config_options, $data);
             
+            $file = APPPATH . 'config/' . $config . '.php';
             $tokens = $this->getConfigFileTokens($file);
             if (is_null($tokens)) { return FALSE; }
             $arangement = $this->getConfigFileArangementFromTokens($tokens);
             
             try {
-                $content = $this->makeConfigFileContent($this->config->config[$config], $arangement);
+                $content = $this->makeConfigFileContent($config_data, $arangement);
                 $f = fopen($file, 'w');
                 fputs($f, $content);
                 fclose($f);

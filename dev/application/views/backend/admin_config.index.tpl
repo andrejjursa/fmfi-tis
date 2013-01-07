@@ -24,6 +24,13 @@
                 <td><input type="text" maxlength="32" name="config[config][encryption_key]" value="{$smarty.post.config.config.encryption_key|default:$config.config.encryption_key|escape:'html'}" size="32" id="config_config_encryption_key_id" class="width_100pr" /> <input type="button" value="Vygenerovať kľúč" id="config_config_encryption_key_generator_id" /></td>
                 <td class="error">{form_error field='config[config][encryption_key]' prewrap='<span>' postwrap='</span>'}</td>
             </tr>
+            <tr>
+                <td class="label"><label for="config_smarty_compile_check_id" title="Pri vývoji programového kódu tejto stránky je programátorom nápomocné, ak je táto funkcia zapnutá. V opačnom prípade, ak nie je programový kód menený, je dobré túto funkciu vypnúť a zlepšiť tak reakciu serveru pri prechádzaní stránkami.">Autokompilácia šablón:</label></td>
+                <td><select name="config[smarty][compile_check]" id="config_smarty_compile_check_id" size="1" class="width_100pr">
+                    {html_options options=[0 => 'Vypnúť - Zrýchly sa odozva stránok.', 1 => 'Zapnúť - Spomalý sa odozva stránok, zapínať len pri vývoji programového kódu stránok.'] selected=$smarty.post.config.smarty.compile_check|default:$config.smarty.compile_check}
+                </select> <input type="button" value="Vyčistiť skompilované šablóny" id="config_smarty_compile_check_clear_all_compiled_id" /></td>
+                <td class="error">{form_error field='config[smarty][compile_check]' prewrap='<span>' postwrap='</span>'}</td>
+            </tr>
         </tbody></table>
     </fieldset>
     <fieldset class="config">

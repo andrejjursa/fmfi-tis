@@ -43,6 +43,9 @@ class CI_Smarty extends Smarty {
         // How long to cache templates for
         $this->cache_lifetime = config_item('cache_lifetime');
         
+        // If we have to check for new template modification each time the template is displayed.
+        $this->compile_check = config_item('compile_check');
+        
         // Disable Smarty security policy
         $this->disableSecurity();
         

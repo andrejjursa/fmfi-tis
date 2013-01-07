@@ -15,6 +15,8 @@ class Admin_config extends Abstract_backend_controller {
         $config['application'] = $this->configurator->getConfigArray('application');
         $config['application']['rewrite_enabled'] = intval($config['application']['rewrite_enabled']);
         $config['config'] = $this->configurator->getConfigArray('config');
+        $config['smarty'] = $this->configurator->getConfigArray('smarty');
+        $config['smarty']['compile_check'] = intval($config['smarty']['compile_check']);
         $this->parser->assign('config', $config);
         
         $this->_addTemplateJs('admin_config/index.js');
@@ -29,7 +31,8 @@ class Admin_config extends Abstract_backend_controller {
         $this->load->library('form_validation');
         $fv = $this->form_validation;
         
-        $fv->set_rules('config[application][rewrite_enabled]', 'Rewrite engine', 'required|callback__valid_rewrite_enabled');
+        $fv->set_rules('config[application][rewrite_enabled]', 'Rewrite engine', 'required|callback__valid_boolean_value');
+        $fv->set_rules('config[smarty][compile_check]', 'Rewrite engine', 'required|callback__valid_boolean_value');
         $fv->set_rules('config[config][encryption_key]', 'Bezpečnostný kryptovací kľúč', 'required|alpha_numeric|exact_length[32]');
         $fv->set_rules('config[application][email][protocol]', 'E-mailový protokol', 'required|callback__valid_email_protocol');
         $fv->set_rules('config[application][email_from]', 'E-mail odchádzajúcej pošty', 'required|valid_email');
@@ -38,14 +41,17 @@ class Admin_config extends Abstract_backend_controller {
         $fv->set_message('valid_email', 'Položka %s musí byť platná e-mailová adresa.');
         $fv->set_message('alpha_numeric', 'Položka %s je môže obsahovať iba alfa-numerické znaky.');
         $fv->set_message('exact_length', 'Položka %s musí mať presne %s znakov.');
-        $fv->set_message('_valid_rewrite_enabled', 'Položka %s musí mať hodnotu 1 alebo 0.');
+        $fv->set_message('_valid_boolean_value', 'Položka %s musí mať hodnotu 1 alebo 0.');
         $fv->set_message('_valid_email_protocol', 'Položka %s musí mať hodnotu smtp alebo mail.');
         
         if ($fv->run()) {
             $this->load->model('configurator');
             $config = $this->input->post('config');
             $config['application']['rewrite_enabled'] = (bool)$config['application']['rewrite_enabled'];
-            if ($this->configurator->setConfigArray('config', $config['config']) && $this->configurator->setConfigArray('application', $config['application'])) {
+            $config['smarty']['compile_check'] = (bool)$config['smarty']['compile_check'];
+            if ($this->configurator->setConfigArray('config', $config['config']) && 
+                $this->configurator->setConfigArray('application', $config['application']) &&
+                $this->configurator->setConfigArray('smarty', $config['smarty'])) {
                 $this->session->set_flashdata('flash_message', array('type' => 'success', 'message' => 'Dáta boli úspešne úložené.'));
             } else {
                 $this->session->set_flashdata('flash_message', array('type' => 'error', 'message' => 'Niektoré dáta sa nepodarilo uložiť.'));
@@ -64,7 +70,7 @@ class Admin_config extends Abstract_backend_controller {
         return FALSE;
     }
     
-    public function _valid_rewrite_enabled($value) {
+    public function _valid_boolean_value($value) {
         if ($value == 1 || $value == 0 || $value === TRUE || $value === FALSE) {
             return TRUE;
         }
@@ -118,6 +124,10 @@ class Admin_config extends Abstract_backend_controller {
         
         $this->output->set_content_type('application/json');
         $this->output->set_output(json_encode(array('type' => $type, 'message' => $message)));
+    }
+    
+    public function clearCompiledTemplates() {
+        $this->parser->clearCompiledTemplate();
     }
     
 }
