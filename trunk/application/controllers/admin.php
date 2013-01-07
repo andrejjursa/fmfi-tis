@@ -32,6 +32,21 @@ class Admin extends Abstract_backend_controller {
     }
   
     public function dashboard() {
+        $physicists = $this->load->table_collection('physicists');
+        $this->parser->assign('physicists_count', $physicists->count());
+        $inventions = $this->load->table_collection('inventions');
+        $this->parser->assign('inventions_count', $inventions->count());
+        $periods = $this->load->table_collection('periods');
+        $this->parser->assign('periods_count', $periods->count());
+        $miniapps = $this->load->table_collection('miniapps');
+        $this->parser->assign('miniapps_count', $miniapps->count());
+        $images = $this->load->table_collection('images');
+        $this->parser->assign('images_count', $images->count());
+        
+        $this->_addTemplateJs('admin_editor/index.js');
+        $this->_addTemplateJs('admin/dashboard.js');
+        $this->_assignTemplateAdditionals();
+        
         $this->parser->parse('backend/admin.dashboard.tpl');
     }
   

@@ -1,5 +1,5 @@
 {$gridField->getName()}
-{if $gridField->getSortable()}
+{if !$no_sorting && $gridField->getSortable()}
 <span class="sortBy" style="display: inline-block">
     <form action="{createUri controller='admin_editor' action='index' params=[$sql_table]}" method="post">
         <input type="hidden" name="paginate[page]" value="{$current_page}" />

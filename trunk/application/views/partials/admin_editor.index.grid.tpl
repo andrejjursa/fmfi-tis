@@ -1,4 +1,4 @@
-﻿<h2>{$gridTableName}</h2>
+﻿{if !$no_header}<h2>{$gridTableName}</h2>{/if}
 {if $gridOperations.new_record}
 <div style="margin-bottom: 10px;"><a href="{createUri controller='admin_editor' action='newRecord' params=[$sql_table]}" class="button">{$gridOperations.new_record_title|default:'Nový záznam'}</a></div>
 {/if}
@@ -56,10 +56,12 @@
         {/foreach}
     </tbody>
     <tfoot>
+        {if !$no_pagination}
         <tr>
             <td colspan="{$gridFields|count + 1}">
             {include file='partials/admin_editor.index.grid.paginator.tpl' inline}
             </td>
         </tr>
+        {/if}
     </tfoot>
 </table>
