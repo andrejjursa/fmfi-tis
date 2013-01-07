@@ -16,6 +16,9 @@
 // Smarty caching enabled by default unless explicitly set to FALSE
 $config['cache_status']         = FALSE;
 
+// Smarty will test compiled template agains template file each time it is displayed. Default is TRUE
+$config['compile_check']        = TRUE;
+
 // The path to the themes
 // Default is implied root directory/themes/
 $config['theme_path'] = 'themes/';
