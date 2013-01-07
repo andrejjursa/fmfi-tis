@@ -5,10 +5,16 @@
  */
 class Admin_backup extends Abstract_backend_controller {
 
+	public function __construct() {
+		parent::__construct();
+		$this->load->database();
+	}
+
 	public function index(){
 		$backups = scandir(self::getConfigItem("application", "backup_path"));
 		$backups = array_slice($backups, 2);
 		sort($backups);
+		$backups = array_reverse($backups);
 		$this->parser->assign("backups", $backups);
 		$this->parser->parse("backend/admin_backup.index.tpl");
 	}
@@ -55,6 +61,7 @@ class Admin_backup extends Abstract_backend_controller {
 		$backups = scandir(self::getConfigItem("application", "backup_path"));
 		$backups = array_slice($backups, 2);
 		sort($backups);
+		$backups = array_reverse($backups);
 		$this->parser->assign("backups", $backups);
 		
 		if((!$_FILES || !$_FILES["file"] || !$_FILES["file"]["tmp_name"]) && (!$fileName || !is_file(self::getConfigItem("application", "backup_path") . $fileName))){
