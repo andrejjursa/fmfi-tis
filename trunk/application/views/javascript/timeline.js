@@ -61,7 +61,7 @@ $(document).ready(function(){
             }
         }
         if (info == '') {
-            info = '<p>Žiadny fyzici v tomto roku.</p>';
+            info = '<p>Žiadni fyzici v tomto roku.</p>';
         }
         $('#timeline-info .physicists').html(info);
     }
