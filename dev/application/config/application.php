@@ -56,14 +56,14 @@ $config['backup_path'] = 'application/backup/';
 |--------------------------------------------------------------------------
 */
 $config['email']['protocol'] = 'smtp';
-$config['email']['smtp_host'] = 'ssl://priso.no-ip.org';
-$config['email']['smtp_port'] = '465';
-$config['email']['smtp_user'] = 'tis@priso.no-ip.org';
-$config['email']['smtp_pass'] = 'Fmf1-t1s';
+$config['email']['smtp_host'] = 'smtp.websupport.sk';
+$config['email']['smtp_port'] = '25';
+$config['email']['smtp_user'] = 'tis@thelambda.sk';
+$config['email']['smtp_pass'] = 't1sHeslo';
 $config['email']['mailtype'] = 'html';
 $config['email']['charset'] = 'utf-8';
 $config['email']['wordwrap'] = true;
-$config['email_from'] = 'tis@priso.no-ip.org';
+$config['email_from'] = 'tis@thelambda.sk';
 $config['email_from_name'] = 'Administrácia systému';
 /* End of file application.php */
 /* Location: ./application/config/application.php */

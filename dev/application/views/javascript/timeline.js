@@ -111,5 +111,7 @@ $(document).ready(function(){
     
     $('#period_selector').bind('change', updatePeriod);
     
+    $('#periodTabs').tabs();
+    
 });
 {/nocache}

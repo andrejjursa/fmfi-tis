@@ -1,5 +1,7 @@
 <?php if (!defined('APPPATH')) { die('No direct access allowed ...'); }
 
+define('INVALID_YEAR', '_');
+
 /**
  * @package AppControllers
  */
@@ -17,56 +19,63 @@ class Timeline extends Abstract_frontend_controller {
      * Displays page with timeline. Year on timeline will be set to its minimum as well
      * as list of physicists and inventions from this minimum year.
      */
-    public function index($year = -1, $period = NULL) {
+    public function index($year = INVALID_YEAR, $period = NULL) {
         $periods_table = $this->load->table_collection('periods');
         $periods_table->orderBy('start_year', 'asc')->execute();
         
         $periods = $periods_table->get();
-        $current_period = (!is_null($period) && $period > 0) ? intval($period) : intval(@$periods[0]->getId());
-        
-        $this->parser->assign('periods', $periods);
-        $this->parser->assign('current_period', $current_period);
-        
-        $current_period_table = $this->load->table_row('periods');
-        $current_period_table->load($current_period);
-        
-        $minYear = $current_period_table->getStart_year();
-        $maxYear = $current_period_table->getEnd_year();
-        $maxYear = $maxYear >= 9999 ? date('Y') : $maxYear;
-		
-		$year = (int) $year;
-		if($year < $minYear || $year > $maxYear){
-			$year = $maxYear;
-		}
-		
-        $this->parser->assign('year', $year);
-        $this->parser->assign('max_year', $maxYear);
-		$this->parser->assign('min_year', $minYear);
-        
-		$this->parser->disable_caching();
-		
-        $data = $this->_getPhysicistsAndInventions($year, $current_period);
-        
-        $this->parser->assign($data);
-        
-        $slider_background = createSlidebBackgroundImage($current_period_table->getImage(), $minYear, $maxYear, $current_period_table->getBg_color(), $current_period_table->getNumber_color(), 14, 400);
-        
-        $this->_addTemplateDynamicJs('timeline', array(
-            'start_year' => $minYear,
-			'year' => $year,
-            'end_year' => $maxYear,
-            'period' => $current_period,
-        ));
-        $this->_assignTemplateAdditionals();
-        
-        $this->parser->assign('slider_background', $slider_background);
-        
-        $this->parser->assign('dataForJS', array(
-            'background' => $slider_background,
-            'number_color' => $current_period_table->getNumber_color(),
-            'border_color' => $current_period_table->getBorder_color(),
-        ));
-        
+        if (count($periods) > 0) {
+            $current_period = (!is_null($period) && $period > 0) ? intval($period) : intval(@$periods[0]->getId());
+            
+            $this->parser->assign('periods', $periods);
+            $this->parser->assign('current_period', $current_period);
+            
+            $current_period_table = $this->load->table_row('periods');
+            $current_period_table->load($current_period);
+            
+            $minYear = $current_period_table->getStart_year();
+            $maxYear = $current_period_table->getEnd_year();
+            $maxYear = $maxYear >= 9999 ? date('Y') : $maxYear;
+    		
+            $real_year = 0;
+            if ($year === INVALID_YEAR) {
+                $real_year = intval($maxYear);
+            } else {
+                $real_year = intval($year);    
+            }
+    		if($real_year < $minYear || $real_year > $maxYear){
+    			$real_year = $maxYear;
+    		}
+    		
+            $this->parser->assign('year', $real_year);
+            $this->parser->assign('max_year', $maxYear);
+    		$this->parser->assign('min_year', $minYear);
+            $this->parser->assign('period', $current_period_table);
+    		
+            $data = $this->_getPhysicistsAndInventions($real_year, $current_period);
+            
+            $this->parser->assign($data);
+            
+            $slider_background = createSlidebBackgroundImage($current_period_table->getImage(), $minYear, $maxYear, $current_period_table->getBg_color(), $current_period_table->getNumber_color(), 14, 400);
+            
+            $this->_addTemplateDynamicJs('timeline', array(
+                'start_year' => $minYear,
+    			'year' => $real_year,
+                'end_year' => $maxYear,
+                'period' => $current_period,
+            ));
+            $this->_assignTemplateAdditionals();
+            
+            $this->parser->assign('slider_background', $slider_background);
+            
+            $this->parser->assign('dataForJS', array(
+                'background' => $slider_background,
+                'number_color' => $current_period_table->getNumber_color(),
+                'border_color' => $current_period_table->getBorder_color(),
+            ));
+        } else {
+            $this->parser->assign('no_period', TRUE);
+        }
         $this->parser->parse('frontend/timeline.index.tpl');
     }
     

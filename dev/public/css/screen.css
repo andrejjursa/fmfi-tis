@@ -6,10 +6,10 @@ body{
 }
 
 a{
-	color: red;
+	color: red !important;
 }
 a:visited{
-	color: darkred;
+	color: darkred !important;
 }
 
 h1{
@@ -25,10 +25,39 @@ h1{
 	margin: 0 auto;
 	background: #efefef;
 }
-#wrapper #content > div{
+#wrapper #timelineInnerWrap > div{
 	border: 1px solid #e1e1e1;
 	background: #fff;
 	padding: 10px;
+}
+
+#wrapper #timelineInnerWrap > div.clear {
+    border: 0;
+    background: inherit;
+    padding: 0;
+    margin: 0;
+    clear: both;
+}
+
+#timelineInnerWrap { border: 0 !important; background-color: inherit !important; }
+
+#periodTabs {
+    border: 0;
+    padding: 0;
+}
+
+#periodTabs .ui-widget-header {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #AAA;
+    border-radius: 0;
+}
+
+#periodInfo {
+    border: 1px solid #e1e1e1;
+	background: #fff;
+	padding: 10px;
+    margin-top: 5px;
 }
 
 #header{
@@ -83,6 +112,10 @@ h1{
 	width: 444px;
 	float: right;
 	background: #fff;
+}
+
+#no_period{
+    margin-top: 40px;
 }
 
 #content h1{

@@ -6,7 +6,7 @@
  * @package AppControllers
  */
 
-    class User extends Abstract_backend_controller {
+    class Admin_account extends Abstract_backend_controller {
         private $user_id = -1;
         
         /*
@@ -51,7 +51,7 @@
                 $this->parser->assign("param2", $msg);
             }
 
-            $this->parser->parse('backend/user_changeForm.tpl');
+            $this->parser->parse('backend/admin_account.changeForm.tpl');
         }
         
         /*
@@ -111,7 +111,7 @@
             }
             
             $this->load->helper('url');
-            redirect(createUri("user", "changeForm", array($param1, $param2) ));
+            redirect(createUri("admin_account", "changeForm", array($param1, $param2) ));
         }
         
         public function validateEmail($uid = NULL, $verification = "") {
@@ -125,6 +125,7 @@
                 
                 if ($this->Admins->updateEmail($uid)) {
 					$this->Logs->addLog('Administrator e-mail verification', array('type' => 'e-mail verification', 'result' => 'OK', 'ID' => $uid, 'validation_token' => $verification));
+                    $this->Admins->updateSessionData();
                     $this->changeForm("success", "email2");
                 } else {
 					$this->Logs->addLog('Administrator e-mail verification', array('type' => 'e-mail verification', 'result' => 'FAILED', 'ID' => $uid, 'validation_token' => $verification));
@@ -153,7 +154,7 @@
             $this->email->subject('Fyzikalna databaza - Zmena emailu');
             
             $token = generateToken();
-            $url = createUri("user", "validateEmail", array($this->user_id, $token));
+            $url = createUri("admin_account", "validateEmail", array($this->user_id, $token));
             
             $sprava = "Vžiadali ste si zmenu email-u <br /><br />";
             $sprava .= "Pre dokončenie zmeny klilnite na: \n<a href='$url'>$url</a><br /><br />";
