@@ -45,6 +45,21 @@ class Admins extends CI_Model {
     }
     
     /**
+     * Performs update of session data, only if there is valid administrator login.
+     */
+    public function updateSessionData() {
+        if ($this->isAdminLogedIn()) {
+            $id = $this->getAdminId();
+            $admin = $this->load->table_row('admins');
+            $admin->load($id);
+            $this->session->set_userdata(Admins::USER_DATA_STRING, array(
+                'id' => $admin->getId(),
+                'email' => $admin->getEmail(),
+            ));
+        }
+    }
+    
+    /**
      * Verifies if administrator is loged in.
      * 
      * @return boolean returns TRUE if there is valid login, FALSE otherwise.
@@ -161,12 +176,19 @@ class Admins extends CI_Model {
     public function updateEmail($id, $email = NULL){
         $admin = $this->load->table_row('admins');
         $admin->load($id);
-        $admin->data(array( 
-            'email' => (!is_null($email))?$email:$admin->getNew_email() , 
-            "new_email" => "", 
-            "validation_token" => ""
-        ));
-        return $admin->save(); 
+        $new_email = (!is_null($email))?$email:$admin->getNew_email();
+        $other_admin = $this->load->table_row('admins');
+        $other_admin->loadBy('email = ?', $new_email);
+        if (is_null($other_admin->getId())) {
+            $admin->data(array( 
+                'email' => $new_email, 
+                "new_email" => "", 
+                "validation_token" => ""
+            ));
+            return $admin->save(); 
+        } else {
+            return FALSE;
+        }
     }
     
     public function getIdByEmail($email){

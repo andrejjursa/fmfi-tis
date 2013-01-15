@@ -5,7 +5,7 @@
     <div id="userChangeForm">
     {if isset($param1) && $param1 neq NULL}
         {if ($param1 eq "password" || $param1 eq "email")}
-            <form id="changeForm" action="{createUri controller='user' action='proccesForm' params=[$param1]}" method="post">
+            <form id="changeForm" action="{createUri controller='admin_account' action='proccesForm' params=[$param1]}" method="post">
                 <div>
                     {if ($param1 == "password")}
 					<fieldset class="logs">
@@ -80,10 +80,10 @@
 				<div class="content"  style="color: green;">Vaše heslo bolo zmenené.</div>
 			{elseif ($param2 eq "email")}
 				<div class="label">OK:</div>
-				<div class="content"  style="color: green;">Na Váš email bola zaslaná overovacia správa.</div>	
+				<div class="content"  style="color: green;">Na Váš e-mail bola zaslaná overovacia správa.</div>	
 			{elseif ($param2 eq "email2")}
 				<div class="label">OK:</div>
-				<div class="content"  style="color: green;">Váš email bo úspešne zmenený.</div>	
+				<div class="content"  style="color: green;">Váš e-mail bo úspešne zmenený.</div>	
 			{else}
 				<div class="label">Chyba:</div>
 				<div class="content"  style="color: red;">Neplatný vstup!</div>
@@ -98,7 +98,7 @@
 				<div class="label">Chyba:</div>
 				<div class="content"  style="color: red;">
                 {if ($param2 eq "email")}
-                    Vyskytla sa chyba, heslo nebolo zmenené!
+                    Vyskytla sa chyba, e-mail nebol zmenený!
                 {elseif ($param2 eq "email2")}
                     Nesprávne overovacie údaje!
                 {else}		

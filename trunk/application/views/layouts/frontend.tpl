@@ -33,7 +33,7 @@
 		<div style="clear: both;"></div>
 	</div>
 	<div id="footer">
-		&copy; {date("Y")}
+		&copy; 2012 - 2013 FMFI UK, FuTeX team z predmetu Tvorba informačných systémov
 	</div>
 </body>
 </html>
