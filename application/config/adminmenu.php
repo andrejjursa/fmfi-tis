@@ -83,7 +83,7 @@ $config['menu'] = array(
             array(
                 'title' => 'Zmeniť email',
                 'link' => array(
-                    'controller' => 'user',
+                    'controller' => 'admin_account',
                     'action' => 'changeForm',
                     'params' => array("email"),
                 ),
@@ -92,7 +92,7 @@ $config['menu'] = array(
             array(
                 'title' => 'Zmeniť heslo',
                 'link' => array(
-                    'controller' => 'user',
+                    'controller' => 'admin_account',
                     'action' => 'changeForm',
                     'params' => array("password"),
                 ),
