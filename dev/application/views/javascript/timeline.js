@@ -2,12 +2,14 @@
 $(document).ready(function(){
     
     var knownPhysicists = new Array();
+    var currentYear = {$year}; 
     
     /**
      * This function will renew lists of physicists and inventions after stop sliding in slider.
      */
     sliderOnStop = function(event, ui) {
-        var selected_year = ui.value;
+        var selected_year = currentYear;
+        $('#timeline').slider('option', 'value', currentYear);
         
         $('#timeline').slider('disable');
         
@@ -21,6 +23,7 @@ $(document).ready(function(){
             },
             complete: function() {
                 $('#timeline').slider('enable');
+                $('#timeline .ui-slider-handle').focus();
             }
         });
     }
@@ -33,6 +36,7 @@ $(document).ready(function(){
         var width = $('#timeline .ui-slider-handle').width();
         var height = $('#timeline .ui-slider-handle').height();
         var year = $('#timeline').slider('value');
+        currentYear = year;
         var info = '';
         var info_height = $('#timeline-info').height();
         var min = {$start_year nocache};
