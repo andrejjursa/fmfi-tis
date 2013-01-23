@@ -2,7 +2,7 @@
 
 {block content}
 <p>Prosím, vyplňte tento formulár. E-mail sa používa ako prihlasovacie meno.</p>
-<form action="/index.php/install/make_adminacc" method="post" autocomplete="off">
+<form action="{$site_base_url}/index.php/install/make_adminacc" method="post" autocomplete="off">
 <table class="installtable"><tbody>
     <tr>
         <td class="label"><label for="admin_email_id">E-mail:</label></td>
