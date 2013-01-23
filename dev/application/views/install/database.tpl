@@ -2,7 +2,7 @@
 
 {block content}
 <p>Prosím, vložte potrebné údaje pre pripojenie k databáze MySQL. Do poľa hostiteľ môžete za dvojbodku zadať port ak je to potrebné.</p>
-<form action="/index.php/install/make_database" method="post" autocomplete="off">
+<form action="{$site_base_url}/index.php/install/make_database" method="post" autocomplete="off">
 <table class="installtable"><tbody>
     <tr>
         <td class="label"><label for="db_hostname_id">Hostiteľ:</label></td>
