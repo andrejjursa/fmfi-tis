@@ -3,7 +3,7 @@
 {block content}
 <p>Prosím, vyplňte konfiguračné položky tohoto formulára.</p>
 <p>Ak použijete na doručovanie e-mailov protokol SMTP, pravdepodobne budete musieť vyplniť aj názov hosta, port, používateľa a heslo.</p>
-<form action="/index.php/install/save_config" method="post" autocomplete="off">
+<form action="{$site_base_url}/index.php/install/save_config" method="post" autocomplete="off">
 <table class="installtable"><tbody>
     <tr>
         <td class="label"><label for="config_application_rewrite_enabled_id">Zapnúť rewrite engine pre frontend:</label></td>

@@ -12,7 +12,7 @@ class Install extends My_Controller {
         $this->load->model('configurator');
         $this->load->helper('url');
         
-        $this->parser->assign('site_base_url', $this->getBaseDir());
+        $this->parser->assign('site_base_url', rtrim($this->getBaseDir(), '/\\'));
         
         $this->load->library('session');
         
