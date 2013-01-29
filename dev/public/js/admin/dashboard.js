@@ -1,6 +1,8 @@
 jQuery(document).ready(function($) {
-   
-    $.ajax('/index.php/admin_editor/ajaxInlineGrid/logs/5/crdate-desc/', {
+    
+    var url = $('#site_base_url_id').text() + 'index.php/admin_editor/ajaxInlineGrid/logs/5/crdate-desc/';
+    
+    $.ajax(url, {
         cache: false,
         dataType: 'json',
         success: function(data) {

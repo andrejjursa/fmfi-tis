@@ -27,5 +27,6 @@
 {adminmenu menu=$adminmenu}
 {block name="content"}
 {/block}
+<div id="site_base_url_id" style="display: none;">{$site_base_url}</div>
 </body>
 </html>
