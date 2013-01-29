@@ -16,7 +16,7 @@
 <body>
 	<div id="wrapper">
 		<div id="header">
-			<a href="/"><img src="{$site_base_url}public/images/einstein.png" alt="Albert Einstein" /></a>
+			<a href="{createUri controller="timeline" action="index"}"><img src="{$site_base_url}public/images/einstein.png" alt="Albert Einstein" /></a>
             <div id="navbar">
                 {block name='top_middle'}{/block}
             </div>
